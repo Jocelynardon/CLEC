@@ -41,6 +41,10 @@ namespace CECLdb
             this.lblAdNumber = new System.Windows.Forms.Label();
             this.txtbAdNumber = new System.Windows.Forms.TextBox();
             this.bttnReturnAd = new System.Windows.Forms.Button();
+            this.lblSearchAd = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bttnSearchAd = new System.Windows.Forms.Button();
+            this.bttnSaveAd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSelectAreaAd
@@ -115,7 +119,7 @@ namespace CECLdb
             // bttnAddAd
             // 
             this.bttnAddAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddAd.Location = new System.Drawing.Point(440, 571);
+            this.bttnAddAd.Location = new System.Drawing.Point(466, 571);
             this.bttnAddAd.Name = "bttnAddAd";
             this.bttnAddAd.Size = new System.Drawing.Size(114, 30);
             this.bttnAddAd.TabIndex = 8;
@@ -149,11 +153,51 @@ namespace CECLdb
             this.bttnReturnAd.UseVisualStyleBackColor = false;
             this.bttnReturnAd.Click += new System.EventHandler(this.bttnReturnAd_Click);
             // 
+            // lblSearchAd
+            // 
+            this.lblSearchAd.AutoSize = true;
+            this.lblSearchAd.Location = new System.Drawing.Point(744, 75);
+            this.lblSearchAd.Name = "lblSearchAd";
+            this.lblSearchAd.Size = new System.Drawing.Size(0, 20);
+            this.lblSearchAd.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(815, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 14;
+            // 
+            // bttnSearchAd
+            // 
+            this.bttnSearchAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchAd.Location = new System.Drawing.Point(575, 105);
+            this.bttnSearchAd.Name = "bttnSearchAd";
+            this.bttnSearchAd.Size = new System.Drawing.Size(99, 25);
+            this.bttnSearchAd.TabIndex = 15;
+            this.bttnSearchAd.Text = "Buscar";
+            this.bttnSearchAd.UseVisualStyleBackColor = false;
+            // 
+            // bttnSaveAd
+            // 
+            this.bttnSaveAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSaveAd.Location = new System.Drawing.Point(346, 571);
+            this.bttnSaveAd.Name = "bttnSaveAd";
+            this.bttnSaveAd.Size = new System.Drawing.Size(114, 30);
+            this.bttnSaveAd.TabIndex = 16;
+            this.bttnSaveAd.Text = "Guardar";
+            this.bttnSaveAd.UseVisualStyleBackColor = false;
+            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 646);
+            this.Controls.Add(this.bttnSaveAd);
+            this.Controls.Add(this.bttnSearchAd);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblSearchAd);
             this.Controls.Add(this.bttnReturnAd);
             this.Controls.Add(this.txtbAdNumber);
             this.Controls.Add(this.lblAdNumber);
@@ -187,5 +231,9 @@ namespace CECLdb
         private System.Windows.Forms.Label lblAdNumber;
         private System.Windows.Forms.TextBox txtbAdNumber;
         private System.Windows.Forms.Button bttnReturnAd;
+        private System.Windows.Forms.Label lblSearchAd;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bttnSearchAd;
+        private System.Windows.Forms.Button bttnSaveAd;
     }
 }
