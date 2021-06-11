@@ -23,6 +23,7 @@ namespace CECLdb
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             if (rbttnAddPerson.Checked) 
             {
                 PersonReg Frm = new PersonReg();

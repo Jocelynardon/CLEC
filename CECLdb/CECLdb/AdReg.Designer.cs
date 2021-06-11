@@ -212,6 +212,7 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectAreaAd);
             this.Name = "AdReg";
             this.Text = "AdReg";
+            this.Load += new System.EventHandler(this.AdReg_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

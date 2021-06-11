@@ -31,5 +31,13 @@ namespace CECLdb
             Frm.Show();
             this.Close();
         }
+
+        private void AdReg_Load(object sender, EventArgs e)
+        {
+            if ( Singleton.action == 1)
+            {
+
+            }
+        }
     }
 }
