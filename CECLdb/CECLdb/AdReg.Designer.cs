@@ -1,4 +1,4 @@
-﻿
+﻿ 
 namespace CECLdb
 {
     partial class AdReg
@@ -204,6 +204,7 @@ namespace CECLdb
             this.lblEscAd.Size = new System.Drawing.Size(165, 22);
             this.lblEscAd.TabIndex = 17;
             this.lblEscAd.Text = "(ESC) Regresar al Menu";
+            this.lblEscAd.Click += new System.EventHandler(this.lblEscAd_Click);
             // 
             // AdReg
             // 
@@ -230,7 +231,6 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AdReg";
             this.Text = "AdReg";
-            this.Load += new System.EventHandler(this.AdReg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -165,7 +165,7 @@ namespace CECLdb
                 }
         }
 
-        private void Exit(object sender, KeyEventArgs e)
+        private void Aux(object sender, KeyEventArgs e)
         {
             if (e.KeyCode==Keys.Escape)
             {
