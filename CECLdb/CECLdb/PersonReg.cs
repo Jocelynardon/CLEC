@@ -21,6 +21,16 @@ namespace CECLdb
             }
         }
 
+        public PersonReg(int action)
+        {
+            switch (action)
+            {
+                case 0:
+                    bttnSave.Visible = false;
+                    break;
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
