@@ -19,6 +19,7 @@ namespace CECLdb
                 bttnAddPerson.Visible = false;
                 bttnSavePerson.Visible = true;
                 bttnSearchPerson.Visible = true;
+                bttnImportPerson.Visible = false;
             }
         }
 

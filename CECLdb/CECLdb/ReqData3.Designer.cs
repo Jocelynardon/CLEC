@@ -34,6 +34,7 @@ namespace CECLdb
             this.FechaEnvioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.lblEscReqData3 = new System.Windows.Forms.Label();
+            this.bttnExportReqData3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,11 +91,22 @@ namespace CECLdb
             this.lblEscReqData3.TabIndex = 2;
             this.lblEscReqData3.Text = "(ESC) Regresar al Menú";
             // 
+            // bttnExportReqData3
+            // 
+            this.bttnExportReqData3.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnExportReqData3.Location = new System.Drawing.Point(144, 392);
+            this.bttnExportReqData3.Name = "bttnExportReqData3";
+            this.bttnExportReqData3.Size = new System.Drawing.Size(94, 29);
+            this.bttnExportReqData3.TabIndex = 3;
+            this.bttnExportReqData3.Text = "Exportar";
+            this.bttnExportReqData3.UseVisualStyleBackColor = false;
+            // 
             // ReqData3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 436);
+            this.Controls.Add(this.bttnExportReqData3);
             this.Controls.Add(this.lblEscReqData3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -115,5 +127,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaEnvioCol;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblEscReqData3;
+        private System.Windows.Forms.Button bttnExportReqData3;
     }
 }

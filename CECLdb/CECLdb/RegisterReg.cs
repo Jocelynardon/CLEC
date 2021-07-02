@@ -20,6 +20,7 @@ namespace CECLdb
                 bttnAddRegister.Visible = false;
                 bttnSaveRegister.Visible = true;
                 bttnSearchRegister.Visible = true;
+                bttnImportRegister.Visible = false;
             }
         }
 

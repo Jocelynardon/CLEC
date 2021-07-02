@@ -38,6 +38,7 @@ namespace CECLdb
             this.FechaFinCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.lblEscReqData2 = new System.Windows.Forms.Label();
+            this.bttnExportReqData2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,11 +128,22 @@ namespace CECLdb
             this.lblEscReqData2.TabIndex = 11;
             this.lblEscReqData2.Text = "(ESC) Regresar al Menú";
             // 
+            // bttnExportReqData2
+            // 
+            this.bttnExportReqData2.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnExportReqData2.Location = new System.Drawing.Point(164, 393);
+            this.bttnExportReqData2.Name = "bttnExportReqData2";
+            this.bttnExportReqData2.Size = new System.Drawing.Size(94, 29);
+            this.bttnExportReqData2.TabIndex = 12;
+            this.bttnExportReqData2.Text = "Exportar";
+            this.bttnExportReqData2.UseVisualStyleBackColor = false;
+            // 
             // ReqData2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 450);
+            this.Controls.Add(this.bttnExportReqData2);
             this.Controls.Add(this.lblEscReqData2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -156,5 +168,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaFinCol;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblEscReqData2;
+        private System.Windows.Forms.Button bttnExportReqData2;
     }
 }

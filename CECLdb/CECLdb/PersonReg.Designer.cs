@@ -40,6 +40,7 @@ namespace CECLdb
             this.bttnSavePerson = new System.Windows.Forms.Button();
             this.lblEscPerson = new System.Windows.Forms.Label();
             this.txtEmailPerson = new System.Windows.Forms.TextBox();
+            this.bttnImportPerson = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblName
@@ -82,7 +83,7 @@ namespace CECLdb
             // 
             this.bttnAddPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnAddPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnAddPerson.Location = new System.Drawing.Point(288, 371);
+            this.bttnAddPerson.Location = new System.Drawing.Point(184, 371);
             this.bttnAddPerson.Name = "bttnAddPerson";
             this.bttnAddPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnAddPerson.TabIndex = 6;
@@ -126,7 +127,7 @@ namespace CECLdb
             // 
             this.bttnSavePerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnSavePerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnSavePerson.Location = new System.Drawing.Point(288, 371);
+            this.bttnSavePerson.Location = new System.Drawing.Point(296, 371);
             this.bttnSavePerson.Name = "bttnSavePerson";
             this.bttnSavePerson.Size = new System.Drawing.Size(94, 29);
             this.bttnSavePerson.TabIndex = 10;
@@ -153,11 +154,23 @@ namespace CECLdb
             this.txtEmailPerson.Size = new System.Drawing.Size(439, 27);
             this.txtEmailPerson.TabIndex = 12;
             // 
+            // bttnImportPerson
+            // 
+            this.bttnImportPerson.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImportPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnImportPerson.Location = new System.Drawing.Point(296, 371);
+            this.bttnImportPerson.Name = "bttnImportPerson";
+            this.bttnImportPerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnImportPerson.TabIndex = 13;
+            this.bttnImportPerson.Text = "Importar";
+            this.bttnImportPerson.UseVisualStyleBackColor = false;
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnImportPerson);
             this.Controls.Add(this.txtEmailPerson);
             this.Controls.Add(this.lblEscPerson);
             this.Controls.Add(this.bttnSavePerson);
@@ -192,5 +205,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSavePerson;
         private System.Windows.Forms.Label lblEscPerson;
         private System.Windows.Forms.TextBox txtEmailPerson;
+        private System.Windows.Forms.Button bttnImportPerson;
     }
 }

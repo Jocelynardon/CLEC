@@ -20,6 +20,7 @@ namespace CECLdb
                 bttnAddInscription.Visible = false;
                 bttnSaveInscription.Visible = true;
                 bttnSearchInscription.Visible = true;
+                bttnImportInscription.Visible = false;
             }
         }
 

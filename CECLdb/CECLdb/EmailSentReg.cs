@@ -18,7 +18,7 @@ namespace CECLdb
                 bttnAddES.Visible = false;
                 bttnSaveES.Visible = true;
                 bttnSearchES.Visible = true;
-                bttnImportDataEmailSent.Visible = false;
+                bttnImportES.Visible = false;
             }
         }
 
