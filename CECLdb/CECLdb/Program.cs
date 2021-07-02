@@ -20,7 +20,6 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             Application.Run();
-            Singleton Sing = Singleton.GetInstance();
         }
     }
 }
