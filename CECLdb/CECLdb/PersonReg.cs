@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,8 +47,15 @@ namespace CECLdb
 
         private void bttnAddPerson_Click(object sender, EventArgs e)
         {
+            String PersonName = txtbName.Text;
+            String PersonEmail = txtEmailPerson.Text;
+            String PersonNumber = mtbTelephonPerson.Text;
 
         }
 
+        private void PersonReg_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

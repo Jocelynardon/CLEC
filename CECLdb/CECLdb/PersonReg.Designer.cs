@@ -32,7 +32,6 @@ namespace CECLdb
             this.lblName = new System.Windows.Forms.Label();
             this.txtbName = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.txtbEmail = new System.Windows.Forms.TextBox();
             this.lblTelNumber = new System.Windows.Forms.Label();
             this.bttnAddPerson = new System.Windows.Forms.Button();
             this.bttnReturnPerson = new System.Windows.Forms.Button();
@@ -40,6 +39,7 @@ namespace CECLdb
             this.bttnSearchPerson = new System.Windows.Forms.Button();
             this.bttnSavePerson = new System.Windows.Forms.Button();
             this.lblEscPerson = new System.Windows.Forms.Label();
+            this.txtEmailPerson = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -68,14 +68,6 @@ namespace CECLdb
             this.lblEmail.Size = new System.Drawing.Size(54, 20);
             this.lblEmail.TabIndex = 2;
             this.lblEmail.Text = "Correo";
-            // 
-            // txtbEmail
-            // 
-            this.txtbEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbEmail.Location = new System.Drawing.Point(46, 191);
-            this.txtbEmail.Name = "txtbEmail";
-            this.txtbEmail.Size = new System.Drawing.Size(439, 27);
-            this.txtbEmail.TabIndex = 3;
             // 
             // lblTelNumber
             // 
@@ -153,11 +145,20 @@ namespace CECLdb
             this.lblEscPerson.TabIndex = 11;
             this.lblEscPerson.Text = "(ESC) Regresar al Menú";
             // 
+            // txtEmailPerson
+            // 
+            this.txtEmailPerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtEmailPerson.Location = new System.Drawing.Point(46, 197);
+            this.txtEmailPerson.Name = "txtEmailPerson";
+            this.txtEmailPerson.Size = new System.Drawing.Size(439, 27);
+            this.txtEmailPerson.TabIndex = 12;
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtEmailPerson);
             this.Controls.Add(this.lblEscPerson);
             this.Controls.Add(this.bttnSavePerson);
             this.Controls.Add(this.bttnSearchPerson);
@@ -165,13 +166,13 @@ namespace CECLdb
             this.Controls.Add(this.bttnReturnPerson);
             this.Controls.Add(this.bttnAddPerson);
             this.Controls.Add(this.lblTelNumber);
-            this.Controls.Add(this.txtbEmail);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtbName);
             this.Controls.Add(this.lblName);
             this.KeyPreview = true;
             this.Name = "PersonReg";
             this.Text = "PersonReg";
+            this.Load += new System.EventHandler(this.PersonReg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,7 +184,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtbName;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.TextBox txtbEmail;
         private System.Windows.Forms.Label lblTelNumber;
         private System.Windows.Forms.Button bttnAddPerson;
         private System.Windows.Forms.Button bttnReturnPerson;
@@ -191,5 +191,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchPerson;
         private System.Windows.Forms.Button bttnSavePerson;
         private System.Windows.Forms.Label lblEscPerson;
+        private System.Windows.Forms.TextBox txtEmailPerson;
     }
 }
