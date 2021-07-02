@@ -30,12 +30,13 @@ namespace CECLdb
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.CódigoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeléfonoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CorreoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblEscReqData = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,26 +57,6 @@ namespace CECLdb
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(552, 404);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(25, 444);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Regresar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(138, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 29);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exportar correos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CódigoCol
             // 
@@ -109,18 +90,53 @@ namespace CECLdb
             this.CorreoCol.ReadOnly = true;
             this.CorreoCol.Width = 125;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 444);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Regresar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(138, 444);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(139, 29);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Exportar correos";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblEscReqData
+            // 
+            this.lblEscReqData.AutoSize = true;
+            this.lblEscReqData.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscReqData.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscReqData.Location = new System.Drawing.Point(603, 23);
+            this.lblEscReqData.Name = "lblEscReqData";
+            this.lblEscReqData.Size = new System.Drawing.Size(165, 22);
+            this.lblEscReqData.TabIndex = 3;
+            this.lblEscReqData.Text = "(ESC) Regresar al Menú";
+            // 
             // ReqData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 495);
+            this.ClientSize = new System.Drawing.Size(798, 495);
+            this.Controls.Add(this.lblEscReqData);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.KeyPreview = true;
             this.Name = "ReqData";
             this.Text = "ReqData";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,5 +149,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeléfonoCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn CorreoCol;
+        private System.Windows.Forms.Label lblEscReqData;
     }
 }

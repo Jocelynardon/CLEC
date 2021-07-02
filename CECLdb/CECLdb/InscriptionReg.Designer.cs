@@ -44,6 +44,9 @@ namespace CECLdb
             this.bttnReturnInscription = new System.Windows.Forms.Button();
             this.mtbStartDate = new System.Windows.Forms.MaskedTextBox();
             this.mtbFinalDate = new System.Windows.Forms.MaskedTextBox();
+            this.bttnSearchInscription = new System.Windows.Forms.Button();
+            this.bttnSaveInscription = new System.Windows.Forms.Button();
+            this.lblEscInscription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblSelectAreaInscription
@@ -91,10 +94,11 @@ namespace CECLdb
             // 
             // txtbPersonIDInscription
             // 
+            this.txtbPersonIDInscription.Enabled = false;
             this.txtbPersonIDInscription.Location = new System.Drawing.Point(504, 57);
             this.txtbPersonIDInscription.Name = "txtbPersonIDInscription";
             this.txtbPersonIDInscription.ReadOnly = true;
-            this.txtbPersonIDInscription.Size = new System.Drawing.Size(234, 27);
+            this.txtbPersonIDInscription.Size = new System.Drawing.Size(172, 27);
             this.txtbPersonIDInscription.TabIndex = 5;
             // 
             // lblPersonNameInscription
@@ -110,7 +114,6 @@ namespace CECLdb
             // 
             this.txtbPersonNameInscription.Location = new System.Drawing.Point(504, 146);
             this.txtbPersonNameInscription.Name = "txtbPersonNameInscription";
-            this.txtbPersonNameInscription.ReadOnly = true;
             this.txtbPersonNameInscription.Size = new System.Drawing.Size(498, 27);
             this.txtbPersonNameInscription.TabIndex = 7;
             // 
@@ -151,7 +154,7 @@ namespace CECLdb
             this.bttnAddInscription.Name = "bttnAddInscription";
             this.bttnAddInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnAddInscription.TabIndex = 15;
-            this.bttnAddInscription.Text = "Guardar";
+            this.bttnAddInscription.Text = "Agregar";
             this.bttnAddInscription.UseVisualStyleBackColor = false;
             // 
             // bttnReturnInscription
@@ -183,11 +186,47 @@ namespace CECLdb
             this.mtbFinalDate.TabIndex = 18;
             this.mtbFinalDate.ValidatingType = typeof(System.DateTime);
             // 
+            // bttnSearchInscription
+            // 
+            this.bttnSearchInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchInscription.Location = new System.Drawing.Point(440, 220);
+            this.bttnSearchInscription.Name = "bttnSearchInscription";
+            this.bttnSearchInscription.Size = new System.Drawing.Size(97, 27);
+            this.bttnSearchInscription.TabIndex = 19;
+            this.bttnSearchInscription.Text = "Buscar";
+            this.bttnSearchInscription.UseVisualStyleBackColor = false;
+            this.bttnSearchInscription.Visible = false;
+            // 
+            // bttnSaveInscription
+            // 
+            this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSaveInscription.Location = new System.Drawing.Point(440, 419);
+            this.bttnSaveInscription.Name = "bttnSaveInscription";
+            this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
+            this.bttnSaveInscription.TabIndex = 20;
+            this.bttnSaveInscription.Text = "Guardar";
+            this.bttnSaveInscription.UseVisualStyleBackColor = false;
+            this.bttnSaveInscription.Visible = false;
+            // 
+            // lblEscInscription
+            // 
+            this.lblEscInscription.AutoSize = true;
+            this.lblEscInscription.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscInscription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscInscription.Location = new System.Drawing.Point(835, 41);
+            this.lblEscInscription.Name = "lblEscInscription";
+            this.lblEscInscription.Size = new System.Drawing.Size(165, 22);
+            this.lblEscInscription.TabIndex = 21;
+            this.lblEscInscription.Text = "(ESC) Regresar al Menú";
+            // 
             // InscriptionReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 495);
+            this.Controls.Add(this.lblEscInscription);
+            this.Controls.Add(this.bttnSaveInscription);
+            this.Controls.Add(this.bttnSearchInscription);
             this.Controls.Add(this.mtbFinalDate);
             this.Controls.Add(this.mtbStartDate);
             this.Controls.Add(this.bttnReturnInscription);
@@ -203,8 +242,10 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectCourseInscription);
             this.Controls.Add(this.cmbSelectAreaInscription);
             this.Controls.Add(this.lblSelectAreaInscription);
+            this.KeyPreview = true;
             this.Name = "InscriptionReg";
             this.Text = "InscriptionReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +268,8 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnReturnInscription;
         private System.Windows.Forms.MaskedTextBox mtbStartDate;
         private System.Windows.Forms.MaskedTextBox mtbFinalDate;
+        private System.Windows.Forms.Button bttnSearchInscription;
+        private System.Windows.Forms.Button bttnSaveInscription;
+        private System.Windows.Forms.Label lblEscInscription;
     }
 }

@@ -37,6 +37,9 @@ namespace CECLdb
             this.bttnAddPerson = new System.Windows.Forms.Button();
             this.bttnReturnPerson = new System.Windows.Forms.Button();
             this.mtbTelephonPerson = new System.Windows.Forms.MaskedTextBox();
+            this.bttnSearchPerson = new System.Windows.Forms.Button();
+            this.bttnSavePerson = new System.Windows.Forms.Button();
+            this.lblEscPerson = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -114,11 +117,49 @@ namespace CECLdb
             this.mtbTelephonPerson.Size = new System.Drawing.Size(79, 27);
             this.mtbTelephonPerson.TabIndex = 8;
             // 
+            // bttnSearchPerson
+            // 
+            this.bttnSearchPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSearchPerson.Location = new System.Drawing.Point(348, 294);
+            this.bttnSearchPerson.Name = "bttnSearchPerson";
+            this.bttnSearchPerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnSearchPerson.TabIndex = 9;
+            this.bttnSearchPerson.Text = "Buscar";
+            this.bttnSearchPerson.UseVisualStyleBackColor = false;
+            this.bttnSearchPerson.Visible = false;
+            // 
+            // bttnSavePerson
+            // 
+            this.bttnSavePerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSavePerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSavePerson.Location = new System.Drawing.Point(288, 371);
+            this.bttnSavePerson.Name = "bttnSavePerson";
+            this.bttnSavePerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnSavePerson.TabIndex = 10;
+            this.bttnSavePerson.Text = "Guardar";
+            this.bttnSavePerson.UseVisualStyleBackColor = false;
+            this.bttnSavePerson.Visible = false;
+            // 
+            // lblEscPerson
+            // 
+            this.lblEscPerson.AutoSize = true;
+            this.lblEscPerson.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscPerson.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscPerson.Location = new System.Drawing.Point(582, 27);
+            this.lblEscPerson.Name = "lblEscPerson";
+            this.lblEscPerson.Size = new System.Drawing.Size(165, 22);
+            this.lblEscPerson.TabIndex = 11;
+            this.lblEscPerson.Text = "(ESC) Regresar al Menú";
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblEscPerson);
+            this.Controls.Add(this.bttnSavePerson);
+            this.Controls.Add(this.bttnSearchPerson);
             this.Controls.Add(this.mtbTelephonPerson);
             this.Controls.Add(this.bttnReturnPerson);
             this.Controls.Add(this.bttnAddPerson);
@@ -127,8 +168,10 @@ namespace CECLdb
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtbName);
             this.Controls.Add(this.lblName);
+            this.KeyPreview = true;
             this.Name = "PersonReg";
             this.Text = "PersonReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +187,8 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnAddPerson;
         private System.Windows.Forms.Button bttnReturnPerson;
         private System.Windows.Forms.MaskedTextBox mtbTelephonPerson;
+        private System.Windows.Forms.Button bttnSearchPerson;
+        private System.Windows.Forms.Button bttnSavePerson;
+        private System.Windows.Forms.Label lblEscPerson;
     }
 }

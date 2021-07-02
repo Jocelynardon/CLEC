@@ -51,6 +51,7 @@ namespace CECLdb
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.CursoSrcBtn = new System.Windows.Forms.Button();
             this.bttnReturnSearchCourOrAd = new System.Windows.Forms.Button();
+            this.lblEscSearchCourse = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -144,6 +145,7 @@ namespace CECLdb
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblEscSearchCourse);
             this.groupBox2.Controls.Add(this.checkedListBox6);
             this.groupBox2.Controls.Add(this.checkedListBox7);
             this.groupBox2.Controls.Add(this.checkedListBox8);
@@ -270,6 +272,17 @@ namespace CECLdb
             this.bttnReturnSearchCourOrAd.UseVisualStyleBackColor = true;
             this.bttnReturnSearchCourOrAd.Click += new System.EventHandler(this.bttnReturnSearchCourOrAd_Click);
             // 
+            // lblEscSearchCourse
+            // 
+            this.lblEscSearchCourse.AutoSize = true;
+            this.lblEscSearchCourse.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscSearchCourse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscSearchCourse.Location = new System.Drawing.Point(294, -3);
+            this.lblEscSearchCourse.Name = "lblEscSearchCourse";
+            this.lblEscSearchCourse.Size = new System.Drawing.Size(165, 22);
+            this.lblEscSearchCourse.TabIndex = 18;
+            this.lblEscSearchCourse.Text = "(ESC) Regresar al Menú";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -280,9 +293,11 @@ namespace CECLdb
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -317,6 +332,7 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button CursoSrcBtn;
         private System.Windows.Forms.Button bttnReturnSearchCourOrAd;
+        private System.Windows.Forms.Label lblEscSearchCourse;
     }
 }
 

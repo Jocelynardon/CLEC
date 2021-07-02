@@ -13,6 +13,12 @@ namespace CECLdb
         public CourseReg()
         {
             InitializeComponent();
+            if (Menu.action==2)
+            {
+                bttnAddCourse.Visible = false;
+                bttnSaveCourse.Visible = true;
+                bttnSearchCourse.Visible = true;
+            }
         }
 
         private void lblSelectArea_Click(object sender, EventArgs e)
@@ -25,6 +31,16 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void Exit(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
     }
 }

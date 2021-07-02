@@ -13,6 +13,12 @@ namespace CECLdb
         public PersonReg()
         {
             InitializeComponent();
+            if (Menu.action==2)
+            {
+                bttnAddPerson.Visible = false;
+                bttnSavePerson.Visible = true;
+                bttnSearchPerson.Visible = true;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -25,6 +31,16 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void Access(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
     }
 }
