@@ -11,6 +11,7 @@ namespace CECLdb
 {
     public partial class Menu : Form
     {
+        
         public Menu()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace CECLdb
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            int accion = 0;
             if (rbttnAddPerson.Checked) 
             {
                 PersonReg Frm = new PersonReg();

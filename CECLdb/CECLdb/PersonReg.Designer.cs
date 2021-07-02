@@ -37,6 +37,7 @@ namespace CECLdb
             this.bttnAddPerson = new System.Windows.Forms.Button();
             this.bttnReturnPerson = new System.Windows.Forms.Button();
             this.mtbTelephonPerson = new System.Windows.Forms.MaskedTextBox();
+            this.bttnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblName
@@ -114,11 +115,24 @@ namespace CECLdb
             this.mtbTelephonPerson.Size = new System.Drawing.Size(79, 27);
             this.mtbTelephonPerson.TabIndex = 8;
             // 
+            // bttnSave
+            // 
+            this.bttnSave.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSave.Location = new System.Drawing.Point(164, 371);
+            this.bttnSave.Name = "bttnSave";
+            this.bttnSave.Size = new System.Drawing.Size(94, 29);
+            this.bttnSave.TabIndex = 9;
+            this.bttnSave.Text = "Guardar";
+            this.bttnSave.UseVisualStyleBackColor = false;
+            this.bttnSave.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttnSave);
             this.Controls.Add(this.mtbTelephonPerson);
             this.Controls.Add(this.bttnReturnPerson);
             this.Controls.Add(this.bttnAddPerson);
@@ -144,5 +158,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnAddPerson;
         private System.Windows.Forms.Button bttnReturnPerson;
         private System.Windows.Forms.MaskedTextBox mtbTelephonPerson;
+        private System.Windows.Forms.Button bttnSave;
     }
 }

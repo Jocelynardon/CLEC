@@ -15,6 +15,16 @@ namespace CECLdb
             InitializeComponent();
         }
 
+        public PersonReg(int action)
+        {
+            switch (action)
+            {
+                case 0:
+                    bttnSave.Visible = false;
+                    break;
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -25,6 +35,11 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
