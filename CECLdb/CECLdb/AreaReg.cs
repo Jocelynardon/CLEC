@@ -13,6 +13,12 @@ namespace CECLdb
         public AreaReg()
         {
             InitializeComponent();
+            if (Menu.action == 2)
+            {
+                bttnSaveArea.Visible = true;
+                bttnAddArea.Visible = false;
+                bttnSearchArea.Visible = true;
+            }
         }
 
         private void lblAreaName_Click(object sender, EventArgs e)
@@ -25,6 +31,20 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void AreaReg_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void Exit(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
     }
 }

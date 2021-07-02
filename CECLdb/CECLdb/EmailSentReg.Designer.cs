@@ -40,6 +40,9 @@ namespace CECLdb
             this.bttnAddES = new System.Windows.Forms.Button();
             this.bttnImportDataEmailSent = new System.Windows.Forms.Button();
             this.bttnReturnEmailSent = new System.Windows.Forms.Button();
+            this.bttnSaveES = new System.Windows.Forms.Button();
+            this.bttnSearchES = new System.Windows.Forms.Button();
+            this.lblEscES = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblAdNumberES
@@ -109,17 +112,17 @@ namespace CECLdb
             // bttnAddES
             // 
             this.bttnAddES.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddES.Location = new System.Drawing.Point(238, 377);
+            this.bttnAddES.Location = new System.Drawing.Point(325, 377);
             this.bttnAddES.Name = "bttnAddES";
             this.bttnAddES.Size = new System.Drawing.Size(87, 29);
             this.bttnAddES.TabIndex = 8;
-            this.bttnAddES.Text = "Guardar";
+            this.bttnAddES.Text = "Agregar";
             this.bttnAddES.UseVisualStyleBackColor = false;
             // 
             // bttnImportDataEmailSent
             // 
             this.bttnImportDataEmailSent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnImportDataEmailSent.Location = new System.Drawing.Point(350, 377);
+            this.bttnImportDataEmailSent.Location = new System.Drawing.Point(629, 377);
             this.bttnImportDataEmailSent.Name = "bttnImportDataEmailSent";
             this.bttnImportDataEmailSent.Size = new System.Drawing.Size(138, 29);
             this.bttnImportDataEmailSent.TabIndex = 9;
@@ -129,7 +132,7 @@ namespace CECLdb
             // bttnReturnEmailSent
             // 
             this.bttnReturnEmailSent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnEmailSent.Location = new System.Drawing.Point(518, 377);
+            this.bttnReturnEmailSent.Location = new System.Drawing.Point(451, 377);
             this.bttnReturnEmailSent.Name = "bttnReturnEmailSent";
             this.bttnReturnEmailSent.Size = new System.Drawing.Size(87, 29);
             this.bttnReturnEmailSent.TabIndex = 10;
@@ -137,11 +140,47 @@ namespace CECLdb
             this.bttnReturnEmailSent.UseVisualStyleBackColor = false;
             this.bttnReturnEmailSent.Click += new System.EventHandler(this.bttnReturnEmailSent_Click);
             // 
+            // bttnSaveES
+            // 
+            this.bttnSaveES.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSaveES.Location = new System.Drawing.Point(325, 377);
+            this.bttnSaveES.Name = "bttnSaveES";
+            this.bttnSaveES.Size = new System.Drawing.Size(87, 29);
+            this.bttnSaveES.TabIndex = 11;
+            this.bttnSaveES.Text = "Guardar";
+            this.bttnSaveES.UseVisualStyleBackColor = false;
+            this.bttnSaveES.Visible = false;
+            // 
+            // bttnSearchES
+            // 
+            this.bttnSearchES.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchES.Location = new System.Drawing.Point(466, 316);
+            this.bttnSearchES.Name = "bttnSearchES";
+            this.bttnSearchES.Size = new System.Drawing.Size(87, 29);
+            this.bttnSearchES.TabIndex = 12;
+            this.bttnSearchES.Text = "Buscar";
+            this.bttnSearchES.UseVisualStyleBackColor = false;
+            this.bttnSearchES.Visible = false;
+            // 
+            // lblEscES
+            // 
+            this.lblEscES.AutoSize = true;
+            this.lblEscES.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscES.Location = new System.Drawing.Point(581, 48);
+            this.lblEscES.Name = "lblEscES";
+            this.lblEscES.Size = new System.Drawing.Size(165, 22);
+            this.lblEscES.TabIndex = 13;
+            this.lblEscES.Text = "(ESC) Regresar al Menu";
+            // 
             // EmailSentReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblEscES);
+            this.Controls.Add(this.bttnSearchES);
+            this.Controls.Add(this.bttnSaveES);
             this.Controls.Add(this.bttnReturnEmailSent);
             this.Controls.Add(this.bttnImportDataEmailSent);
             this.Controls.Add(this.bttnAddES);
@@ -153,8 +192,10 @@ namespace CECLdb
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.txtbAdNumberES);
             this.Controls.Add(this.lblAdNumberES);
+            this.KeyPreview = true;
             this.Name = "EmailSentReg";
             this.Text = "EmailSentReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +214,8 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnAddES;
         private System.Windows.Forms.Button bttnImportDataEmailSent;
         private System.Windows.Forms.Button bttnReturnEmailSent;
+        private System.Windows.Forms.Button bttnSaveES;
+        private System.Windows.Forms.Button bttnSearchES;
+        private System.Windows.Forms.Label lblEscES;
     }
 }

@@ -33,6 +33,7 @@ namespace CECLdb
             this.DescCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaEnvioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblEscReqData3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,17 +79,32 @@ namespace CECLdb
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblEscReqData3
+            // 
+            this.lblEscReqData3.AutoSize = true;
+            this.lblEscReqData3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscReqData3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscReqData3.Location = new System.Drawing.Point(356, 30);
+            this.lblEscReqData3.Name = "lblEscReqData3";
+            this.lblEscReqData3.Size = new System.Drawing.Size(165, 22);
+            this.lblEscReqData3.TabIndex = 2;
+            this.lblEscReqData3.Text = "(ESC) Regresar al Menú";
+            // 
             // ReqData3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(366, 436);
+            this.ClientSize = new System.Drawing.Size(542, 436);
+            this.Controls.Add(this.lblEscReqData3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.KeyPreview = true;
             this.Name = "ReqData3";
             this.Text = "ReqData3";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,5 +114,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridViewTextBoxColumn DescCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaEnvioCol;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblEscReqData3;
     }
 }

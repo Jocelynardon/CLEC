@@ -13,6 +13,13 @@ namespace CECLdb
         public EmailSentReg()
         {
             InitializeComponent();
+            if (Menu.action==2)
+            {
+                bttnAddES.Visible = false;
+                bttnSaveES.Visible = true;
+                bttnSearchES.Visible = true;
+                bttnImportDataEmailSent.Visible = false;
+            }
         }
 
         private void bttnReturnEmailSent_Click(object sender, EventArgs e)
@@ -20,6 +27,16 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void Access(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
     }
 }

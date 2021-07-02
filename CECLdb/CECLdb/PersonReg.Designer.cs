@@ -37,6 +37,12 @@ namespace CECLdb
             this.bttnAddPerson = new System.Windows.Forms.Button();
             this.bttnReturnPerson = new System.Windows.Forms.Button();
             this.mtbTelephonPerson = new System.Windows.Forms.MaskedTextBox();
+<<<<<<< HEAD
+            this.bttnSearchPerson = new System.Windows.Forms.Button();
+            this.bttnSavePerson = new System.Windows.Forms.Button();
+            this.lblEscPerson = new System.Windows.Forms.Label();
+=======
+>>>>>>> parent of 22da579 (hola)
             this.SuspendLayout();
             // 
             // lblName
@@ -127,8 +133,10 @@ namespace CECLdb
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtbName);
             this.Controls.Add(this.lblName);
+            this.KeyPreview = true;
             this.Name = "PersonReg";
             this.Text = "PersonReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
 

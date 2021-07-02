@@ -45,6 +45,7 @@ namespace CECLdb
             this.rbttnSearchCourseorAd = new System.Windows.Forms.RadioButton();
             this.bttnSearchMenu = new System.Windows.Forms.Button();
             this.rbttnSearchPerson = new System.Windows.Forms.RadioButton();
+            this.lblEscExit = new System.Windows.Forms.Label();
             this.gpbAdd.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,7 @@ namespace CECLdb
             this.bttnAddMenu.TabIndex = 1;
             this.bttnAddMenu.Text = "Agregar";
             this.bttnAddMenu.UseVisualStyleBackColor = false;
-            this.bttnAddMenu.Click += new System.EventHandler(this.button1_Click);
+            this.bttnAddMenu.Click += new System.EventHandler(this.bttnAddMenu_Click);
             // 
             // gpbAdd
             // 
@@ -131,6 +132,7 @@ namespace CECLdb
             this.bttnModifyMenu.TabIndex = 7;
             this.bttnModifyMenu.Text = "Modificar";
             this.bttnModifyMenu.UseVisualStyleBackColor = false;
+            this.bttnModifyMenu.Click += new System.EventHandler(this.bttnModifyMenu_Click);
             // 
             // rbttnAddCourse
             // 
@@ -232,16 +234,30 @@ namespace CECLdb
             this.rbttnSearchPerson.Text = "Persona";
             this.rbttnSearchPerson.UseVisualStyleBackColor = true;
             // 
+            // lblEscExit
+            // 
+            this.lblEscExit.AutoSize = true;
+            this.lblEscExit.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscExit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscExit.Location = new System.Drawing.Point(26, 17);
+            this.lblEscExit.Name = "lblEscExit";
+            this.lblEscExit.Size = new System.Drawing.Size(79, 22);
+            this.lblEscExit.TabIndex = 13;
+            this.lblEscExit.Text = "(ESC) Salir";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 408);
+            this.Controls.Add(this.lblEscExit);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbAdd);
             this.Controls.Add(this.lblTitle);
+            this.KeyPreview = true;
             this.Name = "Menu";
             this.Text = "Menu";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             this.gpbAdd.ResumeLayout(false);
             this.gpbAdd.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -269,5 +285,6 @@ namespace CECLdb
         private System.Windows.Forms.RadioButton rbttnSearchCourseorAd;
         private System.Windows.Forms.RadioButton rbttnSearchPerson;
         private System.Windows.Forms.Button bttnSearchMenu;
+        private System.Windows.Forms.Label lblEscExit;
     }
 }

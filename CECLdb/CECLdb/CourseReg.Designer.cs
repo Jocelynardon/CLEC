@@ -35,6 +35,9 @@ namespace CECLdb
             this.txtbCourseName = new System.Windows.Forms.TextBox();
             this.bttnAddCourse = new System.Windows.Forms.Button();
             this.bttnReturnCourse = new System.Windows.Forms.Button();
+            this.bttnSearchCourse = new System.Windows.Forms.Button();
+            this.bttnSaveCourse = new System.Windows.Forms.Button();
+            this.lblEscReturnMenu = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblSelectAreaCourse
@@ -92,19 +95,57 @@ namespace CECLdb
             this.bttnReturnCourse.UseVisualStyleBackColor = false;
             this.bttnReturnCourse.Click += new System.EventHandler(this.bttnReturnCourse_Click);
             // 
+            // bttnSearchCourse
+            // 
+            this.bttnSearchCourse.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchCourse.Location = new System.Drawing.Point(442, 246);
+            this.bttnSearchCourse.Name = "bttnSearchCourse";
+            this.bttnSearchCourse.Size = new System.Drawing.Size(108, 28);
+            this.bttnSearchCourse.TabIndex = 6;
+            this.bttnSearchCourse.Text = "Buscar";
+            this.bttnSearchCourse.UseVisualStyleBackColor = false;
+            this.bttnSearchCourse.Visible = false;
+            // 
+            // bttnSaveCourse
+            // 
+            this.bttnSaveCourse.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSaveCourse.Location = new System.Drawing.Point(293, 343);
+            this.bttnSaveCourse.Name = "bttnSaveCourse";
+            this.bttnSaveCourse.Size = new System.Drawing.Size(108, 28);
+            this.bttnSaveCourse.TabIndex = 7;
+            this.bttnSaveCourse.Text = "Guardar";
+            this.bttnSaveCourse.UseVisualStyleBackColor = false;
+            this.bttnSaveCourse.Visible = false;
+            // 
+            // lblEscReturnMenu
+            // 
+            this.lblEscReturnMenu.AutoSize = true;
+            this.lblEscReturnMenu.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscReturnMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscReturnMenu.Location = new System.Drawing.Point(604, 39);
+            this.lblEscReturnMenu.Name = "lblEscReturnMenu";
+            this.lblEscReturnMenu.Size = new System.Drawing.Size(165, 22);
+            this.lblEscReturnMenu.TabIndex = 8;
+            this.lblEscReturnMenu.Text = "(ESC) Regresar al Menu";
+            // 
             // CourseReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblEscReturnMenu);
+            this.Controls.Add(this.bttnSaveCourse);
+            this.Controls.Add(this.bttnSearchCourse);
             this.Controls.Add(this.bttnReturnCourse);
             this.Controls.Add(this.bttnAddCourse);
             this.Controls.Add(this.txtbCourseName);
             this.Controls.Add(this.lblCourseName);
             this.Controls.Add(this.cmbSelectArea);
             this.Controls.Add(this.lblSelectAreaCourse);
+            this.KeyPreview = true;
             this.Name = "CourseReg";
             this.Text = "CourseReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +159,8 @@ namespace CECLdb
         private System.Windows.Forms.TextBox txtbCourseName;
         private System.Windows.Forms.Button bttnAddCourse;
         private System.Windows.Forms.Button bttnReturnCourse;
+        private System.Windows.Forms.Button bttnSearchCourse;
+        private System.Windows.Forms.Button bttnSaveCourse;
+        private System.Windows.Forms.Label lblEscReturnMenu;
     }
 }
