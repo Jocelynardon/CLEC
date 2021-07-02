@@ -13,6 +13,14 @@ namespace CECLdb
         public RegisterReg()
         {
             InitializeComponent();
+            if (Menu.action==2)
+            {
+                txtbPersonIDRegister.Enabled = true;
+                txtbPersonIDRegister.ReadOnly = false;
+                bttnAddRegister.Visible = false;
+                bttnSaveRegister.Visible = true;
+                bttnSearchRegister.Visible = true;
+            }
         }
 
         private void bttnReturnRegister_Click(object sender, EventArgs e)
@@ -20,6 +28,16 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void Access(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
     }
 }

@@ -41,14 +41,15 @@ namespace CECLdb
             this.dtpConsultationDate = new System.Windows.Forms.DateTimePicker();
             this.bttnAddRegister = new System.Windows.Forms.Button();
             this.bttnReturnRegister = new System.Windows.Forms.Button();
+            this.bttnSaveRegister = new System.Windows.Forms.Button();
+            this.bttnSearchRegister = new System.Windows.Forms.Button();
+            this.lblEscRegister = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtbPersonNameRegister
             // 
-            this.txtbPersonNameRegister.Enabled = false;
             this.txtbPersonNameRegister.Location = new System.Drawing.Point(490, 140);
             this.txtbPersonNameRegister.Name = "txtbPersonNameRegister";
-            this.txtbPersonNameRegister.ReadOnly = true;
             this.txtbPersonNameRegister.Size = new System.Drawing.Size(498, 27);
             this.txtbPersonNameRegister.TabIndex = 15;
             // 
@@ -136,7 +137,7 @@ namespace CECLdb
             this.bttnAddRegister.Name = "bttnAddRegister";
             this.bttnAddRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnAddRegister.TabIndex = 18;
-            this.bttnAddRegister.Text = "Guardar";
+            this.bttnAddRegister.Text = "Agregar";
             this.bttnAddRegister.UseVisualStyleBackColor = false;
             // 
             // bttnReturnRegister
@@ -150,11 +151,47 @@ namespace CECLdb
             this.bttnReturnRegister.UseVisualStyleBackColor = false;
             this.bttnReturnRegister.Click += new System.EventHandler(this.bttnReturnRegister_Click);
             // 
+            // bttnSaveRegister
+            // 
+            this.bttnSaveRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSaveRegister.Location = new System.Drawing.Point(419, 326);
+            this.bttnSaveRegister.Name = "bttnSaveRegister";
+            this.bttnSaveRegister.Size = new System.Drawing.Size(93, 29);
+            this.bttnSaveRegister.TabIndex = 20;
+            this.bttnSaveRegister.Text = "Guardar";
+            this.bttnSaveRegister.UseVisualStyleBackColor = false;
+            this.bttnSaveRegister.Visible = false;
+            // 
+            // bttnSearchRegister
+            // 
+            this.bttnSearchRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchRegister.Location = new System.Drawing.Point(490, 230);
+            this.bttnSearchRegister.Name = "bttnSearchRegister";
+            this.bttnSearchRegister.Size = new System.Drawing.Size(93, 29);
+            this.bttnSearchRegister.TabIndex = 21;
+            this.bttnSearchRegister.Text = "Buscar";
+            this.bttnSearchRegister.UseVisualStyleBackColor = false;
+            this.bttnSearchRegister.Visible = false;
+            // 
+            // lblEscRegister
+            // 
+            this.lblEscRegister.AutoSize = true;
+            this.lblEscRegister.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscRegister.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscRegister.Location = new System.Drawing.Point(762, 16);
+            this.lblEscRegister.Name = "lblEscRegister";
+            this.lblEscRegister.Size = new System.Drawing.Size(165, 22);
+            this.lblEscRegister.TabIndex = 22;
+            this.lblEscRegister.Text = "(ESC) Regresar al Menú";
+            // 
             // RegisterReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 422);
+            this.Controls.Add(this.lblEscRegister);
+            this.Controls.Add(this.bttnSearchRegister);
+            this.Controls.Add(this.bttnSaveRegister);
             this.Controls.Add(this.bttnReturnRegister);
             this.Controls.Add(this.bttnAddRegister);
             this.Controls.Add(this.dtpConsultationDate);
@@ -167,8 +204,10 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectCourseInscription);
             this.Controls.Add(this.cmbSelectAreaInscription);
             this.Controls.Add(this.lblSelectAreaInscription);
+            this.KeyPreview = true;
             this.Name = "RegisterReg";
             this.Text = "RegisterReg";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +227,8 @@ namespace CECLdb
         private System.Windows.Forms.DateTimePicker dtpConsultationDate;
         private System.Windows.Forms.Button bttnAddRegister;
         private System.Windows.Forms.Button bttnReturnRegister;
+        private System.Windows.Forms.Button bttnSaveRegister;
+        private System.Windows.Forms.Button bttnSearchRegister;
+        private System.Windows.Forms.Label lblEscRegister;
     }
 }

@@ -38,6 +38,7 @@ namespace CECLdb
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblEscPeople = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -129,6 +130,7 @@ namespace CECLdb
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblEscPeople);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.checkBox3);
@@ -137,6 +139,18 @@ namespace CECLdb
             this.groupBox3.Size = new System.Drawing.Size(326, 131);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
+            // 
+            // lblEscPeople
+            // 
+            this.lblEscPeople.AutoSize = true;
+            this.lblEscPeople.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscPeople.Location = new System.Drawing.Point(139, 0);
+            this.lblEscPeople.Name = "lblEscPeople";
+            this.lblEscPeople.Size = new System.Drawing.Size(165, 22);
+            this.lblEscPeople.TabIndex = 6;
+            this.lblEscPeople.Text = "(ESC) Regresar al Menú";
+            this.lblEscPeople.Click += new System.EventHandler(this.lblEscPeople_Click);
             // 
             // label3
             // 
@@ -218,8 +232,10 @@ namespace CECLdb
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.Name = "PeopleSearch";
             this.Text = "PeopleSearch";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -248,5 +264,6 @@ namespace CECLdb
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button PeopleSrcBtn;
         private System.Windows.Forms.Button bttnReturn;
+        private System.Windows.Forms.Label lblEscPeople;
     }
 }
