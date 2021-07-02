@@ -13,12 +13,6 @@ namespace CECLdb
         public AdReg()
         {
             InitializeComponent();
-            if (Menu.action==2)
-            {
-                bttnSearchAd.Visible = true;
-                bttnAddAd.Visible = false;
-                bttnSaveAd.Visible = true;
-            }
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -36,31 +30,6 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
-        }
-
-        private void AdReg_Load(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void Exit(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode==Keys.Escape)
-            {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
-            }
-        }
-
-        private void bttnSearchAd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bttnSaveAd_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -57,6 +57,7 @@ namespace CECLdb
         {
             action = 1;
             if (rbttnAddPerson.Checked)
+
             {
                 PersonReg Frm = new PersonReg();
                 Frm.Show();
@@ -162,6 +163,14 @@ namespace CECLdb
                 {
                     MessageBox.Show("Seleccione alguna opción");
                 }
+        }
+
+        private void Exit(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Escape)
+            {
+                Application.Exit();
+            }
         }
     }
 }

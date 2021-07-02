@@ -46,6 +46,7 @@ namespace CECLdb
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.PeopleSrcBtn = new System.Windows.Forms.Button();
             this.bttnReturn = new System.Windows.Forms.Button();
+            this.lblEscPeople = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -219,6 +220,17 @@ namespace CECLdb
             this.bttnReturn.Text = "Regresar";
             this.bttnReturn.UseVisualStyleBackColor = true;
             this.bttnReturn.Click += new System.EventHandler(this.bttnReturn_Click);
+            // 
+            // lblEscPeople
+            // 
+            this.lblEscPeople.AutoSize = true;
+            this.lblEscPeople.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscPeople.Location = new System.Drawing.Point(139, 0);
+            this.lblEscPeople.Name = "lblEscPeople";
+            this.lblEscPeople.Size = new System.Drawing.Size(165, 22);
+            this.lblEscPeople.TabIndex = 6;
+            this.lblEscPeople.Text = "(ESC) Regresar al Menú";
             // 
             // PeopleSearch
             // 
