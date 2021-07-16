@@ -172,5 +172,22 @@ namespace CECLdb
                 Application.Exit();
             }
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bttnDeleteMenu_Click(object sender, EventArgs e)
+        {
+            action = 3;
+            if (rbttnAddPerson.Checked)
+
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+        }
     }
 }
