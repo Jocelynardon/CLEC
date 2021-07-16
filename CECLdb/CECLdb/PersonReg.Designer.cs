@@ -30,7 +30,7 @@ namespace CECLdb
         private void InitializeComponent()
         {
             this.lblName = new System.Windows.Forms.Label();
-            this.txtbName = new System.Windows.Forms.TextBox();
+            this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblTelNumber = new System.Windows.Forms.Label();
             this.bttnAddPerson = new System.Windows.Forms.Button();
@@ -41,6 +41,10 @@ namespace CECLdb
             this.lblEscPerson = new System.Windows.Forms.Label();
             this.txtEmailPerson = new System.Windows.Forms.TextBox();
             this.bttnImportPerson = new System.Windows.Forms.Button();
+            this.lblLastNamePerson = new System.Windows.Forms.Label();
+            this.txtbLastNamePerson = new System.Windows.Forms.TextBox();
+            this.txtbCodePerson = new System.Windows.Forms.TextBox();
+            this.lblCodePerson = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -53,13 +57,13 @@ namespace CECLdb
             this.lblName.Text = "Nombre";
             this.lblName.Click += new System.EventHandler(this.label1_Click);
             // 
-            // txtbName
+            // txtbNamePerson
             // 
-            this.txtbName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbName.Location = new System.Drawing.Point(46, 76);
-            this.txtbName.Name = "txtbName";
-            this.txtbName.Size = new System.Drawing.Size(439, 27);
-            this.txtbName.TabIndex = 1;
+            this.txtbNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtbNamePerson.Location = new System.Drawing.Point(46, 76);
+            this.txtbNamePerson.Name = "txtbNamePerson";
+            this.txtbNamePerson.Size = new System.Drawing.Size(254, 27);
+            this.txtbNamePerson.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -106,7 +110,7 @@ namespace CECLdb
             // mtbTelephonPerson
             // 
             this.mtbTelephonPerson.Location = new System.Drawing.Point(46, 294);
-            this.mtbTelephonPerson.Mask = "0000-0000";
+            this.mtbTelephonPerson.Mask = "00000000";
             this.mtbTelephonPerson.Name = "mtbTelephonPerson";
             this.mtbTelephonPerson.Size = new System.Drawing.Size(79, 27);
             this.mtbTelephonPerson.TabIndex = 8;
@@ -165,11 +169,49 @@ namespace CECLdb
             this.bttnImportPerson.Text = "Importar";
             this.bttnImportPerson.UseVisualStyleBackColor = false;
             // 
+            // lblLastNamePerson
+            // 
+            this.lblLastNamePerson.AutoSize = true;
+            this.lblLastNamePerson.Location = new System.Drawing.Point(339, 40);
+            this.lblLastNamePerson.Name = "lblLastNamePerson";
+            this.lblLastNamePerson.Size = new System.Drawing.Size(66, 20);
+            this.lblLastNamePerson.TabIndex = 14;
+            this.lblLastNamePerson.Text = "Apellido";
+            // 
+            // txtbLastNamePerson
+            // 
+            this.txtbLastNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtbLastNamePerson.Location = new System.Drawing.Point(339, 76);
+            this.txtbLastNamePerson.Name = "txtbLastNamePerson";
+            this.txtbLastNamePerson.Size = new System.Drawing.Size(254, 27);
+            this.txtbLastNamePerson.TabIndex = 15;
+            // 
+            // txtbCodePerson
+            // 
+            this.txtbCodePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtbCodePerson.Location = new System.Drawing.Point(546, 197);
+            this.txtbCodePerson.Name = "txtbCodePerson";
+            this.txtbCodePerson.Size = new System.Drawing.Size(166, 27);
+            this.txtbCodePerson.TabIndex = 16;
+            // 
+            // lblCodePerson
+            // 
+            this.lblCodePerson.AutoSize = true;
+            this.lblCodePerson.Location = new System.Drawing.Point(546, 151);
+            this.lblCodePerson.Name = "lblCodePerson";
+            this.lblCodePerson.Size = new System.Drawing.Size(58, 20);
+            this.lblCodePerson.TabIndex = 17;
+            this.lblCodePerson.Text = "Código";
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCodePerson);
+            this.Controls.Add(this.txtbCodePerson);
+            this.Controls.Add(this.txtbLastNamePerson);
+            this.Controls.Add(this.lblLastNamePerson);
             this.Controls.Add(this.bttnImportPerson);
             this.Controls.Add(this.txtEmailPerson);
             this.Controls.Add(this.lblEscPerson);
@@ -180,7 +222,7 @@ namespace CECLdb
             this.Controls.Add(this.bttnAddPerson);
             this.Controls.Add(this.lblTelNumber);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtbName);
+            this.Controls.Add(this.txtbNamePerson);
             this.Controls.Add(this.lblName);
             this.KeyPreview = true;
             this.Name = "PersonReg";
@@ -195,7 +237,7 @@ namespace CECLdb
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox txtbName;
+        private System.Windows.Forms.TextBox txtbNamePerson;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblTelNumber;
         private System.Windows.Forms.Button bttnAddPerson;
@@ -206,5 +248,9 @@ namespace CECLdb
         private System.Windows.Forms.Label lblEscPerson;
         private System.Windows.Forms.TextBox txtEmailPerson;
         private System.Windows.Forms.Button bttnImportPerson;
+        private System.Windows.Forms.Label lblLastNamePerson;
+        private System.Windows.Forms.TextBox txtbLastNamePerson;
+        private System.Windows.Forms.TextBox txtbCodePerson;
+        private System.Windows.Forms.Label lblCodePerson;
     }
 }

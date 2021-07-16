@@ -188,6 +188,46 @@ namespace CECLdb
                 Frm.Show();
                 this.Close();
             }
+            else if (rbttnAddRegister.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else if (rbttnAddInscription.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else if (rbttnAddAd.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else if (rbttnAddCourse.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else if (rbttnAddArea.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else if (rbttnAddEmailSent.Checked)
+            {
+                GeneralDelete Frm = new GeneralDelete();
+                Frm.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione alguna opción");
+            }
         }
     }
 }

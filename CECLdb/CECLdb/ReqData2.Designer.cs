@@ -56,7 +56,7 @@ namespace CECLdb
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(804, 343);
+            this.dataGridView1.Size = new System.Drawing.Size(803, 343);
             this.dataGridView1.TabIndex = 9;
             // 
             // ÁreaCol
