@@ -44,6 +44,7 @@ namespace CECLdb
             this.bttnSaveRegister = new System.Windows.Forms.Button();
             this.bttnSearchRegister = new System.Windows.Forms.Button();
             this.lblEscRegister = new System.Windows.Forms.Label();
+            this.bttnImportRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtbPersonNameRegister
@@ -133,7 +134,7 @@ namespace CECLdb
             // bttnAddRegister
             // 
             this.bttnAddRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddRegister.Location = new System.Drawing.Point(419, 326);
+            this.bttnAddRegister.Location = new System.Drawing.Point(316, 326);
             this.bttnAddRegister.Name = "bttnAddRegister";
             this.bttnAddRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnAddRegister.TabIndex = 18;
@@ -154,7 +155,7 @@ namespace CECLdb
             // bttnSaveRegister
             // 
             this.bttnSaveRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveRegister.Location = new System.Drawing.Point(419, 326);
+            this.bttnSaveRegister.Location = new System.Drawing.Point(434, 326);
             this.bttnSaveRegister.Name = "bttnSaveRegister";
             this.bttnSaveRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnSaveRegister.TabIndex = 20;
@@ -184,11 +185,22 @@ namespace CECLdb
             this.lblEscRegister.TabIndex = 22;
             this.lblEscRegister.Text = "(ESC) Regresar al Menú";
             // 
+            // bttnImportRegister
+            // 
+            this.bttnImportRegister.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImportRegister.Location = new System.Drawing.Point(434, 326);
+            this.bttnImportRegister.Name = "bttnImportRegister";
+            this.bttnImportRegister.Size = new System.Drawing.Size(93, 29);
+            this.bttnImportRegister.TabIndex = 23;
+            this.bttnImportRegister.Text = "Importar";
+            this.bttnImportRegister.UseVisualStyleBackColor = false;
+            // 
             // RegisterReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 422);
+            this.Controls.Add(this.bttnImportRegister);
             this.Controls.Add(this.lblEscRegister);
             this.Controls.Add(this.bttnSearchRegister);
             this.Controls.Add(this.bttnSaveRegister);
@@ -230,5 +242,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSaveRegister;
         private System.Windows.Forms.Button bttnSearchRegister;
         private System.Windows.Forms.Label lblEscRegister;
+        private System.Windows.Forms.Button bttnImportRegister;
     }
 }

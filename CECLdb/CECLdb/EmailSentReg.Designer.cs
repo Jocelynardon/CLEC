@@ -38,7 +38,7 @@ namespace CECLdb
             this.lblPersonNameES = new System.Windows.Forms.Label();
             this.txtbPersonNameES = new System.Windows.Forms.TextBox();
             this.bttnAddES = new System.Windows.Forms.Button();
-            this.bttnImportDataEmailSent = new System.Windows.Forms.Button();
+            this.bttnImportES = new System.Windows.Forms.Button();
             this.bttnReturnEmailSent = new System.Windows.Forms.Button();
             this.bttnSaveES = new System.Windows.Forms.Button();
             this.bttnSearchES = new System.Windows.Forms.Button();
@@ -119,15 +119,15 @@ namespace CECLdb
             this.bttnAddES.Text = "Agregar";
             this.bttnAddES.UseVisualStyleBackColor = false;
             // 
-            // bttnImportDataEmailSent
+            // bttnImportES
             // 
-            this.bttnImportDataEmailSent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnImportDataEmailSent.Location = new System.Drawing.Point(629, 377);
-            this.bttnImportDataEmailSent.Name = "bttnImportDataEmailSent";
-            this.bttnImportDataEmailSent.Size = new System.Drawing.Size(138, 29);
-            this.bttnImportDataEmailSent.TabIndex = 9;
-            this.bttnImportDataEmailSent.Text = "Importar datos";
-            this.bttnImportDataEmailSent.UseVisualStyleBackColor = false;
+            this.bttnImportES.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImportES.Location = new System.Drawing.Point(629, 377);
+            this.bttnImportES.Name = "bttnImportES";
+            this.bttnImportES.Size = new System.Drawing.Size(98, 29);
+            this.bttnImportES.TabIndex = 9;
+            this.bttnImportES.Text = "Importar";
+            this.bttnImportES.UseVisualStyleBackColor = false;
             // 
             // bttnReturnEmailSent
             // 
@@ -182,7 +182,7 @@ namespace CECLdb
             this.Controls.Add(this.bttnSearchES);
             this.Controls.Add(this.bttnSaveES);
             this.Controls.Add(this.bttnReturnEmailSent);
-            this.Controls.Add(this.bttnImportDataEmailSent);
+            this.Controls.Add(this.bttnImportES);
             this.Controls.Add(this.bttnAddES);
             this.Controls.Add(this.txtbPersonNameES);
             this.Controls.Add(this.lblPersonNameES);
@@ -212,7 +212,7 @@ namespace CECLdb
         private System.Windows.Forms.Label lblPersonNameES;
         private System.Windows.Forms.TextBox txtbPersonNameES;
         private System.Windows.Forms.Button bttnAddES;
-        private System.Windows.Forms.Button bttnImportDataEmailSent;
+        private System.Windows.Forms.Button bttnImportES;
         private System.Windows.Forms.Button bttnReturnEmailSent;
         private System.Windows.Forms.Button bttnSaveES;
         private System.Windows.Forms.Button bttnSearchES;

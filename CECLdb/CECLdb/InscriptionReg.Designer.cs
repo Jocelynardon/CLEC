@@ -47,6 +47,7 @@ namespace CECLdb
             this.bttnSearchInscription = new System.Windows.Forms.Button();
             this.bttnSaveInscription = new System.Windows.Forms.Button();
             this.lblEscInscription = new System.Windows.Forms.Label();
+            this.bttnImportInscription = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSelectAreaInscription
@@ -150,7 +151,7 @@ namespace CECLdb
             // bttnAddInscription
             // 
             this.bttnAddInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddInscription.Location = new System.Drawing.Point(440, 419);
+            this.bttnAddInscription.Location = new System.Drawing.Point(326, 419);
             this.bttnAddInscription.Name = "bttnAddInscription";
             this.bttnAddInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnAddInscription.TabIndex = 15;
@@ -200,7 +201,7 @@ namespace CECLdb
             // bttnSaveInscription
             // 
             this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveInscription.Location = new System.Drawing.Point(440, 419);
+            this.bttnSaveInscription.Location = new System.Drawing.Point(449, 419);
             this.bttnSaveInscription.Name = "bttnSaveInscription";
             this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnSaveInscription.TabIndex = 20;
@@ -219,11 +220,22 @@ namespace CECLdb
             this.lblEscInscription.TabIndex = 21;
             this.lblEscInscription.Text = "(ESC) Regresar al Menú";
             // 
+            // bttnImportInscription
+            // 
+            this.bttnImportInscription.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImportInscription.Location = new System.Drawing.Point(449, 419);
+            this.bttnImportInscription.Name = "bttnImportInscription";
+            this.bttnImportInscription.Size = new System.Drawing.Size(97, 27);
+            this.bttnImportInscription.TabIndex = 22;
+            this.bttnImportInscription.Text = "Importar";
+            this.bttnImportInscription.UseVisualStyleBackColor = false;
+            // 
             // InscriptionReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 495);
+            this.Controls.Add(this.bttnImportInscription);
             this.Controls.Add(this.lblEscInscription);
             this.Controls.Add(this.bttnSaveInscription);
             this.Controls.Add(this.bttnSearchInscription);
@@ -271,5 +283,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchInscription;
         private System.Windows.Forms.Button bttnSaveInscription;
         private System.Windows.Forms.Label lblEscInscription;
+        private System.Windows.Forms.Button bttnImportInscription;
     }
 }

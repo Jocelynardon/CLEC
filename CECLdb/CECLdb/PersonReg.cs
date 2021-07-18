@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace CECLdb
                 bttnAddPerson.Visible = false;
                 bttnSavePerson.Visible = true;
                 bttnSearchPerson.Visible = true;
+                bttnImportPerson.Visible = false;
             }
         }
 
@@ -46,8 +48,47 @@ namespace CECLdb
 
         private void bttnAddPerson_Click(object sender, EventArgs e)
         {
+            String personName = txtbNamePerson.Text;
+            String personLastName = txtbLastNamePerson.Text;
+            String personEmail = txtEmailPerson.Text;
+            int codePerson = int.Parse(txtbCodePerson.Text);
+            int personNumber = int.Parse(mtbTelephonPerson.Text);
 
+            string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Codigo,Teléfono) VALUES" +
+                "('"+personName+ "','" + personLastName + "','" + personEmail + "'," +
+                "'" + codePerson + "','" + personNumber + "')";
+
+            MySqlConnection connectionBD = Connection.connection();
+            connectionBD.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Se ha insertado exitosamente");
+                Clean();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al guardar: " + ex.Message);
+            }
+            finally 
+            {
+                connectionBD.Close();
+            }
         }
 
+        private void Clean()
+        {
+            txtbCodePerson.Text = "";
+            txtbLastNamePerson.Text = "";
+            txtbNamePerson.Text = "";
+            txtEmailPerson.Text = "";
+            mtbTelephonPerson.Text = "";
+        }
+        private void PersonReg_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

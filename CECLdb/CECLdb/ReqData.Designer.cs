@@ -35,7 +35,7 @@ namespace CECLdb
             this.TeléfonoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CorreoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bttnExportReqData = new System.Windows.Forms.Button();
             this.lblEscReqData = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -100,15 +100,16 @@ namespace CECLdb
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bttnExportReqData
             // 
-            this.button2.Location = new System.Drawing.Point(138, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(139, 29);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exportar correos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bttnExportReqData.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnExportReqData.Location = new System.Drawing.Point(138, 444);
+            this.bttnExportReqData.Name = "bttnExportReqData";
+            this.bttnExportReqData.Size = new System.Drawing.Size(110, 29);
+            this.bttnExportReqData.TabIndex = 2;
+            this.bttnExportReqData.Text = "Exportar";
+            this.bttnExportReqData.UseVisualStyleBackColor = false;
+            this.bttnExportReqData.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblEscReqData
             // 
@@ -127,7 +128,7 @@ namespace CECLdb
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 495);
             this.Controls.Add(this.lblEscReqData);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.bttnExportReqData);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.KeyPreview = true;
@@ -144,7 +145,7 @@ namespace CECLdb
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bttnExportReqData;
         private System.Windows.Forms.DataGridViewTextBoxColumn CódigoCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TeléfonoCol;

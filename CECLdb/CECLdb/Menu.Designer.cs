@@ -122,6 +122,7 @@ namespace CECLdb
             this.bttnDeleteMenu.TabIndex = 9;
             this.bttnDeleteMenu.Text = "Eliminar";
             this.bttnDeleteMenu.UseVisualStyleBackColor = false;
+            this.bttnDeleteMenu.Click += new System.EventHandler(this.bttnDeleteMenu_Click);
             // 
             // bttnModifyMenu
             // 
@@ -257,6 +258,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             this.gpbAdd.ResumeLayout(false);
             this.gpbAdd.PerformLayout();
