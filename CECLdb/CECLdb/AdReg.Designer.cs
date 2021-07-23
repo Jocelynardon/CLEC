@@ -46,6 +46,7 @@ namespace CECLdb
             this.bttnSearchAd = new System.Windows.Forms.Button();
             this.bttnSaveAd = new System.Windows.Forms.Button();
             this.lblEscAd = new System.Windows.Forms.Label();
+            this.bttnEmailSent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSelectAreaAd
@@ -59,11 +60,15 @@ namespace CECLdb
             // 
             // cmbSelectAreaAd
             // 
+            this.cmbSelectAreaAd.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbSelectAreaAd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbSelectAreaAd.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cmbSelectAreaAd.FormattingEnabled = true;
             this.cmbSelectAreaAd.Location = new System.Drawing.Point(42, 56);
             this.cmbSelectAreaAd.Name = "cmbSelectAreaAd";
             this.cmbSelectAreaAd.Size = new System.Drawing.Size(427, 28);
             this.cmbSelectAreaAd.TabIndex = 1;
+            this.cmbSelectAreaAd.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaAd_SelectionChangeCommitted);
             // 
             // lblSelectCourseAd
             // 
@@ -76,6 +81,7 @@ namespace CECLdb
             // 
             // cmbSelectCourseAd
             // 
+            this.cmbSelectCourseAd.BackColor = System.Drawing.Color.LightCyan;
             this.cmbSelectCourseAd.FormattingEnabled = true;
             this.cmbSelectCourseAd.Location = new System.Drawing.Point(42, 146);
             this.cmbSelectCourseAd.Name = "cmbSelectCourseAd";
@@ -93,6 +99,11 @@ namespace CECLdb
             // 
             // dtpDateAd
             // 
+            this.dtpDateAd.CalendarFont = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dtpDateAd.CalendarMonthBackground = System.Drawing.Color.LightCyan;
+            this.dtpDateAd.CalendarTitleBackColor = System.Drawing.Color.LightSeaGreen;
+            this.dtpDateAd.CustomFormat = "yyyy/MM/dd";
+            this.dtpDateAd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateAd.Location = new System.Drawing.Point(42, 231);
             this.dtpDateAd.Name = "dtpDateAd";
             this.dtpDateAd.Size = new System.Drawing.Size(312, 27);
@@ -126,6 +137,7 @@ namespace CECLdb
             this.bttnAddAd.TabIndex = 8;
             this.bttnAddAd.Text = "Agregar";
             this.bttnAddAd.UseVisualStyleBackColor = false;
+            this.bttnAddAd.Click += new System.EventHandler(this.bttnAddAd_Click);
             // 
             // lblAdNumber
             // 
@@ -138,8 +150,11 @@ namespace CECLdb
             // 
             // txtbAdNumber
             // 
+            this.txtbAdNumber.BackColor = System.Drawing.Color.Linen;
+            this.txtbAdNumber.Enabled = false;
             this.txtbAdNumber.Location = new System.Drawing.Point(552, 56);
             this.txtbAdNumber.Name = "txtbAdNumber";
+            this.txtbAdNumber.ReadOnly = true;
             this.txtbAdNumber.Size = new System.Drawing.Size(148, 27);
             this.txtbAdNumber.TabIndex = 10;
             // 
@@ -206,11 +221,23 @@ namespace CECLdb
             this.lblEscAd.Text = "(ESC) Regresar al Menu";
             this.lblEscAd.Click += new System.EventHandler(this.lblEscAd_Click);
             // 
+            // bttnEmailSent
+            // 
+            this.bttnEmailSent.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.bttnEmailSent.Location = new System.Drawing.Point(764, 571);
+            this.bttnEmailSent.Name = "bttnEmailSent";
+            this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
+            this.bttnEmailSent.TabIndex = 18;
+            this.bttnEmailSent.Text = "Enviado a";
+            this.bttnEmailSent.UseVisualStyleBackColor = false;
+            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 646);
+            this.Controls.Add(this.bttnEmailSent);
             this.Controls.Add(this.lblEscAd);
             this.Controls.Add(this.bttnSaveAd);
             this.Controls.Add(this.bttnSearchAd);
@@ -256,5 +283,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchAd;
         private System.Windows.Forms.Button bttnSaveAd;
         private System.Windows.Forms.Label lblEscAd;
+        private System.Windows.Forms.Button bttnEmailSent;
     }
 }

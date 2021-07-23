@@ -48,34 +48,43 @@ namespace CECLdb
 
         private void bttnAddPerson_Click(object sender, EventArgs e)
         {
-            String personName = txtbNamePerson.Text;
-            String personLastName = txtbLastNamePerson.Text;
-            String personEmail = txtEmailPerson.Text;
-            int codePerson = int.Parse(txtbCodePerson.Text);
-            int personNumber = int.Parse(mtbTelephonPerson.Text);
-
-            string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Codigo,Teléfono) VALUES" +
-                "('"+personName+ "','" + personLastName + "','" + personEmail + "'," +
-                "'" + codePerson + "','" + personNumber + "')";
-
-            MySqlConnection connectionBD = Connection.connection();
-            connectionBD.Open();
-            try
+            if (txtbNamePerson.Text!="" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != ""
+                && txtbCodePerson.Text != "" && mtbTelephonPerson.Text != "")
             {
-                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Se ha insertado exitosamente");
-                Clean();
-            }
-            catch (Exception ex)
-            {
+                String personName = txtbNamePerson.Text;
+                String personLastName = txtbLastNamePerson.Text;
+                String personEmail = txtEmailPerson.Text;
+                int codePerson = int.Parse(txtbCodePerson.Text);
+                int personNumber = int.Parse(mtbTelephonPerson.Text);
 
-                MessageBox.Show("Error al guardar: " + ex.Message);
+                string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Codigo,Teléfono) VALUES" +
+                    "('" + personName + "','" + personLastName + "','" + personEmail + "'," +
+                    "'" + codePerson + "','" + personNumber + "')";
+
+                MySqlConnection connectionBD = Connection.connection();
+                connectionBD.Open();
+                try
+                {
+                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Se ha insertado exitosamente");
+                    Clean();
+                }
+                catch (MySqlException ex)
+                {
+
+                    MessageBox.Show("Error al guardar: " + ex.Message);
+                }
+                finally
+                {
+                    connectionBD.Close();
+                }
             }
-            finally 
+            else
             {
-                connectionBD.Close();
+                MessageBox.Show("Por favor, complete la información");
             }
+            
         }
 
         private void Clean()
