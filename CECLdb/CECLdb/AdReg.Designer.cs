@@ -195,7 +195,7 @@ namespace CECLdb
             this.bttnSearchAd.Text = "Buscar";
             this.bttnSearchAd.UseVisualStyleBackColor = false;
             this.bttnSearchAd.Visible = false;
-            this.bttnSearchAd.Click += new System.EventHandler(this.bttnSearchAd_Click);
+            //this.bttnSearchAd.Click += new System.EventHandler(this.bttnSearchAd_Click);
             // 
             // bttnSaveAd
             // 
@@ -207,7 +207,7 @@ namespace CECLdb
             this.bttnSaveAd.Text = "Guardar";
             this.bttnSaveAd.UseVisualStyleBackColor = false;
             this.bttnSaveAd.Visible = false;
-            this.bttnSaveAd.Click += new System.EventHandler(this.bttnSaveAd_Click);
+            //this.bttnSaveAd.Click += new System.EventHandler(this.bttnSaveAd_Click);
             // 
             // lblEscAd
             // 
@@ -258,7 +258,12 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AdReg";
             this.Text = "AdReg";
+<<<<<<< Updated upstream
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
+=======
+            //this.Load += new System.EventHandler(this.AdReg_Load);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
             this.PerformLayout();
 
