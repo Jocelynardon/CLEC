@@ -86,7 +86,7 @@ namespace CECLdb
             // 
             this.bttnAddPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnAddPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnAddPerson.Location = new System.Drawing.Point(184, 371);
+            this.bttnAddPerson.Location = new System.Drawing.Point(180, 371);
             this.bttnAddPerson.Name = "bttnAddPerson";
             this.bttnAddPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnAddPerson.TabIndex = 6;
