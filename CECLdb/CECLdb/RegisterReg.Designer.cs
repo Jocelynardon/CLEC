@@ -29,16 +29,14 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtbPersonNameRegister = new System.Windows.Forms.TextBox();
-            this.lblPersonNameRegister = new System.Windows.Forms.Label();
             this.txtbPersonIDRegister = new System.Windows.Forms.TextBox();
             this.lblPersonIDRegister = new System.Windows.Forms.Label();
-            this.cmbSelectCourseInscription = new System.Windows.Forms.ComboBox();
+            this.cmbSelectCourseRegister = new System.Windows.Forms.ComboBox();
             this.lblSelectCourseInscription = new System.Windows.Forms.Label();
-            this.cmbSelectAreaInscription = new System.Windows.Forms.ComboBox();
+            this.cmbSelectAreaRegister = new System.Windows.Forms.ComboBox();
             this.lblSelectAreaInscription = new System.Windows.Forms.Label();
             this.lblConsultationDate = new System.Windows.Forms.Label();
-            this.dtpConsultationDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpConsultationDateRegister = new System.Windows.Forms.DateTimePicker();
             this.bttnAddRegister = new System.Windows.Forms.Button();
             this.bttnReturnRegister = new System.Windows.Forms.Button();
             this.bttnSaveRegister = new System.Windows.Forms.Button();
@@ -47,47 +45,29 @@ namespace CECLdb
             this.bttnImportRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtbPersonNameRegister
-            // 
-            this.txtbPersonNameRegister.Location = new System.Drawing.Point(490, 140);
-            this.txtbPersonNameRegister.Name = "txtbPersonNameRegister";
-            this.txtbPersonNameRegister.Size = new System.Drawing.Size(498, 27);
-            this.txtbPersonNameRegister.TabIndex = 15;
-            // 
-            // lblPersonNameRegister
-            // 
-            this.lblPersonNameRegister.AutoSize = true;
-            this.lblPersonNameRegister.Location = new System.Drawing.Point(490, 104);
-            this.lblPersonNameRegister.Name = "lblPersonNameRegister";
-            this.lblPersonNameRegister.Size = new System.Drawing.Size(158, 20);
-            this.lblPersonNameRegister.TabIndex = 14;
-            this.lblPersonNameRegister.Text = "Nombre de la persona";
-            // 
             // txtbPersonIDRegister
             // 
-            this.txtbPersonIDRegister.Enabled = false;
-            this.txtbPersonIDRegister.Location = new System.Drawing.Point(490, 51);
+            this.txtbPersonIDRegister.Location = new System.Drawing.Point(490, 141);
             this.txtbPersonIDRegister.Name = "txtbPersonIDRegister";
-            this.txtbPersonIDRegister.ReadOnly = true;
             this.txtbPersonIDRegister.Size = new System.Drawing.Size(234, 27);
             this.txtbPersonIDRegister.TabIndex = 13;
             // 
             // lblPersonIDRegister
             // 
             this.lblPersonIDRegister.AutoSize = true;
-            this.lblPersonIDRegister.Location = new System.Drawing.Point(490, 16);
+            this.lblPersonIDRegister.Location = new System.Drawing.Point(490, 104);
             this.lblPersonIDRegister.Name = "lblPersonIDRegister";
             this.lblPersonIDRegister.Size = new System.Drawing.Size(79, 20);
             this.lblPersonIDRegister.TabIndex = 12;
             this.lblPersonIDRegister.Text = "ID Persona";
             // 
-            // cmbSelectCourseInscription
+            // cmbSelectCourseRegister
             // 
-            this.cmbSelectCourseInscription.FormattingEnabled = true;
-            this.cmbSelectCourseInscription.Location = new System.Drawing.Point(12, 140);
-            this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
-            this.cmbSelectCourseInscription.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectCourseInscription.TabIndex = 11;
+            this.cmbSelectCourseRegister.FormattingEnabled = true;
+            this.cmbSelectCourseRegister.Location = new System.Drawing.Point(12, 140);
+            this.cmbSelectCourseRegister.Name = "cmbSelectCourseRegister";
+            this.cmbSelectCourseRegister.Size = new System.Drawing.Size(397, 28);
+            this.cmbSelectCourseRegister.TabIndex = 11;
             // 
             // lblSelectCourseInscription
             // 
@@ -98,13 +78,14 @@ namespace CECLdb
             this.lblSelectCourseInscription.TabIndex = 10;
             this.lblSelectCourseInscription.Text = "Curso al que pertenece";
             // 
-            // cmbSelectAreaInscription
+            // cmbSelectAreaRegister
             // 
-            this.cmbSelectAreaInscription.FormattingEnabled = true;
-            this.cmbSelectAreaInscription.Location = new System.Drawing.Point(12, 51);
-            this.cmbSelectAreaInscription.Name = "cmbSelectAreaInscription";
-            this.cmbSelectAreaInscription.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectAreaInscription.TabIndex = 9;
+            this.cmbSelectAreaRegister.FormattingEnabled = true;
+            this.cmbSelectAreaRegister.Location = new System.Drawing.Point(12, 51);
+            this.cmbSelectAreaRegister.Name = "cmbSelectAreaRegister";
+            this.cmbSelectAreaRegister.Size = new System.Drawing.Size(397, 28);
+            this.cmbSelectAreaRegister.TabIndex = 9;
+            this.cmbSelectAreaRegister.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaInscription_SelectionChangeCommitted);
             // 
             // lblSelectAreaInscription
             // 
@@ -124,12 +105,14 @@ namespace CECLdb
             this.lblConsultationDate.TabIndex = 16;
             this.lblConsultationDate.Text = "Fecha de Consulta";
             // 
-            // dtpConsultationDate
+            // dtpConsultationDateRegister
             // 
-            this.dtpConsultationDate.Location = new System.Drawing.Point(12, 230);
-            this.dtpConsultationDate.Name = "dtpConsultationDate";
-            this.dtpConsultationDate.Size = new System.Drawing.Size(307, 27);
-            this.dtpConsultationDate.TabIndex = 17;
+            this.dtpConsultationDateRegister.CustomFormat = "yyyy/MM/dd";
+            this.dtpConsultationDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpConsultationDateRegister.Location = new System.Drawing.Point(12, 230);
+            this.dtpConsultationDateRegister.Name = "dtpConsultationDateRegister";
+            this.dtpConsultationDateRegister.Size = new System.Drawing.Size(307, 27);
+            this.dtpConsultationDateRegister.TabIndex = 17;
             // 
             // bttnAddRegister
             // 
@@ -166,13 +149,13 @@ namespace CECLdb
             // bttnSearchRegister
             // 
             this.bttnSearchRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchRegister.Location = new System.Drawing.Point(490, 230);
+            this.bttnSearchRegister.Location = new System.Drawing.Point(762, 141);
             this.bttnSearchRegister.Name = "bttnSearchRegister";
             this.bttnSearchRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnSearchRegister.TabIndex = 21;
             this.bttnSearchRegister.Text = "Buscar";
             this.bttnSearchRegister.UseVisualStyleBackColor = false;
-            this.bttnSearchRegister.Visible = false;
+            this.bttnSearchRegister.Click += new System.EventHandler(this.bttnSearchRegister_Click);
             // 
             // lblEscRegister
             // 
@@ -206,19 +189,17 @@ namespace CECLdb
             this.Controls.Add(this.bttnSaveRegister);
             this.Controls.Add(this.bttnReturnRegister);
             this.Controls.Add(this.bttnAddRegister);
-            this.Controls.Add(this.dtpConsultationDate);
+            this.Controls.Add(this.dtpConsultationDateRegister);
             this.Controls.Add(this.lblConsultationDate);
-            this.Controls.Add(this.txtbPersonNameRegister);
-            this.Controls.Add(this.lblPersonNameRegister);
             this.Controls.Add(this.txtbPersonIDRegister);
             this.Controls.Add(this.lblPersonIDRegister);
-            this.Controls.Add(this.cmbSelectCourseInscription);
+            this.Controls.Add(this.cmbSelectCourseRegister);
             this.Controls.Add(this.lblSelectCourseInscription);
-            this.Controls.Add(this.cmbSelectAreaInscription);
+            this.Controls.Add(this.cmbSelectAreaRegister);
             this.Controls.Add(this.lblSelectAreaInscription);
             this.KeyPreview = true;
             this.Name = "RegisterReg";
-            this.Text = "RegisterReg";
+            this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -226,17 +207,14 @@ namespace CECLdb
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtbPersonNameRegister;
-        private System.Windows.Forms.Label lblPersonNameRegister;
         private System.Windows.Forms.TextBox txtbPersonIDRegister;
         private System.Windows.Forms.Label lblPersonIDRegister;
-        private System.Windows.Forms.ComboBox cmbSelectCourseInscription;
+        private System.Windows.Forms.ComboBox cmbSelectCourseRegister;
         private System.Windows.Forms.Label lblSelectCourseInscription;
-        private System.Windows.Forms.ComboBox cmbSelectAreaInscription;
+        private System.Windows.Forms.ComboBox cmbSelectAreaRegister;
         private System.Windows.Forms.Label lblSelectAreaInscription;
         private System.Windows.Forms.Label lblConsultationDate;
-        private System.Windows.Forms.DateTimePicker dtpConsultationDate;
+        private System.Windows.Forms.DateTimePicker dtpConsultationDateRegister;
         private System.Windows.Forms.Button bttnAddRegister;
         private System.Windows.Forms.Button bttnReturnRegister;
         private System.Windows.Forms.Button bttnSaveRegister;

@@ -224,7 +224,11 @@ namespace CECLdb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(905, 251);
+=======
+            this.ClientSize = new System.Drawing.Size(920, 266);
+>>>>>>> Stashed changes
             this.Controls.Add(this.bttnReturn);
             this.Controls.Add(this.PeopleSrcBtn);
             this.Controls.Add(this.radioButton2);

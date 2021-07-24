@@ -29,7 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtvReqDataPerson = new System.Windows.Forms.DataGridView();
             this.CódigoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeléfonoCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,26 +37,26 @@ namespace CECLdb
             this.button1 = new System.Windows.Forms.Button();
             this.bttnExportReqData = new System.Windows.Forms.Button();
             this.lblEscReqData = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtvReqDataPerson)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dtvReqDataPerson
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtvReqDataPerson.AllowUserToAddRows = false;
+            this.dtvReqDataPerson.AllowUserToDeleteRows = false;
+            this.dtvReqDataPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtvReqDataPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CódigoCol,
             this.NombreCol,
             this.TeléfonoCol,
             this.CorreoCol});
-            this.dataGridView1.Location = new System.Drawing.Point(25, 23);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(552, 404);
-            this.dataGridView1.TabIndex = 0;
+            this.dtvReqDataPerson.Location = new System.Drawing.Point(25, 23);
+            this.dtvReqDataPerson.Name = "dtvReqDataPerson";
+            this.dtvReqDataPerson.ReadOnly = true;
+            this.dtvReqDataPerson.RowHeadersWidth = 51;
+            this.dtvReqDataPerson.RowTemplate.Height = 29;
+            this.dtvReqDataPerson.Size = new System.Drawing.Size(552, 404);
+            this.dtvReqDataPerson.TabIndex = 0;
             // 
             // CódigoCol
             // 
@@ -130,12 +130,12 @@ namespace CECLdb
             this.Controls.Add(this.lblEscReqData);
             this.Controls.Add(this.bttnExportReqData);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dtvReqDataPerson);
             this.KeyPreview = true;
             this.Name = "ReqData";
             this.Text = "ReqData";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtvReqDataPerson)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,7 +143,7 @@ namespace CECLdb
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtvReqDataPerson;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bttnExportReqData;
         private System.Windows.Forms.DataGridViewTextBoxColumn CódigoCol;
