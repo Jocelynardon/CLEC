@@ -54,6 +54,7 @@ namespace CECLdb
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.Modifybtn = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -282,27 +283,43 @@ namespace CECLdb
             // 
             // Modifybtn
             // 
+            this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Modifybtn.Location = new System.Drawing.Point(74, 691);
             this.Modifybtn.Name = "Modifybtn";
             this.Modifybtn.Size = new System.Drawing.Size(94, 29);
             this.Modifybtn.TabIndex = 20;
             this.Modifybtn.Text = "Modificar";
-            this.Modifybtn.UseVisualStyleBackColor = true;
+            this.Modifybtn.UseVisualStyleBackColor = false;
             // 
             // Deletebtn
             // 
+            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
+            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Deletebtn.Location = new System.Drawing.Point(196, 691);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(94, 29);
             this.Deletebtn.TabIndex = 21;
             this.Deletebtn.Text = "Eliminar";
-            this.Deletebtn.UseVisualStyleBackColor = true;
+            this.Deletebtn.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Khaki;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(311, 691);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 732);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Modifybtn);
             this.Controls.Add(this.SelectAllcbx);
@@ -360,5 +377,6 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button Modifybtn;
         private System.Windows.Forms.Button Deletebtn;
+        private System.Windows.Forms.Button button1;
     }
 }

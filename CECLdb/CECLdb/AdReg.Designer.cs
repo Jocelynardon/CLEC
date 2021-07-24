@@ -195,7 +195,6 @@ namespace CECLdb
             this.bttnSearchAd.Text = "Buscar";
             this.bttnSearchAd.UseVisualStyleBackColor = false;
             this.bttnSearchAd.Visible = false;
-            //this.bttnSearchAd.Click += new System.EventHandler(this.bttnSearchAd_Click);
             // 
             // bttnSaveAd
             // 
@@ -207,7 +206,6 @@ namespace CECLdb
             this.bttnSaveAd.Text = "Guardar";
             this.bttnSaveAd.UseVisualStyleBackColor = false;
             this.bttnSaveAd.Visible = false;
-            //this.bttnSaveAd.Click += new System.EventHandler(this.bttnSaveAd_Click);
             // 
             // lblEscAd
             // 
@@ -231,6 +229,7 @@ namespace CECLdb
             this.bttnEmailSent.TabIndex = 18;
             this.bttnEmailSent.Text = "Enviado a";
             this.bttnEmailSent.UseVisualStyleBackColor = false;
+            this.bttnEmailSent.Click += new System.EventHandler(this.bttnEmailSent_Click);
             // 
             // AdReg
             // 
@@ -258,13 +257,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AdReg";
             this.Text = "AdReg";
-
-
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
-
-
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
-
             this.ResumeLayout(false);
             this.PerformLayout();
 

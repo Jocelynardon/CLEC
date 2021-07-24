@@ -226,6 +226,10 @@ namespace CECLdb
             LoadCourseAd();
         }
 
-       
+        private void bttnEmailSent_Click(object sender, EventArgs e)
+        {
+            PersonReg Frm = new PersonReg();
+            Frm.Show();
+        }
     }
 }
