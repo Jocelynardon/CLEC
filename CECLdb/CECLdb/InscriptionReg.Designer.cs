@@ -172,7 +172,7 @@ namespace CECLdb
             // mtbStartDate
             // 
             this.mtbStartDate.Location = new System.Drawing.Point(26, 294);
-            this.mtbStartDate.Mask = "00/00/0000";
+            this.mtbStartDate.Mask = "0000/00/00";
             this.mtbStartDate.Name = "mtbStartDate";
             this.mtbStartDate.Size = new System.Drawing.Size(88, 27);
             this.mtbStartDate.TabIndex = 17;
@@ -181,7 +181,7 @@ namespace CECLdb
             // mtbFinalDate
             // 
             this.mtbFinalDate.Location = new System.Drawing.Point(26, 373);
-            this.mtbFinalDate.Mask = "00/00/0000";
+            this.mtbFinalDate.Mask = "0000/00/00";
             this.mtbFinalDate.Name = "mtbFinalDate";
             this.mtbFinalDate.Size = new System.Drawing.Size(88, 27);
             this.mtbFinalDate.TabIndex = 18;

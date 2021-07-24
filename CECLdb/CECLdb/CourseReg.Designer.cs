@@ -83,6 +83,7 @@ namespace CECLdb
             this.bttnAddCourse.TabIndex = 4;
             this.bttnAddCourse.Text = "Agregar";
             this.bttnAddCourse.UseVisualStyleBackColor = false;
+            this.bttnAddCourse.Click += new System.EventHandler(this.bttnAddCourse_Click);
             // 
             // bttnReturnCourse
             // 

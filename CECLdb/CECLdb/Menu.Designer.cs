@@ -46,6 +46,7 @@ namespace CECLdb
             this.bttnSearchMenu = new System.Windows.Forms.Button();
             this.rbttnSearchPerson = new System.Windows.Forms.RadioButton();
             this.lblEscExit = new System.Windows.Forms.Label();
+            this.lblEnterMenu = new System.Windows.Forms.Label();
             this.gpbAdd.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -240,17 +241,29 @@ namespace CECLdb
             this.lblEscExit.AutoSize = true;
             this.lblEscExit.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblEscExit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscExit.Location = new System.Drawing.Point(26, 17);
+            this.lblEscExit.Location = new System.Drawing.Point(23, 9);
             this.lblEscExit.Name = "lblEscExit";
             this.lblEscExit.Size = new System.Drawing.Size(79, 22);
             this.lblEscExit.TabIndex = 13;
             this.lblEscExit.Text = "(ESC) Salir";
+            // 
+            // lblEnterMenu
+            // 
+            this.lblEnterMenu.AutoSize = true;
+            this.lblEnterMenu.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEnterMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEnterMenu.Location = new System.Drawing.Point(23, 48);
+            this.lblEnterMenu.Name = "lblEnterMenu";
+            this.lblEnterMenu.Size = new System.Drawing.Size(108, 22);
+            this.lblEnterMenu.TabIndex = 14;
+            this.lblEnterMenu.Text = "(ENTER) Entrar";
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 408);
+            this.Controls.Add(this.lblEnterMenu);
             this.Controls.Add(this.lblEscExit);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbAdd);
@@ -259,7 +272,7 @@ namespace CECLdb
             this.Name = "Menu";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ControlKey);
             this.gpbAdd.ResumeLayout(false);
             this.gpbAdd.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -288,5 +301,6 @@ namespace CECLdb
         private System.Windows.Forms.RadioButton rbttnSearchPerson;
         private System.Windows.Forms.Button bttnSearchMenu;
         private System.Windows.Forms.Label lblEscExit;
+        private System.Windows.Forms.Label lblEnterMenu;
     }
 }

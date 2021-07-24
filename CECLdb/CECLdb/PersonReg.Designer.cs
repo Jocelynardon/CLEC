@@ -108,11 +108,13 @@ namespace CECLdb
             // 
             // mtbTelephonPerson
             // 
+            this.mtbTelephonPerson.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
             this.mtbTelephonPerson.Location = new System.Drawing.Point(46, 294);
             this.mtbTelephonPerson.Mask = "00000000";
             this.mtbTelephonPerson.Name = "mtbTelephonPerson";
             this.mtbTelephonPerson.Size = new System.Drawing.Size(79, 27);
             this.mtbTelephonPerson.TabIndex = 8;
+            this.mtbTelephonPerson.Text = "00000000";
             // 
             // bttnSearchPerson
             // 

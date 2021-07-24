@@ -102,6 +102,7 @@ namespace CECLdb
             this.bttnAddArea.TabIndex = 7;
             this.bttnAddArea.Text = "Agregar";
             this.bttnAddArea.UseVisualStyleBackColor = false;
+            this.bttnAddArea.Click += new System.EventHandler(this.bttnAddArea_Click);
             // 
             // bttnReturnArea
             // 

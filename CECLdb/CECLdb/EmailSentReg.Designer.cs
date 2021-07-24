@@ -194,7 +194,7 @@ namespace CECLdb
             this.Controls.Add(this.lblAdNumberES);
             this.KeyPreview = true;
             this.Name = "EmailSentReg";
-            this.Text = "EmailSentReg";
+            this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.ResumeLayout(false);
             this.PerformLayout();
