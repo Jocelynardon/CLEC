@@ -16,13 +16,19 @@ namespace CECLdb
         {
             InitializeComponent();
             _action = Menu.action;
+            if (Menu.action==1)
+            {
+               this.Height = 367;
+                dgvPersonReg.Visible = false;
+            }
             if (Menu.action==2||Menu.action==3)
             {
+                this.Height = 367;
                 bttnAddPerson.Visible = false;
                 bttnSearchPerson.Visible = true;
                 bttnImportPerson.Visible = false;
+                dgvPersonReg.Visible = true;
             }
-            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -104,9 +110,8 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
-            PersonResult personResult = new PersonResult();
-            personResult.Show();
-            this.Close();
+            this.Height = 779;
+
         }
     }
 }

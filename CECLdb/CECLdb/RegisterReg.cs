@@ -46,7 +46,7 @@ namespace CECLdb
 
         private void bttnSearchRegister_Click(object sender, EventArgs e)
         {
-            PeopleSearch Frm = new PeopleSearch();
+            PersonReg Frm = new PersonReg();
             Frm.Show();
         }
 

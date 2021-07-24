@@ -258,13 +258,13 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AdReg";
             this.Text = "AdReg";
-<<<<<<< Updated upstream
+
 
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
 
-=======
+
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
->>>>>>> Stashed changes
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
