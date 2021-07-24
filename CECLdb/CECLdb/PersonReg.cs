@@ -11,16 +11,18 @@ namespace CECLdb
 {
     public partial class PersonReg : Form
     {
+        public static int _action = 0;
         public PersonReg()
         {
             InitializeComponent();
-            if (Menu.action==2)
+            _action = Menu.action;
+            if (Menu.action==2||Menu.action==3)
             {
                 bttnAddPerson.Visible = false;
-                bttnSavePerson.Visible = true;
                 bttnSearchPerson.Visible = true;
                 bttnImportPerson.Visible = false;
             }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -89,6 +91,13 @@ namespace CECLdb
         private void PersonReg_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void bttnSearchPerson_Click(object sender, EventArgs e)
+        {
+            PersonResult personResult = new PersonResult();
+            personResult.Show();
+            this.Close();
         }
     }
 }

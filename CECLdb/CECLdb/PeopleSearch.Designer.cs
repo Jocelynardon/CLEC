@@ -46,7 +46,6 @@ namespace CECLdb
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.PeopleSrcBtn = new System.Windows.Forms.Button();
             this.bttnReturn = new System.Windows.Forms.Button();
-            this.lblEscPeople = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -195,10 +194,10 @@ namespace CECLdb
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(12, 186);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(66, 24);
+            this.radioButton2.Size = new System.Drawing.Size(144, 24);
             this.radioButton2.TabIndex = 10;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Aviso";
+            this.radioButton2.Text = "Correos Enviados";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // PeopleSrcBtn
@@ -221,22 +220,11 @@ namespace CECLdb
             this.bttnReturn.UseVisualStyleBackColor = true;
             this.bttnReturn.Click += new System.EventHandler(this.bttnReturn_Click);
             // 
-            // lblEscPeople
-            // 
-            this.lblEscPeople.AutoSize = true;
-            this.lblEscPeople.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lblEscPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscPeople.Location = new System.Drawing.Point(139, 0);
-            this.lblEscPeople.Name = "lblEscPeople";
-            this.lblEscPeople.Size = new System.Drawing.Size(165, 22);
-            this.lblEscPeople.TabIndex = 6;
-            this.lblEscPeople.Text = "(ESC) Regresar al Menú";
-            // 
             // PeopleSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 251);
+            this.ClientSize = new System.Drawing.Size(905, 251);
             this.Controls.Add(this.bttnReturn);
             this.Controls.Add(this.PeopleSrcBtn);
             this.Controls.Add(this.radioButton2);

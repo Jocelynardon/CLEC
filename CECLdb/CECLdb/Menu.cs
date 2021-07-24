@@ -184,8 +184,8 @@ namespace CECLdb
             if (rbttnAddPerson.Checked)
 
             {
-                GeneralDelete Frm = new GeneralDelete();
-                Frm.Show();
+                PersonReg personReg = new PersonReg();
+                personReg.Show();
                 this.Close();
             }
             else if (rbttnAddRegister.Checked)

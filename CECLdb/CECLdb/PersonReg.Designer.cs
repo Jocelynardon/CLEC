@@ -37,7 +37,6 @@ namespace CECLdb
             this.bttnReturnPerson = new System.Windows.Forms.Button();
             this.mtbTelephonPerson = new System.Windows.Forms.MaskedTextBox();
             this.bttnSearchPerson = new System.Windows.Forms.Button();
-            this.bttnSavePerson = new System.Windows.Forms.Button();
             this.lblEscPerson = new System.Windows.Forms.Label();
             this.txtEmailPerson = new System.Windows.Forms.TextBox();
             this.bttnImportPerson = new System.Windows.Forms.Button();
@@ -99,7 +98,7 @@ namespace CECLdb
             // 
             this.bttnReturnPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnReturnPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnReturnPerson.Location = new System.Drawing.Point(411, 371);
+            this.bttnReturnPerson.Location = new System.Drawing.Point(296, 371);
             this.bttnReturnPerson.Name = "bttnReturnPerson";
             this.bttnReturnPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnReturnPerson.TabIndex = 7;
@@ -119,25 +118,14 @@ namespace CECLdb
             // 
             this.bttnSearchPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnSearchPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnSearchPerson.Location = new System.Drawing.Point(352, 294);
+            this.bttnSearchPerson.Location = new System.Drawing.Point(296, 306);
             this.bttnSearchPerson.Name = "bttnSearchPerson";
             this.bttnSearchPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnSearchPerson.TabIndex = 9;
             this.bttnSearchPerson.Text = "Buscar";
             this.bttnSearchPerson.UseVisualStyleBackColor = false;
             this.bttnSearchPerson.Visible = false;
-            // 
-            // bttnSavePerson
-            // 
-            this.bttnSavePerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSavePerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnSavePerson.Location = new System.Drawing.Point(296, 371);
-            this.bttnSavePerson.Name = "bttnSavePerson";
-            this.bttnSavePerson.Size = new System.Drawing.Size(94, 29);
-            this.bttnSavePerson.TabIndex = 10;
-            this.bttnSavePerson.Text = "Guardar";
-            this.bttnSavePerson.UseVisualStyleBackColor = false;
-            this.bttnSavePerson.Visible = false;
+            this.bttnSearchPerson.Click += new System.EventHandler(this.bttnSearchPerson_Click);
             // 
             // lblEscPerson
             // 
@@ -162,7 +150,7 @@ namespace CECLdb
             // 
             this.bttnImportPerson.BackColor = System.Drawing.Color.LightCoral;
             this.bttnImportPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnImportPerson.Location = new System.Drawing.Point(296, 371);
+            this.bttnImportPerson.Location = new System.Drawing.Point(411, 371);
             this.bttnImportPerson.Name = "bttnImportPerson";
             this.bttnImportPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnImportPerson.TabIndex = 13;
@@ -215,7 +203,6 @@ namespace CECLdb
             this.Controls.Add(this.bttnImportPerson);
             this.Controls.Add(this.txtEmailPerson);
             this.Controls.Add(this.lblEscPerson);
-            this.Controls.Add(this.bttnSavePerson);
             this.Controls.Add(this.bttnSearchPerson);
             this.Controls.Add(this.mtbTelephonPerson);
             this.Controls.Add(this.bttnReturnPerson);
@@ -244,7 +231,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnReturnPerson;
         private System.Windows.Forms.MaskedTextBox mtbTelephonPerson;
         private System.Windows.Forms.Button bttnSearchPerson;
-        private System.Windows.Forms.Button bttnSavePerson;
         private System.Windows.Forms.Label lblEscPerson;
         private System.Windows.Forms.TextBox txtEmailPerson;
         private System.Windows.Forms.Button bttnImportPerson;
