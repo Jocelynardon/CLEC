@@ -30,18 +30,14 @@ namespace CECLdb
 
         private void bttnReturnCourse_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void Exit(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
@@ -112,6 +108,12 @@ namespace CECLdb
         {
             cmbSelectArea.Text = "";
             txtbCourseName.Text = "";
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
     }
 }

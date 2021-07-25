@@ -24,19 +24,22 @@ namespace CECLdb
 
         private void bttnReturnEmailSent_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void Access(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
+
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
     }
 }

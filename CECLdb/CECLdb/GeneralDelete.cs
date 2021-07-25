@@ -19,9 +19,7 @@ namespace CECLdb
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
@@ -32,14 +30,18 @@ namespace CECLdb
 
         private void bttnReturnDelete_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void PersonDelete_Load(object sender, EventArgs e)
         {
 
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
     }
 }

@@ -37,9 +37,7 @@ namespace CECLdb
 
         private void bttnReturnAd_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
         private void bttnAddAd_Click(object sender, EventArgs e)
         {
@@ -108,9 +106,7 @@ namespace CECLdb
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
@@ -219,6 +215,12 @@ namespace CECLdb
             dtpDateAd.Format = DateTimePickerFormat.Custom;
             dtpDateAd.CustomFormat = "yyyy/MM/dd";
             ShowNumberAd();
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
 
         private void cmbSelectAreaAd_SelectionChangeCommitted(object sender, EventArgs e)

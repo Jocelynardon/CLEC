@@ -123,6 +123,7 @@ namespace CECLdb
             this.bttnAddRegister.TabIndex = 18;
             this.bttnAddRegister.Text = "Agregar";
             this.bttnAddRegister.UseVisualStyleBackColor = false;
+            this.bttnAddRegister.Click += new System.EventHandler(this.bttnAddRegister_Click);
             // 
             // bttnReturnRegister
             // 

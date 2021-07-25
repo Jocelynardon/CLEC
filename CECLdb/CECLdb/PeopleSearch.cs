@@ -27,18 +27,14 @@ namespace CECLdb
 
         private void bttnReturn_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void Access(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
@@ -50,6 +46,12 @@ namespace CECLdb
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
     }
 }

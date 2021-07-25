@@ -45,16 +45,13 @@ namespace CECLdb
             this.txtbCodePerson = new System.Windows.Forms.TextBox();
             this.lblCodePerson = new System.Windows.Forms.Label();
             this.dgvPersonReg = new System.Windows.Forms.DataGridView();
-            this.Selection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IDperson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgNamePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.Modifybtn = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnSelectPerson = new System.Windows.Forms.Button();
+            this.txtTextSearch = new System.Windows.Forms.TextBox();
+            this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
+            this.Selection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +70,7 @@ namespace CECLdb
             this.txtbNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtbNamePerson.Location = new System.Drawing.Point(46, 76);
             this.txtbNamePerson.Name = "txtbNamePerson";
-            this.txtbNamePerson.Size = new System.Drawing.Size(254, 27);
+            this.txtbNamePerson.Size = new System.Drawing.Size(353, 27);
             this.txtbNamePerson.TabIndex = 1;
             // 
             // lblEmail
@@ -88,7 +85,7 @@ namespace CECLdb
             // lblTelNumber
             // 
             this.lblTelNumber.AutoSize = true;
-            this.lblTelNumber.Location = new System.Drawing.Point(665, 40);
+            this.lblTelNumber.Location = new System.Drawing.Point(579, 161);
             this.lblTelNumber.Name = "lblTelNumber";
             this.lblTelNumber.Size = new System.Drawing.Size(67, 20);
             this.lblTelNumber.TabIndex = 4;
@@ -121,7 +118,7 @@ namespace CECLdb
             // mtbTelephonPerson
             // 
             this.mtbTelephonPerson.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.mtbTelephonPerson.Location = new System.Drawing.Point(665, 76);
+            this.mtbTelephonPerson.Location = new System.Drawing.Point(579, 197);
             this.mtbTelephonPerson.Mask = "000000000";
             this.mtbTelephonPerson.Name = "mtbTelephonPerson";
             this.mtbTelephonPerson.Size = new System.Drawing.Size(82, 27);
@@ -130,9 +127,10 @@ namespace CECLdb
             // 
             // bttnSearchPerson
             // 
-            this.bttnSearchPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchPerson.BackColor = System.Drawing.Color.PaleTurquoise;
             this.bttnSearchPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnSearchPerson.Location = new System.Drawing.Point(771, 195);
+            this.bttnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSearchPerson.Location = new System.Drawing.Point(840, 342);
             this.bttnSearchPerson.Name = "bttnSearchPerson";
             this.bttnSearchPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnSearchPerson.TabIndex = 9;
@@ -174,7 +172,7 @@ namespace CECLdb
             // lblLastNamePerson
             // 
             this.lblLastNamePerson.AutoSize = true;
-            this.lblLastNamePerson.Location = new System.Drawing.Point(339, 40);
+            this.lblLastNamePerson.Location = new System.Drawing.Point(552, 40);
             this.lblLastNamePerson.Name = "lblLastNamePerson";
             this.lblLastNamePerson.Size = new System.Drawing.Size(66, 20);
             this.lblLastNamePerson.TabIndex = 14;
@@ -183,15 +181,15 @@ namespace CECLdb
             // txtbLastNamePerson
             // 
             this.txtbLastNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbLastNamePerson.Location = new System.Drawing.Point(339, 76);
+            this.txtbLastNamePerson.Location = new System.Drawing.Point(552, 76);
             this.txtbLastNamePerson.Name = "txtbLastNamePerson";
-            this.txtbLastNamePerson.Size = new System.Drawing.Size(254, 27);
+            this.txtbLastNamePerson.Size = new System.Drawing.Size(353, 27);
             this.txtbLastNamePerson.TabIndex = 15;
             // 
             // txtbCodePerson
             // 
             this.txtbCodePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbCodePerson.Location = new System.Drawing.Point(546, 197);
+            this.txtbCodePerson.Location = new System.Drawing.Point(739, 197);
             this.txtbCodePerson.Name = "txtbCodePerson";
             this.txtbCodePerson.Size = new System.Drawing.Size(166, 27);
             this.txtbCodePerson.TabIndex = 16;
@@ -199,7 +197,7 @@ namespace CECLdb
             // lblCodePerson
             // 
             this.lblCodePerson.AutoSize = true;
-            this.lblCodePerson.Location = new System.Drawing.Point(546, 151);
+            this.lblCodePerson.Location = new System.Drawing.Point(739, 151);
             this.lblCodePerson.Name = "lblCodePerson";
             this.lblCodePerson.Size = new System.Drawing.Size(58, 20);
             this.lblCodePerson.TabIndex = 17;
@@ -207,119 +205,101 @@ namespace CECLdb
             // 
             // dgvPersonReg
             // 
+            this.dgvPersonReg.AllowUserToAddRows = false;
+            this.dgvPersonReg.AllowUserToDeleteRows = false;
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Selection,
-            this.IDperson,
-            this.dgNamePerson,
-            this.Email,
-            this.Number,
-            this.CodePerson});
-            this.dgvPersonReg.Location = new System.Drawing.Point(74, 356);
+            this.Selection});
+            this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
+            this.dgvPersonReg.ReadOnly = true;
             this.dgvPersonReg.RowHeadersWidth = 51;
             this.dgvPersonReg.RowTemplate.Height = 29;
-            this.dgvPersonReg.Size = new System.Drawing.Size(913, 318);
+            this.dgvPersonReg.Size = new System.Drawing.Size(913, 319);
             this.dgvPersonReg.TabIndex = 18;
+            this.dgvPersonReg.Visible = false;
+            // 
+            // SelectAllcbx
+            // 
+            this.SelectAllcbx.AutoSize = true;
+            this.SelectAllcbx.Location = new System.Drawing.Point(46, 402);
+            this.SelectAllcbx.Name = "SelectAllcbx";
+            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
+            this.SelectAllcbx.TabIndex = 19;
+            this.SelectAllcbx.Text = "Seleccionar Todos";
+            this.SelectAllcbx.UseVisualStyleBackColor = true;
+            this.SelectAllcbx.Visible = false;
+            // 
+            // Modifybtn
+            // 
+            this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Modifybtn.Location = new System.Drawing.Point(374, 788);
+            this.Modifybtn.Name = "Modifybtn";
+            this.Modifybtn.Size = new System.Drawing.Size(94, 29);
+            this.Modifybtn.TabIndex = 20;
+            this.Modifybtn.Text = "Modificar";
+            this.Modifybtn.UseVisualStyleBackColor = false;
+            this.Modifybtn.Visible = false;
+            // 
+            // Deletebtn
+            // 
+            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
+            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Deletebtn.Location = new System.Drawing.Point(496, 788);
+            this.Deletebtn.Name = "Deletebtn";
+            this.Deletebtn.Size = new System.Drawing.Size(94, 29);
+            this.Deletebtn.TabIndex = 21;
+            this.Deletebtn.Text = "Eliminar";
+            this.Deletebtn.UseVisualStyleBackColor = false;
+            this.Deletebtn.Visible = false;
+            // 
+            // bttnSelectPerson
+            // 
+            this.bttnSelectPerson.BackColor = System.Drawing.Color.Khaki;
+            this.bttnSelectPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSelectPerson.Location = new System.Drawing.Point(618, 788);
+            this.bttnSelectPerson.Name = "bttnSelectPerson";
+            this.bttnSelectPerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnSelectPerson.TabIndex = 22;
+            this.bttnSelectPerson.Text = "Seleccionar";
+            this.bttnSelectPerson.UseVisualStyleBackColor = false;
+            this.bttnSelectPerson.Visible = false;
+            // 
+            // txtTextSearch
+            // 
+            this.txtTextSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtTextSearch.Location = new System.Drawing.Point(74, 344);
+            this.txtTextSearch.Name = "txtTextSearch";
+            this.txtTextSearch.Size = new System.Drawing.Size(439, 27);
+            this.txtTextSearch.TabIndex = 23;
+            this.txtTextSearch.Visible = false;
+            // 
+            // cmbTypeSearch
+            // 
+            this.cmbTypeSearch.FormattingEnabled = true;
+            this.cmbTypeSearch.Location = new System.Drawing.Point(542, 343);
+            this.cmbTypeSearch.Name = "cmbTypeSearch";
+            this.cmbTypeSearch.Size = new System.Drawing.Size(255, 28);
+            this.cmbTypeSearch.TabIndex = 24;
+            this.cmbTypeSearch.Visible = false;
             // 
             // Selection
             // 
             this.Selection.HeaderText = "Selección";
             this.Selection.MinimumWidth = 6;
             this.Selection.Name = "Selection";
+            this.Selection.ReadOnly = true;
             this.Selection.Width = 125;
-            // 
-            // IDperson
-            // 
-            this.IDperson.HeaderText = "ID";
-            this.IDperson.MinimumWidth = 6;
-            this.IDperson.Name = "IDperson";
-            this.IDperson.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IDperson.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IDperson.Visible = false;
-            this.IDperson.Width = 125;
-            // 
-            // dgNamePerson
-            // 
-            this.dgNamePerson.HeaderText = "Nombre";
-            this.dgNamePerson.MinimumWidth = 6;
-            this.dgNamePerson.Name = "dgNamePerson";
-            this.dgNamePerson.ReadOnly = true;
-            this.dgNamePerson.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Correo";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 125;
-            // 
-            // Number
-            // 
-            this.Number.HeaderText = "Teléfono";
-            this.Number.MinimumWidth = 6;
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Width = 125;
-            // 
-            // CodePerson
-            // 
-            this.CodePerson.HeaderText = "Código";
-            this.CodePerson.MinimumWidth = 6;
-            this.CodePerson.Name = "CodePerson";
-            this.CodePerson.ReadOnly = true;
-            this.CodePerson.Width = 125;
-            // 
-            // SelectAllcbx
-            // 
-            this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(46, 326);
-            this.SelectAllcbx.Name = "SelectAllcbx";
-            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
-            this.SelectAllcbx.TabIndex = 19;
-            this.SelectAllcbx.Text = "Seleccionar Todos";
-            this.SelectAllcbx.UseVisualStyleBackColor = true;
-            // 
-            // Modifybtn
-            // 
-            this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Modifybtn.Location = new System.Drawing.Point(74, 691);
-            this.Modifybtn.Name = "Modifybtn";
-            this.Modifybtn.Size = new System.Drawing.Size(94, 29);
-            this.Modifybtn.TabIndex = 20;
-            this.Modifybtn.Text = "Modificar";
-            this.Modifybtn.UseVisualStyleBackColor = false;
-            // 
-            // Deletebtn
-            // 
-            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
-            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Deletebtn.Location = new System.Drawing.Point(196, 691);
-            this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(94, 29);
-            this.Deletebtn.TabIndex = 21;
-            this.Deletebtn.Text = "Eliminar";
-            this.Deletebtn.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Khaki;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(311, 691);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 732);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.cmbTypeSearch);
+            this.Controls.Add(this.txtTextSearch);
+            this.Controls.Add(this.bttnSelectPerson);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Modifybtn);
             this.Controls.Add(this.SelectAllcbx);
@@ -341,6 +321,7 @@ namespace CECLdb
             this.Controls.Add(this.lblName);
             this.KeyPreview = true;
             this.Name = "PersonReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PersonRegister";
             this.Load += new System.EventHandler(this.PersonReg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
@@ -368,15 +349,12 @@ namespace CECLdb
         private System.Windows.Forms.TextBox txtbCodePerson;
         private System.Windows.Forms.Label lblCodePerson;
         private System.Windows.Forms.DataGridView dgvPersonReg;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Selection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDperson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgNamePerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodePerson;
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button Modifybtn;
         private System.Windows.Forms.Button Deletebtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnSelectPerson;
+        private System.Windows.Forms.TextBox txtTextSearch;
+        private System.Windows.Forms.ComboBox cmbTypeSearch;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Selection;
     }
 }

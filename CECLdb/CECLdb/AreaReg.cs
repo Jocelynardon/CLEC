@@ -31,9 +31,7 @@ namespace CECLdb
 
         private void bttnReturnArea_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void AreaReg_Load(object sender, EventArgs e)
@@ -44,9 +42,7 @@ namespace CECLdb
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
@@ -124,6 +120,12 @@ namespace CECLdb
             cmbYear.Text="";
             cmbAnnouncement.Text="";
             txtbAreaName.Text = "";
+        }
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
         }
     }
 }

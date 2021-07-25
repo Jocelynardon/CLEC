@@ -12,9 +12,12 @@ namespace CECLdb
 {
     public partial class RegisterReg : Form
     {
+        //Opción 1 agregar, opción 2 modificar, opción 3 eliminar
+        public static int _action = 0;
         public RegisterReg()
         {
             InitializeComponent();
+            _action = Menu.action;
             LoadAreaRegister();
             if (Menu.action==2)
             {
@@ -29,27 +32,29 @@ namespace CECLdb
 
         private void bttnReturnRegister_Click(object sender, EventArgs e)
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            CloseWindow();
         }
 
         private void Access(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
+                CloseWindow();
             }
         }
 
         private void bttnSearchRegister_Click(object sender, EventArgs e)
         {
+            Menu.action = 4;
             PersonReg Frm = new PersonReg();
             Frm.Show();
         }
-
+        private void CloseWindow()
+        {
+            Menu Frm = new Menu();
+            Frm.Show();
+            this.Close();
+        }
         private void LoadAreaRegister()
         {
             cmbSelectAreaRegister.DataSource = null;
@@ -110,6 +115,70 @@ namespace CECLdb
         private void cmbSelectAreaInscription_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadCourseRegister();
+        }
+
+        private void bttnAddRegister_Click(object sender, EventArgs e)
+        {
+            if (cmbSelectAreaRegister.Text!=null)
+            {
+                if (cmbSelectCourseRegister.Text!=null)
+                {
+                    if (dtpConsultationDateRegister.Text!=null)
+                    {
+                        if (txtbPersonIDRegister.Text!=null)
+                        {
+                            int idArea = int.Parse(cmbSelectAreaRegister.SelectedValue.ToString());
+                            int idCourse = int.Parse(cmbSelectCourseRegister.SelectedValue.ToString());
+                            int idPerson = int.Parse(txtbPersonIDRegister.Text);
+
+                            string sql = "INSERT INTO registro (IDarea,IDcurso,FechaConsulta,IDpersona) VALUES ('" + idArea + "'," +
+                                "'" + idCourse + "','" + dtpConsultationDateRegister.Text + "','" + idPerson + "')";
+                            MySqlConnection connectionBD = Connection.connection();
+                            connectionBD.Open();
+                            try
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Registro correctamente agregado");
+                                Clean();
+                            }
+                            catch (MySqlException ex1)
+                            {
+                                MessageBox.Show("Error al guardar " + ex1.Message);
+                            }
+                            finally
+                            {
+                                connectionBD.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese el ID de la persona");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una fecha");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione el curso al que pertenece");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el área al que pertenece");
+            }
+        }
+        private void Clean()
+        {
+            cmbSelectAreaRegister.Text = "";
+            cmbSelectCourseRegister.Text = "";
+            dtpConsultationDateRegister.Value = DateTime.Now;
+            dtpConsultationDateRegister.Format = DateTimePickerFormat.Custom;
+            dtpConsultationDateRegister.CustomFormat = "yyyy/MM/dd";
+            txtbPersonIDRegister.Text = "";
         }
     }
 }
