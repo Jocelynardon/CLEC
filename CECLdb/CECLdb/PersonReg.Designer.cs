@@ -29,6 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -45,13 +46,13 @@ namespace CECLdb
             this.txtbCodePerson = new System.Windows.Forms.TextBox();
             this.lblCodePerson = new System.Windows.Forms.Label();
             this.dgvPersonReg = new System.Windows.Forms.DataGridView();
+            this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.Modifybtn = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
             this.bttnSelectPerson = new System.Windows.Forms.Button();
             this.txtTextSearch = new System.Windows.Forms.TextBox();
             this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
-            this.Selection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,15 +210,36 @@ namespace CECLdb
             this.dgvPersonReg.AllowUserToDeleteRows = false;
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Selection});
+            this.CheckSelection});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
             this.dgvPersonReg.RowHeadersWidth = 51;
             this.dgvPersonReg.RowTemplate.Height = 29;
+            this.dgvPersonReg.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPersonReg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonReg.Size = new System.Drawing.Size(913, 319);
             this.dgvPersonReg.TabIndex = 18;
             this.dgvPersonReg.Visible = false;
+            this.dgvPersonReg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonReg_CellClick);
+            // 
+            // CheckSelection
+            // 
+            this.CheckSelection.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CheckSelection.HeaderText = "Selección";
+            this.CheckSelection.MinimumWidth = 6;
+            this.CheckSelection.Name = "CheckSelection";
+            this.CheckSelection.ReadOnly = true;
+            this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CheckSelection.Width = 125;
             // 
             // SelectAllcbx
             // 
@@ -265,6 +287,7 @@ namespace CECLdb
             this.bttnSelectPerson.Text = "Seleccionar";
             this.bttnSelectPerson.UseVisualStyleBackColor = false;
             this.bttnSelectPerson.Visible = false;
+            this.bttnSelectPerson.Click += new System.EventHandler(this.bttnSelectPerson_Click);
             // 
             // txtTextSearch
             // 
@@ -283,14 +306,6 @@ namespace CECLdb
             this.cmbTypeSearch.Size = new System.Drawing.Size(255, 28);
             this.cmbTypeSearch.TabIndex = 24;
             this.cmbTypeSearch.Visible = false;
-            // 
-            // Selection
-            // 
-            this.Selection.HeaderText = "Selección";
-            this.Selection.MinimumWidth = 6;
-            this.Selection.Name = "Selection";
-            this.Selection.ReadOnly = true;
-            this.Selection.Width = 125;
             // 
             // PersonReg
             // 
@@ -355,6 +370,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSelectPerson;
         private System.Windows.Forms.TextBox txtTextSearch;
         private System.Windows.Forms.ComboBox cmbTypeSearch;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Selection;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
     }
 }

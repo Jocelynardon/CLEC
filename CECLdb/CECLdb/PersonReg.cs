@@ -12,13 +12,13 @@ namespace CECLdb
 {
     public partial class PersonReg : Form
     {
-        public static int _action = 0;
+        public static int type = 0;
+        public int amountSelected = 0;
+        public static int getIdPerson = 0;
         public PersonReg()
         {
             //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro
             InitializeComponent();
-            LoadTableCode(null);
-            _action = Menu.action;
             if (Menu.action==2||Menu.action==3 || Menu.action==4)
             {
                 LoadTypeSearch();
@@ -59,7 +59,6 @@ namespace CECLdb
                 bttnSelectPerson.Visible = true;
             }
         }
-        public static int type = 0;
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -162,6 +161,7 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
+            LoadTableCode(null);
             if (Menu.action==3 || Menu.action==4)
             {
 
@@ -230,13 +230,21 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationCode(date);
-            try
+            if (dgvPersonReg.Rows.Count > 0)
             {
-                this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                try
+                {
+                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                }
             }
-            catch (MySqlException)
+            else
             {
                 MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableCode(null);
             }
         }
         private void LoadTableEmail(string date)
@@ -244,13 +252,21 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationEmail(date);
-            try
+            if (dgvPersonReg.Rows.Count > 0)
             {
-                this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                try
+                {
+                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                }
             }
-            catch (MySqlException)
+            else
             {
                 MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableEmail(null);
             }
         }
         private void LoadTableName(string date)
@@ -258,13 +274,56 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationName(date);
-            try
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            if (dgvPersonReg.Rows.Count>0)
             {
-                this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                try
+                {
+                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                }
             }
-            catch (MySqlException)
+            else
             {
                 MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableName(null);
+            }
+            
+        }
+        private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelected += -1;
+            }
+            else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
+                amountSelected += 1;
+            }
+        }
+
+        private void bttnSelectPerson_Click(object sender, EventArgs e)
+        {
+            if (amountSelected==0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            if (amountSelected==1)
+            {
+                getIdPerson = int.Parse(this.dgvPersonReg.CurrentRow.Cells[1].Value.ToString());
+                this.Close();
+                RegisterReg frmUpdate = new RegisterReg();
+                frmUpdate.Update();
+            }
+            if (amountSelected>1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 persona");
             }
         }
     }

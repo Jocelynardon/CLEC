@@ -280,5 +280,6 @@ namespace CECLdb
                 MessageBox.Show("Seleccione alguna opción");
             }
         }
+
     }
 }

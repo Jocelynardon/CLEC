@@ -19,6 +19,7 @@ namespace CECLdb
             InitializeComponent();
             _action = Menu.action;
             LoadAreaRegister();
+            txtbPersonIDRegister.Text = Convert.ToString(PersonReg.getIdPerson);
             if (Menu.action==2)
             {
                 txtbPersonIDRegister.Enabled = true;
@@ -119,17 +120,17 @@ namespace CECLdb
 
         private void bttnAddRegister_Click(object sender, EventArgs e)
         {
-            if (cmbSelectAreaRegister.Text!=null)
+            if (cmbSelectAreaRegister.Text!="")
             {
-                if (cmbSelectCourseRegister.Text!=null)
+                if (cmbSelectCourseRegister.Text!="")
                 {
-                    if (dtpConsultationDateRegister.Text!=null)
+                    if (dtpConsultationDateRegister.Text!="")
                     {
-                        if (txtbPersonIDRegister.Text!=null)
+                        if (txtbPersonIDRegister.Text!="" || txtbPersonIDRegister.Text!="0")
                         {
                             int idArea = int.Parse(cmbSelectAreaRegister.SelectedValue.ToString());
                             int idCourse = int.Parse(cmbSelectCourseRegister.SelectedValue.ToString());
-                            int idPerson = int.Parse(txtbPersonIDRegister.Text);
+                            int idPerson = PersonReg.getIdPerson;
 
                             string sql = "INSERT INTO registro (IDarea,IDcurso,FechaConsulta,IDpersona) VALUES ('" + idArea + "'," +
                                 "'" + idCourse + "','" + dtpConsultationDateRegister.Text + "','" + idPerson + "')";
