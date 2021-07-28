@@ -168,7 +168,6 @@ namespace CECLdb
         {
             action = 2;
                 if (rbttnAddPerson.Checked)
-
                 {
                     PersonReg Frm = new PersonReg();
                     Frm.Show();
