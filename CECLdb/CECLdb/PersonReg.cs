@@ -240,6 +240,10 @@ namespace CECLdb
                     LoadTableCode(null);
                 }
             }
+            else
+            {
+                MessageBox.Show("No hay datos para mostrar");
+            }
         }
         private void LoadTableEmail(string date)
         {
@@ -257,6 +261,10 @@ namespace CECLdb
                     MessageBox.Show("No se ha encontrado coincidencias");
                     LoadTableEmail(null);
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para mostrar");
             }
         }
         private void LoadTableName(string date)
@@ -276,6 +284,10 @@ namespace CECLdb
                     MessageBox.Show("No se ha encontrado coincidencias");
                     LoadTableName(null);
                 }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para mostrar");
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
