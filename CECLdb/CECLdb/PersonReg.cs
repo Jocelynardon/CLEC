@@ -255,12 +255,8 @@ namespace CECLdb
                 catch (MySqlException)
                 {
                     MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableEmail(null);
                 }
-            }
-            else
-            {
-                MessageBox.Show("No se ha encontrado coincidencias");
-                LoadTableEmail(null);
             }
         }
         private void LoadTableName(string date)
@@ -278,14 +274,9 @@ namespace CECLdb
                 catch (MySqlException)
                 {
                     MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableName(null);
                 }
             }
-            else
-            {
-                MessageBox.Show("No se ha encontrado coincidencias");
-                LoadTableName(null);
-            }
-            
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
