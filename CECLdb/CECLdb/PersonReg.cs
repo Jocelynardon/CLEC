@@ -14,6 +14,7 @@ namespace CECLdb
     {
         public static int type = 0;
         public int amountSelected = 0;
+        public int amountPerson = 0;
         public PersonReg()
         {
             //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro
@@ -158,41 +159,41 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            LoadTableCode(null);
-            if (Menu.action==3 || Menu.action==4)
-=======
             consultationAmount();
-            if (amountPerson>0)
->>>>>>> Stashed changes
+            if (amountPerson > 0)
             {
+                LoadTableCode(null);
+                if (Menu.action == 3 || Menu.action == 4)
+                {
 
-                this.Height = 615;
-            }
-            if (Menu.action==2)
-            {
-                this.Height = 875;
-                bttnReturnPerson.Location = new Point(496, 787);
-            }
-            String textSearch = txtTextSearch.Text;
+                    this.Height = 615;
+                }
+                if (Menu.action == 2)
+                {
+                    this.Height = 875;
+                    bttnReturnPerson.Location = new Point(496, 787);
+                }
+                String textSearch = txtTextSearch.Text;
 
-            switch (cmbTypeSearch.SelectedIndex)
-            {
-                //0 Código, 1 Correo, 2 Nombre
-                case 0:
-                    LoadTableCode(textSearch);
-                    break;
-                case 1:
-                    LoadTableEmail(textSearch);
-                    break;
-                case 2:
-                    LoadTableName(textSearch);
-                    break;
-                default:
-                    MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
-                    cmbTypeSearch.Text = "";
-                    break;
+                switch (cmbTypeSearch.SelectedIndex)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        LoadTableCode(textSearch);
+                        break;
+                    case 1:
+                        LoadTableEmail(textSearch);
+                        break;
+                    case 2:
+                        LoadTableName(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                        cmbTypeSearch.Text = "";
+                        break;
+                }
             }
+             
         }
         private void LoadTypeSearch()
         {
@@ -247,12 +248,8 @@ namespace CECLdb
             }
             else
             {
-<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
-=======
-                MessageBox.Show("No se ha encontrado coincidencias");
-                LoadTableName(null);
->>>>>>> Stashed changes
+                LoadTableCode(null);
             }
         }
         private void LoadTableEmail(string date)
@@ -274,12 +271,8 @@ namespace CECLdb
             }
             else
             {
-<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
-=======
-                MessageBox.Show("No se ha encontrado coincidencias");
-                LoadTableName(null);
->>>>>>> Stashed changes
+                LoadTableEmail(null);
             }
         }
         private void LoadTableName(string date)
@@ -302,12 +295,8 @@ namespace CECLdb
             }
             else
             {
-<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
-=======
-                MessageBox.Show("No se ha encontrado coincidencias");
                 LoadTableName(null);
->>>>>>> Stashed changes
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -375,6 +364,27 @@ namespace CECLdb
             if (amountSelected>1)
             {
                 MessageBox.Show("Selecciona únicamente a 1 persona");
+            }
+        }
+        public void consultationAmount()
+        {
+            string sql = "SELECT COUNT(IDpersona) FROM persona ";
+            MySqlConnection connectionBD = Connection.connection();
+            connectionBD.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                command.Parameters.AddWithValue(sql, amountPerson);
+                command.ExecuteNonQuery();
+                amountPerson = int.Parse(command.ExecuteScalar().ToString());
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("No hay personas ingresadas ");
+            }
+            finally
+            {
+                connectionBD.Close();
             }
         }
     }
