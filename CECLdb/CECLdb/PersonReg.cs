@@ -14,7 +14,6 @@ namespace CECLdb
     {
         public static int type = 0;
         public int amountSelected = 0;
-        public static int getIdPerson = 0;
         public PersonReg()
         {
             //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro
@@ -140,6 +139,7 @@ namespace CECLdb
             txtbNamePerson.Text = "";
             txtEmailPerson.Text = "";
             mtbTelephonPerson.Text = "";
+            amountSelected = 0;
         }
         private void CloseWindow()
         {
@@ -154,10 +154,7 @@ namespace CECLdb
                 this.Close();
             }
         }
-        private void PersonReg_Load(object sender, EventArgs e)
-        {
-            
-        }
+
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
@@ -230,6 +227,7 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationCode(date);
+
             if (dgvPersonReg.Rows.Count > 0)
             {
                 try
@@ -239,12 +237,8 @@ namespace CECLdb
                 catch (MySqlException)
                 {
                     MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableCode(null);
                 }
-            }
-            else
-            {
-                MessageBox.Show("No se ha encontrado coincidencias");
-                LoadTableCode(null);
             }
         }
         private void LoadTableEmail(string date)
@@ -316,10 +310,17 @@ namespace CECLdb
             }
             if (amountSelected==1)
             {
-                getIdPerson = int.Parse(this.dgvPersonReg.CurrentRow.Cells[1].Value.ToString());
-                this.Close();
-                RegisterReg frmUpdate = new RegisterReg();
-                frmUpdate.Update();
+                foreach (DataGridViewRow row in dgvPersonReg.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        DataGridViewCell choosenID = row.Cells[1];
+                        AddID parent = this.Owner as AddID;
+                        parent.AddNewItem(choosenID);
+                        this.Close();
+                    }
+                }
             }
             if (amountSelected>1)
             {

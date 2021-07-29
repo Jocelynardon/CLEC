@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CECLdb
 {
-    public partial class RegisterReg : Form
+    public partial class RegisterReg : Form,AddID
     {
         //Opción 1 agregar, opción 2 modificar, opción 3 eliminar
         public static int _action = 0;
@@ -19,7 +19,6 @@ namespace CECLdb
             InitializeComponent();
             _action = Menu.action;
             LoadAreaRegister();
-            txtbPersonIDRegister.Text = Convert.ToString(PersonReg.getIdPerson);
             if (Menu.action==2)
             {
                 txtbPersonIDRegister.Enabled = true;
@@ -47,8 +46,8 @@ namespace CECLdb
         private void bttnSearchRegister_Click(object sender, EventArgs e)
         {
             Menu.action = 4;
-            PersonReg Frm = new PersonReg();
-            Frm.Show();
+            PersonReg frmAdd = new PersonReg();
+            frmAdd.Show(this);
         }
         private void CloseWindow()
         {
@@ -130,7 +129,7 @@ namespace CECLdb
                         {
                             int idArea = int.Parse(cmbSelectAreaRegister.SelectedValue.ToString());
                             int idCourse = int.Parse(cmbSelectCourseRegister.SelectedValue.ToString());
-                            int idPerson = PersonReg.getIdPerson;
+                            int idPerson = int.Parse(txtbPersonIDRegister.Text);
 
                             string sql = "INSERT INTO registro (IDarea,IDcurso,FechaConsulta,IDpersona) VALUES ('" + idArea + "'," +
                                 "'" + idCourse + "','" + dtpConsultationDateRegister.Text + "','" + idPerson + "')";
@@ -181,5 +180,13 @@ namespace CECLdb
             dtpConsultationDateRegister.CustomFormat = "yyyy/MM/dd";
             txtbPersonIDRegister.Text = "";
         }
+
+        #region AddID data
+        public void AddNewItem(DataGridViewCell row)
+        {
+            string idPersonChoosen = row.Value.ToString();
+            this.txtbPersonIDRegister.Text = idPersonChoosen;
+        }
+        #endregion
     }
 }

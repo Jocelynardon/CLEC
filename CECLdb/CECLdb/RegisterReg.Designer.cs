@@ -208,7 +208,6 @@ namespace CECLdb
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtbPersonIDRegister;
         private System.Windows.Forms.Label lblPersonIDRegister;
         private System.Windows.Forms.ComboBox cmbSelectCourseRegister;
         private System.Windows.Forms.Label lblSelectCourseInscription;
@@ -222,5 +221,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchRegister;
         private System.Windows.Forms.Label lblEscRegister;
         private System.Windows.Forms.Button bttnImportRegister;
+        public System.Windows.Forms.TextBox txtbPersonIDRegister;
     }
 }

@@ -338,7 +338,6 @@ namespace CECLdb
             this.Name = "PersonReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PersonRegister";
-            this.Load += new System.EventHandler(this.PersonReg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).EndInit();
             this.ResumeLayout(false);
