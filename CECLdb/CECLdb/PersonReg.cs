@@ -330,5 +330,32 @@ namespace CECLdb
                 MessageBox.Show("Selecciona únicamente a 1 persona");
             }
         }
+
+        private void Modifybtn_Click(object sender, EventArgs e)
+        {
+            if (amountSelected==0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            if (amountSelected==1)
+            {
+                foreach (DataGridViewRow row in dgvPersonReg.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        txtbNamePerson.Text = row.Cells[2].ToString();
+
+                        //AddID parent = this.Owner as AddID;
+                        //parent.AddNewItem(choosenID);
+                        //this.Close();
+                    }
+                }
+            }
+            if (amountSelected>1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 persona");
+            }
+        }
     }
 }
