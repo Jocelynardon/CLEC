@@ -14,6 +14,7 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
+            int count = 0;
 
             if (date==null)
             {
@@ -38,6 +39,7 @@ namespace CLEC
                     person.Email = reader[3].ToString();
                     person.Telephone = int.Parse(reader[4].ToString());
                     person.CodePerson = reader.GetString(5);
+                    count++;
                     list.Add(person);
                 }
             }

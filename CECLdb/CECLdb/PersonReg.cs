@@ -158,8 +158,13 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             LoadTableCode(null);
             if (Menu.action==3 || Menu.action==4)
+=======
+            consultationAmount();
+            if (amountPerson>0)
+>>>>>>> Stashed changes
             {
 
                 this.Height = 615;
@@ -242,7 +247,12 @@ namespace CECLdb
             }
             else
             {
+<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
+=======
+                MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableName(null);
+>>>>>>> Stashed changes
             }
         }
         private void LoadTableEmail(string date)
@@ -264,7 +274,12 @@ namespace CECLdb
             }
             else
             {
+<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
+=======
+                MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableName(null);
+>>>>>>> Stashed changes
             }
         }
         private void LoadTableName(string date)
@@ -287,7 +302,12 @@ namespace CECLdb
             }
             else
             {
+<<<<<<< Updated upstream
                 MessageBox.Show("No hay datos para mostrar");
+=======
+                MessageBox.Show("No se ha encontrado coincidencias");
+                LoadTableName(null);
+>>>>>>> Stashed changes
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
