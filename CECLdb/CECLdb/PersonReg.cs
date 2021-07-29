@@ -344,7 +344,7 @@ namespace CECLdb
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        txtbNamePerson.Text = row.Cells[2].ToString();
+                        txtbNamePerson.Text = row.Cells[2].Value.ToString();
 
                         //AddID parent = this.Owner as AddID;
                         //parent.AddNewItem(choosenID);
