@@ -9,7 +9,6 @@ namespace CLEC
 {
     class CtrlPerson: ConnectionSearchResult
     {
-        //public static int _type = 0;
         public List<Object> consultationCode(string date)
         {
             MySqlDataReader reader;
