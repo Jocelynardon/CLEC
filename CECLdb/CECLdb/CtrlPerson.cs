@@ -14,6 +14,7 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
+            int count = 0;
 
             if (date==null)
             {
