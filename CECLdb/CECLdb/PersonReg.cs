@@ -15,6 +15,8 @@ namespace CECLdb
         public static int type = 0;
         public int amountSelected = 0;
         public int amountPerson = 0;
+        public int idPerson = 0;
+        public List<int> selectedIDList= new List<int>();
         public PersonReg()
         {
             //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro
@@ -159,6 +161,7 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
+            amountSelected = 0;
             consultationAmount();
             if (amountPerson > 0)
             {
@@ -233,6 +236,7 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationCode(date);
+            validateSelection();
 
             if (dgvPersonReg.Rows.Count > 0)
             {
@@ -248,7 +252,7 @@ namespace CECLdb
             }
             else
             {
-                MessageBox.Show("No hay datos para mostrar");
+                MessageBox.Show("No se han encontrado datos");
                 LoadTableCode(null);
             }
         }
@@ -257,6 +261,8 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationEmail(date);
+            validateSelection();
+
             if (dgvPersonReg.Rows.Count > 0)
             {
                 try
@@ -271,7 +277,7 @@ namespace CECLdb
             }
             else
             {
-                MessageBox.Show("No hay datos para mostrar");
+                MessageBox.Show("No se han encontrado datos");
                 LoadTableEmail(null);
             }
         }
@@ -280,6 +286,8 @@ namespace CECLdb
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationName(date);
+            validateSelection();
+
             DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
             if (dgvPersonReg.Rows.Count>0)
             {
@@ -295,22 +303,25 @@ namespace CECLdb
             }
             else
             {
-                MessageBox.Show("No hay datos para mostrar");
+                MessageBox.Show("No se han encontrado datos");
                 LoadTableName(null);
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            idPerson = int.Parse(dgvPersonReg.CurrentRow.Cells["IdPerson"].Value.ToString());
             if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
+                selectedIDList.Remove(idPerson);
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
                 amountSelected += 1;
+                selectedIDList.Add(idPerson);
             }
         }
 
@@ -385,6 +396,19 @@ namespace CECLdb
             finally
             {
                 connectionBD.Close();
+            }
+        }
+        public void validateSelection()
+        {
+            foreach  (DataGridViewRow row in dgvPersonReg.Rows)
+            {
+                for (int i = 0; i < selectedIDList.Count; i++)
+                {
+                    if (selectedIDList[i].Equals(row.Cells["idPerson"].Value))
+                    {
+                        row.Cells["CheckSelection"].Value = true;
+                    }
+                }
             }
         }
     }

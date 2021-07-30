@@ -39,7 +39,6 @@ namespace CLEC
                     person.Email = reader[3].ToString();
                     person.Telephone = int.Parse(reader[4].ToString());
                     person.CodePerson = reader.GetString(5);
-                    count++;
                     list.Add(person);
                 }
             }
