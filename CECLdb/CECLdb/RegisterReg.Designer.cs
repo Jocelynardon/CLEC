@@ -178,6 +178,7 @@ namespace CECLdb
             this.bttnImportRegister.TabIndex = 23;
             this.bttnImportRegister.Text = "Importar";
             this.bttnImportRegister.UseVisualStyleBackColor = false;
+            this.bttnImportRegister.Click += new System.EventHandler(this.bttnImportRegister_Click);
             // 
             // RegisterReg
             // 

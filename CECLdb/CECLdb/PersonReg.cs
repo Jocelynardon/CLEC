@@ -7,14 +7,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-<<<<<<< Updated upstream
 using CECLdb;
-=======
 using System.IO;
 using System.Diagnostics;
 using System.Security;
 
->>>>>>> Stashed changes
 namespace CECLdb
 {
     public partial class PersonReg : Form
@@ -26,17 +23,13 @@ namespace CECLdb
 
         public int amountPerson = 0;
         public int idPerson = 0;
-<<<<<<< Updated upstream
         public List<int> selectedIDList= new List<int>();
 
-=======
-        public List<int> selectedIDList = new List<int>();
         //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro, 5 viene de inscripción
->>>>>>> Stashed changes
         public PersonReg()
         {
             InitializeComponent();
-            if (Menu.action == 2 || Menu.action == 3 || Menu.action == 4)
+            if (Menu.action == 2 || Menu.action == 3 || Menu.action == 4||Menu.action==5)
             {
                 LoadTypeSearch();
                 bttnAddPerson.Visible = false;
@@ -45,12 +38,8 @@ namespace CECLdb
                 dgvPersonReg.Visible = true;
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
-<<<<<<< Updated upstream
                 lblModify.Visible = false;
-                if (Menu.action==3 || Menu.action==4)
-=======
-                if (Menu.action == 3 || Menu.action == 4)
->>>>>>> Stashed changes
+                if (Menu.action == 3 || Menu.action == 4||Menu.action==5)
                 {
                     this.Height = 169;
                     HideAndMove();
@@ -58,11 +47,13 @@ namespace CECLdb
             }
             if (Menu.action == 1)
             {
+                lblDataPerson.Visible = true;
                 this.Height = 367;
                 btnSaveData.Visible = false;
             }
             if (Menu.action == 2)
             {
+                lblModify.Visible = true;
                 this.Height = 440;
                 Modifybtn.Visible = true;
                 lblModify.Visible = true;
@@ -78,7 +69,7 @@ namespace CECLdb
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
             }
-            if (Menu.action == 4)
+            if (Menu.action == 4||Menu.action==5)
             {
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
@@ -87,17 +78,10 @@ namespace CECLdb
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bttnReturnPerson_Click(object sender, EventArgs e)
         {
             CloseWindow();
         }
-
-
         private void Access(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -105,18 +89,13 @@ namespace CECLdb
                 CloseWindow();
             }
         }
-
         private void bttnAddPerson_Click(object sender, EventArgs e)
         {
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
                 if (txtbCodePerson.TextLength == 7)
                 {
-<<<<<<< Updated upstream
                     if (txtbTelephone.TextLength>=8 || txtbTelephone.TextLength<=9)
-=======
-                    if (mtbTelephonPerson.TextLength >= 8 || mtbTelephonPerson.TextLength <= 9)
->>>>>>> Stashed changes
                     {
                         String personName = txtbNamePerson.Text;
                         String personLastName = txtbLastNamePerson.Text;
@@ -165,16 +144,8 @@ namespace CECLdb
         }
         private void bttnImportPerson_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            txtbCodePerson.Text = "";
-            txtbLastNamePerson.Text = "";
-            txtbNamePerson.Text = "";
-            txtEmailPerson.Text = "";
-            txtbTelephone.Text = "";
-            amountSelected = 0;
-=======
             int linesCount = 0;
-            MessageBox.Show("El formato para .csv es:\n CÓDIGO (long. 7), NOMBRE, APELLIDO, CORREO, TELÉFONO");
+            MessageBox.Show("El formato para el archivo .csv es:\n CÓDIGO (long. 7), NOMBRE, APELLIDO, CORREO, TELÉFONO");
 
             OpenFileDialog window = new OpenFileDialog();
             window.Title = "Importar archivo (.txt, .csv)";
@@ -187,7 +158,6 @@ namespace CECLdb
                 try
                 {
                     String[] lines = File.ReadAllLines(window.FileName);
-                    String text = File.ReadAllText(window.FileName);
                     for (int i = 0; i < lines.Length; i++)
                     {
                         if (lines[i] != "")
@@ -197,6 +167,7 @@ namespace CECLdb
                             string sql = "INSERT INTO Persona (codigo,Nombre,Apellido,Correo,Teléfono) VALUES" +
                         "('" + lineConverted[0] + "','" + lineConverted[1] + "','" + lineConverted[2] + "'," +
                         "'" + lineConverted[3] + "','" + lineConverted[4] + "')";
+
                             if (lineConverted.Length == 5)
                             {
                                 MySqlCommand command = new MySqlCommand(sql, connectionBD);
@@ -230,33 +201,6 @@ namespace CECLdb
                 {
                     connectionBD.Close();
                 }
-            }
->>>>>>> Stashed changes
-        }
-        private void Modifybtn_Click(object sender, EventArgs e)
-        {
-            if (amountSelected == 0)
-            {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
-            }
-            if (amountSelected == 1)
-            {
-                foreach (DataGridViewRow row in dgvPersonReg.Rows)
-                {
-                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
-                    if (isChecked)
-                    {
-                        txtbNamePerson.Text = row.Cells[2].Value.ToString();
-
-                        //AddID parent = this.Owner as AddID;
-                        //parent.AddNewItem(choosenID);
-                        //this.Close();
-                    }
-                }
-            }
-            if (amountSelected > 1)
-            {
-                MessageBox.Show("Selecciona únicamente a 1 persona");
             }
         }
         private void bttnSearchPerson_Click(object sender, EventArgs e)
@@ -445,7 +389,6 @@ namespace CECLdb
                     }
                 }
             }
-<<<<<<< Updated upstream
             if (amountSelected>1)
             {
                 MessageBox.Show("Selecciona únicamente a 1 persona");
@@ -473,16 +416,11 @@ namespace CECLdb
                         txtbNamePerson.Text = person.Name;
                         txtEmailPerson.Text = person.Email;
                         txtbTelephone.Text = person.Telephone.ToString();
-                        //AddID parent = this.Owner as AddID;
-                        //parent.AddNewItem(choosenID);
-                        //this.Close();
                     }
                 }
             }
-            if (amountSelected>1)
-=======
+
             if (amountSelected > 1)
->>>>>>> Stashed changes
             {
                 MessageBox.Show("Selecciona únicamente a 1 persona");
             }
@@ -604,7 +542,7 @@ namespace CECLdb
             txtbLastNamePerson.Text = "";
             txtbNamePerson.Text = "";
             txtEmailPerson.Text = "";
-            mtbTelephonPerson.Text = "";
+            txtbTelephone.Text = "";
             amountSelected = 0;
         }
     }

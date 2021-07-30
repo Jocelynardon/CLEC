@@ -56,6 +56,7 @@ namespace CECLdb
             this.lblModify = new System.Windows.Forms.Label();
             this.btnSaveData = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
+            this.lblDataPerson = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,6 @@ namespace CECLdb
             this.lblName.Size = new System.Drawing.Size(64, 20);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre";
-            this.lblName.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtbNamePerson
             // 
@@ -320,6 +320,7 @@ namespace CECLdb
             this.lblModify.Size = new System.Drawing.Size(164, 20);
             this.lblModify.TabIndex = 26;
             this.lblModify.Text = "DATOS  A MODIFICAR";
+            this.lblModify.Visible = false;
             // 
             // btnSaveData
             // 
@@ -345,11 +346,24 @@ namespace CECLdb
             this.btnClean.UseVisualStyleBackColor = false;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
+            // lblDataPerson
+            // 
+            this.lblDataPerson.AutoSize = true;
+            this.lblDataPerson.BackColor = System.Drawing.SystemColors.Control;
+            this.lblDataPerson.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDataPerson.Location = new System.Drawing.Point(46, 23);
+            this.lblDataPerson.Name = "lblDataPerson";
+            this.lblDataPerson.Size = new System.Drawing.Size(180, 20);
+            this.lblDataPerson.TabIndex = 29;
+            this.lblDataPerson.Text = "DATOS  DE LA PERSONA";
+            this.lblDataPerson.Visible = false;
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.lblDataPerson);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.lblModify);
@@ -414,5 +428,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblModify;
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Label lblDataPerson;
     }
 }
