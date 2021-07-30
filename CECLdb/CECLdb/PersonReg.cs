@@ -7,13 +7,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
+using CECLdb;
 namespace CECLdb
 {
     public partial class PersonReg : Form
     {
         public static int type = 0;
         public int amountSelected = 0;
+        public int PerID;
         public PersonReg()
         {
             //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro
@@ -27,6 +28,7 @@ namespace CECLdb
                 dgvPersonReg.Visible = true;
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
+                lblModify.Visible = false;
                 if (Menu.action==3 || Menu.action==4)
                 {
                     this.Height = 169;
@@ -36,13 +38,16 @@ namespace CECLdb
             if (Menu.action == 1)
             {
                 this.Height = 367;
+                btnSaveData.Visible = false;
             }
             if (Menu.action == 2)
             {
                 this.Height = 440;
                 Modifybtn.Visible = true;
+                lblModify.Visible = true;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = false;
+                btnSaveData.Visible = true;
             }
             if (Menu.action==3)
             {
@@ -50,12 +55,14 @@ namespace CECLdb
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = true;
                 bttnSelectPerson.Visible = false;
+                btnSaveData.Visible = false;
             }
             if (Menu.action==4)
             {
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = true;
+                btnSaveData.Visible = false;
             }
         }
 
@@ -84,13 +91,13 @@ namespace CECLdb
             {
                 if (txtbCodePerson.TextLength==7)
                 {
-                    if (mtbTelephonPerson.TextLength>=8 || mtbTelephonPerson.TextLength<=9)
+                    if (txtbTelephone.TextLength>=8 || txtbTelephone.TextLength<=9)
                     {
                         String personName = txtbNamePerson.Text;
                         String personLastName = txtbLastNamePerson.Text;
                         String personEmail = txtEmailPerson.Text;
                         int codePerson = int.Parse(txtbCodePerson.Text);
-                        int personNumber = int.Parse(mtbTelephonPerson.Text);
+                        int personNumber = int.Parse(txtbTelephone.Text);
 
                         string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Codigo,Teléfono) VALUES" +
                             "('" + personName + "','" + personLastName + "','" + personEmail + "'," +
@@ -138,7 +145,7 @@ namespace CECLdb
             txtbLastNamePerson.Text = "";
             txtbNamePerson.Text = "";
             txtEmailPerson.Text = "";
-            mtbTelephonPerson.Text = "";
+            txtbTelephone.Text = "";
             amountSelected = 0;
         }
         private void CloseWindow()
@@ -205,7 +212,7 @@ namespace CECLdb
             txtbNamePerson.Visible = false;
             txtbLastNamePerson.Visible = false;
             txtbCodePerson.Visible = false;
-            mtbTelephonPerson.Visible = false;
+            txtbTelephone.Visible = false;
             txtEmailPerson.Visible = false;
             lblName.Visible = false;
             lblLastNamePerson.Visible = false;
@@ -333,6 +340,7 @@ namespace CECLdb
 
         private void Modifybtn_Click(object sender, EventArgs e)
         {
+            CtrlPerson ctrl = new CtrlPerson();
             if (amountSelected==0)
             {
                 MessageBox.Show("No se ha seleccionado a alguna persona");
@@ -344,8 +352,13 @@ namespace CECLdb
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        txtbNamePerson.Text = row.Cells[2].Value.ToString();
-
+                        PerID = Convert.ToInt32(row.Cells[1].Value);
+                        Person person = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
+                        txtbCodePerson.Text = person.CodePerson;
+                        txtbLastNamePerson.Text = person.LastName;
+                        txtbNamePerson.Text = person.Name;
+                        txtEmailPerson.Text = person.Email;
+                        txtbTelephone.Text = person.Telephone.ToString();
                         //AddID parent = this.Owner as AddID;
                         //parent.AddNewItem(choosenID);
                         //this.Close();
@@ -356,6 +369,68 @@ namespace CECLdb
             {
                 MessageBox.Show("Selecciona únicamente a 1 persona");
             }
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            CtrlPerson ctrlP = new CtrlPerson();
+            Person person_ = new Person();
+            person_.IdPerson = PerID;
+            if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
+            {
+                if (txtbCodePerson.TextLength == 7)
+                {
+                    if (txtbTelephone.TextLength >= 8 || txtbTelephone.TextLength <= 9)
+                    {
+                        String personName = txtbNamePerson.Text;
+                        String personLastName = txtbLastNamePerson.Text;
+                        String personEmail = txtEmailPerson.Text;
+                        int codePerson = int.Parse(txtbCodePerson.Text);
+                        int personNumber = int.Parse(txtbTelephone.Text);
+
+                        string sql = "UPDATE persona SET Codigo = '" + codePerson + "', Nombre = '" + personName + "', Apellido = '" + personLastName + "', Correo = '" + personEmail + "', Teléfono = '" + personNumber + "' " +
+                "WHERE IDpersona =" + PerID;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Se ha modificado exitosamente");
+
+                            
+                        }
+                        catch (MySqlException ex)
+                        {
+
+                            MessageBox.Show("Error al guardar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El código debe tener 7 dígitos");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, complete la información");
+            }
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            Clean();
+            
         }
     }
 }

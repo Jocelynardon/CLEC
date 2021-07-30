@@ -11,9 +11,11 @@ namespace CLEC
         private string name;
         private string email;
         private string codePerson;
+        private string lastname;
 
         public int IdPerson { get => idPerson; set => idPerson = value; }
         public string Name { get => name; set => name = value; }
+        public string LastName { get => lastname; set => lastname = value; }
         public string Email { get => email; set => email = value; }
         public int Telephone { get => telephone; set => telephone = value; }
         public string CodePerson { get => codePerson; set => codePerson = value; }

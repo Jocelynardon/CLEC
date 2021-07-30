@@ -29,14 +29,13 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblTelNumber = new System.Windows.Forms.Label();
             this.bttnAddPerson = new System.Windows.Forms.Button();
             this.bttnReturnPerson = new System.Windows.Forms.Button();
-            this.mtbTelephonPerson = new System.Windows.Forms.MaskedTextBox();
             this.bttnSearchPerson = new System.Windows.Forms.Button();
             this.lblEscPerson = new System.Windows.Forms.Label();
             this.txtEmailPerson = new System.Windows.Forms.TextBox();
@@ -53,13 +52,17 @@ namespace CECLdb
             this.bttnSelectPerson = new System.Windows.Forms.Button();
             this.txtTextSearch = new System.Windows.Forms.TextBox();
             this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
+            this.txtbTelephone = new System.Windows.Forms.TextBox();
+            this.lblModify = new System.Windows.Forms.Label();
+            this.btnSaveData = new System.Windows.Forms.Button();
+            this.btnClean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(46, 40);
+            this.lblName.Location = new System.Drawing.Point(46, 65);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(64, 20);
             this.lblName.TabIndex = 0;
@@ -69,7 +72,7 @@ namespace CECLdb
             // txtbNamePerson
             // 
             this.txtbNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbNamePerson.Location = new System.Drawing.Point(46, 76);
+            this.txtbNamePerson.Location = new System.Drawing.Point(46, 101);
             this.txtbNamePerson.Name = "txtbNamePerson";
             this.txtbNamePerson.Size = new System.Drawing.Size(353, 27);
             this.txtbNamePerson.TabIndex = 1;
@@ -86,7 +89,7 @@ namespace CECLdb
             // lblTelNumber
             // 
             this.lblTelNumber.AutoSize = true;
-            this.lblTelNumber.Location = new System.Drawing.Point(579, 161);
+            this.lblTelNumber.Location = new System.Drawing.Point(552, 161);
             this.lblTelNumber.Name = "lblTelNumber";
             this.lblTelNumber.Size = new System.Drawing.Size(67, 20);
             this.lblTelNumber.TabIndex = 4;
@@ -115,16 +118,6 @@ namespace CECLdb
             this.bttnReturnPerson.Text = "Regresar";
             this.bttnReturnPerson.UseVisualStyleBackColor = false;
             this.bttnReturnPerson.Click += new System.EventHandler(this.bttnReturnPerson_Click);
-            // 
-            // mtbTelephonPerson
-            // 
-            this.mtbTelephonPerson.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.mtbTelephonPerson.Location = new System.Drawing.Point(579, 197);
-            this.mtbTelephonPerson.Mask = "000000000";
-            this.mtbTelephonPerson.Name = "mtbTelephonPerson";
-            this.mtbTelephonPerson.Size = new System.Drawing.Size(82, 27);
-            this.mtbTelephonPerson.TabIndex = 8;
-            this.mtbTelephonPerson.Text = "00000000";
             // 
             // bttnSearchPerson
             // 
@@ -173,7 +166,7 @@ namespace CECLdb
             // lblLastNamePerson
             // 
             this.lblLastNamePerson.AutoSize = true;
-            this.lblLastNamePerson.Location = new System.Drawing.Point(552, 40);
+            this.lblLastNamePerson.Location = new System.Drawing.Point(552, 65);
             this.lblLastNamePerson.Name = "lblLastNamePerson";
             this.lblLastNamePerson.Size = new System.Drawing.Size(66, 20);
             this.lblLastNamePerson.TabIndex = 14;
@@ -182,7 +175,7 @@ namespace CECLdb
             // txtbLastNamePerson
             // 
             this.txtbLastNamePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbLastNamePerson.Location = new System.Drawing.Point(552, 76);
+            this.txtbLastNamePerson.Location = new System.Drawing.Point(552, 101);
             this.txtbLastNamePerson.Name = "txtbLastNamePerson";
             this.txtbLastNamePerson.Size = new System.Drawing.Size(353, 27);
             this.txtbLastNamePerson.TabIndex = 15;
@@ -211,14 +204,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -308,11 +301,58 @@ namespace CECLdb
             this.cmbTypeSearch.TabIndex = 24;
             this.cmbTypeSearch.Visible = false;
             // 
+            // txtbTelephone
+            // 
+            this.txtbTelephone.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtbTelephone.Location = new System.Drawing.Point(552, 197);
+            this.txtbTelephone.Name = "txtbTelephone";
+            this.txtbTelephone.Size = new System.Drawing.Size(136, 27);
+            this.txtbTelephone.TabIndex = 25;
+            // 
+            // lblModify
+            // 
+            this.lblModify.AutoSize = true;
+            this.lblModify.BackColor = System.Drawing.SystemColors.Control;
+            this.lblModify.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblModify.Location = new System.Drawing.Point(46, 23);
+            this.lblModify.Name = "lblModify";
+            this.lblModify.Size = new System.Drawing.Size(164, 20);
+            this.lblModify.TabIndex = 26;
+            this.lblModify.Text = "DATOS  A MODIFICAR";
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveData.Location = new System.Drawing.Point(272, 273);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(161, 29);
+            this.btnSaveData.TabIndex = 27;
+            this.btnSaveData.Text = "Guardar Datos";
+            this.btnSaveData.UseVisualStyleBackColor = false;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // btnClean
+            // 
+            this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClean.Location = new System.Drawing.Point(618, 273);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(129, 29);
+            this.btnClean.TabIndex = 28;
+            this.btnClean.Text = "Limpiar";
+            this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.btnClean);
+            this.Controls.Add(this.btnSaveData);
+            this.Controls.Add(this.lblModify);
+            this.Controls.Add(this.txtbTelephone);
             this.Controls.Add(this.cmbTypeSearch);
             this.Controls.Add(this.txtTextSearch);
             this.Controls.Add(this.bttnSelectPerson);
@@ -328,7 +368,6 @@ namespace CECLdb
             this.Controls.Add(this.txtEmailPerson);
             this.Controls.Add(this.lblEscPerson);
             this.Controls.Add(this.bttnSearchPerson);
-            this.Controls.Add(this.mtbTelephonPerson);
             this.Controls.Add(this.bttnReturnPerson);
             this.Controls.Add(this.bttnAddPerson);
             this.Controls.Add(this.lblTelNumber);
@@ -354,7 +393,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblTelNumber;
         private System.Windows.Forms.Button bttnAddPerson;
         private System.Windows.Forms.Button bttnReturnPerson;
-        private System.Windows.Forms.MaskedTextBox mtbTelephonPerson;
         private System.Windows.Forms.Button bttnSearchPerson;
         private System.Windows.Forms.Label lblEscPerson;
         private System.Windows.Forms.TextBox txtEmailPerson;
@@ -371,5 +409,9 @@ namespace CECLdb
         private System.Windows.Forms.TextBox txtTextSearch;
         private System.Windows.Forms.ComboBox cmbTypeSearch;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
+        private System.Windows.Forms.TextBox txtbTelephone;
+        private System.Windows.Forms.Label lblModify;
+        private System.Windows.Forms.Button btnSaveData;
+        private System.Windows.Forms.Button btnClean;
     }
 }
