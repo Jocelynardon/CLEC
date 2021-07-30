@@ -75,7 +75,7 @@ namespace CECLdb
             this.txtbNamePerson.Location = new System.Drawing.Point(46, 101);
             this.txtbNamePerson.Name = "txtbNamePerson";
             this.txtbNamePerson.Size = new System.Drawing.Size(353, 27);
-            this.txtbNamePerson.TabIndex = 1;
+            this.txtbNamePerson.TabIndex = 0;
             // 
             // lblEmail
             // 
@@ -102,7 +102,7 @@ namespace CECLdb
             this.bttnAddPerson.Location = new System.Drawing.Point(339, 273);
             this.bttnAddPerson.Name = "bttnAddPerson";
             this.bttnAddPerson.Size = new System.Drawing.Size(94, 29);
-            this.bttnAddPerson.TabIndex = 6;
+            this.bttnAddPerson.TabIndex = 5;
             this.bttnAddPerson.Text = "Agregar";
             this.bttnAddPerson.UseVisualStyleBackColor = false;
             this.bttnAddPerson.Click += new System.EventHandler(this.bttnAddPerson_Click);
@@ -127,7 +127,7 @@ namespace CECLdb
             this.bttnSearchPerson.Location = new System.Drawing.Point(840, 342);
             this.bttnSearchPerson.Name = "bttnSearchPerson";
             this.bttnSearchPerson.Size = new System.Drawing.Size(94, 29);
-            this.bttnSearchPerson.TabIndex = 9;
+            this.bttnSearchPerson.TabIndex = 11;
             this.bttnSearchPerson.Text = "Buscar";
             this.bttnSearchPerson.UseVisualStyleBackColor = false;
             this.bttnSearchPerson.Visible = false;
@@ -150,7 +150,7 @@ namespace CECLdb
             this.txtEmailPerson.Location = new System.Drawing.Point(46, 197);
             this.txtEmailPerson.Name = "txtEmailPerson";
             this.txtEmailPerson.Size = new System.Drawing.Size(439, 27);
-            this.txtEmailPerson.TabIndex = 12;
+            this.txtEmailPerson.TabIndex = 2;
             // 
             // bttnImportPerson
             // 
@@ -179,7 +179,7 @@ namespace CECLdb
             this.txtbLastNamePerson.Location = new System.Drawing.Point(552, 101);
             this.txtbLastNamePerson.Name = "txtbLastNamePerson";
             this.txtbLastNamePerson.Size = new System.Drawing.Size(353, 27);
-            this.txtbLastNamePerson.TabIndex = 15;
+            this.txtbLastNamePerson.TabIndex = 1;
             // 
             // txtbCodePerson
             // 
@@ -187,7 +187,7 @@ namespace CECLdb
             this.txtbCodePerson.Location = new System.Drawing.Point(739, 197);
             this.txtbCodePerson.Name = "txtbCodePerson";
             this.txtbCodePerson.Size = new System.Drawing.Size(166, 27);
-            this.txtbCodePerson.TabIndex = 16;
+            this.txtbCodePerson.TabIndex = 4;
             // 
             // lblCodePerson
             // 
@@ -202,6 +202,8 @@ namespace CECLdb
             // 
             this.dgvPersonReg.AllowUserToAddRows = false;
             this.dgvPersonReg.AllowUserToDeleteRows = false;
+            this.dgvPersonReg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvPersonReg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
@@ -233,7 +235,7 @@ namespace CECLdb
             this.CheckSelection.Name = "CheckSelection";
             this.CheckSelection.ReadOnly = true;
             this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CheckSelection.Width = 125;
+            this.CheckSelection.Width = 78;
             // 
             // SelectAllcbx
             // 
@@ -241,7 +243,7 @@ namespace CECLdb
             this.SelectAllcbx.Location = new System.Drawing.Point(46, 402);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
-            this.SelectAllcbx.TabIndex = 19;
+            this.SelectAllcbx.TabIndex = 15;
             this.SelectAllcbx.Text = "Seleccionar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
@@ -253,7 +255,7 @@ namespace CECLdb
             this.Modifybtn.Location = new System.Drawing.Point(374, 788);
             this.Modifybtn.Name = "Modifybtn";
             this.Modifybtn.Size = new System.Drawing.Size(94, 29);
-            this.Modifybtn.TabIndex = 20;
+            this.Modifybtn.TabIndex = 12;
             this.Modifybtn.Text = "Modificar";
             this.Modifybtn.UseVisualStyleBackColor = false;
             this.Modifybtn.Visible = false;
@@ -266,7 +268,7 @@ namespace CECLdb
             this.Deletebtn.Location = new System.Drawing.Point(496, 788);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(94, 29);
-            this.Deletebtn.TabIndex = 21;
+            this.Deletebtn.TabIndex = 13;
             this.Deletebtn.Text = "Eliminar";
             this.Deletebtn.UseVisualStyleBackColor = false;
             this.Deletebtn.Visible = false;
@@ -278,7 +280,7 @@ namespace CECLdb
             this.bttnSelectPerson.Location = new System.Drawing.Point(618, 788);
             this.bttnSelectPerson.Name = "bttnSelectPerson";
             this.bttnSelectPerson.Size = new System.Drawing.Size(94, 29);
-            this.bttnSelectPerson.TabIndex = 22;
+            this.bttnSelectPerson.TabIndex = 14;
             this.bttnSelectPerson.Text = "Seleccionar";
             this.bttnSelectPerson.UseVisualStyleBackColor = false;
             this.bttnSelectPerson.Visible = false;
@@ -290,7 +292,7 @@ namespace CECLdb
             this.txtTextSearch.Location = new System.Drawing.Point(74, 344);
             this.txtTextSearch.Name = "txtTextSearch";
             this.txtTextSearch.Size = new System.Drawing.Size(439, 27);
-            this.txtTextSearch.TabIndex = 23;
+            this.txtTextSearch.TabIndex = 9;
             this.txtTextSearch.Visible = false;
             // 
             // cmbTypeSearch
@@ -299,7 +301,7 @@ namespace CECLdb
             this.cmbTypeSearch.Location = new System.Drawing.Point(542, 343);
             this.cmbTypeSearch.Name = "cmbTypeSearch";
             this.cmbTypeSearch.Size = new System.Drawing.Size(255, 28);
-            this.cmbTypeSearch.TabIndex = 24;
+            this.cmbTypeSearch.TabIndex = 10;
             this.cmbTypeSearch.Visible = false;
             // 
             // txtbTelephone
@@ -308,7 +310,7 @@ namespace CECLdb
             this.txtbTelephone.Location = new System.Drawing.Point(552, 197);
             this.txtbTelephone.Name = "txtbTelephone";
             this.txtbTelephone.Size = new System.Drawing.Size(136, 27);
-            this.txtbTelephone.TabIndex = 25;
+            this.txtbTelephone.TabIndex = 3;
             // 
             // lblModify
             // 
@@ -329,7 +331,7 @@ namespace CECLdb
             this.btnSaveData.Location = new System.Drawing.Point(272, 273);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(161, 29);
-            this.btnSaveData.TabIndex = 27;
+            this.btnSaveData.TabIndex = 6;
             this.btnSaveData.Text = "Guardar Datos";
             this.btnSaveData.UseVisualStyleBackColor = false;
             this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
@@ -341,7 +343,7 @@ namespace CECLdb
             this.btnClean.Location = new System.Drawing.Point(618, 273);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
-            this.btnClean.TabIndex = 28;
+            this.btnClean.TabIndex = 8;
             this.btnClean.Text = "Limpiar";
             this.btnClean.UseVisualStyleBackColor = false;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);

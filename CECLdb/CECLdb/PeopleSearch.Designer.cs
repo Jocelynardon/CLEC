@@ -66,7 +66,7 @@ namespace CECLdb
             this.checkBox1.Location = new System.Drawing.Point(6, 23);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(103, 24);
-            this.checkBox1.TabIndex = 2;
+            this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Por código";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -76,7 +76,7 @@ namespace CECLdb
             this.checkBox2.Location = new System.Drawing.Point(6, 23);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(111, 24);
-            this.checkBox2.TabIndex = 3;
+            this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Por Nombre";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -95,7 +95,7 @@ namespace CECLdb
             this.textBox2.Location = new System.Drawing.Point(6, 90);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(298, 27);
-            this.textBox2.TabIndex = 4;
+            this.textBox2.TabIndex = 5;
             // 
             // groupBox1
             // 
@@ -114,7 +114,7 @@ namespace CECLdb
             this.maskedTextBox1.Mask = "9999999";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(58, 27);
-            this.maskedTextBox1.TabIndex = 3;
+            this.maskedTextBox1.TabIndex = 4;
             this.maskedTextBox1.ValidatingType = typeof(int);
             // 
             // groupBox2
@@ -166,7 +166,7 @@ namespace CECLdb
             this.textBox1.Location = new System.Drawing.Point(6, 90);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(298, 27);
-            this.textBox1.TabIndex = 4;
+            this.textBox1.TabIndex = 6;
             // 
             // checkBox3
             // 
@@ -184,7 +184,7 @@ namespace CECLdb
             this.radioButton1.Location = new System.Drawing.Point(12, 156);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(70, 24);
-            this.radioButton1.TabIndex = 9;
+            this.radioButton1.TabIndex = 7;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Status";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -195,7 +195,7 @@ namespace CECLdb
             this.radioButton2.Location = new System.Drawing.Point(12, 186);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(144, 24);
-            this.radioButton2.TabIndex = 10;
+            this.radioButton2.TabIndex = 8;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Correos Enviados";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@ namespace CECLdb
             this.PeopleSrcBtn.Location = new System.Drawing.Point(12, 210);
             this.PeopleSrcBtn.Name = "PeopleSrcBtn";
             this.PeopleSrcBtn.Size = new System.Drawing.Size(94, 29);
-            this.PeopleSrcBtn.TabIndex = 17;
+            this.PeopleSrcBtn.TabIndex = 9;
             this.PeopleSrcBtn.Text = "BUSCAR";
             this.PeopleSrcBtn.UseVisualStyleBackColor = true;
             this.PeopleSrcBtn.Click += new System.EventHandler(this.PeopleSrcBtn_Click);
@@ -215,18 +215,16 @@ namespace CECLdb
             this.bttnReturn.Location = new System.Drawing.Point(131, 210);
             this.bttnReturn.Name = "bttnReturn";
             this.bttnReturn.Size = new System.Drawing.Size(94, 29);
-            this.bttnReturn.TabIndex = 18;
+            this.bttnReturn.TabIndex = 10;
             this.bttnReturn.Text = "Regresar";
             this.bttnReturn.UseVisualStyleBackColor = true;
             this.bttnReturn.Click += new System.EventHandler(this.bttnReturn_Click);
-
+            // 
+            // PeopleSearch
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(905, 251);
-
             this.ClientSize = new System.Drawing.Size(920, 266);
-
             this.Controls.Add(this.bttnReturn);
             this.Controls.Add(this.PeopleSrcBtn);
             this.Controls.Add(this.radioButton2);

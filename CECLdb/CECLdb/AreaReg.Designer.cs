@@ -66,7 +66,7 @@ namespace CECLdb
             this.cmbAnnouncement.Location = new System.Drawing.Point(43, 178);
             this.cmbAnnouncement.Name = "cmbAnnouncement";
             this.cmbAnnouncement.Size = new System.Drawing.Size(151, 28);
-            this.cmbAnnouncement.TabIndex = 3;
+            this.cmbAnnouncement.TabIndex = 1;
             // 
             // cmbYear
             // 
@@ -74,7 +74,7 @@ namespace CECLdb
             this.cmbYear.Location = new System.Drawing.Point(43, 76);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(151, 28);
-            this.cmbYear.TabIndex = 4;
+            this.cmbYear.TabIndex = 0;
             // 
             // lblAreaName
             // 
@@ -91,7 +91,7 @@ namespace CECLdb
             this.txtbAreaName.Location = new System.Drawing.Point(43, 282);
             this.txtbAreaName.Name = "txtbAreaName";
             this.txtbAreaName.Size = new System.Drawing.Size(363, 27);
-            this.txtbAreaName.TabIndex = 6;
+            this.txtbAreaName.TabIndex = 2;
             // 
             // bttnAddArea
             // 
@@ -99,7 +99,7 @@ namespace CECLdb
             this.bttnAddArea.Location = new System.Drawing.Point(312, 349);
             this.bttnAddArea.Name = "bttnAddArea";
             this.bttnAddArea.Size = new System.Drawing.Size(94, 30);
-            this.bttnAddArea.TabIndex = 7;
+            this.bttnAddArea.TabIndex = 4;
             this.bttnAddArea.Text = "Agregar";
             this.bttnAddArea.UseVisualStyleBackColor = false;
             this.bttnAddArea.Click += new System.EventHandler(this.bttnAddArea_Click);
@@ -110,7 +110,7 @@ namespace CECLdb
             this.bttnReturnArea.Location = new System.Drawing.Point(412, 349);
             this.bttnReturnArea.Name = "bttnReturnArea";
             this.bttnReturnArea.Size = new System.Drawing.Size(94, 30);
-            this.bttnReturnArea.TabIndex = 8;
+            this.bttnReturnArea.TabIndex = 6;
             this.bttnReturnArea.Text = "Regresar";
             this.bttnReturnArea.UseVisualStyleBackColor = false;
             this.bttnReturnArea.Click += new System.EventHandler(this.bttnReturnArea_Click);
@@ -121,7 +121,7 @@ namespace CECLdb
             this.bttnSearchArea.Location = new System.Drawing.Point(449, 279);
             this.bttnSearchArea.Name = "bttnSearchArea";
             this.bttnSearchArea.Size = new System.Drawing.Size(94, 30);
-            this.bttnSearchArea.TabIndex = 9;
+            this.bttnSearchArea.TabIndex = 3;
             this.bttnSearchArea.Text = "Buscar";
             this.bttnSearchArea.UseVisualStyleBackColor = false;
             this.bttnSearchArea.Visible = false;
@@ -132,7 +132,7 @@ namespace CECLdb
             this.bttnSaveArea.Location = new System.Drawing.Point(312, 349);
             this.bttnSaveArea.Name = "bttnSaveArea";
             this.bttnSaveArea.Size = new System.Drawing.Size(94, 30);
-            this.bttnSaveArea.TabIndex = 10;
+            this.bttnSaveArea.TabIndex = 5;
             this.bttnSaveArea.Text = "Guardar";
             this.bttnSaveArea.UseVisualStyleBackColor = false;
             this.bttnSaveArea.Visible = false;

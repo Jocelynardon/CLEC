@@ -63,7 +63,7 @@ namespace CECLdb
             this.cmbSelectAreaInscription.Location = new System.Drawing.Point(26, 57);
             this.cmbSelectAreaInscription.Name = "cmbSelectAreaInscription";
             this.cmbSelectAreaInscription.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectAreaInscription.TabIndex = 1;
+            this.cmbSelectAreaInscription.TabIndex = 0;
             this.cmbSelectAreaInscription.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaInscription_SelectionChangeCommitted);
             // 
             // lblSelectCourseInscription
@@ -81,7 +81,7 @@ namespace CECLdb
             this.cmbSelectCourseInscription.Location = new System.Drawing.Point(26, 146);
             this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
             this.cmbSelectCourseInscription.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectCourseInscription.TabIndex = 3;
+            this.cmbSelectCourseInscription.TabIndex = 1;
             // 
             // lblPersonIDInscription
             // 
@@ -97,7 +97,7 @@ namespace CECLdb
             this.txtbPersonIDInscription.Location = new System.Drawing.Point(504, 147);
             this.txtbPersonIDInscription.Name = "txtbPersonIDInscription";
             this.txtbPersonIDInscription.Size = new System.Drawing.Size(172, 27);
-            this.txtbPersonIDInscription.TabIndex = 5;
+            this.txtbPersonIDInscription.TabIndex = 2;
             // 
             // ckbApproved
             // 
@@ -106,7 +106,7 @@ namespace CECLdb
             this.ckbApproved.Location = new System.Drawing.Point(26, 205);
             this.ckbApproved.Name = "ckbApproved";
             this.ckbApproved.Size = new System.Drawing.Size(96, 24);
-            this.ckbApproved.TabIndex = 9;
+            this.ckbApproved.TabIndex = 4;
             this.ckbApproved.Text = "¿Aprobó?";
             this.ckbApproved.UseVisualStyleBackColor = false;
             this.ckbApproved.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -135,7 +135,7 @@ namespace CECLdb
             this.bttnAddInscription.Location = new System.Drawing.Point(326, 419);
             this.bttnAddInscription.Name = "bttnAddInscription";
             this.bttnAddInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnAddInscription.TabIndex = 15;
+            this.bttnAddInscription.TabIndex = 7;
             this.bttnAddInscription.Text = "Agregar";
             this.bttnAddInscription.UseVisualStyleBackColor = false;
             this.bttnAddInscription.Click += new System.EventHandler(this.bttnAddInscription_Click);
@@ -146,18 +146,20 @@ namespace CECLdb
             this.bttnReturnInscription.Location = new System.Drawing.Point(565, 419);
             this.bttnReturnInscription.Name = "bttnReturnInscription";
             this.bttnReturnInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnReturnInscription.TabIndex = 16;
+            this.bttnReturnInscription.TabIndex = 9;
             this.bttnReturnInscription.Text = "Regresar";
             this.bttnReturnInscription.UseVisualStyleBackColor = false;
             this.bttnReturnInscription.Click += new System.EventHandler(this.bttnReturnInscription_Click);
             // 
             // mtbStartDate
             // 
+            this.mtbStartDate.AccessibleDescription = "";
             this.mtbStartDate.Location = new System.Drawing.Point(26, 294);
             this.mtbStartDate.Mask = "0000/00/00";
             this.mtbStartDate.Name = "mtbStartDate";
             this.mtbStartDate.Size = new System.Drawing.Size(88, 27);
-            this.mtbStartDate.TabIndex = 17;
+            this.mtbStartDate.TabIndex = 5;
+            this.mtbStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbStartDate.ValidatingType = typeof(System.DateTime);
             // 
             // mtbFinalDate
@@ -166,7 +168,8 @@ namespace CECLdb
             this.mtbFinalDate.Mask = "0000/00/00";
             this.mtbFinalDate.Name = "mtbFinalDate";
             this.mtbFinalDate.Size = new System.Drawing.Size(88, 27);
-            this.mtbFinalDate.TabIndex = 18;
+            this.mtbFinalDate.TabIndex = 6;
+            this.mtbFinalDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbFinalDate.ValidatingType = typeof(System.DateTime);
             // 
             // bttnSearchInscription
@@ -175,7 +178,7 @@ namespace CECLdb
             this.bttnSearchInscription.Location = new System.Drawing.Point(718, 147);
             this.bttnSearchInscription.Name = "bttnSearchInscription";
             this.bttnSearchInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnSearchInscription.TabIndex = 19;
+            this.bttnSearchInscription.TabIndex = 3;
             this.bttnSearchInscription.Text = "Buscar";
             this.bttnSearchInscription.UseVisualStyleBackColor = false;
             this.bttnSearchInscription.Click += new System.EventHandler(this.bttnSearchInscription_Click);
@@ -208,7 +211,7 @@ namespace CECLdb
             this.bttnImportInscription.Location = new System.Drawing.Point(449, 419);
             this.bttnImportInscription.Name = "bttnImportInscription";
             this.bttnImportInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnImportInscription.TabIndex = 22;
+            this.bttnImportInscription.TabIndex = 8;
             this.bttnImportInscription.Text = "Importar";
             this.bttnImportInscription.UseVisualStyleBackColor = false;
             this.bttnImportInscription.Click += new System.EventHandler(this.bttnImportInscription_Click);

@@ -56,7 +56,7 @@ namespace CECLdb
             this.cmbSelectArea.Location = new System.Drawing.Point(52, 108);
             this.cmbSelectArea.Name = "cmbSelectArea";
             this.cmbSelectArea.Size = new System.Drawing.Size(367, 28);
-            this.cmbSelectArea.TabIndex = 1;
+            this.cmbSelectArea.TabIndex = 0;
             // 
             // lblCourseName
             // 
@@ -72,7 +72,7 @@ namespace CECLdb
             this.txtbCourseName.Location = new System.Drawing.Point(52, 246);
             this.txtbCourseName.Name = "txtbCourseName";
             this.txtbCourseName.Size = new System.Drawing.Size(358, 27);
-            this.txtbCourseName.TabIndex = 3;
+            this.txtbCourseName.TabIndex = 1;
             // 
             // bttnAddCourse
             // 
@@ -80,7 +80,7 @@ namespace CECLdb
             this.bttnAddCourse.Location = new System.Drawing.Point(293, 343);
             this.bttnAddCourse.Name = "bttnAddCourse";
             this.bttnAddCourse.Size = new System.Drawing.Size(108, 28);
-            this.bttnAddCourse.TabIndex = 4;
+            this.bttnAddCourse.TabIndex = 3;
             this.bttnAddCourse.Text = "Agregar";
             this.bttnAddCourse.UseVisualStyleBackColor = false;
             this.bttnAddCourse.Click += new System.EventHandler(this.bttnAddCourse_Click);
@@ -102,7 +102,7 @@ namespace CECLdb
             this.bttnSearchCourse.Location = new System.Drawing.Point(442, 246);
             this.bttnSearchCourse.Name = "bttnSearchCourse";
             this.bttnSearchCourse.Size = new System.Drawing.Size(108, 28);
-            this.bttnSearchCourse.TabIndex = 6;
+            this.bttnSearchCourse.TabIndex = 2;
             this.bttnSearchCourse.Text = "Buscar";
             this.bttnSearchCourse.UseVisualStyleBackColor = false;
             this.bttnSearchCourse.Visible = false;
@@ -113,7 +113,7 @@ namespace CECLdb
             this.bttnSaveCourse.Location = new System.Drawing.Point(293, 343);
             this.bttnSaveCourse.Name = "bttnSaveCourse";
             this.bttnSaveCourse.Size = new System.Drawing.Size(108, 28);
-            this.bttnSaveCourse.TabIndex = 7;
+            this.bttnSaveCourse.TabIndex = 4;
             this.bttnSaveCourse.Text = "Guardar";
             this.bttnSaveCourse.UseVisualStyleBackColor = false;
             this.bttnSaveCourse.Visible = false;

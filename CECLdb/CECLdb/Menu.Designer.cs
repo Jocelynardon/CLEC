@@ -59,7 +59,7 @@ namespace CECLdb
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(215, 31);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Base de Datos CECL";
+            this.lblTitle.Text = "Base de Datos CLEC";
             // 
             // bttnAddMenu
             // 
@@ -67,7 +67,7 @@ namespace CECLdb
             this.bttnAddMenu.Location = new System.Drawing.Point(200, 56);
             this.bttnAddMenu.Name = "bttnAddMenu";
             this.bttnAddMenu.Size = new System.Drawing.Size(165, 34);
-            this.bttnAddMenu.TabIndex = 1;
+            this.bttnAddMenu.TabIndex = 7;
             this.bttnAddMenu.Text = "Agregar";
             this.bttnAddMenu.UseVisualStyleBackColor = false;
             this.bttnAddMenu.Click += new System.EventHandler(this.bttnAddMenu_Click);
@@ -97,7 +97,7 @@ namespace CECLdb
             this.rbttnAddArea.Location = new System.Drawing.Point(30, 194);
             this.rbttnAddArea.Name = "rbttnAddArea";
             this.rbttnAddArea.Size = new System.Drawing.Size(61, 24);
-            this.rbttnAddArea.TabIndex = 6;
+            this.rbttnAddArea.TabIndex = 5;
             this.rbttnAddArea.TabStop = true;
             this.rbttnAddArea.Text = "Área";
             this.rbttnAddArea.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@ namespace CECLdb
             this.rbttnAddEmailSent.Location = new System.Drawing.Point(30, 224);
             this.rbttnAddEmailSent.Name = "rbttnAddEmailSent";
             this.rbttnAddEmailSent.Size = new System.Drawing.Size(124, 24);
-            this.rbttnAddEmailSent.TabIndex = 5;
+            this.rbttnAddEmailSent.TabIndex = 6;
             this.rbttnAddEmailSent.TabStop = true;
             this.rbttnAddEmailSent.Text = "Email Enviado";
             this.rbttnAddEmailSent.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@ namespace CECLdb
             // bttnDeleteMenu
             // 
             this.bttnDeleteMenu.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.bttnDeleteMenu.Location = new System.Drawing.Point(200, 182);
+            this.bttnDeleteMenu.Location = new System.Drawing.Point(200, 184);
             this.bttnDeleteMenu.Name = "bttnDeleteMenu";
             this.bttnDeleteMenu.Size = new System.Drawing.Size(165, 34);
             this.bttnDeleteMenu.TabIndex = 9;
@@ -131,7 +131,7 @@ namespace CECLdb
             this.bttnModifyMenu.Location = new System.Drawing.Point(200, 116);
             this.bttnModifyMenu.Name = "bttnModifyMenu";
             this.bttnModifyMenu.Size = new System.Drawing.Size(165, 34);
-            this.bttnModifyMenu.TabIndex = 7;
+            this.bttnModifyMenu.TabIndex = 8;
             this.bttnModifyMenu.Text = "Modificar";
             this.bttnModifyMenu.UseVisualStyleBackColor = false;
             this.bttnModifyMenu.Click += new System.EventHandler(this.bttnModifyMenu_Click);
@@ -209,7 +209,7 @@ namespace CECLdb
             this.rbttnSearchCourseorAd.Location = new System.Drawing.Point(30, 56);
             this.rbttnSearchCourseorAd.Name = "rbttnSearchCourseorAd";
             this.rbttnSearchCourseorAd.Size = new System.Drawing.Size(118, 24);
-            this.rbttnSearchCourseorAd.TabIndex = 4;
+            this.rbttnSearchCourseorAd.TabIndex = 11;
             this.rbttnSearchCourseorAd.TabStop = true;
             this.rbttnSearchCourseorAd.Text = "Curso o aviso";
             this.rbttnSearchCourseorAd.UseVisualStyleBackColor = true;
@@ -220,7 +220,7 @@ namespace CECLdb
             this.bttnSearchMenu.Location = new System.Drawing.Point(7, 118);
             this.bttnSearchMenu.Name = "bttnSearchMenu";
             this.bttnSearchMenu.Size = new System.Drawing.Size(165, 34);
-            this.bttnSearchMenu.TabIndex = 11;
+            this.bttnSearchMenu.TabIndex = 12;
             this.bttnSearchMenu.Text = "Consultar";
             this.bttnSearchMenu.UseVisualStyleBackColor = false;
             this.bttnSearchMenu.Click += new System.EventHandler(this.Buscar_Click);
@@ -231,7 +231,7 @@ namespace CECLdb
             this.rbttnSearchPerson.Location = new System.Drawing.Point(30, 26);
             this.rbttnSearchPerson.Name = "rbttnSearchPerson";
             this.rbttnSearchPerson.Size = new System.Drawing.Size(81, 24);
-            this.rbttnSearchPerson.TabIndex = 0;
+            this.rbttnSearchPerson.TabIndex = 10;
             this.rbttnSearchPerson.TabStop = true;
             this.rbttnSearchPerson.Text = "Persona";
             this.rbttnSearchPerson.UseVisualStyleBackColor = true;

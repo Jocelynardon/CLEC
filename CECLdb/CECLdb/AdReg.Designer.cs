@@ -86,7 +86,7 @@ namespace CECLdb
             this.cmbSelectCourseAd.Location = new System.Drawing.Point(42, 146);
             this.cmbSelectCourseAd.Name = "cmbSelectCourseAd";
             this.cmbSelectCourseAd.Size = new System.Drawing.Size(427, 28);
-            this.cmbSelectCourseAd.TabIndex = 3;
+            this.cmbSelectCourseAd.TabIndex = 2;
             // 
             // lblDateAd
             // 
@@ -107,7 +107,7 @@ namespace CECLdb
             this.dtpDateAd.Location = new System.Drawing.Point(42, 231);
             this.dtpDateAd.Name = "dtpDateAd";
             this.dtpDateAd.Size = new System.Drawing.Size(312, 27);
-            this.dtpDateAd.TabIndex = 5;
+            this.dtpDateAd.TabIndex = 3;
             this.dtpDateAd.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lblDescriptionAd
@@ -125,7 +125,7 @@ namespace CECLdb
             this.rtbDescriptionAd.Location = new System.Drawing.Point(42, 320);
             this.rtbDescriptionAd.Name = "rtbDescriptionAd";
             this.rtbDescriptionAd.Size = new System.Drawing.Size(452, 229);
-            this.rtbDescriptionAd.TabIndex = 7;
+            this.rtbDescriptionAd.TabIndex = 4;
             this.rtbDescriptionAd.Text = "";
             // 
             // bttnAddAd
@@ -134,7 +134,7 @@ namespace CECLdb
             this.bttnAddAd.Location = new System.Drawing.Point(466, 571);
             this.bttnAddAd.Name = "bttnAddAd";
             this.bttnAddAd.Size = new System.Drawing.Size(114, 30);
-            this.bttnAddAd.TabIndex = 8;
+            this.bttnAddAd.TabIndex = 5;
             this.bttnAddAd.Text = "Agregar";
             this.bttnAddAd.UseVisualStyleBackColor = false;
             this.bttnAddAd.Click += new System.EventHandler(this.bttnAddAd_Click);
@@ -142,7 +142,7 @@ namespace CECLdb
             // lblAdNumber
             // 
             this.lblAdNumber.AutoSize = true;
-            this.lblAdNumber.Location = new System.Drawing.Point(552, 23);
+            this.lblAdNumber.Location = new System.Drawing.Point(542, 110);
             this.lblAdNumber.Name = "lblAdNumber";
             this.lblAdNumber.Size = new System.Drawing.Size(72, 20);
             this.lblAdNumber.TabIndex = 9;
@@ -152,11 +152,11 @@ namespace CECLdb
             // 
             this.txtbAdNumber.BackColor = System.Drawing.Color.Linen;
             this.txtbAdNumber.Enabled = false;
-            this.txtbAdNumber.Location = new System.Drawing.Point(552, 56);
+            this.txtbAdNumber.Location = new System.Drawing.Point(542, 147);
             this.txtbAdNumber.Name = "txtbAdNumber";
             this.txtbAdNumber.ReadOnly = true;
             this.txtbAdNumber.Size = new System.Drawing.Size(148, 27);
-            this.txtbAdNumber.TabIndex = 10;
+            this.txtbAdNumber.TabIndex = 8;
             // 
             // bttnReturnAd
             // 
@@ -164,7 +164,7 @@ namespace CECLdb
             this.bttnReturnAd.Location = new System.Drawing.Point(586, 571);
             this.bttnReturnAd.Name = "bttnReturnAd";
             this.bttnReturnAd.Size = new System.Drawing.Size(114, 30);
-            this.bttnReturnAd.TabIndex = 11;
+            this.bttnReturnAd.TabIndex = 7;
             this.bttnReturnAd.Text = "Regresar";
             this.bttnReturnAd.UseVisualStyleBackColor = false;
             this.bttnReturnAd.Click += new System.EventHandler(this.bttnReturnAd_Click);
@@ -188,10 +188,10 @@ namespace CECLdb
             // bttnSearchAd
             // 
             this.bttnSearchAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchAd.Location = new System.Drawing.Point(575, 105);
+            this.bttnSearchAd.Location = new System.Drawing.Point(744, 149);
             this.bttnSearchAd.Name = "bttnSearchAd";
             this.bttnSearchAd.Size = new System.Drawing.Size(99, 25);
-            this.bttnSearchAd.TabIndex = 15;
+            this.bttnSearchAd.TabIndex = 9;
             this.bttnSearchAd.Text = "Buscar";
             this.bttnSearchAd.UseVisualStyleBackColor = false;
             this.bttnSearchAd.Visible = false;
@@ -202,7 +202,7 @@ namespace CECLdb
             this.bttnSaveAd.Location = new System.Drawing.Point(466, 571);
             this.bttnSaveAd.Name = "bttnSaveAd";
             this.bttnSaveAd.Size = new System.Drawing.Size(114, 30);
-            this.bttnSaveAd.TabIndex = 16;
+            this.bttnSaveAd.TabIndex = 6;
             this.bttnSaveAd.Text = "Guardar";
             this.bttnSaveAd.UseVisualStyleBackColor = false;
             this.bttnSaveAd.Visible = false;
@@ -226,7 +226,7 @@ namespace CECLdb
             this.bttnEmailSent.Location = new System.Drawing.Point(764, 571);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
-            this.bttnEmailSent.TabIndex = 18;
+            this.bttnEmailSent.TabIndex = 8;
             this.bttnEmailSent.Text = "Enviado a";
             this.bttnEmailSent.UseVisualStyleBackColor = false;
             this.bttnEmailSent.Click += new System.EventHandler(this.bttnEmailSent_Click);

@@ -50,7 +50,7 @@ namespace CECLdb
             this.txtbPersonIDRegister.Location = new System.Drawing.Point(490, 141);
             this.txtbPersonIDRegister.Name = "txtbPersonIDRegister";
             this.txtbPersonIDRegister.Size = new System.Drawing.Size(234, 27);
-            this.txtbPersonIDRegister.TabIndex = 13;
+            this.txtbPersonIDRegister.TabIndex = 2;
             // 
             // lblPersonIDRegister
             // 
@@ -67,7 +67,7 @@ namespace CECLdb
             this.cmbSelectCourseRegister.Location = new System.Drawing.Point(12, 140);
             this.cmbSelectCourseRegister.Name = "cmbSelectCourseRegister";
             this.cmbSelectCourseRegister.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectCourseRegister.TabIndex = 11;
+            this.cmbSelectCourseRegister.TabIndex = 1;
             // 
             // lblSelectCourseInscription
             // 
@@ -84,7 +84,7 @@ namespace CECLdb
             this.cmbSelectAreaRegister.Location = new System.Drawing.Point(12, 51);
             this.cmbSelectAreaRegister.Name = "cmbSelectAreaRegister";
             this.cmbSelectAreaRegister.Size = new System.Drawing.Size(397, 28);
-            this.cmbSelectAreaRegister.TabIndex = 9;
+            this.cmbSelectAreaRegister.TabIndex = 0;
             this.cmbSelectAreaRegister.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaInscription_SelectionChangeCommitted);
             // 
             // lblSelectAreaInscription
@@ -112,7 +112,7 @@ namespace CECLdb
             this.dtpConsultationDateRegister.Location = new System.Drawing.Point(12, 230);
             this.dtpConsultationDateRegister.Name = "dtpConsultationDateRegister";
             this.dtpConsultationDateRegister.Size = new System.Drawing.Size(307, 27);
-            this.dtpConsultationDateRegister.TabIndex = 17;
+            this.dtpConsultationDateRegister.TabIndex = 4;
             // 
             // bttnAddRegister
             // 
@@ -120,7 +120,7 @@ namespace CECLdb
             this.bttnAddRegister.Location = new System.Drawing.Point(316, 326);
             this.bttnAddRegister.Name = "bttnAddRegister";
             this.bttnAddRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnAddRegister.TabIndex = 18;
+            this.bttnAddRegister.TabIndex = 5;
             this.bttnAddRegister.Text = "Agregar";
             this.bttnAddRegister.UseVisualStyleBackColor = false;
             this.bttnAddRegister.Click += new System.EventHandler(this.bttnAddRegister_Click);
@@ -131,7 +131,7 @@ namespace CECLdb
             this.bttnReturnRegister.Location = new System.Drawing.Point(555, 326);
             this.bttnReturnRegister.Name = "bttnReturnRegister";
             this.bttnReturnRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnReturnRegister.TabIndex = 19;
+            this.bttnReturnRegister.TabIndex = 7;
             this.bttnReturnRegister.Text = "Regresar";
             this.bttnReturnRegister.UseVisualStyleBackColor = false;
             this.bttnReturnRegister.Click += new System.EventHandler(this.bttnReturnRegister_Click);
@@ -153,7 +153,7 @@ namespace CECLdb
             this.bttnSearchRegister.Location = new System.Drawing.Point(762, 141);
             this.bttnSearchRegister.Name = "bttnSearchRegister";
             this.bttnSearchRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnSearchRegister.TabIndex = 21;
+            this.bttnSearchRegister.TabIndex = 3;
             this.bttnSearchRegister.Text = "Buscar";
             this.bttnSearchRegister.UseVisualStyleBackColor = false;
             this.bttnSearchRegister.Click += new System.EventHandler(this.bttnSearchRegister_Click);
@@ -175,7 +175,7 @@ namespace CECLdb
             this.bttnImportRegister.Location = new System.Drawing.Point(434, 326);
             this.bttnImportRegister.Name = "bttnImportRegister";
             this.bttnImportRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnImportRegister.TabIndex = 23;
+            this.bttnImportRegister.TabIndex = 6;
             this.bttnImportRegister.Text = "Importar";
             this.bttnImportRegister.UseVisualStyleBackColor = false;
             this.bttnImportRegister.Click += new System.EventHandler(this.bttnImportRegister_Click);
