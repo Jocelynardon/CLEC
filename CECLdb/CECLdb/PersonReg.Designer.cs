@@ -162,6 +162,7 @@ namespace CECLdb
             this.bttnImportPerson.TabIndex = 13;
             this.bttnImportPerson.Text = "Importar";
             this.bttnImportPerson.UseVisualStyleBackColor = false;
+            this.bttnImportPerson.Click += new System.EventHandler(this.bttnImportPerson_Click);
             // 
             // lblLastNamePerson
             // 
