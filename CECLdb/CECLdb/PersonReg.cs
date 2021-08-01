@@ -433,6 +433,7 @@ namespace CECLdb
         }
         private void LoadTableSelectedPerson(List<int> personSelected)
         {
+            amountSelected = 0;
             List<object> listToShow = new List<object>();
             CtrlPerson person = new CtrlPerson();
             int sentID = 0;
@@ -631,11 +632,10 @@ namespace CECLdb
                     if (selectedIDList[i].Equals(row.Cells["idPerson"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
-                        amountSelected++;
                     }
                 }
             }
-
+            amountSelected = selectedIDList.Count;
         }
         private void CloseWindow()
         {
