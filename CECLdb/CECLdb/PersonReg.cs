@@ -75,6 +75,7 @@ namespace CECLdb
                 Deletebtn.Location = new Point(459, 513);
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
+                btnClean.Visible = false;
             }
             if (Menu.action == 4||Menu.action==5)
             {
