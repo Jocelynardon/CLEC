@@ -14,11 +14,15 @@ namespace CECLdb
     public partial class InscriptionReg : Form, AddID
     {
         int winOrLose;
+        DateTime actualDate = DateTime.Today;
         public InscriptionReg()
         {
             InitializeComponent();
-
             LoadAreaInscription();
+            if (Menu.action==1)
+            {
+                dateToday();
+            }
             if (Menu.action==2)
             {
                 txtbPersonIDInscription.ReadOnly = false;
@@ -42,28 +46,56 @@ namespace CECLdb
         }
         private void bttnAddInscription_Click(object sender, EventArgs e)
         {
-            int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
-            int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
-            int idPerson = int.Parse(txtbPersonIDInscription.Text);
+            if (cmbSelectAreaInscription.Text!="")
+            {
+                if (cmbSelectCourseInscription.Text!="")
+                {
+                    if (txtbPersonIDInscription.Text!="")
+                    {
+                        if (mtbStartDate.Text!="")
+                        {
+                            int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
+                            int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
+                            int idPerson = int.Parse(txtbPersonIDInscription.Text);
 
-            string sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,FechaFin,Aprobo) VALUES ('" + idArea + "'," +
-                "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "')";
-            MySqlConnection connectionBD = Connection.connection();
-            connectionBD.Open();
-            try
-            {
-                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Registro correctamente agregado");
-                Clean();
+                            string sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,FechaFin,Aprobo) VALUES ('" + idArea + "'," +
+                                "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "')";
+                            MySqlConnection connectionBD = Connection.connection();
+                            connectionBD.Open();
+                            try
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Registro correctamente agregado");
+                                Clean();
+                            }
+                            catch (MySqlException ex1)
+                            {
+                                MessageBox.Show("Error al guardar " + ex1.Message);
+                            }
+                            finally
+                            {
+                                connectionBD.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese la fecha de inicio");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese el ID de la persona");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione el curso al que pertenece");
+                }
             }
-            catch (MySqlException ex1)
+            else
             {
-                MessageBox.Show("Error al guardar " + ex1.Message);
-            }
-            finally
-            {
-                connectionBD.Close();
+                MessageBox.Show("Seleccione el área al que pertenece");
             }
         }
         private void bttnReturnInscription_Click(object sender, EventArgs e)
@@ -138,6 +170,25 @@ namespace CECLdb
             finally
             {
                 connectionBD.Close();
+            }
+        }
+        private void dateToday()
+        {
+
+            if (actualDate.Month>0 && actualDate.Month<10)
+            {
+                if (actualDate.Day>0 && actualDate.Day<10)
+                {
+                    mtbStartDate.Text = actualDate.Year + "0" + actualDate.Month + "0" + actualDate.Day;
+                }
+                else
+                {
+                    mtbStartDate.Text = actualDate.Year + "0" + actualDate.Month + "" + actualDate.Day;
+                }
+            }
+            else
+            {
+                mtbStartDate.Text = actualDate.Year + "" + actualDate.Month + "" + actualDate.Day;
             }
         }
 

@@ -47,6 +47,11 @@ namespace CECLdb
             this.bttnSaveAd = new System.Windows.Forms.Button();
             this.lblEscAd = new System.Windows.Forms.Label();
             this.bttnEmailSent = new System.Windows.Forms.Button();
+            this.dgvAdReg = new System.Windows.Forms.DataGridView();
+            this.txtTextAd = new System.Windows.Forms.TextBox();
+            this.cmbTypeAd = new System.Windows.Forms.ComboBox();
+            this.bttnAdSearch = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSelectAreaAd
@@ -221,21 +226,68 @@ namespace CECLdb
             // 
             // bttnEmailSent
             // 
-            this.bttnEmailSent.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.bttnEmailSent.BackColor = System.Drawing.Color.IndianRed;
             this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bttnEmailSent.Location = new System.Drawing.Point(764, 571);
+            this.bttnEmailSent.Location = new System.Drawing.Point(500, 1013);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
             this.bttnEmailSent.TabIndex = 8;
-            this.bttnEmailSent.Text = "Enviado a";
+            this.bttnEmailSent.Text = "Destinatario";
             this.bttnEmailSent.UseVisualStyleBackColor = false;
+            this.bttnEmailSent.Visible = false;
             this.bttnEmailSent.Click += new System.EventHandler(this.bttnEmailSent_Click);
+            // 
+            // dgvAdReg
+            // 
+            this.dgvAdReg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvAdReg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvAdReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdReg.Location = new System.Drawing.Point(42, 665);
+            this.dgvAdReg.Name = "dgvAdReg";
+            this.dgvAdReg.RowHeadersWidth = 51;
+            this.dgvAdReg.RowTemplate.Height = 29;
+            this.dgvAdReg.Size = new System.Drawing.Size(992, 330);
+            this.dgvAdReg.TabIndex = 18;
+            this.dgvAdReg.Visible = false;
+            // 
+            // txtTextAd
+            // 
+            this.txtTextAd.Location = new System.Drawing.Point(50, 617);
+            this.txtTextAd.Name = "txtTextAd";
+            this.txtTextAd.Size = new System.Drawing.Size(564, 27);
+            this.txtTextAd.TabIndex = 19;
+            this.txtTextAd.WordWrap = false;
+            // 
+            // cmbTypeAd
+            // 
+            this.cmbTypeAd.FormattingEnabled = true;
+            this.cmbTypeAd.Location = new System.Drawing.Point(629, 617);
+            this.cmbTypeAd.Name = "cmbTypeAd";
+            this.cmbTypeAd.Size = new System.Drawing.Size(249, 28);
+            this.cmbTypeAd.TabIndex = 20;
+            this.cmbTypeAd.Visible = false;
+            // 
+            // bttnAdSearch
+            // 
+            this.bttnAdSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.bttnAdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnAdSearch.Location = new System.Drawing.Point(904, 619);
+            this.bttnAdSearch.Name = "bttnAdSearch";
+            this.bttnAdSearch.Size = new System.Drawing.Size(116, 26);
+            this.bttnAdSearch.TabIndex = 21;
+            this.bttnAdSearch.Text = "Buscar";
+            this.bttnAdSearch.UseVisualStyleBackColor = false;
+            this.bttnAdSearch.Visible = false;
             // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 646);
+            this.ClientSize = new System.Drawing.Size(1099, 1055);
+            this.Controls.Add(this.bttnAdSearch);
+            this.Controls.Add(this.cmbTypeAd);
+            this.Controls.Add(this.txtTextAd);
+            this.Controls.Add(this.dgvAdReg);
             this.Controls.Add(this.bttnEmailSent);
             this.Controls.Add(this.lblEscAd);
             this.Controls.Add(this.bttnSaveAd);
@@ -258,6 +310,7 @@ namespace CECLdb
             this.Name = "AdReg";
             this.Text = "AdReg";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,5 +336,9 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSaveAd;
         private System.Windows.Forms.Label lblEscAd;
         private System.Windows.Forms.Button bttnEmailSent;
+        private System.Windows.Forms.DataGridView dgvAdReg;
+        private System.Windows.Forms.TextBox txtTextAd;
+        private System.Windows.Forms.ComboBox cmbTypeAd;
+        private System.Windows.Forms.Button bttnAdSearch;
     }
 }

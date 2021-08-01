@@ -29,7 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -57,6 +57,8 @@ namespace CECLdb
             this.btnSaveData = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
             this.lblDataPerson = new System.Windows.Forms.Label();
+            this.bttnSentEmail = new System.Windows.Forms.Button();
+            this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,14 +209,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -334,6 +336,7 @@ namespace CECLdb
             this.btnSaveData.TabIndex = 6;
             this.btnSaveData.Text = "Guardar Datos";
             this.btnSaveData.UseVisualStyleBackColor = false;
+            this.btnSaveData.Visible = false;
             this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
             // btnClean
@@ -346,6 +349,7 @@ namespace CECLdb
             this.btnClean.TabIndex = 8;
             this.btnClean.Text = "Limpiar";
             this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Visible = false;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // lblDataPerson
@@ -360,11 +364,39 @@ namespace CECLdb
             this.lblDataPerson.Text = "DATOS  DE LA PERSONA";
             this.lblDataPerson.Visible = false;
             // 
+            // bttnSentEmail
+            // 
+            this.bttnSentEmail.BackColor = System.Drawing.Color.DarkOrange;
+            this.bttnSentEmail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSentEmail.Location = new System.Drawing.Point(171, 788);
+            this.bttnSentEmail.Name = "bttnSentEmail";
+            this.bttnSentEmail.Size = new System.Drawing.Size(187, 29);
+            this.bttnSentEmail.TabIndex = 30;
+            this.bttnSentEmail.Text = "Registrar como enviado";
+            this.bttnSentEmail.UseVisualStyleBackColor = false;
+            this.bttnSentEmail.Visible = false;
+            this.bttnSentEmail.Click += new System.EventHandler(this.bttnSentEmail_Click);
+            // 
+            // bttnViewSelectedPerson
+            // 
+            this.bttnViewSelectedPerson.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelectedPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewSelectedPerson.Location = new System.Drawing.Point(739, 788);
+            this.bttnViewSelectedPerson.Name = "bttnViewSelectedPerson";
+            this.bttnViewSelectedPerson.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelectedPerson.TabIndex = 31;
+            this.bttnViewSelectedPerson.Text = "Ver seleccionados";
+            this.bttnViewSelectedPerson.UseVisualStyleBackColor = false;
+            this.bttnViewSelectedPerson.Visible = false;
+            this.bttnViewSelectedPerson.Click += new System.EventHandler(this.bttnViewSelectedPerson_Click);
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.bttnViewSelectedPerson);
+            this.Controls.Add(this.bttnSentEmail);
             this.Controls.Add(this.lblDataPerson);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnSaveData);
@@ -431,5 +463,7 @@ namespace CECLdb
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Label lblDataPerson;
+        private System.Windows.Forms.Button bttnSentEmail;
+        private System.Windows.Forms.Button bttnViewSelectedPerson;
     }
 }

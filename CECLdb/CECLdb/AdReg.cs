@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CLEC;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,17 @@ namespace CECLdb
 {
     public partial class AdReg : Form
     {
+        public static int idAd = 0;
+        //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado
         public AdReg()
         {
             InitializeComponent();
             LoadAreaAd();
             ShowNumberAd();
+            if (Menu.action==1)
+            {
+
+            }
             if (Menu.action==2)
             {
                 bttnAddAd.Visible = false;
@@ -170,7 +177,6 @@ namespace CECLdb
 
         private void ShowNumberAd()
         {
-            String idAd=txtbAdNumber.Text;
             MySqlDataReader reader = null;
             string sql = "SELECT MAX(IDaviso)+1 FROM aviso";
             MySqlConnection connectionBD = Connection.connection();
@@ -186,11 +192,13 @@ namespace CECLdb
                         try
                         {
                             txtbAdNumber.Text = reader.GetString(0);
+                            idAd = int.Parse(txtbAdNumber.Text);
                         }
                         catch (Exception)
                         {
 
                             txtbAdNumber.Text = "1";
+                            idAd = int.Parse(txtbAdNumber.Text);
                         }
                             
                     }
@@ -230,6 +238,7 @@ namespace CECLdb
 
         private void bttnEmailSent_Click(object sender, EventArgs e)
         {
+            Menu.action = 6;
             PersonReg Frm = new PersonReg();
             Frm.Show();
         }

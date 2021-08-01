@@ -25,11 +25,11 @@ namespace CECLdb
         public int idPerson = 0;
         public List<int> selectedIDList= new List<int>();
 
-        //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro, 5 viene de inscripción
+        //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro, 5 viene de inscripción,6 viene de de aviso
         public PersonReg()
         {
             InitializeComponent();
-            if (Menu.action == 2 || Menu.action == 3 || Menu.action == 4||Menu.action==5)
+            if (Menu.action >=2 && Menu.action<=6)
             {
                 LoadTypeSearch();
                 bttnAddPerson.Visible = false;
@@ -39,7 +39,9 @@ namespace CECLdb
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
                 lblModify.Visible = false;
-                if (Menu.action == 3 || Menu.action == 4||Menu.action==5)
+                bttnViewSelectedPerson.Visible = true;
+                bttnViewSelectedPerson.Location = new Point(762, 513);
+                if (Menu.action>=3 && Menu.action<=6)
                 {
                     this.Height = 169;
                     HideAndMove();
@@ -50,6 +52,8 @@ namespace CECLdb
                 lblDataPerson.Visible = true;
                 this.Height = 367;
                 btnSaveData.Visible = false;
+                btnClean.Location = new Point(739,273);
+                btnClean.Visible = true;
             }
             if (Menu.action == 2)
             {
@@ -60,12 +64,15 @@ namespace CECLdb
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = true;
+                btnClean.Visible = true;
+                btnSaveData.Visible = true;
             }
             if (Menu.action == 3)
             {
                 SelectAllcbx.Visible = true;
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = true;
+                Deletebtn.Location = new Point(459, 513);
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
             }
@@ -74,7 +81,19 @@ namespace CECLdb
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = true;
+                bttnSelectPerson.Location = new Point(459, 513);
                 btnSaveData.Visible = false;
+            }
+            if (Menu.action==6)
+            {
+                SelectAllcbx.Visible = true;
+                Modifybtn.Visible = false;
+                Deletebtn.Visible = false;
+                bttnSelectPerson.Visible = false;
+                btnSaveData.Visible = false;
+                bttnSentEmail.Visible = true;
+                bttnSentEmail.Location = new Point(403,513) ;
+                bttnViewSelectedPerson.Location = new Point(762, 513);
             }
         }
 
@@ -162,7 +181,7 @@ namespace CECLdb
                     {
                         if (lines[i] != "")
                         {
-                            String[] lineConverted = lines[i].Split(",");
+                            String[] lineConverted = lines[i].Split(";");
 
                             string sql = "INSERT INTO Persona (codigo,Nombre,Apellido,Correo,Teléfono) VALUES" +
                         "('" + lineConverted[0] + "','" + lineConverted[1] + "','" + lineConverted[2] + "'," +
@@ -203,6 +222,58 @@ namespace CECLdb
                 }
             }
         }
+        private void bttnSentEmail_Click(object sender, EventArgs e)
+        {
+            int saveId = 0;
+            //int saveId = 0;
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            if (amountSelected >= 1)
+            {
+                for (int i = 0; i < selectedIDList.Count; i++)
+                {
+                    saveId=int.Parse(selectedIDList[i].ToString());
+                    string sql = "INSERT INTO correoenviado (IDaviso,IDpersona) VALUES" +
+                            "('" + AdReg.idAd + "','"  + saveId + "')";
+
+                    MySqlConnection connectionBD = Connection.connection();
+                    connectionBD.Open();
+                    try
+                    {
+                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                        command.ExecuteNonQuery();
+                        if (i==selectedIDList.Count-1)
+                        {
+                            MessageBox.Show("Se ha registrado exitosamente");
+                            Clean();
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+
+                        MessageBox.Show("Error al guardar: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connectionBD.Close();
+                    }
+                }
+            }
+            this.Close();
+        }
+        private void bttnViewSelectedPerson_Click(object sender, EventArgs e)
+        {
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelected>=1)
+            {
+                LoadTableSelectedPerson(selectedIDList);
+            }
+        }
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
             amountSelected = 0;
@@ -210,7 +281,7 @@ namespace CECLdb
             if (amountPerson > 0)
             {
                 LoadTableCode(null);
-                if (Menu.action == 3 || Menu.action == 4)
+                if (Menu.action>=3 && Menu.action<=6)
                 {
 
                     this.Height = 615;
@@ -219,6 +290,7 @@ namespace CECLdb
                 {
                     this.Height = 875;
                     bttnReturnPerson.Location = new Point(496, 787);
+                    bttnViewSelectedPerson.Location = new Point(618, 787);
                 }
                 String textSearch = txtTextSearch.Text;
 
@@ -239,6 +311,10 @@ namespace CECLdb
                         cmbTypeSearch.Text = "";
                         break;
                 }
+            }
+            else
+            {
+                MessageBox.Show("No se encuentran personas registradas");
             }
 
         }
@@ -270,11 +346,12 @@ namespace CECLdb
             bttnSearchPerson.Location = new Point(811, 76);
             SelectAllcbx.Location = new Point(46, 133);
             dgvPersonReg.Location = new Point(46, 174);
-            bttnReturnPerson.Location = new Point(660, 513);
+            bttnReturnPerson.Location = new Point(618, 513);
             Modifybtn.Location = new Point(285, 513);
             Deletebtn.Location = new Point(408, 513);
             bttnSelectPerson.Location = new Point(533, 513);
         }
+        //CAMBIAR ENSEÑAR EL APELLIDO
         private void LoadTableCode(string date)
         {
             List<Person> list = new List<Person>();
@@ -287,6 +364,7 @@ namespace CECLdb
                 try
                 {
                     this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                    this.dgvPersonReg.Columns["LastName"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -312,6 +390,7 @@ namespace CECLdb
                 try
                 {
                     this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                    this.dgvPersonReg.Columns["LastName"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -338,6 +417,7 @@ namespace CECLdb
                 try
                 {
                     this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                    this.dgvPersonReg.Columns["LastName"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -349,6 +429,39 @@ namespace CECLdb
             {
                 MessageBox.Show("No se han encontrado datos");
                 LoadTableName(null);
+            }
+        }
+        private void LoadTableSelectedPerson(List<int> personSelected)
+        {
+            List<object> listToShow = new List<object>();
+            CtrlPerson person = new CtrlPerson();
+            int sentID = 0;
+            for (int i = 0; i < personSelected.Count; i++)
+            {
+                sentID=int.Parse(personSelected[i].ToString());
+                person.SelectedEmailSent(sentID);
+                //listToShow.Add();
+            }
+            dgvPersonReg.DataSource =person.listSelected;
+            validateSelection();
+
+            if (dgvPersonReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
+                    this.dgvPersonReg.Columns["LastName"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha seleccionado a alguna persona");
+                    LoadTableCode(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado datos");
+                LoadTableSelectedPerson(null);
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -441,7 +554,7 @@ namespace CECLdb
                         String personName = txtbNamePerson.Text;
                         String personLastName = txtbLastNamePerson.Text;
                         String personEmail = txtEmailPerson.Text;
-                        int codePerson = int.Parse(txtbCodePerson.Text);
+                        string codePerson = txtbCodePerson.Text;
                         int personNumber = int.Parse(txtbTelephone.Text);
 
                         string sql = "UPDATE persona SET Codigo = '" + codePerson + "', Nombre = '" + personName + "', Apellido = '" + personLastName + "', Correo = '" + personEmail + "', Teléfono = '" + personNumber + "' " +
@@ -518,6 +631,7 @@ namespace CECLdb
                     if (selectedIDList[i].Equals(row.Cells["idPerson"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
+                        amountSelected++;
                     }
                 }
             }
@@ -525,13 +639,13 @@ namespace CECLdb
         }
         private void CloseWindow()
         {
-            if (Menu.action == 1 || Menu.action == 2 || Menu.action == 3)
+            if (Menu.action>=1 && Menu.action<=3)
             {
                 Menu Frm = new Menu();
                 Frm.Show();
                 this.Close();
             }
-            if (Menu.action == 4||Menu.action==5)
+            if (Menu.action >= 4 && Menu.action <= 6)
             {
                 this.Close();
             }
