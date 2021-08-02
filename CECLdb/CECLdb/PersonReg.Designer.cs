@@ -249,6 +249,7 @@ namespace CECLdb
             this.SelectAllcbx.Text = "Seleccionar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
+            this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
             // Modifybtn
             // 
@@ -274,6 +275,7 @@ namespace CECLdb
             this.Deletebtn.Text = "Eliminar";
             this.Deletebtn.UseVisualStyleBackColor = false;
             this.Deletebtn.Visible = false;
+            this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
             // bttnSelectPerson
             // 
