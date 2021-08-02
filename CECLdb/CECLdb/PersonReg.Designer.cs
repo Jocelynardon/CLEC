@@ -343,7 +343,7 @@ namespace CECLdb
             // 
             this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClean.Location = new System.Drawing.Point(618, 273);
+            this.btnClean.Location = new System.Drawing.Point(599, 273);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
             this.btnClean.TabIndex = 8;
@@ -425,7 +425,7 @@ namespace CECLdb
             this.Controls.Add(this.lblName);
             this.KeyPreview = true;
             this.Name = "PersonReg";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PersonRegister";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).EndInit();

@@ -43,14 +43,20 @@ namespace CECLdb
             this.bttnReturnAd = new System.Windows.Forms.Button();
             this.lblSearchAd = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.bttnSearchAd = new System.Windows.Forms.Button();
             this.bttnSaveAd = new System.Windows.Forms.Button();
             this.lblEscAd = new System.Windows.Forms.Label();
             this.bttnEmailSent = new System.Windows.Forms.Button();
             this.dgvAdReg = new System.Windows.Forms.DataGridView();
             this.txtTextAd = new System.Windows.Forms.TextBox();
             this.cmbTypeAd = new System.Windows.Forms.ComboBox();
-            this.bttnAdSearch = new System.Windows.Forms.Button();
+            this.bttnSearchAd = new System.Windows.Forms.Button();
+            this.ModifybtnAd = new System.Windows.Forms.Button();
+            this.DeletebtnAd = new System.Windows.Forms.Button();
+            this.bttnSelectPerson = new System.Windows.Forms.Button();
+            this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
+            this.btnCleanAd = new System.Windows.Forms.Button();
+            this.SelectAllcbx = new System.Windows.Forms.CheckBox();
+            this.bttnImportAd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +124,7 @@ namespace CECLdb
             // lblDescriptionAd
             // 
             this.lblDescriptionAd.AutoSize = true;
-            this.lblDescriptionAd.Location = new System.Drawing.Point(42, 285);
+            this.lblDescriptionAd.Location = new System.Drawing.Point(42, 275);
             this.lblDescriptionAd.Name = "lblDescriptionAd";
             this.lblDescriptionAd.Size = new System.Drawing.Size(91, 20);
             this.lblDescriptionAd.TabIndex = 6;
@@ -127,7 +133,7 @@ namespace CECLdb
             // rtbDescriptionAd
             // 
             this.rtbDescriptionAd.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.rtbDescriptionAd.Location = new System.Drawing.Point(42, 320);
+            this.rtbDescriptionAd.Location = new System.Drawing.Point(42, 298);
             this.rtbDescriptionAd.Name = "rtbDescriptionAd";
             this.rtbDescriptionAd.Size = new System.Drawing.Size(452, 229);
             this.rtbDescriptionAd.TabIndex = 4;
@@ -136,7 +142,7 @@ namespace CECLdb
             // bttnAddAd
             // 
             this.bttnAddAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddAd.Location = new System.Drawing.Point(466, 571);
+            this.bttnAddAd.Location = new System.Drawing.Point(303, 545);
             this.bttnAddAd.Name = "bttnAddAd";
             this.bttnAddAd.Size = new System.Drawing.Size(114, 30);
             this.bttnAddAd.TabIndex = 5;
@@ -166,7 +172,7 @@ namespace CECLdb
             // bttnReturnAd
             // 
             this.bttnReturnAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnAd.Location = new System.Drawing.Point(586, 571);
+            this.bttnReturnAd.Location = new System.Drawing.Point(423, 545);
             this.bttnReturnAd.Name = "bttnReturnAd";
             this.bttnReturnAd.Size = new System.Drawing.Size(114, 30);
             this.bttnReturnAd.TabIndex = 7;
@@ -190,21 +196,10 @@ namespace CECLdb
             this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 14;
             // 
-            // bttnSearchAd
-            // 
-            this.bttnSearchAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchAd.Location = new System.Drawing.Point(744, 149);
-            this.bttnSearchAd.Name = "bttnSearchAd";
-            this.bttnSearchAd.Size = new System.Drawing.Size(99, 25);
-            this.bttnSearchAd.TabIndex = 9;
-            this.bttnSearchAd.Text = "Buscar";
-            this.bttnSearchAd.UseVisualStyleBackColor = false;
-            this.bttnSearchAd.Visible = false;
-            // 
             // bttnSaveAd
             // 
             this.bttnSaveAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveAd.Location = new System.Drawing.Point(466, 571);
+            this.bttnSaveAd.Location = new System.Drawing.Point(303, 545);
             this.bttnSaveAd.Name = "bttnSaveAd";
             this.bttnSaveAd.Size = new System.Drawing.Size(114, 30);
             this.bttnSaveAd.TabIndex = 6;
@@ -226,9 +221,9 @@ namespace CECLdb
             // 
             // bttnEmailSent
             // 
-            this.bttnEmailSent.BackColor = System.Drawing.Color.IndianRed;
+            this.bttnEmailSent.BackColor = System.Drawing.Color.SpringGreen;
             this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bttnEmailSent.Location = new System.Drawing.Point(500, 1013);
+            this.bttnEmailSent.Location = new System.Drawing.Point(678, 546);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
             this.bttnEmailSent.TabIndex = 8;
@@ -256,7 +251,7 @@ namespace CECLdb
             this.txtTextAd.Name = "txtTextAd";
             this.txtTextAd.Size = new System.Drawing.Size(564, 27);
             this.txtTextAd.TabIndex = 19;
-            this.txtTextAd.WordWrap = false;
+            this.txtTextAd.Visible = false;
             // 
             // cmbTypeAd
             // 
@@ -267,31 +262,121 @@ namespace CECLdb
             this.cmbTypeAd.TabIndex = 20;
             this.cmbTypeAd.Visible = false;
             // 
-            // bttnAdSearch
+            // bttnSearchAd
             // 
-            this.bttnAdSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.bttnAdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnAdSearch.Location = new System.Drawing.Point(904, 619);
-            this.bttnAdSearch.Name = "bttnAdSearch";
-            this.bttnAdSearch.Size = new System.Drawing.Size(116, 26);
-            this.bttnAdSearch.TabIndex = 21;
-            this.bttnAdSearch.Text = "Buscar";
-            this.bttnAdSearch.UseVisualStyleBackColor = false;
-            this.bttnAdSearch.Visible = false;
+            this.bttnSearchAd.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.bttnSearchAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSearchAd.Location = new System.Drawing.Point(904, 619);
+            this.bttnSearchAd.Name = "bttnSearchAd";
+            this.bttnSearchAd.Size = new System.Drawing.Size(116, 26);
+            this.bttnSearchAd.TabIndex = 21;
+            this.bttnSearchAd.Text = "Buscar";
+            this.bttnSearchAd.UseVisualStyleBackColor = false;
+            this.bttnSearchAd.Visible = false;
+            this.bttnSearchAd.Click += new System.EventHandler(this.bttnSearchAd_Click_1);
+            // 
+            // ModifybtnAd
+            // 
+            this.ModifybtnAd.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ModifybtnAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ModifybtnAd.Location = new System.Drawing.Point(260, 1013);
+            this.ModifybtnAd.Name = "ModifybtnAd";
+            this.ModifybtnAd.Size = new System.Drawing.Size(94, 29);
+            this.ModifybtnAd.TabIndex = 22;
+            this.ModifybtnAd.Text = "Modificar";
+            this.ModifybtnAd.UseVisualStyleBackColor = false;
+            this.ModifybtnAd.Visible = false;
+            // 
+            // DeletebtnAd
+            // 
+            this.DeletebtnAd.BackColor = System.Drawing.Color.Honeydew;
+            this.DeletebtnAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DeletebtnAd.Location = new System.Drawing.Point(360, 1013);
+            this.DeletebtnAd.Name = "DeletebtnAd";
+            this.DeletebtnAd.Size = new System.Drawing.Size(94, 29);
+            this.DeletebtnAd.TabIndex = 23;
+            this.DeletebtnAd.Text = "Eliminar";
+            this.DeletebtnAd.UseVisualStyleBackColor = false;
+            this.DeletebtnAd.Visible = false;
+            // 
+            // bttnSelectPerson
+            // 
+            this.bttnSelectPerson.BackColor = System.Drawing.Color.Khaki;
+            this.bttnSelectPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSelectPerson.Location = new System.Drawing.Point(460, 1014);
+            this.bttnSelectPerson.Name = "bttnSelectPerson";
+            this.bttnSelectPerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnSelectPerson.TabIndex = 24;
+            this.bttnSelectPerson.Text = "Seleccionar";
+            this.bttnSelectPerson.UseVisualStyleBackColor = false;
+            this.bttnSelectPerson.Visible = false;
+            // 
+            // bttnViewSelectedPerson
+            // 
+            this.bttnViewSelectedPerson.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelectedPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewSelectedPerson.Location = new System.Drawing.Point(560, 1014);
+            this.bttnViewSelectedPerson.Name = "bttnViewSelectedPerson";
+            this.bttnViewSelectedPerson.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelectedPerson.TabIndex = 32;
+            this.bttnViewSelectedPerson.Text = "Ver seleccionados";
+            this.bttnViewSelectedPerson.UseVisualStyleBackColor = false;
+            this.bttnViewSelectedPerson.Visible = false;
+            // 
+            // btnCleanAd
+            // 
+            this.btnCleanAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCleanAd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCleanAd.Location = new System.Drawing.Point(543, 545);
+            this.btnCleanAd.Name = "btnCleanAd";
+            this.btnCleanAd.Size = new System.Drawing.Size(129, 29);
+            this.btnCleanAd.TabIndex = 33;
+            this.btnCleanAd.Text = "Limpiar";
+            this.btnCleanAd.UseVisualStyleBackColor = false;
+            this.btnCleanAd.Visible = false;
+            // 
+            // SelectAllcbx
+            // 
+            this.SelectAllcbx.AutoSize = true;
+            this.SelectAllcbx.Location = new System.Drawing.Point(12, 587);
+            this.SelectAllcbx.Name = "SelectAllcbx";
+            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
+            this.SelectAllcbx.TabIndex = 34;
+            this.SelectAllcbx.Text = "Seleccionar Todos";
+            this.SelectAllcbx.UseVisualStyleBackColor = true;
+            this.SelectAllcbx.Visible = false;
+            // 
+            // bttnImportAd
+            // 
+            this.bttnImportAd.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImportAd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnImportAd.Location = new System.Drawing.Point(687, 547);
+            this.bttnImportAd.Name = "bttnImportAd";
+            this.bttnImportAd.Size = new System.Drawing.Size(94, 29);
+            this.bttnImportAd.TabIndex = 35;
+            this.bttnImportAd.Text = "Importar";
+            this.bttnImportAd.UseVisualStyleBackColor = false;
+            this.bttnImportAd.Visible = false;
             // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 1055);
-            this.Controls.Add(this.bttnAdSearch);
+            this.ClientSize = new System.Drawing.Size(1064, 1055);
+            this.Controls.Add(this.bttnImportAd);
+            this.Controls.Add(this.SelectAllcbx);
+            this.Controls.Add(this.btnCleanAd);
+            this.Controls.Add(this.bttnViewSelectedPerson);
+            this.Controls.Add(this.bttnSelectPerson);
+            this.Controls.Add(this.DeletebtnAd);
+            this.Controls.Add(this.ModifybtnAd);
+            this.Controls.Add(this.bttnSearchAd);
             this.Controls.Add(this.cmbTypeAd);
             this.Controls.Add(this.txtTextAd);
             this.Controls.Add(this.dgvAdReg);
             this.Controls.Add(this.bttnEmailSent);
             this.Controls.Add(this.lblEscAd);
             this.Controls.Add(this.bttnSaveAd);
-            this.Controls.Add(this.bttnSearchAd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSearchAd);
             this.Controls.Add(this.bttnReturnAd);
@@ -308,6 +393,7 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectAreaAd);
             this.KeyPreview = true;
             this.Name = "AdReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AdReg";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).EndInit();
@@ -332,13 +418,19 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnReturnAd;
         private System.Windows.Forms.Label lblSearchAd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button bttnSearchAd;
         private System.Windows.Forms.Button bttnSaveAd;
         private System.Windows.Forms.Label lblEscAd;
         private System.Windows.Forms.Button bttnEmailSent;
         private System.Windows.Forms.DataGridView dgvAdReg;
         private System.Windows.Forms.TextBox txtTextAd;
         private System.Windows.Forms.ComboBox cmbTypeAd;
-        private System.Windows.Forms.Button bttnAdSearch;
+        private System.Windows.Forms.Button bttnSearchAd;
+        private System.Windows.Forms.Button ModifybtnAd;
+        private System.Windows.Forms.Button DeletebtnAd;
+        private System.Windows.Forms.Button bttnSelectPerson;
+        private System.Windows.Forms.Button bttnViewSelectedPerson;
+        private System.Windows.Forms.Button btnCleanAd;
+        private System.Windows.Forms.CheckBox SelectAllcbx;
+        private System.Windows.Forms.Button bttnImportAd;
     }
 }

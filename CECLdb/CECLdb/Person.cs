@@ -13,12 +13,12 @@ namespace CLEC
         private string codePerson;
         private string lastname;
 
-        public int IdPerson { get => idPerson; set => idPerson = value; }
-        public string Name { get => name; set => name = value; }
-        public string LastName { get => lastname; set => lastname = value; }
+        public int ID { get => idPerson; set => idPerson = value; }
+        public string Nombre { get => name; set => name = value; }
+        public string Apellido { get => lastname; set => lastname = value; }
         public string Email { get => email; set => email = value; }
-        public int Telephone { get => telephone; set => telephone = value; }
-        public string CodePerson { get => codePerson; set => codePerson = value; }
+        public int Teléfono { get => telephone; set => telephone = value; }
+        public string Código { get => codePerson; set => codePerson = value; }
 
     }
 }
