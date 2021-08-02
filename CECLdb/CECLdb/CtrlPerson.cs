@@ -125,6 +125,7 @@ namespace CLEC
             }
             return list;
         }
+        
         public Person ModifyQuery(string IDpersona)
         {
             MySqlDataReader reader;

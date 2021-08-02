@@ -660,5 +660,70 @@ namespace CECLdb
             txtbTelephone.Text = "";
             amountSelected = 0;
         }
+
+        private void Deletebtn_Click(object sender, EventArgs e)
+        {
+            int saveId = 0;
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a ninguna persona");
+            }
+            if (amountSelected >= 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar las personas seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedIDList.Count; i++)
+                    {
+                        saveId = int.Parse(selectedIDList[i].ToString());
+                        string sql = "DELETE FROM persona WHERE IDpersona =" + saveId;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            if (i == selectedIDList.Count - 1)
+                            {
+                                MessageBox.Show("Se ha eliminado exitosamente");
+                                Clean();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+
+                            MessageBox.Show("Error al eliminar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+            if (SelectAllcbx.Checked)
+            {
+                foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
+                {
+                    Fila.Cells[0].Value = true;
+                    amountSelected++;
+                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
+                {
+                    Fila.Cells[0].Value = false;
+                }
+            }
+        }
     }
 }
