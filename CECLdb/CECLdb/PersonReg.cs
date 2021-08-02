@@ -70,6 +70,7 @@ namespace CECLdb
             if (Menu.action == 3)
             {
                 SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = true;
                 Deletebtn.Location = new Point(459, 513);
@@ -296,7 +297,6 @@ namespace CECLdb
                 textSearch = txtTextSearch.Text;
                 LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
 
-                String textSearch = txtTextSearch.Text;
                 if (textSearch == "")
                 {
                     LoadTableCode(null);
@@ -480,12 +480,14 @@ namespace CECLdb
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
                 selectedIDList.Remove(idPerson);
+                SelectAllcbx.Checked = false;
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
                 amountSelected += 1;
                 selectedIDList.Add(idPerson);
+                DeselectAllcbx.Checked = false;
             }
         }
 
@@ -575,7 +577,8 @@ namespace CECLdb
                             command.ExecuteNonQuery();
                             MessageBox.Show("Se ha modificado exitosamente");
                             EmptyChecked();
-                            
+
+                            UpdateDataGrid();
                         }
                         catch (MySqlException ex)
                         {
@@ -693,6 +696,7 @@ namespace CECLdb
                             {
                                 MessageBox.Show("Se ha eliminado exitosamente");
                                 EmptyChecked();
+                                UpdateDataGrid();
                             }
                         }
                         catch (MySqlException ex)
@@ -711,22 +715,17 @@ namespace CECLdb
 
         private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
         {
-            amountSelected = 0;
-            selectedIDList.Clear();
+            
             if (SelectAllcbx.Checked)
             {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
                 {
                     Fila.Cells[0].Value = true;
                     amountSelected++;
                     selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
-                }
-            }
-            else
-            {
-                foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
-                {
-                    Fila.Cells[0].Value = false;
                 }
             }
         }
@@ -736,7 +735,7 @@ namespace CECLdb
             consultationAmount();
             if (amountPerson > 0)
             {
-                LoadTableCode(null);//en duda
+                
 
                 switch (LastSearchTypeSelected)
                 {
@@ -767,5 +766,19 @@ namespace CECLdb
             selectedIDList.Clear();
         }
 
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (DeselectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
+                {
+                    Fila.Cells[0].Value = null;
+                }
+            }
+        }
     }
 }
