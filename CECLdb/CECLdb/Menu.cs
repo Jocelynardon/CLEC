@@ -252,7 +252,7 @@ namespace CECLdb
             }
             else if (rbttnAddAd.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                AdReg Frm = new AdReg();
                 Frm.Show();
                 this.Close();
             }

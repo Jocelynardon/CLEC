@@ -16,7 +16,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (date==null)
+            if (date == null)
             {
                 sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona ORDER BY Nombre";
             }
@@ -34,17 +34,17 @@ namespace CLEC
                 while (reader.Read())
                 {
                     Person person = new Person();
-                    person.IdPerson = int.Parse(reader[0].ToString());
-                    person.Name = reader[1].ToString() + " " + reader[2].ToString();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Telephone = int.Parse(reader[4].ToString());
-                    person.CodePerson = reader.GetString(5);
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
                     list.Add(person);
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("No se ha podido cargar los resultados "+ ex.Message);
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
             }
             return list;
         }
@@ -73,11 +73,11 @@ namespace CLEC
                 while (reader.Read())
                 {
                     Person person = new Person();
-                    person.IdPerson = int.Parse(reader[0].ToString());
-                    person.Name = reader[1].ToString() + " " + reader[2].ToString();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Telephone = int.Parse(reader[4].ToString());
-                    person.CodePerson = reader.GetString(5);
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
                     list.Add(person);
                 }
             }
@@ -111,11 +111,11 @@ namespace CLEC
                 while (reader.Read())
                 {
                     Person person = new Person();
-                    person.IdPerson = int.Parse(reader[0].ToString());
-                    person.Name = reader[1].ToString() + " " + reader[2].ToString();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Telephone = int.Parse(reader[4].ToString());
-                    person.CodePerson = reader.GetString(5);
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
                     list.Add(person);
                 }
             }
@@ -129,7 +129,7 @@ namespace CLEC
         public Person ModifyQuery(string IDpersona)
         {
             MySqlDataReader reader;
-            
+
             string sql;
             Person person = new Person();
             sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona =" + IDpersona;
@@ -142,13 +142,13 @@ namespace CLEC
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    person.IdPerson = int.Parse(reader[0].ToString());
-                    person.Name = reader[1].ToString();
-                    person.LastName = reader[2].ToString();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString();
+                    person.Apellido = reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Telephone = int.Parse(reader[4].ToString());
-                    person.CodePerson = reader.GetString(5);
-                    
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
+
                 }
             }
             catch (MySqlException ex)
@@ -160,9 +160,9 @@ namespace CLEC
         public void SaveDataQuery(Person person)
         {
             string sql;
-            
-            sql = "UPDATE persona SET Codigo = '"+person.CodePerson+"', Nombre = '"+person.Name+"', Apellido = '"+person.LastName+"', Correo = '"+person.Email+"', Teléfono = '"+person.Telephone+"' " +
-                "WHERE IDpersona ="+person.IdPerson;
+
+            sql = "UPDATE persona SET Codigo = '" + person.Código + "', Nombre = '" + person.Nombre + "', Apellido = '" + person.Apellido + "', Correo = '" + person.Email + "', Teléfono = '" + person.Teléfono + "' " +
+                "WHERE IDpersona =" + person.ID;
 
             try
             {
@@ -174,20 +174,15 @@ namespace CLEC
             {
                 MessageBox.Show("No se ha podido guardar los datos " + ex.Message);
             }
-            
+
         }
         public void SelectedEmailSent(int IDselected)
         {
             MySqlDataReader reader;
             string sql;
-            //if (IDselected==0)
-            //{
-            //    sql= "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona ORDER BY Nombre";
-            //}
-            //else
-            //{
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona LIKE " + IDselected + " ORDER BY Nombre";
-            //}
+
+            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona LIKE " + IDselected + " ORDER BY Nombre";
+
             try
             {
                 MySqlConnection connectionBD = base.connectionTable();
@@ -198,11 +193,11 @@ namespace CLEC
                 while (reader.Read())
                 {
                     Person person = new Person();
-                    person.IdPerson = int.Parse(reader[0].ToString());
-                    person.Name = reader[1].ToString() + " " + reader[2].ToString();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Telephone = int.Parse(reader[4].ToString());
-                    person.CodePerson = reader.GetString(5);
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
                     listSelected.Add(person);
                 }
             }

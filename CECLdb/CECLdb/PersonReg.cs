@@ -279,9 +279,9 @@ namespace CECLdb
         {
             amountSelected = 0;
             consultationAmount();
+            
             if (amountPerson > 0)
             {
-                LoadTableCode(null);
                 if (Menu.action>=3 && Menu.action<=6)
                 {
                     this.Height = 615;
@@ -292,8 +292,15 @@ namespace CECLdb
                     bttnReturnPerson.Location = new Point(496, 787);
                     bttnViewSelectedPerson.Location = new Point(618, 787);
                 }
+
                 textSearch = txtTextSearch.Text;
                 LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
+
+                String textSearch = txtTextSearch.Text;
+                if (textSearch == "")
+                {
+                    LoadTableCode(null);
+                }
                 switch (cmbTypeSearch.SelectedIndex)
                 {
                     //0 Código, 1 Correo, 2 Nombre
@@ -363,8 +370,8 @@ namespace CECLdb
             {
                 try
                 {
-                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
-                    this.dgvPersonReg.Columns["LastName"].Visible = false;
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -389,8 +396,8 @@ namespace CECLdb
             {
                 try
                 {
-                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
-                    this.dgvPersonReg.Columns["LastName"].Visible = false;
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -416,8 +423,8 @@ namespace CECLdb
             {
                 try
                 {
-                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
-                    this.dgvPersonReg.Columns["LastName"].Visible = false;
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -441,7 +448,6 @@ namespace CECLdb
             {
                 sentID=int.Parse(personSelected[i].ToString());
                 person.SelectedEmailSent(sentID);
-                //listToShow.Add();
             }
             dgvPersonReg.DataSource =person.listSelected;
             validateSelection();
@@ -450,8 +456,8 @@ namespace CECLdb
             {
                 try
                 {
-                    this.dgvPersonReg.Columns["IdPerson"].Visible = false;
-                    this.dgvPersonReg.Columns["LastName"].Visible = false;
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -467,7 +473,7 @@ namespace CECLdb
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idPerson = int.Parse(dgvPersonReg.CurrentRow.Cells["IdPerson"].Value.ToString());
+            idPerson = int.Parse(dgvPersonReg.CurrentRow.Cells["ID"].Value.ToString());
             if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
@@ -525,11 +531,11 @@ namespace CECLdb
                     {
                         PerID = Convert.ToInt32(row.Cells[1].Value);
                         Person person = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
-                        txtbCodePerson.Text = person.CodePerson;
-                        txtbLastNamePerson.Text = person.LastName;
-                        txtbNamePerson.Text = person.Name;
+                        txtbCodePerson.Text = person.Código;
+                        txtbLastNamePerson.Text = person.Apellido;
+                        txtbNamePerson.Text = person.Nombre;
                         txtEmailPerson.Text = person.Email;
-                        txtbTelephone.Text = person.Telephone.ToString();
+                        txtbTelephone.Text = person.Teléfono.ToString();
                     }
                 }
             }
@@ -545,7 +551,7 @@ namespace CECLdb
         {
             CtrlPerson ctrlP = new CtrlPerson();
             Person person_ = new Person();
-            person_.IdPerson = PerID;
+            person_.ID = PerID;
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
                 if (txtbCodePerson.TextLength == 7)
@@ -629,7 +635,7 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["idPerson"].Value))
+                    if (selectedIDList[i].Equals(row.Cells["ID"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
