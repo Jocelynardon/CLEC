@@ -18,9 +18,9 @@ namespace CECLdb
     {
         public static int type = 0;
         public int amountSelected = 0;
-
+        public String textSearch;
         public int PerID;
-
+        public int LastSearchTypeSelected;
         public int amountPerson = 0;
         public int idPerson = 0;
         public List<int> selectedIDList= new List<int>();
@@ -284,7 +284,6 @@ namespace CECLdb
                 LoadTableCode(null);
                 if (Menu.action>=3 && Menu.action<=6)
                 {
-
                     this.Height = 615;
                 }
                 if (Menu.action == 2)
@@ -293,8 +292,8 @@ namespace CECLdb
                     bttnReturnPerson.Location = new Point(496, 787);
                     bttnViewSelectedPerson.Location = new Point(618, 787);
                 }
-                String textSearch = txtTextSearch.Text;
-
+                textSearch = txtTextSearch.Text;
+                LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
                 switch (cmbTypeSearch.SelectedIndex)
                 {
                     //0 Código, 1 Correo, 2 Nombre
@@ -569,7 +568,7 @@ namespace CECLdb
                             MySqlCommand command = new MySqlCommand(sql, connectionBD);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Se ha modificado exitosamente");
-
+                            EmptyChecked();
                             
                         }
                         catch (MySqlException ex)
@@ -687,7 +686,7 @@ namespace CECLdb
                             if (i == selectedIDList.Count - 1)
                             {
                                 MessageBox.Show("Se ha eliminado exitosamente");
-                                Clean();
+                                EmptyChecked();
                             }
                         }
                         catch (MySqlException ex)
@@ -725,5 +724,42 @@ namespace CECLdb
                 }
             }
         }
+        private void UpdateDataGrid()
+        {
+            amountSelected = 0;
+            consultationAmount();
+            if (amountPerson > 0)
+            {
+                LoadTableCode(null);//en duda
+
+                switch (LastSearchTypeSelected)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        LoadTableCode(textSearch);
+                        break;
+                    case 1:
+                        LoadTableEmail(textSearch);
+                        break;
+                    case 2:
+                        LoadTableName(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                        cmbTypeSearch.Text = "";
+                        break;
+                }
+            }
+            else
+            {
+                dgvPersonReg.Rows.Clear();
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+        }
+
     }
 }
