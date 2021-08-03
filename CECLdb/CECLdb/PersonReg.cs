@@ -352,6 +352,7 @@ namespace CECLdb
             cmbTypeSearch.Location = new Point(517, 76);
             bttnSearchPerson.Location = new Point(811, 76);
             SelectAllcbx.Location = new Point(46, 133);
+            DeselectAllcbx.Location = new Point(231, 133);
             dgvPersonReg.Location = new Point(46, 174);
             bttnReturnPerson.Location = new Point(618, 513);
             Modifybtn.Location = new Point(285, 513);
