@@ -47,6 +47,7 @@ namespace CECLdb
             this.lblEscAd = new System.Windows.Forms.Label();
             this.bttnEmailSent = new System.Windows.Forms.Button();
             this.dgvAdReg = new System.Windows.Forms.DataGridView();
+            this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtTextAd = new System.Windows.Forms.TextBox();
             this.cmbTypeAd = new System.Windows.Forms.ComboBox();
             this.bttnSearchAd = new System.Windows.Forms.Button();
@@ -223,13 +224,12 @@ namespace CECLdb
             // 
             this.bttnEmailSent.BackColor = System.Drawing.Color.SpringGreen;
             this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bttnEmailSent.Location = new System.Drawing.Point(678, 546);
+            this.bttnEmailSent.Location = new System.Drawing.Point(687, 471);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
             this.bttnEmailSent.TabIndex = 8;
             this.bttnEmailSent.Text = "Destinatario";
             this.bttnEmailSent.UseVisualStyleBackColor = false;
-            this.bttnEmailSent.Visible = false;
             this.bttnEmailSent.Click += new System.EventHandler(this.bttnEmailSent_Click);
             // 
             // dgvAdReg
@@ -237,13 +237,26 @@ namespace CECLdb
             this.dgvAdReg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvAdReg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvAdReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAdReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckSelection});
             this.dgvAdReg.Location = new System.Drawing.Point(42, 665);
             this.dgvAdReg.Name = "dgvAdReg";
             this.dgvAdReg.RowHeadersWidth = 51;
             this.dgvAdReg.RowTemplate.Height = 29;
+            this.dgvAdReg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdReg.Size = new System.Drawing.Size(992, 330);
             this.dgvAdReg.TabIndex = 18;
             this.dgvAdReg.Visible = false;
+            this.dgvAdReg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdReg_CellClick);
+            // 
+            // CheckSelection
+            // 
+            this.CheckSelection.HeaderText = "Seleccionar";
+            this.CheckSelection.MinimumWidth = 6;
+            this.CheckSelection.Name = "CheckSelection";
+            this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CheckSelection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CheckSelection.Width = 114;
             // 
             // txtTextAd
             // 
@@ -322,6 +335,7 @@ namespace CECLdb
             this.bttnViewSelectedPerson.Text = "Ver seleccionados";
             this.bttnViewSelectedPerson.UseVisualStyleBackColor = false;
             this.bttnViewSelectedPerson.Visible = false;
+            this.bttnViewSelectedPerson.Click += new System.EventHandler(this.bttnViewSelectedPerson_Click);
             // 
             // btnCleanAd
             // 
@@ -432,5 +446,6 @@ namespace CECLdb
         private System.Windows.Forms.Button btnCleanAd;
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button bttnImportAd;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
     }
 }

@@ -357,11 +357,11 @@ namespace CECLdb
             bttnSelectPerson.Location = new Point(533, 513);
         }
         //CAMBIAR ENSEÑAR EL APELLIDO
-        private void LoadTableCode(string date)
+        private void LoadTableCode(string data)
         {
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
-            dgvPersonReg.DataSource = person.consultationCode(date);
+            dgvPersonReg.DataSource = person.consultationCode(data);
             validateSelection();
 
             if (dgvPersonReg.Rows.Count > 0)
@@ -439,7 +439,6 @@ namespace CECLdb
         private void LoadTableSelectedPerson(List<int> personSelected)
         {
             amountSelected = 0;
-            List<object> listToShow = new List<object>();
             CtrlPerson person = new CtrlPerson();
             int sentID = 0;
             for (int i = 0; i < personSelected.Count; i++)
@@ -466,7 +465,7 @@ namespace CECLdb
             else
             {
                 MessageBox.Show("No se han seleccionado datos");
-                LoadTableSelectedPerson(null);
+                LoadTableCode(null);
             }
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)

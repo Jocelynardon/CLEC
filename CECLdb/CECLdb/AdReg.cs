@@ -14,12 +14,12 @@ namespace CECLdb
     {
         public static int idAd = 0;
         public static int type = 0;
-        public int amountSelected = 0;
+        public int amountSelectedAd = 0;
 
         public int PerID;
 
-        public int amountPerson = 0;
-        public int idPerson = 0;
+        public int amountAd = 0;
+        //public int idAd = 0;
         public List<int> selectedIDList = new List<int>();
         //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado
         public AdReg()
@@ -31,6 +31,7 @@ namespace CECLdb
                 txtTextAd.Visible = true;
                 cmbTypeAd.Visible = true;
                 dgvAdReg.Visible = true;
+                bttnSearchAd.Visible = true;
             }
             if (Menu.action==1)
             {
@@ -130,61 +131,50 @@ namespace CECLdb
         }
         private void bttnSearchAd_Click_1(object sender, EventArgs e)
         {
-            //amountSelected = 0;
-            //consultationAmountAd();
-            //bttnEmailSent.Visible = true;
-            //if (Menu.action==2)
-            //{
-            //    ModifybtnAd.Location = new Point(340, 1015);
-            //    bttnReturnAd.Location = new Point(440, 1014);
-            //    this.Width = 1102;
-            //}
-            //if (Menu.action >= 3 && Menu.action <= 4)
-            //{
+            amountSelectedAd = 0;
+            ConsultationAmountAd();
+            bttnEmailSent.Visible = true;
+            if (Menu.action == 2)
+            {
+                ModifybtnAd.Location = new Point(340, 1015);
+                bttnReturnAd.Location = new Point(440, 1014);
+                this.Height = 1102;
+            }
+            if (Menu.action >= 3 && Menu.action <= 4)
+            {
 
-            //    this.Height = 573;
-            //}
+                this.Height = 573;
+            }
 
-            //if (amountPerson > 0)
-            //{
-            //    if (Menu.action >= 3 && Menu.action <= 6)
-            //    {
-
-            //        this.Height = 615;
-            //    }
-            //    if (Menu.action == 2)
-            //    {
-            //        this.Height = 875;
-            //        bttnReturnPerson.Location = new Point(496, 787);
-            //        bttnViewSelectedPerson.Location = new Point(618, 787);
-            //    }
-            //    String textSearch = txtTextSearch.Text;
-                  //if (textSearch == "")
-                  //{
-                  //LoadTableCode(null);
-                  //}
-            //    switch (cmbTypeSearch.SelectedIndex)
-            //    {
-            //        //0 Código, 1 Correo, 2 Nombre
-            //        case 0:
-            //            LoadTableCode(textSearch);
-            //            break;
-            //        case 1:
-            //            LoadTableEmail(textSearch);
-            //            break;
-            //        case 2:
-            //            LoadTableName(textSearch);
-            //            break;
-            //        default:
-            //            MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
-            //            cmbTypeSearch.Text = "";
-            //            break;
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No se encuentran personas registradas");
-            //}
+            if (amountAd > 0)
+            {
+                String textSearch = txtTextAd.Text;
+                if (textSearch == "")
+                {
+                    LoadTableArea(null);
+                }
+                switch (cmbTypeAd.SelectedIndex)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        LoadTableArea(textSearch);
+                        break;
+                    case 1:
+                        LoadTableCourse(textSearch);
+                        break;
+                    case 2:
+                        LoadTableDescription(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                        cmbTypeAd.Text = "";
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encuentran personas registradas");
+            }
         }
         private void bttnSaveAd_Click(object sender, EventArgs e)
         {
@@ -268,6 +258,120 @@ namespace CECLdb
             cmbTypeAd.Items.Add(new { Text = "Descripción", Value = 3 });
             cmbTypeAd.SelectedIndex = 0;
         }
+        private void LoadTableArea(string data)
+        {
+            List<Ad> list = new List<Ad>();
+            CtrlAd ad = new CtrlAd();
+            dgvAdReg.DataSource = ad.consultationAreaAd(data);
+            validateSelectionAd();
+
+            if (dgvAdReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvAdReg.Columns["IDaviso"].Visible = false;
+                    this.dgvAdReg.Columns["IDarea"].Visible = false;
+                    this.dgvAdReg.Columns["IDcurso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableArea(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableArea(null);
+            }
+        }
+        private void LoadTableCourse(string data)
+        {
+            List<Ad> list = new List<Ad>();
+            CtrlAd ad = new CtrlAd();
+            dgvAdReg.DataSource = ad.consultationCourse(data);
+            validateSelectionAd();
+
+            if (dgvAdReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvAdReg.Columns["IDaviso"].Visible = false;
+                    this.dgvAdReg.Columns["IDarea"].Visible = false;
+                    this.dgvAdReg.Columns["IDcurso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableCourse(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableCourse(null);
+            }
+        }
+        private void LoadTableDescription(string data)
+        {
+            List<Ad> list = new List<Ad>();
+            CtrlAd ad = new CtrlAd();
+            dgvAdReg.DataSource = ad.consultationDescription(data);
+            validateSelectionAd();
+
+            if (dgvAdReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvAdReg.Columns["IDaviso"].Visible = false;
+                    this.dgvAdReg.Columns["IDarea"].Visible = false;
+                    this.dgvAdReg.Columns["IDcurso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableDescription(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableDescription(null);
+            }
+        }
+        private void LoadTableSelectedAd(List<int> personSelected)
+        {
+            amountSelectedAd = 0;
+            CtrlAd ad = new CtrlAd();
+            int sentID = 0;
+            for (int i = 0; i < personSelected.Count; i++)
+            {
+                sentID = int.Parse(personSelected[i].ToString());
+                ad.SelectedEmailSent(sentID);
+            }
+            dgvAdReg.DataSource = ad.listSelected;
+            validateSelectionAd();
+
+            if (dgvAdReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvAdReg.Columns["IDaviso"].Visible = false;
+                    this.dgvAdReg.Columns["IDarea"].Visible = false;
+                    this.dgvAdReg.Columns["IDcurso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha seleccionado a alguna persona");
+                    LoadTableArea(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado datos");
+                LoadTableArea(null);
+            }
+        }
         private void ShowNumberAd()
         {
             MySqlDataReader reader = null;
@@ -305,6 +409,41 @@ namespace CECLdb
             {
                 connectionBD.Close();
             }
+        }
+        private void ConsultationAmountAd()
+        {
+            string sql = "SELECT COUNT(1) FROM aviso ";
+            MySqlConnection connectionBD = Connection.connection();
+            connectionBD.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                command.Parameters.AddWithValue(sql, amountAd);
+                command.ExecuteNonQuery();
+                amountAd = int.Parse(command.ExecuteScalar().ToString());
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("No hay personas ingresadas ");
+            }
+            finally
+            {
+                connectionBD.Close();
+            }
+        }
+        public void validateSelectionAd()
+        {
+            foreach (DataGridViewRow row in dgvAdReg.Rows)
+            {
+                for (int i = 0; i < selectedIDList.Count; i++)
+                {
+                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
+                    {
+                        row.Cells["CheckSelection"].Value = true;
+                    }
+                }
+            }
+            amountSelectedAd = selectedIDList.Count;
         }
         private void HideAndMove()
         {
@@ -345,6 +484,36 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void dgvAdReg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idAd = int.Parse(dgvAdReg.CurrentRow.Cells["IDaviso"].Value.ToString());
+            if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvAdReg.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelectedAd += -1;
+                selectedIDList.Remove(idAd);
+            }
+            else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
+                amountSelectedAd += 1;
+                selectedIDList.Add(idAd);
+            }
+        }
+
+        private void bttnViewSelectedPerson_Click(object sender, EventArgs e)
+        {
+            if (amountSelectedAd == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelectedAd >= 1)
+            {
+                LoadTableSelectedAd(selectedIDList);
+            }
         }
     }
 }
