@@ -18,9 +18,9 @@ namespace CECLdb
     {
         public static int type = 0;
         public int amountSelected = 0;
-
+        public String textSearch;
         public int PerID;
-
+        public int LastSearchTypeSelected;
         public int amountPerson = 0;
         public int idPerson = 0;
         public List<int> selectedIDList= new List<int>();
@@ -70,6 +70,7 @@ namespace CECLdb
             if (Menu.action == 3)
             {
                 SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = true;
                 Deletebtn.Location = new Point(459, 513);
@@ -284,7 +285,6 @@ namespace CECLdb
             {
                 if (Menu.action>=3 && Menu.action<=6)
                 {
-
                     this.Height = 615;
                 }
                 if (Menu.action == 2)
@@ -293,12 +293,14 @@ namespace CECLdb
                     bttnReturnPerson.Location = new Point(496, 787);
                     bttnViewSelectedPerson.Location = new Point(618, 787);
                 }
-                String textSearch = txtTextSearch.Text;
+
+                textSearch = txtTextSearch.Text;
+                LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
+
                 if (textSearch == "")
                 {
                     LoadTableCode(null);
                 }
-
                 switch (cmbTypeSearch.SelectedIndex)
                 {
                     //0 Código, 1 Correo, 2 Nombre
@@ -477,12 +479,14 @@ namespace CECLdb
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
                 selectedIDList.Remove(idPerson);
+                SelectAllcbx.Checked = false;
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
                 amountSelected += 1;
                 selectedIDList.Add(idPerson);
+                DeselectAllcbx.Checked = false;
             }
         }
 
@@ -571,8 +575,9 @@ namespace CECLdb
                             MySqlCommand command = new MySqlCommand(sql, connectionBD);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Se ha modificado exitosamente");
+                            EmptyChecked();
 
-                            
+                            UpdateDataGrid();
                         }
                         catch (MySqlException ex)
                         {
@@ -689,7 +694,8 @@ namespace CECLdb
                             if (i == selectedIDList.Count - 1)
                             {
                                 MessageBox.Show("Se ha eliminado exitosamente");
-                                Clean();
+                                EmptyChecked();
+                                UpdateDataGrid();
                             }
                         }
                         catch (MySqlException ex)
@@ -708,10 +714,12 @@ namespace CECLdb
 
         private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
         {
-            amountSelected = 0;
-            selectedIDList.Clear();
+            
             if (SelectAllcbx.Checked)
             {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
                 {
                     Fila.Cells[0].Value = true;
@@ -719,11 +727,55 @@ namespace CECLdb
                     selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
                 }
             }
+        }
+        private void UpdateDataGrid()
+        {
+            amountSelected = 0;
+            consultationAmount();
+            if (amountPerson > 0)
+            {
+                
+
+                switch (LastSearchTypeSelected)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        LoadTableCode(textSearch);
+                        break;
+                    case 1:
+                        LoadTableEmail(textSearch);
+                        break;
+                    case 2:
+                        LoadTableName(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                        cmbTypeSearch.Text = "";
+                        break;
+                }
+            }
             else
             {
+                dgvPersonReg.Rows.Clear();
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (DeselectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
                 {
-                    Fila.Cells[0].Value = false;
+                    Fila.Cells[0].Value = null;
                 }
             }
         }
