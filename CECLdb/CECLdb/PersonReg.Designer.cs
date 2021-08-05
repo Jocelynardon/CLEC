@@ -59,7 +59,6 @@ namespace CECLdb
             this.lblDataPerson = new System.Windows.Forms.Label();
             this.bttnSentEmail = new System.Windows.Forms.Button();
             this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
-            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -243,13 +242,12 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.BackColor = System.Drawing.SystemColors.Control;
             this.SelectAllcbx.Location = new System.Drawing.Point(46, 402);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 15;
             this.SelectAllcbx.Text = "Seleccionar Todos";
-            this.SelectAllcbx.UseVisualStyleBackColor = false;
+            this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
             this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
@@ -394,25 +392,11 @@ namespace CECLdb
             this.bttnViewSelectedPerson.Visible = false;
             this.bttnViewSelectedPerson.Click += new System.EventHandler(this.bttnViewSelectedPerson_Click);
             // 
-            // DeselectAllcbx
-            // 
-            this.DeselectAllcbx.AutoSize = true;
-            this.DeselectAllcbx.BackColor = System.Drawing.SystemColors.Control;
-            this.DeselectAllcbx.Location = new System.Drawing.Point(224, 402);
-            this.DeselectAllcbx.Name = "DeselectAllcbx";
-            this.DeselectAllcbx.Size = new System.Drawing.Size(168, 24);
-            this.DeselectAllcbx.TabIndex = 32;
-            this.DeselectAllcbx.Text = "Deseleccionar Todos";
-            this.DeselectAllcbx.UseVisualStyleBackColor = false;
-            this.DeselectAllcbx.Visible = false;
-            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
-            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
-            this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.bttnViewSelectedPerson);
             this.Controls.Add(this.bttnSentEmail);
             this.Controls.Add(this.lblDataPerson);
@@ -483,6 +467,5 @@ namespace CECLdb
         private System.Windows.Forms.Label lblDataPerson;
         private System.Windows.Forms.Button bttnSentEmail;
         private System.Windows.Forms.Button bttnViewSelectedPerson;
-        private System.Windows.Forms.CheckBox DeselectAllcbx;
     }
 }
