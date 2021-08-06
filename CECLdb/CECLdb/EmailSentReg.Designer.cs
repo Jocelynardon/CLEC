@@ -43,6 +43,7 @@ namespace CECLdb
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnPersonSent = new System.Windows.Forms.Button();
+            this.bttnViewAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +102,7 @@ namespace CECLdb
             this.dgvEmailSent.Size = new System.Drawing.Size(992, 330);
             this.dgvEmailSent.TabIndex = 19;
             this.dgvEmailSent.Visible = false;
+            this.dgvEmailSent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmailSent_CellClick);
             // 
             // CheckSelection
             // 
@@ -115,7 +117,7 @@ namespace CECLdb
             // 
             this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
             this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Modifybtn.Location = new System.Drawing.Point(332, 484);
+            this.Modifybtn.Location = new System.Drawing.Point(340, 484);
             this.Modifybtn.Name = "Modifybtn";
             this.Modifybtn.Size = new System.Drawing.Size(94, 29);
             this.Modifybtn.TabIndex = 23;
@@ -139,13 +141,14 @@ namespace CECLdb
             // 
             this.bttnViewSelected.BackColor = System.Drawing.Color.LightSalmon;
             this.bttnViewSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewSelected.Location = new System.Drawing.Point(548, 484);
+            this.bttnViewSelected.Location = new System.Drawing.Point(681, 486);
             this.bttnViewSelected.Name = "bttnViewSelected";
             this.bttnViewSelected.Size = new System.Drawing.Size(187, 29);
             this.bttnViewSelected.TabIndex = 33;
             this.bttnViewSelected.Text = "Ver seleccionados";
             this.bttnViewSelected.UseVisualStyleBackColor = false;
             this.bttnViewSelected.Visible = false;
+            this.bttnViewSelected.Click += new System.EventHandler(this.bttnViewSelected_Click);
             // 
             // bttnEraserText
             // 
@@ -205,11 +208,25 @@ namespace CECLdb
             this.bttnPersonSent.UseVisualStyleBackColor = false;
             this.bttnPersonSent.Click += new System.EventHandler(this.bttnPersonSent_Click);
             // 
+            // bttnViewAll
+            // 
+            this.bttnViewAll.BackColor = System.Drawing.Color.Khaki;
+            this.bttnViewAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewAll.Location = new System.Drawing.Point(548, 484);
+            this.bttnViewAll.Name = "bttnViewAll";
+            this.bttnViewAll.Size = new System.Drawing.Size(127, 29);
+            this.bttnViewAll.TabIndex = 43;
+            this.bttnViewAll.Text = "Ver todos";
+            this.bttnViewAll.UseVisualStyleBackColor = false;
+            this.bttnViewAll.Visible = false;
+            this.bttnViewAll.Click += new System.EventHandler(this.bttnViewAll_Click);
+            // 
             // EmailSentReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 527);
+            this.Controls.Add(this.bttnViewAll);
             this.Controls.Add(this.bttnPersonSent);
             this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.SelectAllcbx);
@@ -249,5 +266,6 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
         private System.Windows.Forms.Button bttnPersonSent;
+        private System.Windows.Forms.Button bttnViewAll;
     }
 }

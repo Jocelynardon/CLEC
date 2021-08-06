@@ -12,9 +12,9 @@ namespace CECLdb
 {
     public partial class EmailSentReg : Form, AddID
     {
-        public static int idAd = 0;
+        public static int id = 0;
         public static int type = 0;
-        public int amountSelectedAd = 0;
+        public int amountSelected = 0;
         public int PerID;
 
         public int amount = 0;
@@ -23,7 +23,7 @@ namespace CECLdb
         public EmailSentReg()
         {
             InitializeComponent();
-            if (Menu.action==2)
+            if (Menu.action==2 || Menu.action==3)
             {
                 this.Height = 152;
             }
@@ -56,6 +56,7 @@ namespace CECLdb
                 SelectAllcbx.Visible = true;
                 DeselectAllcbx.Visible = true;
                 bttnViewSelected.Visible = true;
+                bttnViewAll.Visible = true;
                 if (Menu.action == 2)
                 {
                     Modifybtn.Visible = true;
@@ -66,11 +67,41 @@ namespace CECLdb
                     Deletebtn.Visible = true;
                 }
             }
+        }
+        private void bttnViewAll_Click(object sender, EventArgs e)
+        {
+            List<Person> list = new List<Person>();
+            CtrlPerson person = new CtrlPerson();
+            dgvEmailSent.DataSource = person.consultationName(null);
+            validateSelection();
+
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            if (dgvEmailSent.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvEmailSent.Columns["ID"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se han ingresado personas");
+                }
+            }
             else
             {
-                MessageBox.Show("No hay correos enviados con ese aviso");
+                MessageBox.Show("No se han ingresado personas");
             }
-            
+        }
+        private void bttnViewSelected_Click(object sender, EventArgs e)
+        {
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelected >= 1)
+            {
+                LoadTableSelectedPerson(selectedIDList);
+            }
         }
 
         private void Access(object sender, KeyEventArgs e)
@@ -83,7 +114,6 @@ namespace CECLdb
         }
         private void LoadTableID(string data)
         {
-            List<Ad> list = new List<Ad>();
             CtrlPerson person = new CtrlPerson();
             dgvEmailSent.DataSource = person.consultationIDEmailSent(data);
             validateSelection();
@@ -93,6 +123,9 @@ namespace CECLdb
                 try
                 {
                     this.dgvEmailSent.Columns["ID"].Visible = false;
+                    this.dgvEmailSent.Columns["Apellido"].Visible = false;
+                    CheckShow();
+
                 }
                 catch (MySqlException)
                 {
@@ -103,6 +136,47 @@ namespace CECLdb
             {
                 MessageBox.Show("No se han encontrado datos");
             }
+        }
+        private void LoadTableSelectedPerson(List<int> personSelected)
+        {
+            amountSelected = 0;
+            CtrlPerson person = new CtrlPerson();
+            int sentID = 0;
+            for (int i = 0; i < personSelected.Count; i++)
+            {
+                sentID = int.Parse(personSelected[i].ToString());
+                person.SelectedEmailSent(sentID);
+            }
+            dgvEmailSent.DataSource = person.listSelected;
+            validateSelection();
+
+            if (dgvEmailSent.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvEmailSent.Columns["ID"].Visible = false;
+                    this.dgvEmailSent.Columns["Apellido"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha seleccionado a alguna persona");
+                    person.consultationName(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado datos");
+                person.consultationName(null);
+            }
+        }
+        private void CheckShow()
+        {
+            foreach (DataGridViewRow row in dgvEmailSent.Rows)
+            {
+                    row.Cells["CheckSelection"].Value = true;
+                    selectedIDList.Add(int.Parse(row.Cells["ID"].Value.ToString()));
+            }
+            amountSelected = selectedIDList.Count;
         }
         private void consultationAmount(string IDselected)
         {
@@ -131,13 +205,13 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
+                    if (selectedIDList[i].Equals(row.Cells["ID"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
                 }
             }
-            amountSelectedAd = selectedIDList.Count;
+            amountSelected = selectedIDList.Count;
         }
         private void CloseWindow()
         {
@@ -145,7 +219,6 @@ namespace CECLdb
             Frm.Show();
             this.Close();
         }
-
         
         //colocar ID seleccionado
         #region AddID data
@@ -155,5 +228,23 @@ namespace CECLdb
             this.txtbTextSearch.Text = idPersonChoosen;
         }
         #endregion
+
+        private void dgvEmailSent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            id = int.Parse(dgvEmailSent.CurrentRow.Cells["ID"].Value.ToString());
+            if (dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelected += -1;
+                selectedIDList.Remove(id);
+            }
+            else if (dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = true;
+                amountSelected += 1;
+                selectedIDList.Add(id);
+            }
+        }
     }
 }

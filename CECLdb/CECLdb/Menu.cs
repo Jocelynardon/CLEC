@@ -266,7 +266,7 @@ namespace CECLdb
             }
             else if (rbttnAddEmailSent.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                EmailSentReg Frm = new EmailSentReg();
                 Frm.Show();
                 this.Close();
             }

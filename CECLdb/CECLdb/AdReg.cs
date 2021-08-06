@@ -232,7 +232,22 @@ namespace CECLdb
                 MessageBox.Show("Selecciona únicamente 1 aviso");
             }
         }
-       
+        private void bttnViewSelectedAd_Click(object sender, EventArgs e)
+        {
+            if (amountSelectedAd == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelectedAd >= 1)
+            {
+                LoadTableSelectedAd(selectedIDList);
+            }
+        }
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            txtTextAd.Text = "";
+        }
+
         private void Exit(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -309,7 +324,6 @@ namespace CECLdb
         }
         private void LoadTableArea(string data)
         {
-            List<Ad> list = new List<Ad>();
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationAreaAd(data);
             validateSelectionAd();
@@ -336,7 +350,6 @@ namespace CECLdb
         }
         private void LoadTableCourse(string data)
         {
-            List<Ad> list = new List<Ad>();
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationCourse(data);
             validateSelectionAd();
@@ -363,7 +376,6 @@ namespace CECLdb
         }
         private void LoadTableDescription(string data)
         {
-            List<Ad> list = new List<Ad>();
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationDescription(data);
             validateSelectionAd();
@@ -388,14 +400,14 @@ namespace CECLdb
                 LoadTableDescription(null);
             }
         }
-        private void LoadTableSelectedAd(List<int> personSelected)
+        private void LoadTableSelectedAd(List<int> adSelected)
         {
             amountSelectedAd = 0;
             CtrlAd ad = new CtrlAd();
             int sentID = 0;
-            for (int i = 0; i < personSelected.Count; i++)
+            for (int i = 0; i < adSelected.Count; i++)
             {
-                sentID = int.Parse(personSelected[i].ToString());
+                sentID = int.Parse(adSelected[i].ToString());
                 ad.SelectedEmailSent(sentID);
             }
             dgvAdReg.DataSource = ad.listSelected;
@@ -533,6 +545,7 @@ namespace CECLdb
         {
             if (Menu.action>=5)
             {
+                Menu.action =2;
                 this.Close();
             }
             else
@@ -559,23 +572,6 @@ namespace CECLdb
                 amountSelectedAd += 1;
                 selectedIDList.Add(idAd);
             }
-        }
-
-        private void bttnViewSelectedAd_Click(object sender, EventArgs e)
-        {
-            if (amountSelectedAd == 0)
-            {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
-            }
-            else if (amountSelectedAd >= 1)
-            {
-                LoadTableSelectedAd(selectedIDList);
-            }
-        }
-
-        private void bttnEraserText_Click(object sender, EventArgs e)
-        {
-            txtTextAd.Text = "";
         }
 
         private void DeletebtnAd_Click(object sender, EventArgs e)

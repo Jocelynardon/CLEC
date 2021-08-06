@@ -211,16 +211,9 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
-            if (data == null)
-            {
-                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
-                "JOIN persona ON persona.IDpersona=correoenviado.IDpersona ORDER BY persona.Nombre ASC";
-            }
-            else
-            {
-                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
-                "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso LIKE " + data + " ORDER BY persona.Nombre ASC";
-            }
+
+            sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
+            "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso LIKE " + data + " ORDER BY persona.Nombre ASC";
 
             try
             {
