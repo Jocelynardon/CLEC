@@ -206,5 +206,45 @@ namespace CLEC
                 MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
             }
         }
+        public List<Object> consultationIDEmailSent(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+            if (data == null)
+            {
+                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
+                "JOIN persona ON persona.IDpersona=correoenviado.IDpersona ORDER BY persona.Nombre ASC";
+            }
+            else
+            {
+                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
+                "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso LIKE " + data + " ORDER BY persona.Nombre ASC";
+            }
+
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Person person = new Person();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
+                    person.Email = reader[3].ToString();
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Código = reader.GetString(5);
+                    list.Add(person);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
     }
 }

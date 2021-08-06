@@ -52,11 +52,12 @@ namespace CECLdb
             this.ModifybtnAd = new System.Windows.Forms.Button();
             this.DeletebtnAd = new System.Windows.Forms.Button();
             this.bttnSelectPerson = new System.Windows.Forms.Button();
-            this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
+            this.bttnViewSelectedAd = new System.Windows.Forms.Button();
             this.btnCleanAd = new System.Windows.Forms.Button();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnEraserText = new System.Windows.Forms.Button();
+            this.bttnConfirm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,8 +202,9 @@ namespace CECLdb
             // bttnEmailSent
             // 
             this.bttnEmailSent.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.bttnEmailSent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bttnEmailSent.Location = new System.Drawing.Point(572, 415);
+            this.bttnEmailSent.Location = new System.Drawing.Point(678, 468);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
             this.bttnEmailSent.TabIndex = 8;
@@ -307,18 +309,18 @@ namespace CECLdb
             this.bttnSelectPerson.Visible = false;
             this.bttnSelectPerson.Click += new System.EventHandler(this.bttnSelectPerson_Click);
             // 
-            // bttnViewSelectedPerson
+            // bttnViewSelectedAd
             // 
-            this.bttnViewSelectedPerson.BackColor = System.Drawing.Color.LightSalmon;
-            this.bttnViewSelectedPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewSelectedPerson.Location = new System.Drawing.Point(557, 938);
-            this.bttnViewSelectedPerson.Name = "bttnViewSelectedPerson";
-            this.bttnViewSelectedPerson.Size = new System.Drawing.Size(187, 29);
-            this.bttnViewSelectedPerson.TabIndex = 32;
-            this.bttnViewSelectedPerson.Text = "Ver seleccionados";
-            this.bttnViewSelectedPerson.UseVisualStyleBackColor = false;
-            this.bttnViewSelectedPerson.Visible = false;
-            this.bttnViewSelectedPerson.Click += new System.EventHandler(this.bttnViewSelectedPerson_Click);
+            this.bttnViewSelectedAd.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelectedAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewSelectedAd.Location = new System.Drawing.Point(557, 938);
+            this.bttnViewSelectedAd.Name = "bttnViewSelectedAd";
+            this.bttnViewSelectedAd.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelectedAd.TabIndex = 32;
+            this.bttnViewSelectedAd.Text = "Ver seleccionados";
+            this.bttnViewSelectedAd.UseVisualStyleBackColor = false;
+            this.bttnViewSelectedAd.Visible = false;
+            this.bttnViewSelectedAd.Click += new System.EventHandler(this.bttnViewSelectedAd_Click);
             // 
             // btnCleanAd
             // 
@@ -368,16 +370,31 @@ namespace CECLdb
             this.bttnEraserText.Visible = false;
             this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
             // 
+            // bttnConfirm
+            // 
+            this.bttnConfirm.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bttnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.bttnConfirm.Location = new System.Drawing.Point(678, 468);
+            this.bttnConfirm.Name = "bttnConfirm";
+            this.bttnConfirm.Size = new System.Drawing.Size(114, 30);
+            this.bttnConfirm.TabIndex = 38;
+            this.bttnConfirm.Text = "Confirmar";
+            this.bttnConfirm.UseVisualStyleBackColor = false;
+            this.bttnConfirm.Visible = false;
+            this.bttnConfirm.Click += new System.EventHandler(this.bttnConfirm_Click);
+            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 975);
+            this.Controls.Add(this.bttnConfirm);
             this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.SelectAllcbx);
             this.Controls.Add(this.btnCleanAd);
-            this.Controls.Add(this.bttnViewSelectedPerson);
+            this.Controls.Add(this.bttnViewSelectedAd);
             this.Controls.Add(this.bttnSelectPerson);
             this.Controls.Add(this.DeletebtnAd);
             this.Controls.Add(this.ModifybtnAd);
@@ -435,11 +452,12 @@ namespace CECLdb
         private System.Windows.Forms.Button ModifybtnAd;
         private System.Windows.Forms.Button DeletebtnAd;
         private System.Windows.Forms.Button bttnSelectPerson;
-        private System.Windows.Forms.Button bttnViewSelectedPerson;
+        private System.Windows.Forms.Button bttnViewSelectedAd;
         private System.Windows.Forms.Button btnCleanAd;
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
         private System.Windows.Forms.Button bttnEraserText;
+        private System.Windows.Forms.Button bttnConfirm;
     }
 }

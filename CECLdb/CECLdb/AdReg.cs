@@ -22,11 +22,12 @@ namespace CECLdb
         public int amountAd = 0;
         //public int idAd = 0;
         public List<int> selectedIDList = new List<int>();
-        //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado
+        //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado en agregar, 5 viene
+        // de email enviado pero modificar
         public AdReg()
         {
             InitializeComponent();
-            if (Menu.action >= 2 && Menu.action <= 4)
+            if (Menu.action >= 2 && Menu.action <= 5)
             {
                 LoadTypeSearchAd();
                 txtTextAd.Visible = true;
@@ -51,18 +52,15 @@ namespace CECLdb
                 bttnSaveAd.Visible = true;
                 btnCleanAd.Visible = true;
                 ModifybtnAd.Visible = true;
-                bttnViewSelectedPerson.Visible = true;
-            }
-            if (Menu.action >= 3 && Menu.action < 4)
-            {
-                this.Height = 180;
-                HideAndMove();
+                bttnViewSelectedAd.Visible = true;
             }
             if (Menu.action == 3)
             {
+                this.Height = 180;
+                HideAndMove();
                 DeletebtnAd.Visible = true;
             }
-            if (Menu.action == 4)
+            if (Menu.action >= 4||Menu.action<=5)
             {
                 cmbSelectAreaAd.Enabled = false;
                 cmbSelectCourseAd.Enabled = false;
@@ -143,24 +141,24 @@ namespace CECLdb
                 ModifybtnAd.Location = new Point(340, 938);
                 bttnReturnAd.Location = new Point(440, 938);
                 DeselectAllcbx.Visible = true;
-                bttnViewSelectedPerson.Visible = true;
+                bttnViewSelectedAd.Visible = true;
                 this.Height = 1022;
             }
             if (Menu.action == 3)
             {
                 SelectAllcbx.Visible = true;
                 DeselectAllcbx.Visible = true;
-                bttnViewSelectedPerson.Visible = true;
+                bttnViewSelectedAd.Visible = true;
                 this.Height = 607;
             }
-            if (Menu.action == 4)
+            if (Menu.action == 4 || Menu.action==5)
             {
                 this.Height = 1022;
                 DeselectAllcbx.Visible = true;
                 bttnSelectPerson.Visible = true;
                 bttnReturnAd.Location = new Point(437, 938);
                 bttnSelectPerson.Location = new Point(323, 938);
-                bttnViewSelectedPerson.Visible = true;
+                bttnViewSelectedAd.Visible = true;
             }
             if (amountAd > 0)
             {
@@ -198,6 +196,10 @@ namespace CECLdb
         }
         private void bttnSelectPerson_Click(object sender, EventArgs e)
         {
+            if (Menu.action==5)
+            {
+                bttnSelectPerson.Text = "Verificar";
+            }
             if (amountSelectedAd == 0)
             {
                 MessageBox.Show("No se ha seleccionado un aviso");
@@ -216,7 +218,14 @@ namespace CECLdb
                         rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
                     }
                 }
-                bttnEmailSent.Visible = true;
+                if (Menu.action==4)
+                {
+                    bttnEmailSent.Visible = true;
+                }
+                if (Menu.action==5)
+                {
+                    bttnConfirm.Visible = true;
+                }
             }
             if (amountSelectedAd > 1)
             {
@@ -504,7 +513,7 @@ namespace CECLdb
             bttnEraserText.Location = new Point(989, 91);
             dgvAdReg.Location = new Point(30, 163);
             bttnReturnAd.Location = new Point(495, 517);
-            bttnViewSelectedPerson.Location = new Point(628, 517);
+            bttnViewSelectedAd.Location = new Point(628, 517);
             DeletebtnAd.Location = new Point(386, 517);
             bttnSelectPerson.Location = new Point(386, 517);
             SelectAllcbx.Location = new Point(42, 133);
@@ -522,9 +531,16 @@ namespace CECLdb
         }
         private void CloseWindow()
         {
-            Menu Frm = new Menu();
-            Frm.Show();
-            this.Close();
+            if (Menu.action>=5)
+            {
+                this.Close();
+            }
+            else
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
         }
 
         private void dgvAdReg_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -545,7 +561,7 @@ namespace CECLdb
             }
         }
 
-        private void bttnViewSelectedPerson_Click(object sender, EventArgs e)
+        private void bttnViewSelectedAd_Click(object sender, EventArgs e)
         {
             if (amountSelectedAd == 0)
             {
@@ -672,6 +688,21 @@ namespace CECLdb
                     selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
                 }
             }
+        }
+
+        private void bttnConfirm_Click(object sender, EventArgs e)
+        {
+                foreach (DataGridViewRow row in dgvAdReg.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        DataGridViewCell choosenID = row.Cells[1];
+                        AddID parent = this.Owner as AddID;
+                        parent.AddNewItem(choosenID);
+                        this.Close();
+                    }
+                }
         }
     }
 }
