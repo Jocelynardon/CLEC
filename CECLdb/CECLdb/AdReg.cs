@@ -15,7 +15,7 @@ namespace CECLdb
         public static int idAd = 0;
         public static int type = 0;
         public int amountSelectedAd = 0;
-
+        String textSearch;
         public int PerID;
 
         public int amountAd = 0;
@@ -148,7 +148,7 @@ namespace CECLdb
 
             if (amountAd > 0)
             {
-                String textSearch = txtTextAd.Text;
+                textSearch = txtTextAd.Text;
                 if (textSearch == "")
                 {
                     LoadTableArea(null);
@@ -513,6 +513,118 @@ namespace CECLdb
             else if (amountSelectedAd >= 1)
             {
                 LoadTableSelectedAd(selectedIDList);
+            }
+        }
+
+        private void DeletebtnAd_Click(object sender, EventArgs e)
+        {
+            int saveId = 0;
+            if (amountSelectedAd == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a ninguna persona");
+            }
+            if (amountSelectedAd >= 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar las personas seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedIDList.Count; i++)
+                    {
+                        saveId = int.Parse(selectedIDList[i].ToString());
+                        string sql = "DELETE FROM persona WHERE IDpersona =" + saveId;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            if (i == selectedIDList.Count - 1)
+                            {
+                                MessageBox.Show("Se ha eliminado exitosamente");
+                                EmptyChecked();
+                                UpdateDataGrid();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+
+                            MessageBox.Show("Error al eliminar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                }
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            amountSelectedAd = 0;
+            ConsultationAmountAd();
+            if (amountAd > 0)
+            {
+                if (textSearch == "")
+                {
+                    LoadTableArea(null);
+                }
+                switch (cmbTypeAd.SelectedIndex)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        LoadTableArea(textSearch);
+                        break;
+                    case 1:
+                        LoadTableCourse(textSearch);
+                        break;
+                    case 2:
+                        LoadTableDescription(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                        cmbTypeAd.Text = "";
+                        break;
+                }
+            }
+            else
+            {
+                dgvAdReg.Rows.Clear();
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelectedAd = 0;
+            selectedIDList.Clear();
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DeselectAllcbx.Checked)
+            {
+                amountSelectedAd = 0;
+                selectedIDList.Clear();
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvAdReg.Rows)
+                {
+                    Fila.Cells[0].Value = null;
+                }
+            }
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                amountSelectedAd = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvAdReg.Rows)
+                {
+                    Fila.Cells[0].Value = true;
+                    amountSelectedAd++;
+                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
+                }
             }
         }
     }

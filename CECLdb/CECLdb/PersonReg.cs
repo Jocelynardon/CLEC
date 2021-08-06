@@ -735,8 +735,11 @@ namespace CECLdb
             consultationAmount();
             if (amountPerson > 0)
             {
-                
 
+                if (textSearch == "")
+                {
+                    LoadTableCode(null);
+                }
                 switch (LastSearchTypeSelected)
                 {
                     //0 Código, 1 Correo, 2 Nombre

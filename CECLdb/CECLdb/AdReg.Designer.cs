@@ -58,6 +58,7 @@ namespace CECLdb
             this.btnCleanAd = new System.Windows.Forms.Button();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnImportAd = new System.Windows.Forms.Button();
+            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -260,7 +261,7 @@ namespace CECLdb
             // 
             // txtTextAd
             // 
-            this.txtTextAd.Location = new System.Drawing.Point(50, 617);
+            this.txtTextAd.Location = new System.Drawing.Point(50, 585);
             this.txtTextAd.Name = "txtTextAd";
             this.txtTextAd.Size = new System.Drawing.Size(564, 27);
             this.txtTextAd.TabIndex = 19;
@@ -269,7 +270,7 @@ namespace CECLdb
             // cmbTypeAd
             // 
             this.cmbTypeAd.FormattingEnabled = true;
-            this.cmbTypeAd.Location = new System.Drawing.Point(629, 617);
+            this.cmbTypeAd.Location = new System.Drawing.Point(629, 585);
             this.cmbTypeAd.Name = "cmbTypeAd";
             this.cmbTypeAd.Size = new System.Drawing.Size(249, 28);
             this.cmbTypeAd.TabIndex = 20;
@@ -279,7 +280,7 @@ namespace CECLdb
             // 
             this.bttnSearchAd.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.bttnSearchAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSearchAd.Location = new System.Drawing.Point(904, 619);
+            this.bttnSearchAd.Location = new System.Drawing.Point(904, 587);
             this.bttnSearchAd.Name = "bttnSearchAd";
             this.bttnSearchAd.Size = new System.Drawing.Size(116, 26);
             this.bttnSearchAd.TabIndex = 21;
@@ -311,6 +312,7 @@ namespace CECLdb
             this.DeletebtnAd.Text = "Eliminar";
             this.DeletebtnAd.UseVisualStyleBackColor = false;
             this.DeletebtnAd.Visible = false;
+            this.DeletebtnAd.Click += new System.EventHandler(this.DeletebtnAd_Click);
             // 
             // bttnSelectPerson
             // 
@@ -352,13 +354,14 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(12, 587);
+            this.SelectAllcbx.Location = new System.Drawing.Point(42, 635);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 34;
             this.SelectAllcbx.Text = "Seleccionar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
+            this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
             // bttnImportAd
             // 
@@ -372,11 +375,25 @@ namespace CECLdb
             this.bttnImportAd.UseVisualStyleBackColor = false;
             this.bttnImportAd.Visible = false;
             // 
+            // DeselectAllcbx
+            // 
+            this.DeselectAllcbx.AutoSize = true;
+            this.DeselectAllcbx.BackColor = System.Drawing.SystemColors.Control;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(228, 635);
+            this.DeselectAllcbx.Name = "DeselectAllcbx";
+            this.DeselectAllcbx.Size = new System.Drawing.Size(168, 24);
+            this.DeselectAllcbx.TabIndex = 36;
+            this.DeselectAllcbx.Text = "Deseleccionar Todos";
+            this.DeselectAllcbx.UseVisualStyleBackColor = false;
+            this.DeselectAllcbx.Visible = false;
+            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
+            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 1055);
+            this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.bttnImportAd);
             this.Controls.Add(this.SelectAllcbx);
             this.Controls.Add(this.btnCleanAd);
@@ -447,5 +464,6 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button bttnImportAd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
+        private System.Windows.Forms.CheckBox DeselectAllcbx;
     }
 }
