@@ -243,12 +243,13 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
+            this.SelectAllcbx.BackColor = System.Drawing.SystemColors.Control;
             this.SelectAllcbx.Location = new System.Drawing.Point(46, 402);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 15;
             this.SelectAllcbx.Text = "Seleccionar Todos";
-            this.SelectAllcbx.UseVisualStyleBackColor = true;
+            this.SelectAllcbx.UseVisualStyleBackColor = false;
             this.SelectAllcbx.Visible = false;
             this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 

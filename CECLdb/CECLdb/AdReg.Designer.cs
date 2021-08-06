@@ -293,6 +293,7 @@ namespace CECLdb
             this.DeletebtnAd.Text = "Eliminar";
             this.DeletebtnAd.UseVisualStyleBackColor = false;
             this.DeletebtnAd.Visible = false;
+            this.DeletebtnAd.Click += new System.EventHandler(this.DeletebtnAd_Click);
             // 
             // bttnSelectPerson
             // 
@@ -342,6 +343,7 @@ namespace CECLdb
             this.SelectAllcbx.Text = "Seleccionar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
+            this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
             // bttnImportAd
             // 
