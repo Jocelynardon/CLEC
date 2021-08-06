@@ -55,7 +55,6 @@ namespace CECLdb
             this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
             this.btnCleanAd = new System.Windows.Forms.Button();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
-            this.bttnImportAd = new System.Windows.Forms.Button();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnEraserText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
@@ -345,18 +344,6 @@ namespace CECLdb
             this.SelectAllcbx.Visible = false;
             this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
-            // bttnImportAd
-            // 
-            this.bttnImportAd.BackColor = System.Drawing.Color.LightCoral;
-            this.bttnImportAd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnImportAd.Location = new System.Drawing.Point(678, 468);
-            this.bttnImportAd.Name = "bttnImportAd";
-            this.bttnImportAd.Size = new System.Drawing.Size(94, 29);
-            this.bttnImportAd.TabIndex = 35;
-            this.bttnImportAd.Text = "Importar";
-            this.bttnImportAd.UseVisualStyleBackColor = false;
-            this.bttnImportAd.Visible = false;
-            // 
             // DeselectAllcbx
             // 
             this.DeselectAllcbx.AutoSize = true;
@@ -388,7 +375,6 @@ namespace CECLdb
             this.ClientSize = new System.Drawing.Size(1064, 975);
             this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.DeselectAllcbx);
-            this.Controls.Add(this.bttnImportAd);
             this.Controls.Add(this.SelectAllcbx);
             this.Controls.Add(this.btnCleanAd);
             this.Controls.Add(this.bttnViewSelectedPerson);
@@ -452,7 +438,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnViewSelectedPerson;
         private System.Windows.Forms.Button btnCleanAd;
         private System.Windows.Forms.CheckBox SelectAllcbx;
-        private System.Windows.Forms.Button bttnImportAd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
         private System.Windows.Forms.Button bttnEraserText;

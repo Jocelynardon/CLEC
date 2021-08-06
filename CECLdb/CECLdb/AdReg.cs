@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -25,7 +26,7 @@ namespace CECLdb
         public AdReg()
         {
             InitializeComponent();
-            if (Menu.action>=2 && Menu.action<=4)
+            if (Menu.action >= 2 && Menu.action <= 4)
             {
                 LoadTypeSearchAd();
                 txtTextAd.Visible = true;
@@ -35,34 +36,33 @@ namespace CECLdb
                 bttnEraserText.Visible = true;
                 bttnAddAd.Visible = false;
             }
-            if (Menu.action==1)
+            if (Menu.action == 1)
             {
                 //ShowNumberAd();
                 LoadAreaAd();
                 this.Height = 555;
                 btnCleanAd.Visible = true;
-                bttnImportAd.Visible = true;
             }
-            if (Menu.action==2)
+            if (Menu.action == 2)
             {
                 //ShowNumberAd();
                 LoadAreaAd();
-                this.Height =636;
+                this.Height = 636;
                 bttnSaveAd.Visible = true;
                 btnCleanAd.Visible = true;
                 ModifybtnAd.Visible = true;
                 bttnViewSelectedPerson.Visible = true;
             }
-            if (Menu.action>=3 && Menu.action<4)
+            if (Menu.action >= 3 && Menu.action < 4)
             {
                 this.Height = 180;
                 HideAndMove();
             }
-            if (Menu.action==3)
+            if (Menu.action == 3)
             {
                 DeletebtnAd.Visible = true;
             }
-            if (Menu.action==4)
+            if (Menu.action == 4)
             {
                 cmbSelectAreaAd.Enabled = false;
                 cmbSelectCourseAd.Enabled = false;
@@ -82,11 +82,11 @@ namespace CECLdb
         }
         private void bttnAddAd_Click(object sender, EventArgs e)
         {
-            if (cmbSelectAreaAd.Text!="")
+            if (cmbSelectAreaAd.Text != "")
             {
-                if (cmbSelectCourseAd.Text!="")
+                if (cmbSelectCourseAd.Text != "")
                 {
-                    if (rtbDescriptionAd.Text!="")
+                    if (rtbDescriptionAd.Text != "")
                     {
                         int idArea = int.Parse(cmbSelectAreaAd.SelectedValue.ToString());
                         int idCourse = int.Parse(cmbSelectCourseAd.SelectedValue.ToString());
@@ -137,7 +137,7 @@ namespace CECLdb
         {
             amountSelectedAd = 0;
             ConsultationAmountAd();
-            
+
             if (Menu.action == 2)
             {
                 ModifybtnAd.Location = new Point(340, 938);
@@ -153,7 +153,7 @@ namespace CECLdb
                 bttnViewSelectedPerson.Visible = true;
                 this.Height = 607;
             }
-            if (Menu.action==4)
+            if (Menu.action == 4)
             {
                 this.Height = 1022;
                 DeselectAllcbx.Visible = true;
@@ -194,7 +194,7 @@ namespace CECLdb
         }
         private void bttnSaveAd_Click(object sender, EventArgs e)
         {
-     
+
         }
         private void bttnSelectPerson_Click(object sender, EventArgs e)
         {
@@ -223,6 +223,7 @@ namespace CECLdb
                 MessageBox.Show("Selecciona únicamente 1 aviso");
             }
         }
+       
         private void Exit(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -263,7 +264,7 @@ namespace CECLdb
             cmbSelectCourseAd.Items.Clear();
             int idArea = int.Parse(cmbSelectAreaAd.SelectedValue.ToString());
 
-            string sql = "SELECT IDcurso,Nombre FROM curso WHERE IDarea='"+idArea+"' ORDER BY Nombre";
+            string sql = "SELECT IDcurso,Nombre FROM curso WHERE IDarea='" + idArea + "' ORDER BY Nombre";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
             try
@@ -436,7 +437,7 @@ namespace CECLdb
         //                    txtbAdNumber.Text = "1";
         //                    idAd = int.Parse(txtbAdNumber.Text);
         //                }
-                            
+
         //            }
         //        }
         //        }

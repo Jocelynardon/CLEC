@@ -175,7 +175,6 @@ namespace CECLdb
             window.Filter = "Text files (*.Csv)|*.csv|(*.txt)|*.txt";
             if (window.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(window.FileName);
                 MySqlConnection connectionBD = Connection.connection();
                 connectionBD.Open();
                 try
