@@ -15,7 +15,7 @@ namespace CECLdb
         {
             InitializeComponent();
         }
-        //Variable global que indica en qué opción se trabajará
+        //Variable global que indica en qué opción se trabajará, 1 es agregar, 2 es modificar, 3 es eliminar, 4 va a email enviado
         public static int action = 0;
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -95,7 +95,8 @@ namespace CECLdb
             }
             else if (rbttnAddEmailSent.Checked)
             {
-                EmailSentReg Frm = new EmailSentReg();
+                Menu.action = 4;
+                AdReg Frm = new AdReg();
                 Frm.Show();
                 this.Close();
             }
@@ -221,11 +222,6 @@ namespace CECLdb
             {
                 Application.Exit();
             }
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void bttnDeleteMenu_Click(object sender, EventArgs e)

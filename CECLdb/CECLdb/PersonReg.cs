@@ -76,6 +76,7 @@ namespace CECLdb
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
                 btnClean.Visible = false;
+                DeselectAllcbx.Visible = true;
             }
             if (Menu.action == 4||Menu.action==5)
             {
@@ -93,6 +94,7 @@ namespace CECLdb
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
                 bttnSentEmail.Visible = true;
+                DeselectAllcbx.Visible = true;
                 bttnSentEmail.Location = new Point(403,513) ;
                 bttnViewSelectedPerson.Location = new Point(762, 513);
             }

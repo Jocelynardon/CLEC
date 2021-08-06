@@ -32,45 +32,49 @@ namespace CECLdb
                 cmbTypeAd.Visible = true;
                 dgvAdReg.Visible = true;
                 bttnSearchAd.Visible = true;
+                bttnEraserText.Visible = true;
+                bttnAddAd.Visible = false;
             }
             if (Menu.action==1)
             {
-                ShowNumberAd();
+                //ShowNumberAd();
                 LoadAreaAd();
-                this.Height = 630;
+                this.Height = 555;
                 btnCleanAd.Visible = true;
                 bttnImportAd.Visible = true;
             }
             if (Menu.action==2)
             {
-                ShowNumberAd();
+                //ShowNumberAd();
                 LoadAreaAd();
-                this.Height =705;
-                bttnAddAd.Visible = false;
+                this.Height =636;
                 bttnSaveAd.Visible = true;
                 btnCleanAd.Visible = true;
+                ModifybtnAd.Visible = true;
+                bttnViewSelectedPerson.Visible = true;
             }
             if (Menu.action>=3 && Menu.action<4)
             {
                 this.Height = 180;
-                bttnSaveAd.Visible = false;
-                bttnAddAd.Visible = false;
                 HideAndMove();
-                SelectAllcbx.Visible = true;
             }
-        }
+            if (Menu.action==3)
+            {
+                DeletebtnAd.Visible = true;
+            }
+            if (Menu.action==4)
+            {
+                cmbSelectAreaAd.Enabled = false;
+                cmbSelectCourseAd.Enabled = false;
+                dtpDateAd.Enabled = false;
+                rtbDescriptionAd.Enabled = false;
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
+                this.Height = 636;
+            }
         }
         private void cmbSelectAreaAd_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadCourseAd();
-        }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
         private void bttnReturnAd_Click(object sender, EventArgs e)
         {
@@ -133,19 +137,31 @@ namespace CECLdb
         {
             amountSelectedAd = 0;
             ConsultationAmountAd();
-            bttnEmailSent.Visible = true;
+            
             if (Menu.action == 2)
             {
-                ModifybtnAd.Location = new Point(340, 1015);
-                bttnReturnAd.Location = new Point(440, 1014);
-                this.Height = 1102;
+                ModifybtnAd.Location = new Point(340, 938);
+                bttnReturnAd.Location = new Point(440, 938);
+                DeselectAllcbx.Visible = true;
+                bttnViewSelectedPerson.Visible = true;
+                this.Height = 1022;
             }
-            if (Menu.action >= 3 && Menu.action <= 4)
+            if (Menu.action == 3)
             {
-
-                this.Height = 573;
+                SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
+                bttnViewSelectedPerson.Visible = true;
+                this.Height = 607;
             }
-
+            if (Menu.action==4)
+            {
+                this.Height = 1022;
+                DeselectAllcbx.Visible = true;
+                bttnSelectPerson.Visible = true;
+                bttnReturnAd.Location = new Point(437, 938);
+                bttnSelectPerson.Location = new Point(323, 938);
+                bttnViewSelectedPerson.Visible = true;
+            }
             if (amountAd > 0)
             {
                 String textSearch = txtTextAd.Text;
@@ -180,9 +196,32 @@ namespace CECLdb
         {
      
         }
-        private void lblEscAd_Click(object sender, EventArgs e)
+        private void bttnSelectPerson_Click(object sender, EventArgs e)
         {
-
+            if (amountSelectedAd == 0)
+            {
+                MessageBox.Show("No se ha seleccionado un aviso");
+            }
+            if (amountSelectedAd == 1)
+            {
+                foreach (DataGridViewRow row in dgvAdReg.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        idAd = int.Parse(row.Cells[1].Value.ToString());
+                        cmbSelectAreaAd.Text = row.Cells[3].Value.ToString();
+                        cmbSelectCourseAd.Text = row.Cells[4].Value.ToString();
+                        dtpDateAd.Text = row.Cells[6].Value.ToString();
+                        rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
+                    }
+                }
+                bttnEmailSent.Visible = true;
+            }
+            if (amountSelectedAd > 1)
+            {
+                MessageBox.Show("Selecciona únicamente 1 aviso");
+            }
         }
         private void Exit(object sender, KeyEventArgs e)
         {
@@ -372,44 +411,44 @@ namespace CECLdb
                 LoadTableArea(null);
             }
         }
-        private void ShowNumberAd()
-        {
-            MySqlDataReader reader = null;
-            string sql = "SELECT MAX(IDaviso)+1 FROM aviso";
-            MySqlConnection connectionBD = Connection.connection();
-                connectionBD.Open();
-                try
-                {
-                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        try
-                        {
-                            txtbAdNumber.Text = reader.GetString(0);
-                            idAd = int.Parse(txtbAdNumber.Text);
-                        }
-                        catch (Exception)
-                        {
+        //private void ShowNumberAd()
+        //{
+        //    MySqlDataReader reader = null;
+        //    string sql = "SELECT MAX(IDaviso)+1 FROM aviso";
+        //    MySqlConnection connectionBD = Connection.connection();
+        //        connectionBD.Open();
+        //        try
+        //        {
+        //            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+        //        reader = command.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                try
+        //                {
+        //                    txtbAdNumber.Text = reader.GetString(0);
+        //                    idAd = int.Parse(txtbAdNumber.Text);
+        //                }
+        //                catch (Exception)
+        //                {
 
-                            txtbAdNumber.Text = "1";
-                            idAd = int.Parse(txtbAdNumber.Text);
-                        }
+        //                    txtbAdNumber.Text = "1";
+        //                    idAd = int.Parse(txtbAdNumber.Text);
+        //                }
                             
-                    }
-                }
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Error al cargar los avisos " + ex.Message);
-                }
-            finally
-            {
-                connectionBD.Close();
-            }
-        }
+        //            }
+        //        }
+        //        }
+        //        catch (MySqlException ex)
+        //        {
+        //            MessageBox.Show("Error al cargar los avisos " + ex.Message);
+        //        }
+        //    finally
+        //    {
+        //        connectionBD.Close();
+        //    }
+        //}
         private void ConsultationAmountAd()
         {
             string sql = "SELECT COUNT(1) FROM aviso ";
@@ -452,22 +491,23 @@ namespace CECLdb
             cmbSelectAreaAd.Visible = false;
             lblSelectCourseAd.Visible = false;
             cmbSelectCourseAd.Visible = false;
-            lblAdNumber.Visible = false;
-            txtbAdNumber.Visible = false;
             lblDateAd.Visible = false;
             dtpDateAd.Visible = false;
             lblDescriptionAd.Visible = false;
             rtbDescriptionAd.Visible = false;
             bttnSaveAd.Visible = false;
-            txtTextAd.Location = new Point(42,90);
-            cmbTypeAd.Location = new Point(618,90);
-            bttnSearchAd.Location = new Point(887, 90);
-            dgvAdReg.Location = new Point(33, 133);
-            bttnReturnAd.Location = new Point(510,483);
-            bttnViewSelectedPerson.Location = new Point(647,483);
-            DeletebtnAd.Location = new Point(400, 483);
-            bttnSelectPerson.Location = new Point(400,483);
-            bttnEmailSent.Location=new Point(346, 555);
+            bttnEmailSent.Visible = true;
+            txtTextAd.Location = new Point(12, 89);
+            cmbTypeAd.Location = new Point(591, 89);
+            bttnSearchAd.Location = new Point(857, 89);
+            bttnEraserText.Location = new Point(989, 91);
+            dgvAdReg.Location = new Point(30, 163);
+            bttnReturnAd.Location = new Point(495, 517);
+            bttnViewSelectedPerson.Location = new Point(628, 517);
+            DeletebtnAd.Location = new Point(386, 517);
+            bttnSelectPerson.Location = new Point(386, 517);
+            SelectAllcbx.Location = new Point(42, 133);
+            DeselectAllcbx.Location = new Point(213, 133);
         }
         private void Clean()
         {
@@ -477,7 +517,7 @@ namespace CECLdb
             dtpDateAd.Value = DateTime.Now;
             dtpDateAd.Format = DateTimePickerFormat.Custom;
             dtpDateAd.CustomFormat = "yyyy/MM/dd";
-            ShowNumberAd();
+            //ShowNumberAd();
         }
         private void CloseWindow()
         {
@@ -514,6 +554,11 @@ namespace CECLdb
             {
                 LoadTableSelectedAd(selectedIDList);
             }
+        }
+
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            txtTextAd.Text = "";
         }
     }
 }

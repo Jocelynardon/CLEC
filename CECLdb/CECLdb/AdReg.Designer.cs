@@ -38,8 +38,6 @@ namespace CECLdb
             this.lblDescriptionAd = new System.Windows.Forms.Label();
             this.rtbDescriptionAd = new System.Windows.Forms.RichTextBox();
             this.bttnAddAd = new System.Windows.Forms.Button();
-            this.lblAdNumber = new System.Windows.Forms.Label();
-            this.txtbAdNumber = new System.Windows.Forms.TextBox();
             this.bttnReturnAd = new System.Windows.Forms.Button();
             this.lblSearchAd = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +56,8 @@ namespace CECLdb
             this.btnCleanAd = new System.Windows.Forms.Button();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnImportAd = new System.Windows.Forms.Button();
+            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
+            this.bttnEraserText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +103,7 @@ namespace CECLdb
             // lblDateAd
             // 
             this.lblDateAd.AutoSize = true;
-            this.lblDateAd.Location = new System.Drawing.Point(42, 198);
+            this.lblDateAd.Location = new System.Drawing.Point(605, 110);
             this.lblDateAd.Name = "lblDateAd";
             this.lblDateAd.Size = new System.Drawing.Size(47, 20);
             this.lblDateAd.TabIndex = 4;
@@ -116,16 +116,15 @@ namespace CECLdb
             this.dtpDateAd.CalendarTitleBackColor = System.Drawing.Color.LightSeaGreen;
             this.dtpDateAd.CustomFormat = "yyyy/MM/dd";
             this.dtpDateAd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateAd.Location = new System.Drawing.Point(42, 231);
+            this.dtpDateAd.Location = new System.Drawing.Point(605, 147);
             this.dtpDateAd.Name = "dtpDateAd";
             this.dtpDateAd.Size = new System.Drawing.Size(312, 27);
             this.dtpDateAd.TabIndex = 3;
-            this.dtpDateAd.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lblDescriptionAd
             // 
             this.lblDescriptionAd.AutoSize = true;
-            this.lblDescriptionAd.Location = new System.Drawing.Point(42, 275);
+            this.lblDescriptionAd.Location = new System.Drawing.Point(42, 193);
             this.lblDescriptionAd.Name = "lblDescriptionAd";
             this.lblDescriptionAd.Size = new System.Drawing.Size(91, 20);
             this.lblDescriptionAd.TabIndex = 6;
@@ -134,7 +133,7 @@ namespace CECLdb
             // rtbDescriptionAd
             // 
             this.rtbDescriptionAd.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.rtbDescriptionAd.Location = new System.Drawing.Point(42, 298);
+            this.rtbDescriptionAd.Location = new System.Drawing.Point(42, 216);
             this.rtbDescriptionAd.Name = "rtbDescriptionAd";
             this.rtbDescriptionAd.Size = new System.Drawing.Size(452, 229);
             this.rtbDescriptionAd.TabIndex = 4;
@@ -143,7 +142,7 @@ namespace CECLdb
             // bttnAddAd
             // 
             this.bttnAddAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddAd.Location = new System.Drawing.Point(303, 545);
+            this.bttnAddAd.Location = new System.Drawing.Point(303, 467);
             this.bttnAddAd.Name = "bttnAddAd";
             this.bttnAddAd.Size = new System.Drawing.Size(114, 30);
             this.bttnAddAd.TabIndex = 5;
@@ -151,29 +150,10 @@ namespace CECLdb
             this.bttnAddAd.UseVisualStyleBackColor = false;
             this.bttnAddAd.Click += new System.EventHandler(this.bttnAddAd_Click);
             // 
-            // lblAdNumber
-            // 
-            this.lblAdNumber.AutoSize = true;
-            this.lblAdNumber.Location = new System.Drawing.Point(542, 110);
-            this.lblAdNumber.Name = "lblAdNumber";
-            this.lblAdNumber.Size = new System.Drawing.Size(72, 20);
-            this.lblAdNumber.TabIndex = 9;
-            this.lblAdNumber.Text = "No. Aviso";
-            // 
-            // txtbAdNumber
-            // 
-            this.txtbAdNumber.BackColor = System.Drawing.Color.Linen;
-            this.txtbAdNumber.Enabled = false;
-            this.txtbAdNumber.Location = new System.Drawing.Point(542, 147);
-            this.txtbAdNumber.Name = "txtbAdNumber";
-            this.txtbAdNumber.ReadOnly = true;
-            this.txtbAdNumber.Size = new System.Drawing.Size(148, 27);
-            this.txtbAdNumber.TabIndex = 8;
-            // 
             // bttnReturnAd
             // 
             this.bttnReturnAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnAd.Location = new System.Drawing.Point(423, 545);
+            this.bttnReturnAd.Location = new System.Drawing.Point(423, 468);
             this.bttnReturnAd.Name = "bttnReturnAd";
             this.bttnReturnAd.Size = new System.Drawing.Size(114, 30);
             this.bttnReturnAd.TabIndex = 7;
@@ -200,7 +180,7 @@ namespace CECLdb
             // bttnSaveAd
             // 
             this.bttnSaveAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveAd.Location = new System.Drawing.Point(303, 545);
+            this.bttnSaveAd.Location = new System.Drawing.Point(303, 467);
             this.bttnSaveAd.Name = "bttnSaveAd";
             this.bttnSaveAd.Size = new System.Drawing.Size(114, 30);
             this.bttnSaveAd.TabIndex = 6;
@@ -218,28 +198,30 @@ namespace CECLdb
             this.lblEscAd.Size = new System.Drawing.Size(165, 22);
             this.lblEscAd.TabIndex = 17;
             this.lblEscAd.Text = "(ESC) Regresar al Menu";
-            this.lblEscAd.Click += new System.EventHandler(this.lblEscAd_Click);
             // 
             // bttnEmailSent
             // 
-            this.bttnEmailSent.BackColor = System.Drawing.Color.SpringGreen;
+            this.bttnEmailSent.BackColor = System.Drawing.Color.MediumTurquoise;
             this.bttnEmailSent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.bttnEmailSent.Location = new System.Drawing.Point(687, 471);
+            this.bttnEmailSent.Location = new System.Drawing.Point(572, 415);
             this.bttnEmailSent.Name = "bttnEmailSent";
             this.bttnEmailSent.Size = new System.Drawing.Size(114, 30);
             this.bttnEmailSent.TabIndex = 8;
             this.bttnEmailSent.Text = "Destinatario";
             this.bttnEmailSent.UseVisualStyleBackColor = false;
+            this.bttnEmailSent.Visible = false;
             this.bttnEmailSent.Click += new System.EventHandler(this.bttnEmailSent_Click);
             // 
             // dgvAdReg
             // 
+            this.dgvAdReg.AllowUserToAddRows = false;
+            this.dgvAdReg.AllowUserToDeleteRows = false;
             this.dgvAdReg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvAdReg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvAdReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            this.dgvAdReg.Location = new System.Drawing.Point(42, 665);
+            this.dgvAdReg.Location = new System.Drawing.Point(29, 602);
             this.dgvAdReg.Name = "dgvAdReg";
             this.dgvAdReg.RowHeadersWidth = 51;
             this.dgvAdReg.RowTemplate.Height = 29;
@@ -260,7 +242,7 @@ namespace CECLdb
             // 
             // txtTextAd
             // 
-            this.txtTextAd.Location = new System.Drawing.Point(50, 617);
+            this.txtTextAd.Location = new System.Drawing.Point(12, 554);
             this.txtTextAd.Name = "txtTextAd";
             this.txtTextAd.Size = new System.Drawing.Size(564, 27);
             this.txtTextAd.TabIndex = 19;
@@ -269,7 +251,7 @@ namespace CECLdb
             // cmbTypeAd
             // 
             this.cmbTypeAd.FormattingEnabled = true;
-            this.cmbTypeAd.Location = new System.Drawing.Point(629, 617);
+            this.cmbTypeAd.Location = new System.Drawing.Point(592, 554);
             this.cmbTypeAd.Name = "cmbTypeAd";
             this.cmbTypeAd.Size = new System.Drawing.Size(249, 28);
             this.cmbTypeAd.TabIndex = 20;
@@ -279,7 +261,7 @@ namespace CECLdb
             // 
             this.bttnSearchAd.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.bttnSearchAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSearchAd.Location = new System.Drawing.Point(904, 619);
+            this.bttnSearchAd.Location = new System.Drawing.Point(857, 555);
             this.bttnSearchAd.Name = "bttnSearchAd";
             this.bttnSearchAd.Size = new System.Drawing.Size(116, 26);
             this.bttnSearchAd.TabIndex = 21;
@@ -292,7 +274,7 @@ namespace CECLdb
             // 
             this.ModifybtnAd.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ModifybtnAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ModifybtnAd.Location = new System.Drawing.Point(260, 1013);
+            this.ModifybtnAd.Location = new System.Drawing.Point(260, 938);
             this.ModifybtnAd.Name = "ModifybtnAd";
             this.ModifybtnAd.Size = new System.Drawing.Size(94, 29);
             this.ModifybtnAd.TabIndex = 22;
@@ -304,7 +286,7 @@ namespace CECLdb
             // 
             this.DeletebtnAd.BackColor = System.Drawing.Color.Honeydew;
             this.DeletebtnAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.DeletebtnAd.Location = new System.Drawing.Point(360, 1013);
+            this.DeletebtnAd.Location = new System.Drawing.Point(360, 938);
             this.DeletebtnAd.Name = "DeletebtnAd";
             this.DeletebtnAd.Size = new System.Drawing.Size(94, 29);
             this.DeletebtnAd.TabIndex = 23;
@@ -316,19 +298,20 @@ namespace CECLdb
             // 
             this.bttnSelectPerson.BackColor = System.Drawing.Color.Khaki;
             this.bttnSelectPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSelectPerson.Location = new System.Drawing.Point(460, 1014);
+            this.bttnSelectPerson.Location = new System.Drawing.Point(460, 938);
             this.bttnSelectPerson.Name = "bttnSelectPerson";
             this.bttnSelectPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnSelectPerson.TabIndex = 24;
             this.bttnSelectPerson.Text = "Seleccionar";
             this.bttnSelectPerson.UseVisualStyleBackColor = false;
             this.bttnSelectPerson.Visible = false;
+            this.bttnSelectPerson.Click += new System.EventHandler(this.bttnSelectPerson_Click);
             // 
             // bttnViewSelectedPerson
             // 
             this.bttnViewSelectedPerson.BackColor = System.Drawing.Color.LightSalmon;
             this.bttnViewSelectedPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewSelectedPerson.Location = new System.Drawing.Point(560, 1014);
+            this.bttnViewSelectedPerson.Location = new System.Drawing.Point(557, 938);
             this.bttnViewSelectedPerson.Name = "bttnViewSelectedPerson";
             this.bttnViewSelectedPerson.Size = new System.Drawing.Size(187, 29);
             this.bttnViewSelectedPerson.TabIndex = 32;
@@ -341,7 +324,7 @@ namespace CECLdb
             // 
             this.btnCleanAd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCleanAd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCleanAd.Location = new System.Drawing.Point(543, 545);
+            this.btnCleanAd.Location = new System.Drawing.Point(543, 467);
             this.btnCleanAd.Name = "btnCleanAd";
             this.btnCleanAd.Size = new System.Drawing.Size(129, 29);
             this.btnCleanAd.TabIndex = 33;
@@ -352,7 +335,7 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(12, 587);
+            this.SelectAllcbx.Location = new System.Drawing.Point(38, 512);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 34;
@@ -364,7 +347,7 @@ namespace CECLdb
             // 
             this.bttnImportAd.BackColor = System.Drawing.Color.LightCoral;
             this.bttnImportAd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnImportAd.Location = new System.Drawing.Point(687, 547);
+            this.bttnImportAd.Location = new System.Drawing.Point(678, 468);
             this.bttnImportAd.Name = "bttnImportAd";
             this.bttnImportAd.Size = new System.Drawing.Size(94, 29);
             this.bttnImportAd.TabIndex = 35;
@@ -372,11 +355,37 @@ namespace CECLdb
             this.bttnImportAd.UseVisualStyleBackColor = false;
             this.bttnImportAd.Visible = false;
             // 
+            // DeselectAllcbx
+            // 
+            this.DeselectAllcbx.AutoSize = true;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(195, 512);
+            this.DeselectAllcbx.Name = "DeselectAllcbx";
+            this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
+            this.DeselectAllcbx.TabIndex = 36;
+            this.DeselectAllcbx.Text = "Desmarcar Todos";
+            this.DeselectAllcbx.UseVisualStyleBackColor = true;
+            this.DeselectAllcbx.Visible = false;
+            // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(989, 555);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 37;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Visible = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
+            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 1055);
+            this.ClientSize = new System.Drawing.Size(1064, 975);
+            this.Controls.Add(this.bttnEraserText);
+            this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.bttnImportAd);
             this.Controls.Add(this.SelectAllcbx);
             this.Controls.Add(this.btnCleanAd);
@@ -394,8 +403,6 @@ namespace CECLdb
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSearchAd);
             this.Controls.Add(this.bttnReturnAd);
-            this.Controls.Add(this.txtbAdNumber);
-            this.Controls.Add(this.lblAdNumber);
             this.Controls.Add(this.bttnAddAd);
             this.Controls.Add(this.rtbDescriptionAd);
             this.Controls.Add(this.lblDescriptionAd);
@@ -427,8 +434,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblDescriptionAd;
         private System.Windows.Forms.RichTextBox rtbDescriptionAd;
         private System.Windows.Forms.Button bttnAddAd;
-        private System.Windows.Forms.Label lblAdNumber;
-        private System.Windows.Forms.TextBox txtbAdNumber;
         private System.Windows.Forms.Button bttnReturnAd;
         private System.Windows.Forms.Label lblSearchAd;
         private System.Windows.Forms.Label label1;
@@ -447,5 +452,7 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button bttnImportAd;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
+        private System.Windows.Forms.CheckBox DeselectAllcbx;
+        private System.Windows.Forms.Button bttnEraserText;
     }
 }

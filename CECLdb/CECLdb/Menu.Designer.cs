@@ -272,7 +272,6 @@ namespace CECLdb
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Menu_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ControlKey);
             this.gpbAdd.ResumeLayout(false);
             this.gpbAdd.PerformLayout();

@@ -29,7 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@ namespace CECLdb
             this.lblDataPerson = new System.Windows.Forms.Label();
             this.bttnSentEmail = new System.Windows.Forms.Button();
             this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
+            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,14 +210,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -392,11 +393,23 @@ namespace CECLdb
             this.bttnViewSelectedPerson.Visible = false;
             this.bttnViewSelectedPerson.Click += new System.EventHandler(this.bttnViewSelectedPerson_Click);
             // 
+            // DeselectAllcbx
+            // 
+            this.DeselectAllcbx.AutoSize = true;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(207, 402);
+            this.DeselectAllcbx.Name = "DeselectAllcbx";
+            this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
+            this.DeselectAllcbx.TabIndex = 32;
+            this.DeselectAllcbx.Text = "Desmarcar Todos";
+            this.DeselectAllcbx.UseVisualStyleBackColor = true;
+            this.DeselectAllcbx.Visible = false;
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.bttnViewSelectedPerson);
             this.Controls.Add(this.bttnSentEmail);
             this.Controls.Add(this.lblDataPerson);
@@ -467,5 +480,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblDataPerson;
         private System.Windows.Forms.Button bttnSentEmail;
         private System.Windows.Forms.Button bttnViewSelectedPerson;
+        private System.Windows.Forms.CheckBox DeselectAllcbx;
     }
 }
