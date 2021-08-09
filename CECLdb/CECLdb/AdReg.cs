@@ -16,9 +16,9 @@ namespace CECLdb
         public static int idAd = 0;
         public static int type = 0;
         public int amountSelectedAd = 0;
-        String textSearch;
-        public int PerID;
-
+        public String textSearch;
+        public int AdID;
+        public int LastSearchTyprSelected;
         public int amountAd = 0;
         //public int idAd = 0;
         public List<int> selectedIDList = new List<int>();
@@ -70,14 +70,15 @@ namespace CECLdb
                 this.Height = 636;
             }
         }
-        private void cmbSelectAreaAd_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            LoadCourseAd();
-        }
         private void bttnReturnAd_Click(object sender, EventArgs e)
         {
             CloseWindow();
         }
+        private void cmbSelectAreaAd_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            LoadCourseAd();
+        }
+        
         private void bttnAddAd_Click(object sender, EventArgs e)
         {
             if (cmbSelectAreaAd.Text != "")
@@ -98,7 +99,7 @@ namespace CECLdb
                         {
                             MySqlCommand command = new MySqlCommand(sql, connectionBD);
                             command.ExecuteNonQuery();
-                            MessageBox.Show("Curso correctamente agregado");
+                            MessageBox.Show("Aviso correctamente agregado");
                             Clean();
                         }
                         catch (MySqlException ex1)
@@ -163,6 +164,7 @@ namespace CECLdb
             if (amountAd > 0)
             {
                 textSearch = txtTextAd.Text;
+                LastSearchTyprSelected = cmbTypeAd.SelectedIndex;
                 if (textSearch == "")
                 {
                     LoadTableArea(null);
@@ -187,12 +189,55 @@ namespace CECLdb
             }
             else
             {
-                MessageBox.Show("No se encuentran personas registradas");
+                MessageBox.Show("No se encuentran avisos/anuncios registrados");
             }
         }
         private void bttnSaveAd_Click(object sender, EventArgs e)
         {
+            if (cmbSelectAreaAd.Text != "")
+            {
+                if (cmbSelectCourseAd.Text != "")
+                {
+                    if (rtbDescriptionAd.Text != "")
+                    {
+                        int idArea = int.Parse(cmbSelectAreaAd.SelectedValue.ToString());
+                        int idCourse = int.Parse(cmbSelectCourseAd.SelectedValue.ToString());
+                        String description = rtbDescriptionAd.Text;
 
+                        string sql = "UPDATE persona SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', Descripcion = '" + description + "', Fecha = '" + dtpDateAd.Text + "' " +
+                "WHERE IDpersona =" + AdID;
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Aviso correctamente modificado");
+                            Clean();
+                        }
+                        catch (MySqlException ex1)
+                        {
+                            MessageBox.Show("Error al guardar " + ex1.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Coloque una descripción sobre el anuncio");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione el curso al que pertence");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el área a la que pertenece");
+            }
         }
         private void bttnSelectPerson_Click(object sender, EventArgs e)
         {
@@ -531,30 +576,8 @@ namespace CECLdb
             SelectAllcbx.Location = new Point(42, 133);
             DeselectAllcbx.Location = new Point(213, 133);
         }
-        private void Clean()
-        {
-            cmbSelectAreaAd.Text = "";
-            cmbSelectCourseAd.Text = "";
-            rtbDescriptionAd.Text = "";
-            dtpDateAd.Value = DateTime.Now;
-            dtpDateAd.Format = DateTimePickerFormat.Custom;
-            dtpDateAd.CustomFormat = "yyyy/MM/dd";
-            //ShowNumberAd();
-        }
-        private void CloseWindow()
-        {
-            if (Menu.action>=5)
-            {
-                Menu.action =2;
-                this.Close();
-            }
-            else
-            {
-                Menu Frm = new Menu();
-                Frm.Show();
-                this.Close();
-            }
-        }
+        
+        
 
         private void dgvAdReg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -565,13 +588,53 @@ namespace CECLdb
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelectedAd += -1;
                 selectedIDList.Remove(idAd);
+                SelectAllcbx.Checked = false;
             }
             else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
                 amountSelectedAd += 1;
                 selectedIDList.Add(idAd);
+                DeselectAllcbx.Checked = false;
             }
+        }
+        private void CloseWindow()
+        {
+            if (Menu.action >= 5)
+            {
+                Menu.action = 2;
+                this.Close();
+            }
+            else
+            {
+                Menu Frm = new Menu();
+                Frm.Show();
+                this.Close();
+            }
+        }
+        private void bttnConfirm_Click(object sender, EventArgs e)
+        {
+                foreach (DataGridViewRow row in dgvAdReg.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        DataGridViewCell choosenID = row.Cells[1];
+                        AddID parent = this.Owner as AddID;
+                        parent.AddNewItem(choosenID);
+                        this.Close();
+                    }
+                }
+        }
+        private void Clean()
+        {
+            cmbSelectAreaAd.Text = "";
+            cmbSelectCourseAd.Text = "";
+            rtbDescriptionAd.Text = "";
+            dtpDateAd.Value = DateTime.Now;
+            dtpDateAd.Format = DateTimePickerFormat.Custom;
+            dtpDateAd.CustomFormat = "yyyy/MM/dd";
+            //ShowNumberAd();
         }
 
         private void DeletebtnAd_Click(object sender, EventArgs e)
@@ -617,6 +680,21 @@ namespace CECLdb
                 }
             }
         }
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                amountSelectedAd = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvAdReg.Rows)
+                {
+                    Fila.Cells[0].Value = true;
+                    amountSelectedAd++;
+                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
+                }
+            }
+        }
         private void UpdateDataGrid()
         {
             amountSelectedAd = 0;
@@ -655,7 +733,6 @@ namespace CECLdb
             amountSelectedAd = 0;
             selectedIDList.Clear();
         }
-
         private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
         {
             if (DeselectAllcbx.Checked)
@@ -669,36 +746,35 @@ namespace CECLdb
                 }
             }
         }
-
-        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        private void ModifybtnAd_Click(object sender, EventArgs e)
         {
-            if (SelectAllcbx.Checked)
+            CtrlAd ctrlAd = new CtrlAd();
+            if (amountSelectedAd == 0)
             {
-                amountSelectedAd = 0;
-                selectedIDList.Clear();
-                DeselectAllcbx.Checked = false;
-                foreach (DataGridViewRow Fila in dgvAdReg.Rows)
-                {
-                    Fila.Cells[0].Value = true;
-                    amountSelectedAd++;
-                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
-                }
+                MessageBox.Show("No se ha seleccionado a alguna persona");
             }
-        }
-
-        private void bttnConfirm_Click(object sender, EventArgs e)
-        {
+            if (amountSelectedAd == 1)
+            {
                 foreach (DataGridViewRow row in dgvAdReg.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        DataGridViewCell choosenID = row.Cells[1];
-                        AddID parent = this.Owner as AddID;
-                        parent.AddNewItem(choosenID);
-                        this.Close();
+                        AdID = Convert.ToInt32(row.Cells[1].Value);
+                        Ad ad = ctrlAd.ModifyQuery(AdID.ToString());
+                        cmbSelectAreaAd.Text = ad.Area;
+                        cmbSelectCourseAd.Text = ad.Curso;
+                        rtbDescriptionAd.Text = ad.Descripcion;
+                        dtpDateAd.Value = Convert.ToDateTime(ad.Fecha);
                     }
                 }
+            }
+
+            if (amountSelectedAd > 1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 persona");
+            }
         }
+
     }
 }

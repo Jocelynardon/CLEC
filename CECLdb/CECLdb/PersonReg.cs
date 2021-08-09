@@ -18,9 +18,9 @@ namespace CECLdb
     {
         public static int type = 0;
         public int amountSelected = 0;
-        public String textSearch;
+        public String textSearch;/*************************************************/
         public int PerID;
-        public int LastSearchTypeSelected;
+        public int LastSearchTypeSelected;/****************************************/
         public int amountPerson = 0;
         public int idPerson = 0;
         public List<int> selectedIDList= new List<int>();
@@ -295,8 +295,8 @@ namespace CECLdb
                     bttnViewSelectedPerson.Location = new Point(618, 787);
                 }
 
-                textSearch = txtTextSearch.Text;
-                LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
+                textSearch = txtTextSearch.Text;/***************************************/
+                LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;/******************/
 
                 if (textSearch == "")
                 {
@@ -481,14 +481,14 @@ namespace CECLdb
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
                 selectedIDList.Remove(idPerson);
-                SelectAllcbx.Checked = false;
+                SelectAllcbx.Checked = false;/******************************************/
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
                 amountSelected += 1;
                 selectedIDList.Add(idPerson);
-                DeselectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;/****************************************/
             }
         }
 
@@ -518,7 +518,7 @@ namespace CECLdb
             }
         }
 
-        private void Modifybtn_Click(object sender, EventArgs e)
+        private void Modifybtn_Click(object sender, EventArgs e)/*************************/
         {
             CtrlPerson ctrl = new CtrlPerson();
             if (amountSelected==0)
@@ -550,11 +550,10 @@ namespace CECLdb
         }
 
 
-        private void btnSaveData_Click(object sender, EventArgs e)
+        private void btnSaveData_Click(object sender, EventArgs e)/********************/
         {
-            CtrlPerson ctrlP = new CtrlPerson();
-            Person person_ = new Person();
-            person_.ID = PerID;
+            
+            
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
                 if (txtbCodePerson.TextLength == 7)

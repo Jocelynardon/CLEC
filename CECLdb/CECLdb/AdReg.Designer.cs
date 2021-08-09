@@ -187,6 +187,7 @@ namespace CECLdb
             this.bttnSaveAd.Text = "Guardar";
             this.bttnSaveAd.UseVisualStyleBackColor = false;
             this.bttnSaveAd.Visible = false;
+            this.bttnSaveAd.Click += new System.EventHandler(this.bttnSaveAd_Click);
             // 
             // lblEscAd
             // 
@@ -282,6 +283,7 @@ namespace CECLdb
             this.ModifybtnAd.Text = "Modificar";
             this.ModifybtnAd.UseVisualStyleBackColor = false;
             this.ModifybtnAd.Visible = false;
+            this.ModifybtnAd.Click += new System.EventHandler(this.ModifybtnAd_Click);
             // 
             // DeletebtnAd
             // 
@@ -421,6 +423,7 @@ namespace CECLdb
             this.Name = "AdReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AdReg";
+            this.Click += new System.EventHandler(this.bttnSaveAd_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).EndInit();
             this.ResumeLayout(false);

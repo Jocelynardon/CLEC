@@ -126,7 +126,7 @@ namespace CLEC
             return list;
         }
         
-        public Person ModifyQuery(string IDpersona)
+        public Person ModifyQuery(string IDpersona)/********************************************************/
         {
             MySqlDataReader reader;
 
@@ -157,25 +157,7 @@ namespace CLEC
             }
             return person;
         }
-        public void SaveDataQuery(Person person)
-        {
-            string sql;
-
-            sql = "UPDATE persona SET Codigo = '" + person.Código + "', Nombre = '" + person.Nombre + "', Apellido = '" + person.Apellido + "', Correo = '" + person.Email + "', Teléfono = '" + person.Teléfono + "' " +
-                "WHERE IDpersona =" + person.ID;
-
-            try
-            {
-                MySqlConnection connectionBD = base.connectionTable();
-                connectionBD.Open();
-                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("No se ha podido guardar los datos " + ex.Message);
-            }
-
-        }
+        
         public void SelectedEmailSent(int IDselected)
         {
             MySqlDataReader reader;
