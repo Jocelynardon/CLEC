@@ -669,7 +669,7 @@ namespace CECLdb
             amountSelected = 0;
         }
 
-        private void Deletebtn_Click(object sender, EventArgs e)
+        private void Deletebtn_Click(object sender, EventArgs e)/***************/
         {
             int saveId = 0;
             if (amountSelected == 0)
@@ -713,7 +713,7 @@ namespace CECLdb
             }
         }
 
-        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)/***********/
         {
             
             if (SelectAllcbx.Checked)
@@ -729,14 +729,16 @@ namespace CECLdb
                 }
             }
         }
-        private void UpdateDataGrid()
+        private void UpdateDataGrid()/******************************************/
         {
             amountSelected = 0;
             consultationAmount();
             if (amountPerson > 0)
             {
-                
-
+                if (textSearch == "")
+                {
+                    LoadTableCode(null);
+                }
                 switch (LastSearchTypeSelected)
                 {
                     //0 Código, 1 Correo, 2 Nombre
@@ -760,13 +762,13 @@ namespace CECLdb
                 dgvPersonReg.Rows.Clear();
             }
         }
-        private void EmptyChecked()
+        private void EmptyChecked()/********************************************/
         {
             amountSelected = 0;
             selectedIDList.Clear();
         }
 
-        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)/***********/
         {
             
             if (DeselectAllcbx.Checked)
