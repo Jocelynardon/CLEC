@@ -335,6 +335,7 @@ namespace CECLdb
             this.btnCleanAd.Text = "Limpiar";
             this.btnCleanAd.UseVisualStyleBackColor = false;
             this.btnCleanAd.Visible = false;
+            this.btnCleanAd.Click += new System.EventHandler(this.btnCleanAd_Click);
             // 
             // SelectAllcbx
             // 

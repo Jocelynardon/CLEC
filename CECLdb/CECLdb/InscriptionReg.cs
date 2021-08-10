@@ -29,7 +29,6 @@ namespace CECLdb
                 txtbPersonIDInscription.Enabled = true;
                 bttnAddInscription.Visible = false;
                 bttnSaveInscription.Visible = true;
-                bttnImportInscription.Visible = false;
             }
         }
 
@@ -120,7 +119,7 @@ namespace CECLdb
         {
             cmbSelectAreaInscription.DataSource = null;
             cmbSelectAreaInscription.Items.Clear();
-            string sql = "SELECT IDarea,Nombre FROM area ORDER BY Nombre";
+            string sql = "SELECT IDarea, CONCAT(Nombre,'-',Convocatoria,'-', Año) AS infoArea FROM area ORDER BY Nombre";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
             try
@@ -129,9 +128,10 @@ namespace CECLdb
                 MySqlDataAdapter data = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 data.Fill(dataTable);
+                
 
                 cmbSelectAreaInscription.ValueMember = "IDarea";
-                cmbSelectAreaInscription.DisplayMember = "Nombre";
+                cmbSelectAreaInscription.DisplayMember = "infoArea";
                 cmbSelectAreaInscription.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -225,7 +225,7 @@ namespace CECLdb
         {
             int linesCount = 0;
             MessageBox.Show("El formato para el archivo .csv es:\n ID AREA, ID CURSO , ID PERSONA,\n FECHA DE INICIO (AÑO/MES/DÍA)," +
-                "FECHA DE FIN (AÑO/MES/DÍA), APROBO EL CURSO (1=SI ; 0=NO)");
+                "FECHA DE FIN (AÑO/MES/DÍA)*[Ingresarlos con ceros],\n APROBO EL CURSO (1=SI ; 0=NO)");
 
             OpenFileDialog window = new OpenFileDialog();
             window.Title = "Importar archivo (.txt, .csv)";

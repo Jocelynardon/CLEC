@@ -306,7 +306,7 @@ namespace CECLdb
         {
             cmbSelectAreaAd.DataSource = null;
             cmbSelectAreaAd.Items.Clear();
-            string sql = "SELECT IDarea,Nombre FROM area ORDER BY Nombre";
+            string sql = "SELECT IDarea, CONCAT(Nombre,'-',Convocatoria,'-', Año) AS infoArea FROM area ORDER BY Nombre";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
             try
@@ -317,7 +317,7 @@ namespace CECLdb
                 data.Fill(dataTable);
 
                 cmbSelectAreaAd.ValueMember = "IDarea";
-                cmbSelectAreaAd.DisplayMember = "Nombre";
+                cmbSelectAreaAd.DisplayMember = "infoArea";
                 cmbSelectAreaAd.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -778,5 +778,9 @@ namespace CECLdb
             }
         }
 
+        private void btnCleanAd_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
     }
 }

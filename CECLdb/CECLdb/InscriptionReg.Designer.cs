@@ -45,13 +45,12 @@ namespace CECLdb
             this.bttnSearchInscription = new System.Windows.Forms.Button();
             this.bttnSaveInscription = new System.Windows.Forms.Button();
             this.lblEscInscription = new System.Windows.Forms.Label();
-            this.bttnImportInscription = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSelectAreaInscription
             // 
             this.lblSelectAreaInscription.AutoSize = true;
-            this.lblSelectAreaInscription.Location = new System.Drawing.Point(26, 22);
+            this.lblSelectAreaInscription.Location = new System.Drawing.Point(26, 43);
             this.lblSelectAreaInscription.Name = "lblSelectAreaInscription";
             this.lblSelectAreaInscription.Size = new System.Drawing.Size(167, 20);
             this.lblSelectAreaInscription.TabIndex = 0;
@@ -60,7 +59,7 @@ namespace CECLdb
             // cmbSelectAreaInscription
             // 
             this.cmbSelectAreaInscription.FormattingEnabled = true;
-            this.cmbSelectAreaInscription.Location = new System.Drawing.Point(26, 57);
+            this.cmbSelectAreaInscription.Location = new System.Drawing.Point(26, 79);
             this.cmbSelectAreaInscription.Name = "cmbSelectAreaInscription";
             this.cmbSelectAreaInscription.Size = new System.Drawing.Size(397, 28);
             this.cmbSelectAreaInscription.TabIndex = 0;
@@ -69,7 +68,7 @@ namespace CECLdb
             // lblSelectCourseInscription
             // 
             this.lblSelectCourseInscription.AutoSize = true;
-            this.lblSelectCourseInscription.Location = new System.Drawing.Point(26, 110);
+            this.lblSelectCourseInscription.Location = new System.Drawing.Point(477, 43);
             this.lblSelectCourseInscription.Name = "lblSelectCourseInscription";
             this.lblSelectCourseInscription.Size = new System.Drawing.Size(161, 20);
             this.lblSelectCourseInscription.TabIndex = 2;
@@ -78,7 +77,7 @@ namespace CECLdb
             // cmbSelectCourseInscription
             // 
             this.cmbSelectCourseInscription.FormattingEnabled = true;
-            this.cmbSelectCourseInscription.Location = new System.Drawing.Point(26, 146);
+            this.cmbSelectCourseInscription.Location = new System.Drawing.Point(477, 79);
             this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
             this.cmbSelectCourseInscription.Size = new System.Drawing.Size(397, 28);
             this.cmbSelectCourseInscription.TabIndex = 1;
@@ -86,7 +85,7 @@ namespace CECLdb
             // lblPersonIDInscription
             // 
             this.lblPersonIDInscription.AutoSize = true;
-            this.lblPersonIDInscription.Location = new System.Drawing.Point(504, 110);
+            this.lblPersonIDInscription.Location = new System.Drawing.Point(26, 125);
             this.lblPersonIDInscription.Name = "lblPersonIDInscription";
             this.lblPersonIDInscription.Size = new System.Drawing.Size(79, 20);
             this.lblPersonIDInscription.TabIndex = 4;
@@ -94,7 +93,7 @@ namespace CECLdb
             // 
             // txtbPersonIDInscription
             // 
-            this.txtbPersonIDInscription.Location = new System.Drawing.Point(504, 147);
+            this.txtbPersonIDInscription.Location = new System.Drawing.Point(26, 157);
             this.txtbPersonIDInscription.Name = "txtbPersonIDInscription";
             this.txtbPersonIDInscription.Size = new System.Drawing.Size(172, 27);
             this.txtbPersonIDInscription.TabIndex = 2;
@@ -103,7 +102,7 @@ namespace CECLdb
             // 
             this.ckbApproved.AutoSize = true;
             this.ckbApproved.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ckbApproved.Location = new System.Drawing.Point(26, 205);
+            this.ckbApproved.Location = new System.Drawing.Point(360, 160);
             this.ckbApproved.Name = "ckbApproved";
             this.ckbApproved.Size = new System.Drawing.Size(96, 24);
             this.ckbApproved.TabIndex = 4;
@@ -114,7 +113,7 @@ namespace CECLdb
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(26, 260);
+            this.lblStartDate.Location = new System.Drawing.Point(502, 125);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(108, 20);
             this.lblStartDate.TabIndex = 10;
@@ -123,7 +122,7 @@ namespace CECLdb
             // lblFinalDateInscription
             // 
             this.lblFinalDateInscription.AutoSize = true;
-            this.lblFinalDateInscription.Location = new System.Drawing.Point(26, 338);
+            this.lblFinalDateInscription.Location = new System.Drawing.Point(707, 125);
             this.lblFinalDateInscription.Name = "lblFinalDateInscription";
             this.lblFinalDateInscription.Size = new System.Drawing.Size(91, 20);
             this.lblFinalDateInscription.TabIndex = 13;
@@ -132,7 +131,7 @@ namespace CECLdb
             // bttnAddInscription
             // 
             this.bttnAddInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddInscription.Location = new System.Drawing.Point(326, 419);
+            this.bttnAddInscription.Location = new System.Drawing.Point(360, 216);
             this.bttnAddInscription.Name = "bttnAddInscription";
             this.bttnAddInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnAddInscription.TabIndex = 7;
@@ -143,7 +142,7 @@ namespace CECLdb
             // bttnReturnInscription
             // 
             this.bttnReturnInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnInscription.Location = new System.Drawing.Point(565, 419);
+            this.bttnReturnInscription.Location = new System.Drawing.Point(477, 216);
             this.bttnReturnInscription.Name = "bttnReturnInscription";
             this.bttnReturnInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnReturnInscription.TabIndex = 9;
@@ -154,7 +153,7 @@ namespace CECLdb
             // mtbStartDate
             // 
             this.mtbStartDate.AccessibleDescription = "";
-            this.mtbStartDate.Location = new System.Drawing.Point(26, 294);
+            this.mtbStartDate.Location = new System.Drawing.Point(511, 160);
             this.mtbStartDate.Mask = "0000/00/00";
             this.mtbStartDate.Name = "mtbStartDate";
             this.mtbStartDate.Size = new System.Drawing.Size(88, 27);
@@ -164,7 +163,7 @@ namespace CECLdb
             // 
             // mtbFinalDate
             // 
-            this.mtbFinalDate.Location = new System.Drawing.Point(26, 373);
+            this.mtbFinalDate.Location = new System.Drawing.Point(710, 160);
             this.mtbFinalDate.Mask = "0000/00/00";
             this.mtbFinalDate.Name = "mtbFinalDate";
             this.mtbFinalDate.Size = new System.Drawing.Size(88, 27);
@@ -175,7 +174,7 @@ namespace CECLdb
             // bttnSearchInscription
             // 
             this.bttnSearchInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchInscription.Location = new System.Drawing.Point(718, 147);
+            this.bttnSearchInscription.Location = new System.Drawing.Point(222, 157);
             this.bttnSearchInscription.Name = "bttnSearchInscription";
             this.bttnSearchInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnSearchInscription.TabIndex = 3;
@@ -186,7 +185,7 @@ namespace CECLdb
             // bttnSaveInscription
             // 
             this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveInscription.Location = new System.Drawing.Point(449, 419);
+            this.bttnSaveInscription.Location = new System.Drawing.Point(360, 216);
             this.bttnSaveInscription.Name = "bttnSaveInscription";
             this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnSaveInscription.TabIndex = 20;
@@ -199,29 +198,17 @@ namespace CECLdb
             this.lblEscInscription.AutoSize = true;
             this.lblEscInscription.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblEscInscription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscInscription.Location = new System.Drawing.Point(835, 41);
+            this.lblEscInscription.Location = new System.Drawing.Point(904, 22);
             this.lblEscInscription.Name = "lblEscInscription";
             this.lblEscInscription.Size = new System.Drawing.Size(165, 22);
             this.lblEscInscription.TabIndex = 21;
             this.lblEscInscription.Text = "(ESC) Regresar al Menú";
             // 
-            // bttnImportInscription
-            // 
-            this.bttnImportInscription.BackColor = System.Drawing.Color.LightCoral;
-            this.bttnImportInscription.Location = new System.Drawing.Point(449, 419);
-            this.bttnImportInscription.Name = "bttnImportInscription";
-            this.bttnImportInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnImportInscription.TabIndex = 8;
-            this.bttnImportInscription.Text = "Importar";
-            this.bttnImportInscription.UseVisualStyleBackColor = false;
-            this.bttnImportInscription.Click += new System.EventHandler(this.bttnImportInscription_Click);
-            // 
             // InscriptionReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 495);
-            this.Controls.Add(this.bttnImportInscription);
+            this.ClientSize = new System.Drawing.Size(1090, 655);
             this.Controls.Add(this.lblEscInscription);
             this.Controls.Add(this.bttnSaveInscription);
             this.Controls.Add(this.bttnSearchInscription);
@@ -265,6 +252,5 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchInscription;
         private System.Windows.Forms.Button bttnSaveInscription;
         private System.Windows.Forms.Label lblEscInscription;
-        private System.Windows.Forms.Button bttnImportInscription;
     }
 }

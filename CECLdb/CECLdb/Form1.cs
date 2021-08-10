@@ -75,9 +75,8 @@ namespace CECLdb
 
 
             /*************************************************************************************/
-
             cLBarea.Items.Clear();
-            string sql = "SELECT IDarea,(Nombre+'-'+Convocatoria+' c.-'+Año) AS areaName FROM area ORDER BY Nombre";
+            string sql = "SELECT IDarea, CONCAT(Nombre,'-',Convocatoria,'-', Año) AS infoArea FROM area ORDER BY Nombre";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
             try
@@ -89,7 +88,7 @@ namespace CECLdb
                 data.Fill(dataTable);
 
                 cLBarea.ValueMember = "IDarea";
-                cLBarea.DisplayMember = "areaName";
+                cLBarea.DisplayMember = "infoArea";
                 cLBarea.DataSource = dataTable;
             }
             catch (Exception ex)
