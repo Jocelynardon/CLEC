@@ -60,7 +60,7 @@ namespace CECLdb
                 HideAndMove();
                 DeletebtnAd.Visible = true;
             }
-            if (Menu.action >= 4||Menu.action<=5)
+            if (Menu.action == 4||Menu.action==5)
             {
                 cmbSelectAreaAd.Enabled = false;
                 cmbSelectCourseAd.Enabled = false;
@@ -563,7 +563,7 @@ namespace CECLdb
             lblDescriptionAd.Visible = false;
             rtbDescriptionAd.Visible = false;
             bttnSaveAd.Visible = false;
-            bttnEmailSent.Visible = true;
+            bttnEmailSent.Visible = false;
             txtTextAd.Location = new Point(12, 89);
             cmbTypeAd.Location = new Point(591, 89);
             bttnSearchAd.Location = new Point(857, 89);
