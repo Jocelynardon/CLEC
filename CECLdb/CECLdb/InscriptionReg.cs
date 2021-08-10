@@ -107,6 +107,10 @@ namespace CECLdb
             PersonReg frmAdd = new PersonReg();
             frmAdd.Show(this);
         }
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
 
         private void Access(object sender, KeyEventArgs e)
         {

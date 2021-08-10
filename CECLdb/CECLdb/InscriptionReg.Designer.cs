@@ -45,6 +45,20 @@ namespace CECLdb
             this.bttnSearchInscription = new System.Windows.Forms.Button();
             this.bttnSaveInscription = new System.Windows.Forms.Button();
             this.lblEscInscription = new System.Windows.Forms.Label();
+            this.dgvInscription = new System.Windows.Forms.DataGridView();
+            this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bttnViewSelected = new System.Windows.Forms.Button();
+            this.bttnSelect = new System.Windows.Forms.Button();
+            this.Deletebtn = new System.Windows.Forms.Button();
+            this.Modifybtn = new System.Windows.Forms.Button();
+            this.bttnEraserText = new System.Windows.Forms.Button();
+            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
+            this.SelectAllcbx = new System.Windows.Forms.CheckBox();
+            this.bttnSearch = new System.Windows.Forms.Button();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.txtText = new System.Windows.Forms.TextBox();
+            this.btnClean = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSelectAreaInscription
@@ -58,6 +72,7 @@ namespace CECLdb
             // 
             // cmbSelectAreaInscription
             // 
+            this.cmbSelectAreaInscription.BackColor = System.Drawing.Color.MintCream;
             this.cmbSelectAreaInscription.FormattingEnabled = true;
             this.cmbSelectAreaInscription.Location = new System.Drawing.Point(26, 79);
             this.cmbSelectAreaInscription.Name = "cmbSelectAreaInscription";
@@ -76,6 +91,7 @@ namespace CECLdb
             // 
             // cmbSelectCourseInscription
             // 
+            this.cmbSelectCourseInscription.BackColor = System.Drawing.Color.MintCream;
             this.cmbSelectCourseInscription.FormattingEnabled = true;
             this.cmbSelectCourseInscription.Location = new System.Drawing.Point(477, 79);
             this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
@@ -102,7 +118,7 @@ namespace CECLdb
             // 
             this.ckbApproved.AutoSize = true;
             this.ckbApproved.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ckbApproved.Location = new System.Drawing.Point(360, 160);
+            this.ckbApproved.Location = new System.Drawing.Point(542, 159);
             this.ckbApproved.Name = "ckbApproved";
             this.ckbApproved.Size = new System.Drawing.Size(96, 24);
             this.ckbApproved.TabIndex = 4;
@@ -113,7 +129,7 @@ namespace CECLdb
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(502, 125);
+            this.lblStartDate.Location = new System.Drawing.Point(755, 125);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(108, 20);
             this.lblStartDate.TabIndex = 10;
@@ -122,7 +138,7 @@ namespace CECLdb
             // lblFinalDateInscription
             // 
             this.lblFinalDateInscription.AutoSize = true;
-            this.lblFinalDateInscription.Location = new System.Drawing.Point(707, 125);
+            this.lblFinalDateInscription.Location = new System.Drawing.Point(910, 125);
             this.lblFinalDateInscription.Name = "lblFinalDateInscription";
             this.lblFinalDateInscription.Size = new System.Drawing.Size(91, 20);
             this.lblFinalDateInscription.TabIndex = 13;
@@ -131,7 +147,7 @@ namespace CECLdb
             // bttnAddInscription
             // 
             this.bttnAddInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddInscription.Location = new System.Drawing.Point(360, 216);
+            this.bttnAddInscription.Location = new System.Drawing.Point(360, 211);
             this.bttnAddInscription.Name = "bttnAddInscription";
             this.bttnAddInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnAddInscription.TabIndex = 7;
@@ -142,7 +158,7 @@ namespace CECLdb
             // bttnReturnInscription
             // 
             this.bttnReturnInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnInscription.Location = new System.Drawing.Point(477, 216);
+            this.bttnReturnInscription.Location = new System.Drawing.Point(477, 211);
             this.bttnReturnInscription.Name = "bttnReturnInscription";
             this.bttnReturnInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnReturnInscription.TabIndex = 9;
@@ -153,7 +169,7 @@ namespace CECLdb
             // mtbStartDate
             // 
             this.mtbStartDate.AccessibleDescription = "";
-            this.mtbStartDate.Location = new System.Drawing.Point(511, 160);
+            this.mtbStartDate.Location = new System.Drawing.Point(766, 156);
             this.mtbStartDate.Mask = "0000/00/00";
             this.mtbStartDate.Name = "mtbStartDate";
             this.mtbStartDate.Size = new System.Drawing.Size(88, 27);
@@ -163,7 +179,7 @@ namespace CECLdb
             // 
             // mtbFinalDate
             // 
-            this.mtbFinalDate.Location = new System.Drawing.Point(710, 160);
+            this.mtbFinalDate.Location = new System.Drawing.Point(913, 156);
             this.mtbFinalDate.Mask = "0000/00/00";
             this.mtbFinalDate.Name = "mtbFinalDate";
             this.mtbFinalDate.Size = new System.Drawing.Size(88, 27);
@@ -185,7 +201,7 @@ namespace CECLdb
             // bttnSaveInscription
             // 
             this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveInscription.Location = new System.Drawing.Point(360, 216);
+            this.bttnSaveInscription.Location = new System.Drawing.Point(360, 212);
             this.bttnSaveInscription.Name = "bttnSaveInscription";
             this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnSaveInscription.TabIndex = 20;
@@ -204,11 +220,174 @@ namespace CECLdb
             this.lblEscInscription.TabIndex = 21;
             this.lblEscInscription.Text = "(ESC) Regresar al Menú";
             // 
+            // dgvInscription
+            // 
+            this.dgvInscription.AllowUserToAddRows = false;
+            this.dgvInscription.AllowUserToDeleteRows = false;
+            this.dgvInscription.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvInscription.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvInscription.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInscription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckSelection});
+            this.dgvInscription.Location = new System.Drawing.Point(38, 341);
+            this.dgvInscription.Name = "dgvInscription";
+            this.dgvInscription.RowHeadersWidth = 51;
+            this.dgvInscription.RowTemplate.Height = 29;
+            this.dgvInscription.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInscription.Size = new System.Drawing.Size(992, 330);
+            this.dgvInscription.TabIndex = 22;
+            this.dgvInscription.Visible = false;
+            // 
+            // CheckSelection
+            // 
+            this.CheckSelection.HeaderText = "Seleccionar";
+            this.CheckSelection.MinimumWidth = 6;
+            this.CheckSelection.Name = "CheckSelection";
+            this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CheckSelection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CheckSelection.Width = 114;
+            // 
+            // bttnViewSelected
+            // 
+            this.bttnViewSelected.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewSelected.Location = new System.Drawing.Point(611, 677);
+            this.bttnViewSelected.Name = "bttnViewSelected";
+            this.bttnViewSelected.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelected.TabIndex = 36;
+            this.bttnViewSelected.Text = "Ver seleccionados";
+            this.bttnViewSelected.UseVisualStyleBackColor = false;
+            this.bttnViewSelected.Visible = false;
+            // 
+            // bttnSelect
+            // 
+            this.bttnSelect.BackColor = System.Drawing.Color.Khaki;
+            this.bttnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSelect.Location = new System.Drawing.Point(514, 677);
+            this.bttnSelect.Name = "bttnSelect";
+            this.bttnSelect.Size = new System.Drawing.Size(94, 29);
+            this.bttnSelect.TabIndex = 35;
+            this.bttnSelect.Text = "Seleccionar";
+            this.bttnSelect.UseVisualStyleBackColor = false;
+            this.bttnSelect.Visible = false;
+            // 
+            // Deletebtn
+            // 
+            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
+            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Deletebtn.Location = new System.Drawing.Point(414, 677);
+            this.Deletebtn.Name = "Deletebtn";
+            this.Deletebtn.Size = new System.Drawing.Size(94, 29);
+            this.Deletebtn.TabIndex = 34;
+            this.Deletebtn.Text = "Eliminar";
+            this.Deletebtn.UseVisualStyleBackColor = false;
+            this.Deletebtn.Visible = false;
+            // 
+            // Modifybtn
+            // 
+            this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Modifybtn.Location = new System.Drawing.Point(314, 677);
+            this.Modifybtn.Name = "Modifybtn";
+            this.Modifybtn.Size = new System.Drawing.Size(94, 29);
+            this.Modifybtn.TabIndex = 33;
+            this.Modifybtn.Text = "Modificar";
+            this.Modifybtn.UseVisualStyleBackColor = false;
+            this.Modifybtn.Visible = false;
+            // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(989, 298);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 43;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Visible = false;
+            // 
+            // DeselectAllcbx
+            // 
+            this.DeselectAllcbx.AutoSize = true;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(195, 255);
+            this.DeselectAllcbx.Name = "DeselectAllcbx";
+            this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
+            this.DeselectAllcbx.TabIndex = 42;
+            this.DeselectAllcbx.Text = "Desmarcar Todos";
+            this.DeselectAllcbx.UseVisualStyleBackColor = true;
+            this.DeselectAllcbx.Visible = false;
+            // 
+            // SelectAllcbx
+            // 
+            this.SelectAllcbx.AutoSize = true;
+            this.SelectAllcbx.Location = new System.Drawing.Point(38, 255);
+            this.SelectAllcbx.Name = "SelectAllcbx";
+            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
+            this.SelectAllcbx.TabIndex = 41;
+            this.SelectAllcbx.Text = "Seleccionar Todos";
+            this.SelectAllcbx.UseVisualStyleBackColor = true;
+            this.SelectAllcbx.Visible = false;
+            // 
+            // bttnSearch
+            // 
+            this.bttnSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.bttnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSearch.Location = new System.Drawing.Point(857, 298);
+            this.bttnSearch.Name = "bttnSearch";
+            this.bttnSearch.Size = new System.Drawing.Size(116, 26);
+            this.bttnSearch.TabIndex = 40;
+            this.bttnSearch.Text = "Buscar";
+            this.bttnSearch.UseVisualStyleBackColor = false;
+            this.bttnSearch.Visible = false;
+            // 
+            // cmbType
+            // 
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(592, 297);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(249, 28);
+            this.cmbType.TabIndex = 39;
+            this.cmbType.Visible = false;
+            // 
+            // txtText
+            // 
+            this.txtText.Location = new System.Drawing.Point(12, 297);
+            this.txtText.Name = "txtText";
+            this.txtText.Size = new System.Drawing.Size(564, 27);
+            this.txtText.TabIndex = 38;
+            this.txtText.Visible = false;
+            // 
+            // btnClean
+            // 
+            this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClean.Location = new System.Drawing.Point(592, 210);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(129, 29);
+            this.btnClean.TabIndex = 44;
+            this.btnClean.Text = "Limpiar";
+            this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Visible = false;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // InscriptionReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 655);
+            this.ClientSize = new System.Drawing.Size(1090, 718);
+            this.Controls.Add(this.btnClean);
+            this.Controls.Add(this.bttnEraserText);
+            this.Controls.Add(this.DeselectAllcbx);
+            this.Controls.Add(this.SelectAllcbx);
+            this.Controls.Add(this.bttnSearch);
+            this.Controls.Add(this.cmbType);
+            this.Controls.Add(this.txtText);
+            this.Controls.Add(this.bttnViewSelected);
+            this.Controls.Add(this.bttnSelect);
+            this.Controls.Add(this.Deletebtn);
+            this.Controls.Add(this.Modifybtn);
+            this.Controls.Add(this.dgvInscription);
             this.Controls.Add(this.lblEscInscription);
             this.Controls.Add(this.bttnSaveInscription);
             this.Controls.Add(this.bttnSearchInscription);
@@ -227,8 +406,10 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectAreaInscription);
             this.KeyPreview = true;
             this.Name = "InscriptionReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InscriptionReg";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +433,18 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchInscription;
         private System.Windows.Forms.Button bttnSaveInscription;
         private System.Windows.Forms.Label lblEscInscription;
+        private System.Windows.Forms.DataGridView dgvInscription;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
+        private System.Windows.Forms.Button bttnViewSelected;
+        private System.Windows.Forms.Button bttnSelect;
+        private System.Windows.Forms.Button Deletebtn;
+        private System.Windows.Forms.Button Modifybtn;
+        private System.Windows.Forms.Button bttnEraserText;
+        private System.Windows.Forms.CheckBox DeselectAllcbx;
+        private System.Windows.Forms.CheckBox SelectAllcbx;
+        private System.Windows.Forms.Button bttnSearch;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.TextBox txtText;
+        private System.Windows.Forms.Button btnClean;
     }
 }
