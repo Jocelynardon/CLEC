@@ -33,12 +33,14 @@ namespace CECLdb
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.cLBarea = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbPrueba = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblEscSearchCourse = new System.Windows.Forms.Label();
             this.checkedListBox6 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox7 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox8 = new System.Windows.Forms.CheckedListBox();
@@ -51,7 +53,6 @@ namespace CECLdb
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.CursoSrcBtn = new System.Windows.Forms.Button();
             this.bttnReturnSearchCourOrAd = new System.Windows.Forms.Button();
-            this.lblEscSearchCourse = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,14 +94,14 @@ namespace CECLdb
             this.label4.TabIndex = 7;
             this.label4.Text = "Convocatoria";
             // 
-            // checkedListBox1
+            // cLBarea
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(7, 59);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(143, 378);
-            this.checkedListBox1.TabIndex = 9;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.cLBarea.FormattingEnabled = true;
+            this.cLBarea.Location = new System.Drawing.Point(7, 59);
+            this.cLBarea.Name = "cLBarea";
+            this.cLBarea.Size = new System.Drawing.Size(276, 180);
+            this.cLBarea.TabIndex = 9;
+            this.cLBarea.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // checkedListBox2
             // 
@@ -128,10 +129,11 @@ namespace CECLdb
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbPrueba);
+            this.groupBox1.Controls.Add(this.cLBarea);
             this.groupBox1.Controls.Add(this.checkedListBox4);
             this.groupBox1.Controls.Add(this.checkedListBox3);
             this.groupBox1.Controls.Add(this.checkedListBox2);
-            this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
@@ -142,6 +144,14 @@ namespace CECLdb
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CURSO";
+            // 
+            // cmbPrueba
+            // 
+            this.cmbPrueba.FormattingEnabled = true;
+            this.cmbPrueba.Location = new System.Drawing.Point(7, 285);
+            this.cmbPrueba.Name = "cmbPrueba";
+            this.cmbPrueba.Size = new System.Drawing.Size(207, 28);
+            this.cmbPrueba.TabIndex = 13;
             // 
             // groupBox2
             // 
@@ -158,6 +168,17 @@ namespace CECLdb
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "AVISO";
+            // 
+            // lblEscSearchCourse
+            // 
+            this.lblEscSearchCourse.AutoSize = true;
+            this.lblEscSearchCourse.BackColor = System.Drawing.Color.NavajoWhite;
+            this.lblEscSearchCourse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEscSearchCourse.Location = new System.Drawing.Point(294, -3);
+            this.lblEscSearchCourse.Name = "lblEscSearchCourse";
+            this.lblEscSearchCourse.Size = new System.Drawing.Size(165, 22);
+            this.lblEscSearchCourse.TabIndex = 18;
+            this.lblEscSearchCourse.Text = "(ESC) Regresar al Menú";
             // 
             // checkedListBox6
             // 
@@ -272,17 +293,6 @@ namespace CECLdb
             this.bttnReturnSearchCourOrAd.UseVisualStyleBackColor = true;
             this.bttnReturnSearchCourOrAd.Click += new System.EventHandler(this.bttnReturnSearchCourOrAd_Click);
             // 
-            // lblEscSearchCourse
-            // 
-            this.lblEscSearchCourse.AutoSize = true;
-            this.lblEscSearchCourse.BackColor = System.Drawing.Color.NavajoWhite;
-            this.lblEscSearchCourse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscSearchCourse.Location = new System.Drawing.Point(294, -3);
-            this.lblEscSearchCourse.Name = "lblEscSearchCourse";
-            this.lblEscSearchCourse.Size = new System.Drawing.Size(165, 22);
-            this.lblEscSearchCourse.TabIndex = 18;
-            this.lblEscSearchCourse.Text = "(ESC) Regresar al Menú";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -314,7 +324,7 @@ namespace CECLdb
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox cLBarea;
         private System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.CheckedListBox checkedListBox3;
         private System.Windows.Forms.CheckedListBox checkedListBox4;
@@ -333,6 +343,7 @@ namespace CECLdb
         private System.Windows.Forms.Button CursoSrcBtn;
         private System.Windows.Forms.Button bttnReturnSearchCourOrAd;
         private System.Windows.Forms.Label lblEscSearchCourse;
+        private System.Windows.Forms.ComboBox cmbPrueba;
     }
 }
 

@@ -1,12 +1,17 @@
-﻿using System;
+﻿using CLEC;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CECLdb;
+using System.IO;
+using System.Diagnostics;
+using System.Security;
+
 
 
 namespace CECLdb
@@ -16,6 +21,7 @@ namespace CECLdb
         public Form1()
         {
             InitializeComponent();
+            LoadAreaCheckList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,6 +56,50 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void LoadAreaCheckList()
+        {
+            //CtrlArea ctrlArea = new CtrlArea();
+            //List<Area> areas = ctrlArea.GetAreasQuery(null, '0');
+
+            ////validateSelection();
+
+            //if (areas.Count > 0)
+            //{
+            //    foreach (var item in areas)
+            //    {
+            //        cLBarea.Items.Add(item.Nombre)
+            //    }
+            //}
+
+
+            /*************************************************************************************/
+
+            cLBarea.Items.Clear();
+            string sql = "SELECT IDarea,(Nombre+'-'+Convocatoria+' c.-'+Año) AS areaName FROM area ORDER BY Nombre";
+            MySqlConnection connectionBD = Connection.connection();
+            connectionBD.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                MySqlDataAdapter data = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                DataSet dataSet = new DataSet();
+                data.Fill(dataTable);
+
+                cLBarea.ValueMember = "IDarea";
+                cLBarea.DisplayMember = "areaName";
+                cLBarea.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar áreas" + ex.Message);
+            }
+            finally
+            {
+                connectionBD.Close();
+            }
         }
     }
 }
