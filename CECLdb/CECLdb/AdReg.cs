@@ -204,8 +204,8 @@ namespace CECLdb
                         int idCourse = int.Parse(cmbSelectCourseAd.SelectedValue.ToString());
                         String description = rtbDescriptionAd.Text;
 
-                        string sql = "UPDATE persona SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', Descripcion = '" + description + "', Fecha = '" + dtpDateAd.Text + "' " +
-                "WHERE IDpersona =" + AdID;
+                        string sql = "UPDATE aviso SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', Descripcion = '" + description + "', Fecha = '" + dtpDateAd.Text + "' " +
+                "WHERE IDaviso =" + AdID;
                         MySqlConnection connectionBD = Connection.connection();
                         connectionBD.Open();
                         try
@@ -642,17 +642,17 @@ namespace CECLdb
             int saveId = 0;
             if (amountSelectedAd == 0)
             {
-                MessageBox.Show("No se ha seleccionado a ninguna persona");
+                MessageBox.Show("No se ha seleccionado a ningun aviso/anuncio");
             }
             if (amountSelectedAd >= 1)
             {
-                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar las personas seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar los avisos/anuncios seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     for (int i = 0; i < selectedIDList.Count; i++)
                     {
                         saveId = int.Parse(selectedIDList[i].ToString());
-                        string sql = "DELETE FROM persona WHERE IDpersona =" + saveId;
+                        string sql = "DELETE FROM aviso WHERE IDaviso =" + saveId;
 
                         MySqlConnection connectionBD = Connection.connection();
                         connectionBD.Open();
@@ -751,7 +751,7 @@ namespace CECLdb
             CtrlAd ctrlAd = new CtrlAd();
             if (amountSelectedAd == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                MessageBox.Show("No se ha seleccionado a ningún aviso/anuncio");
             }
             if (amountSelectedAd == 1)
             {
@@ -772,7 +772,7 @@ namespace CECLdb
 
             if (amountSelectedAd > 1)
             {
-                MessageBox.Show("Selecciona únicamente a 1 persona");
+                MessageBox.Show("Selecciona únicamente a 1 aviso/anuncio");
             }
         }
 
