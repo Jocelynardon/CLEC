@@ -177,11 +177,11 @@ namespace CLEC
 
             string sql;
             Ad ad = new Ad();
-            sql = "SELECT area.Nombre, curso.Nombre, aviso.Descripcion, aviso.Fecha" +
+            sql = "SELECT area.Nombre, curso.Nombre, aviso.Descripcion, aviso.Fecha " +
                 "FROM aviso" +
-                "INNER JOIN area ON aviso.IDarea = area.IDarea" +
-                "INNER JOIN curso ON aviso.IDcurso = curso.IDcurso" +
-                " WHERE IDaviso =" + IDaviso;
+                " INNER JOIN area ON aviso.IDarea = area.IDarea" +
+                " INNER JOIN curso ON aviso.IDcurso = curso.IDcurso" +
+                " WHERE IDaviso = " + IDaviso;
 
             try
             {
