@@ -552,8 +552,6 @@ namespace CECLdb
 
         private void btnSaveData_Click(object sender, EventArgs e)/********************/
         {
-            
-            
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
                 if (txtbCodePerson.TextLength == 7)
@@ -576,9 +574,9 @@ namespace CECLdb
                             MySqlCommand command = new MySqlCommand(sql, connectionBD);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Se ha modificado exitosamente");
-                            EmptyChecked();
+                            EmptyChecked();/****************************************************/
 
-                            UpdateDataGrid();
+                            UpdateDataGrid();/**************************************************/
                         }
                         catch (MySqlException ex)
                         {

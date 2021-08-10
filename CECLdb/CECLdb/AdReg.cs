@@ -213,7 +213,9 @@ namespace CECLdb
                             MySqlCommand command = new MySqlCommand(sql, connectionBD);
                             command.ExecuteNonQuery();
                             MessageBox.Show("Aviso correctamente modificado");
-                            Clean();
+                            EmptyChecked();
+
+                            UpdateDataGrid();
                         }
                         catch (MySqlException ex1)
                         {
