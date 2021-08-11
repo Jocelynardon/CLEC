@@ -22,6 +22,7 @@ namespace CECLdb
             LoadAreaRegister();
             if (Menu.action==2)
             {
+                cmbSelectAreaRegister.SelectedIndex = -1;
                 txtbPersonIDRegister.Enabled = true;
                 txtbPersonIDRegister.ReadOnly = false;
                 bttnAddRegister.Visible = false;

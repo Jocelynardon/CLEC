@@ -42,7 +42,7 @@ namespace CECLdb
             this.bttnReturnInscription = new System.Windows.Forms.Button();
             this.mtbStartDate = new System.Windows.Forms.MaskedTextBox();
             this.mtbFinalDate = new System.Windows.Forms.MaskedTextBox();
-            this.bttnSearchInscription = new System.Windows.Forms.Button();
+            this.bttnSearchPerson = new System.Windows.Forms.Button();
             this.bttnSaveInscription = new System.Windows.Forms.Button();
             this.lblEscInscription = new System.Windows.Forms.Label();
             this.dgvInscription = new System.Windows.Forms.DataGridView();
@@ -73,12 +73,13 @@ namespace CECLdb
             // cmbSelectAreaInscription
             // 
             this.cmbSelectAreaInscription.BackColor = System.Drawing.Color.MintCream;
+            this.cmbSelectAreaInscription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectAreaInscription.FormattingEnabled = true;
             this.cmbSelectAreaInscription.Location = new System.Drawing.Point(26, 79);
             this.cmbSelectAreaInscription.Name = "cmbSelectAreaInscription";
             this.cmbSelectAreaInscription.Size = new System.Drawing.Size(397, 28);
             this.cmbSelectAreaInscription.TabIndex = 0;
-            this.cmbSelectAreaInscription.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaInscription_SelectionChangeCommitted);
+            this.cmbSelectAreaInscription.SelectionChangeCommitted += new System.EventHandler(this.cmbSelectAreaInscription_SelectionChangeCommitted_1);
             // 
             // lblSelectCourseInscription
             // 
@@ -92,6 +93,7 @@ namespace CECLdb
             // cmbSelectCourseInscription
             // 
             this.cmbSelectCourseInscription.BackColor = System.Drawing.Color.MintCream;
+            this.cmbSelectCourseInscription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectCourseInscription.FormattingEnabled = true;
             this.cmbSelectCourseInscription.Location = new System.Drawing.Point(477, 79);
             this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
@@ -143,6 +145,7 @@ namespace CECLdb
             this.lblFinalDateInscription.Size = new System.Drawing.Size(91, 20);
             this.lblFinalDateInscription.TabIndex = 13;
             this.lblFinalDateInscription.Text = "Fecha de Fin";
+            this.lblFinalDateInscription.Visible = false;
             // 
             // bttnAddInscription
             // 
@@ -153,6 +156,7 @@ namespace CECLdb
             this.bttnAddInscription.TabIndex = 7;
             this.bttnAddInscription.Text = "Agregar";
             this.bttnAddInscription.UseVisualStyleBackColor = false;
+            this.bttnAddInscription.Visible = false;
             this.bttnAddInscription.Click += new System.EventHandler(this.bttnAddInscription_Click);
             // 
             // bttnReturnInscription
@@ -179,6 +183,7 @@ namespace CECLdb
             // 
             // mtbFinalDate
             // 
+            this.mtbFinalDate.HidePromptOnLeave = true;
             this.mtbFinalDate.Location = new System.Drawing.Point(913, 156);
             this.mtbFinalDate.Mask = "0000/00/00";
             this.mtbFinalDate.Name = "mtbFinalDate";
@@ -186,22 +191,23 @@ namespace CECLdb
             this.mtbFinalDate.TabIndex = 6;
             this.mtbFinalDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbFinalDate.ValidatingType = typeof(System.DateTime);
+            this.mtbFinalDate.Visible = false;
             // 
-            // bttnSearchInscription
+            // bttnSearchPerson
             // 
-            this.bttnSearchInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchInscription.Location = new System.Drawing.Point(222, 157);
-            this.bttnSearchInscription.Name = "bttnSearchInscription";
-            this.bttnSearchInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnSearchInscription.TabIndex = 3;
-            this.bttnSearchInscription.Text = "Buscar";
-            this.bttnSearchInscription.UseVisualStyleBackColor = false;
-            this.bttnSearchInscription.Click += new System.EventHandler(this.bttnSearchInscription_Click);
+            this.bttnSearchPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchPerson.Location = new System.Drawing.Point(222, 157);
+            this.bttnSearchPerson.Name = "bttnSearchPerson";
+            this.bttnSearchPerson.Size = new System.Drawing.Size(97, 27);
+            this.bttnSearchPerson.TabIndex = 3;
+            this.bttnSearchPerson.Text = "Buscar";
+            this.bttnSearchPerson.UseVisualStyleBackColor = false;
+            this.bttnSearchPerson.Click += new System.EventHandler(this.bttnSearchPerson_Click);
             // 
             // bttnSaveInscription
             // 
             this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveInscription.Location = new System.Drawing.Point(360, 212);
+            this.bttnSaveInscription.Location = new System.Drawing.Point(360, 210);
             this.bttnSaveInscription.Name = "bttnSaveInscription";
             this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
             this.bttnSaveInscription.TabIndex = 20;
@@ -299,18 +305,19 @@ namespace CECLdb
             // 
             this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
             this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnEraserText.Location = new System.Drawing.Point(989, 298);
+            this.bttnEraserText.Location = new System.Drawing.Point(987, 267);
             this.bttnEraserText.Name = "bttnEraserText";
             this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
             this.bttnEraserText.TabIndex = 43;
             this.bttnEraserText.Text = "Borrar";
             this.bttnEraserText.UseVisualStyleBackColor = false;
             this.bttnEraserText.Visible = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
             // 
             // DeselectAllcbx
             // 
             this.DeselectAllcbx.AutoSize = true;
-            this.DeselectAllcbx.Location = new System.Drawing.Point(195, 255);
+            this.DeselectAllcbx.Location = new System.Drawing.Point(186, 299);
             this.DeselectAllcbx.Name = "DeselectAllcbx";
             this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
             this.DeselectAllcbx.TabIndex = 42;
@@ -321,7 +328,7 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(38, 255);
+            this.SelectAllcbx.Location = new System.Drawing.Point(29, 299);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 41;
@@ -333,18 +340,20 @@ namespace CECLdb
             // 
             this.bttnSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.bttnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSearch.Location = new System.Drawing.Point(857, 298);
+            this.bttnSearch.Location = new System.Drawing.Point(855, 267);
             this.bttnSearch.Name = "bttnSearch";
             this.bttnSearch.Size = new System.Drawing.Size(116, 26);
             this.bttnSearch.TabIndex = 40;
             this.bttnSearch.Text = "Buscar";
             this.bttnSearch.UseVisualStyleBackColor = false;
             this.bttnSearch.Visible = false;
+            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click_1);
             // 
             // cmbType
             // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(592, 297);
+            this.cmbType.Location = new System.Drawing.Point(590, 266);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(249, 28);
             this.cmbType.TabIndex = 39;
@@ -352,7 +361,7 @@ namespace CECLdb
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(12, 297);
+            this.txtText.Location = new System.Drawing.Point(10, 266);
             this.txtText.Name = "txtText";
             this.txtText.Size = new System.Drawing.Size(564, 27);
             this.txtText.TabIndex = 38;
@@ -375,7 +384,7 @@ namespace CECLdb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 718);
+            this.ClientSize = new System.Drawing.Size(1090, 714);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.DeselectAllcbx);
@@ -390,7 +399,7 @@ namespace CECLdb
             this.Controls.Add(this.dgvInscription);
             this.Controls.Add(this.lblEscInscription);
             this.Controls.Add(this.bttnSaveInscription);
-            this.Controls.Add(this.bttnSearchInscription);
+            this.Controls.Add(this.bttnSearchPerson);
             this.Controls.Add(this.mtbFinalDate);
             this.Controls.Add(this.mtbStartDate);
             this.Controls.Add(this.bttnReturnInscription);
@@ -408,7 +417,7 @@ namespace CECLdb
             this.Name = "InscriptionReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "InscriptionReg";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InscriptionReg_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -430,7 +439,7 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnReturnInscription;
         private System.Windows.Forms.MaskedTextBox mtbStartDate;
         private System.Windows.Forms.MaskedTextBox mtbFinalDate;
-        private System.Windows.Forms.Button bttnSearchInscription;
+        private System.Windows.Forms.Button bttnSearchPerson;
         private System.Windows.Forms.Button bttnSaveInscription;
         private System.Windows.Forms.Label lblEscInscription;
         private System.Windows.Forms.DataGridView dgvInscription;

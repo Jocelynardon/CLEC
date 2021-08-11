@@ -236,13 +236,13 @@ namespace CECLdb
             }
             else if (rbttnAddRegister.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                RegisterReg Frm = new RegisterReg();
                 Frm.Show();
                 this.Close();
             }
             else if (rbttnAddInscription.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                InscriptionReg Frm = new InscriptionReg();
                 Frm.Show();
                 this.Close();
             }
@@ -254,13 +254,13 @@ namespace CECLdb
             }
             else if (rbttnAddCourse.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                CourseReg Frm = new CourseReg();
                 Frm.Show();
                 this.Close();
             }
             else if (rbttnAddArea.Checked)
             {
-                GeneralDelete Frm = new GeneralDelete();
+                AreaReg Frm = new AreaReg();
                 Frm.Show();
                 this.Close();
             }

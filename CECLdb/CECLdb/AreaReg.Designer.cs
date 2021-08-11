@@ -62,6 +62,7 @@ namespace CECLdb
             // 
             // cmbAnnouncement
             // 
+            this.cmbAnnouncement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnnouncement.FormattingEnabled = true;
             this.cmbAnnouncement.Location = new System.Drawing.Point(43, 178);
             this.cmbAnnouncement.Name = "cmbAnnouncement";

@@ -20,7 +20,7 @@ namespace CECLdb
         public int AdID;
         public int LastSearchTyprSelected;
         public int amountAd = 0;
-        //public int idAd = 0;
+
         public List<int> selectedIDList = new List<int>();
         //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado en agregar, 5 viene
         // de email enviado pero modificar
@@ -43,6 +43,7 @@ namespace CECLdb
                 LoadAreaAd();
                 this.Height = 555;
                 btnCleanAd.Visible = true;
+                cmbSelectAreaAd.SelectedIndex = -1;
             }
             if (Menu.action == 2)
             {
@@ -187,7 +188,7 @@ namespace CECLdb
                         break;
                 }
             }
-            else
+            if (amountAd == 0)
             {
                 MessageBox.Show("No se encuentran avisos/anuncios registrados");
             }
@@ -362,7 +363,7 @@ namespace CECLdb
         {
             cmbTypeAd.DisplayMember = "Text";
             cmbTypeAd.ValueMember = "Value";
-            cmbTypeAd.SelectedIndex = cmbTypeAd.Items.IndexOf("Curso");
+            cmbTypeAd.SelectedIndex = cmbTypeAd.Items.IndexOf("Área");
 
             cmbTypeAd.Items.Add(new { Text = "Área", Value = 1 });
             cmbTypeAd.Items.Add(new { Text = "Curso", Value = 2 });
@@ -520,6 +521,7 @@ namespace CECLdb
         //}
         private void ConsultationAmountAd()
         {
+            amountAd = 0;
             string sql = "SELECT COUNT(1) FROM aviso ";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
@@ -533,6 +535,7 @@ namespace CECLdb
             catch (MySqlException)
             {
                 MessageBox.Show("No hay personas ingresadas ");
+                amountAd = -1;
             }
             finally
             {

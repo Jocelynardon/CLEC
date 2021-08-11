@@ -228,7 +228,6 @@ namespace CECLdb
         private void bttnSentEmail_Click(object sender, EventArgs e)
         {
             int saveId = 0;
-            //int saveId = 0;
             if (amountSelected == 0)
             {
                 MessageBox.Show("No se ha seleccionado a alguna persona");

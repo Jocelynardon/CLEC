@@ -45,9 +45,10 @@ namespace CECLdb
         }
         private void bttnPersonSent_Click(object sender, EventArgs e)
         {
+            amountSelected = 0;
             string IDSearch = txtbTextSearch.Text.ToString();
             consultationAmount(IDSearch);
-            if (amount!=0)
+            if (amount>0)
             {
                 dgvEmailSent.Visible = true;
                 LoadTableID(IDSearch);
@@ -66,6 +67,10 @@ namespace CECLdb
                     Deletebtn.Location = new Point(332, 484);
                     Deletebtn.Visible = true;
                 }
+            }
+            if (amount == 0)
+            {
+                MessageBox.Show("No hay correos enviados con ese aviso");
             }
         }
         private void bttnViewAll_Click(object sender, EventArgs e)
@@ -180,6 +185,7 @@ namespace CECLdb
         }
         private void consultationAmount(string IDselected)
         {
+            amount = 0;
             string sql = "SELECT COUNT(1) FROM correoenviado WHERE IDaviso= "+IDselected;
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
@@ -192,7 +198,8 @@ namespace CECLdb
             }
             catch (MySqlException)
             {
-                MessageBox.Show("No hay correos enviados de ese aviso");
+                MessageBox.Show("No hay email enviados a los correos");
+                amount = -1;
             }
             finally
             {
@@ -245,6 +252,10 @@ namespace CECLdb
                 amountSelected += 1;
                 selectedIDList.Add(id);
             }
+        }
+        private void txtbTextSearch_TextChanged(object sender, EventArgs e)
+        {
+            selectedIDList.Clear();
         }
     }
 }

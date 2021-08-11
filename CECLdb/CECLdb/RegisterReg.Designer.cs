@@ -63,6 +63,7 @@ namespace CECLdb
             // 
             // cmbSelectCourseRegister
             // 
+            this.cmbSelectCourseRegister.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectCourseRegister.FormattingEnabled = true;
             this.cmbSelectCourseRegister.Location = new System.Drawing.Point(12, 140);
             this.cmbSelectCourseRegister.Name = "cmbSelectCourseRegister";
@@ -80,6 +81,7 @@ namespace CECLdb
             // 
             // cmbSelectAreaRegister
             // 
+            this.cmbSelectAreaRegister.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectAreaRegister.FormattingEnabled = true;
             this.cmbSelectAreaRegister.Location = new System.Drawing.Point(12, 51);
             this.cmbSelectAreaRegister.Name = "cmbSelectAreaRegister";

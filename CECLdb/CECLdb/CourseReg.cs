@@ -17,6 +17,7 @@ namespace CECLdb
             LoadAreaCourse();
             if (Menu.action==2)
             {
+                cmbSelectArea.SelectedIndex = -1;
                 bttnAddCourse.Visible = false;
                 bttnSaveCourse.Visible = true;
                 bttnSearchCourse.Visible = true;

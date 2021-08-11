@@ -72,8 +72,8 @@ namespace CECLdb
             // 
             // cmbSelectAreaAd
             // 
-            this.cmbSelectAreaAd.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbSelectAreaAd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbSelectAreaAd.BackColor = System.Drawing.Color.MintCream;
+            this.cmbSelectAreaAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectAreaAd.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cmbSelectAreaAd.FormattingEnabled = true;
             this.cmbSelectAreaAd.Location = new System.Drawing.Point(42, 56);
@@ -93,7 +93,8 @@ namespace CECLdb
             // 
             // cmbSelectCourseAd
             // 
-            this.cmbSelectCourseAd.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbSelectCourseAd.BackColor = System.Drawing.Color.MintCream;
+            this.cmbSelectCourseAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectCourseAd.FormattingEnabled = true;
             this.cmbSelectCourseAd.Location = new System.Drawing.Point(42, 146);
             this.cmbSelectCourseAd.Name = "cmbSelectCourseAd";
@@ -252,6 +253,8 @@ namespace CECLdb
             // 
             // cmbTypeAd
             // 
+            this.cmbTypeAd.BackColor = System.Drawing.SystemColors.Window;
+            this.cmbTypeAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTypeAd.FormattingEnabled = true;
             this.cmbTypeAd.Location = new System.Drawing.Point(592, 554);
             this.cmbTypeAd.Name = "cmbTypeAd";

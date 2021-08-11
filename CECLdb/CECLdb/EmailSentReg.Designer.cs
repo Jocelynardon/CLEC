@@ -62,6 +62,7 @@ namespace CECLdb
             this.txtbTextSearch.Name = "txtbTextSearch";
             this.txtbTextSearch.Size = new System.Drawing.Size(148, 27);
             this.txtbTextSearch.TabIndex = 1;
+            this.txtbTextSearch.TextChanged += new System.EventHandler(this.txtbTextSearch_TextChanged);
             // 
             // bttnReturnEmailSent
             // 

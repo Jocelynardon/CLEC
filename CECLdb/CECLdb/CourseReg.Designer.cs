@@ -52,6 +52,7 @@ namespace CECLdb
             // 
             // cmbSelectArea
             // 
+            this.cmbSelectArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectArea.FormattingEnabled = true;
             this.cmbSelectArea.Location = new System.Drawing.Point(52, 108);
             this.cmbSelectArea.Name = "cmbSelectArea";
