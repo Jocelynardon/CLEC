@@ -170,22 +170,25 @@ namespace CECLdb
                 {
                     LoadTableArea(null);
                 }
-                switch (cmbTypeAd.SelectedIndex)
+                else
                 {
-                    //0 Código, 1 Correo, 2 Nombre
-                    case 0:
-                        LoadTableArea(textSearch);
-                        break;
-                    case 1:
-                        LoadTableCourse(textSearch);
-                        break;
-                    case 2:
-                        LoadTableDescription(textSearch);
-                        break;
-                    default:
-                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
-                        cmbTypeAd.Text = "";
-                        break;
+                    switch (cmbTypeAd.SelectedIndex)
+                    {
+                        //0 Código, 1 Correo, 2 Nombre
+                        case 0:
+                            LoadTableArea(textSearch);
+                            break;
+                        case 1:
+                            LoadTableCourse(textSearch);
+                            break;
+                        case 2:
+                            LoadTableDescription(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                            cmbTypeAd.Text = "";
+                            break;
+                    }
                 }
             }
             if (amountAd == 0)
