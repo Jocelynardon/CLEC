@@ -360,7 +360,7 @@ namespace CECLdb
             bttnSelectPerson.Location = new Point(533, 513);
         }
         //CAMBIAR ENSEÑAR EL APELLIDO
-        private void LoadTableCode(string data)
+        public void LoadTableCode(string data)
         {
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
@@ -386,7 +386,7 @@ namespace CECLdb
                 LoadTableCode(null);
             }
         }
-        private void LoadTableEmail(string date)
+        public void LoadTableEmail(string date)
         {
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
@@ -412,7 +412,7 @@ namespace CECLdb
                 LoadTableEmail(null);
             }
         }
-        private void LoadTableName(string date)
+        public void LoadTableName(string date)
         {
             List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
@@ -439,7 +439,7 @@ namespace CECLdb
                 LoadTableName(null);
             }
         }
-        private void LoadTableSelectedPerson(List<int> personSelected)
+        public void LoadTableSelectedPerson(List<int> personSelected)
         {
             amountSelected = 0;
             CtrlPerson person = new CtrlPerson();
@@ -698,7 +698,7 @@ namespace CECLdb
                         }
                         catch (MySqlException ex)
                         {
-
+                            //Decir cuál NO se logró eliminar
                             MessageBox.Show("Error al eliminar: " + ex.Message);
                         }
                         finally

@@ -404,6 +404,7 @@ namespace CECLdb
             this.DeselectAllcbx.Text = "Desmarcar Todos";
             this.DeselectAllcbx.UseVisualStyleBackColor = true;
             this.DeselectAllcbx.Visible = false;
+            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
             // 
             // PersonReg
             // 

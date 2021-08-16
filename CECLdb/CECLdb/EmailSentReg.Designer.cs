@@ -29,47 +29,39 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAdNumberES = new System.Windows.Forms.Label();
-            this.txtbTextSearch = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bttnReturnEmailSent = new System.Windows.Forms.Button();
             this.lblEscES = new System.Windows.Forms.Label();
             this.dgvEmailSent = new System.Windows.Forms.DataGridView();
-            this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ChangeStatusbtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Modifybtn = new System.Windows.Forms.Button();
-            this.Deletebtn = new System.Windows.Forms.Button();
+            this.DeletedPreviewbtn = new System.Windows.Forms.Button();
             this.bttnViewSelected = new System.Windows.Forms.Button();
-            this.bttnEraserText = new System.Windows.Forms.Button();
             this.bttnSearch = new System.Windows.Forms.Button();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
-            this.bttnPersonSent = new System.Windows.Forms.Button();
             this.bttnViewAll = new System.Windows.Forms.Button();
+            this.txtNoAviso = new System.Windows.Forms.TextBox();
+            this.Destinatarios = new System.Windows.Forms.GroupBox();
+            this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
+            this.AddedPreviewbtn = new System.Windows.Forms.Button();
+            this.txtTextSearch = new System.Windows.Forms.TextBox();
+            this.bttnSearchPerson = new System.Windows.Forms.Button();
+            this.Aviso = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).BeginInit();
+            this.Destinatarios.SuspendLayout();
+            this.Aviso.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblAdNumberES
-            // 
-            this.lblAdNumberES.AutoSize = true;
-            this.lblAdNumberES.Location = new System.Drawing.Point(41, 31);
-            this.lblAdNumberES.Name = "lblAdNumberES";
-            this.lblAdNumberES.Size = new System.Drawing.Size(72, 20);
-            this.lblAdNumberES.TabIndex = 0;
-            this.lblAdNumberES.Text = "No. Aviso";
-            // 
-            // txtbTextSearch
-            // 
-            this.txtbTextSearch.Location = new System.Drawing.Point(41, 63);
-            this.txtbTextSearch.Name = "txtbTextSearch";
-            this.txtbTextSearch.Size = new System.Drawing.Size(148, 27);
-            this.txtbTextSearch.TabIndex = 1;
-            this.txtbTextSearch.TextChanged += new System.EventHandler(this.txtbTextSearch_TextChanged);
             // 
             // bttnReturnEmailSent
             // 
             this.bttnReturnEmailSent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnEmailSent.Location = new System.Drawing.Point(509, 62);
+            this.bttnReturnEmailSent.Location = new System.Drawing.Point(241, 21);
             this.bttnReturnEmailSent.Name = "bttnReturnEmailSent";
-            this.bttnReturnEmailSent.Size = new System.Drawing.Size(87, 29);
+            this.bttnReturnEmailSent.Size = new System.Drawing.Size(98, 29);
             this.bttnReturnEmailSent.TabIndex = 10;
             this.bttnReturnEmailSent.Text = "Regresar";
             this.bttnReturnEmailSent.UseVisualStyleBackColor = false;
@@ -80,9 +72,9 @@ namespace CECLdb
             this.lblEscES.AutoSize = true;
             this.lblEscES.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblEscES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscES.Location = new System.Drawing.Point(901, 48);
+            this.lblEscES.Location = new System.Drawing.Point(864, 22);
             this.lblEscES.Name = "lblEscES";
-            this.lblEscES.Size = new System.Drawing.Size(165, 22);
+            this.lblEscES.Size = new System.Drawing.Size(174, 22);
             this.lblEscES.TabIndex = 13;
             this.lblEscES.Text = "(ESC) Regresar al Menu";
             // 
@@ -90,183 +82,265 @@ namespace CECLdb
             // 
             this.dgvEmailSent.AllowUserToAddRows = false;
             this.dgvEmailSent.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dgvEmailSent.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEmailSent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvEmailSent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvEmailSent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmailSent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckSelection});
-            this.dgvEmailSent.Location = new System.Drawing.Point(41, 136);
+            this.ChangeStatusbtn});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmailSent.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvEmailSent.Location = new System.Drawing.Point(16, 133);
             this.dgvEmailSent.Name = "dgvEmailSent";
             this.dgvEmailSent.RowHeadersWidth = 51;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dgvEmailSent.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvEmailSent.RowTemplate.Height = 29;
             this.dgvEmailSent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmailSent.Size = new System.Drawing.Size(992, 330);
+            this.dgvEmailSent.Size = new System.Drawing.Size(987, 330);
             this.dgvEmailSent.TabIndex = 19;
             this.dgvEmailSent.Visible = false;
-            this.dgvEmailSent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmailSent_CellClick);
+            this.dgvEmailSent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmailSent_CellContentClick);
             // 
-            // CheckSelection
+            // ChangeStatusbtn
             // 
-            this.CheckSelection.HeaderText = "Seleccionar";
-            this.CheckSelection.MinimumWidth = 6;
-            this.CheckSelection.Name = "CheckSelection";
-            this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CheckSelection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CheckSelection.Width = 114;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            this.ChangeStatusbtn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ChangeStatusbtn.HeaderText = "";
+            this.ChangeStatusbtn.MinimumWidth = 6;
+            this.ChangeStatusbtn.Name = "ChangeStatusbtn";
+            this.ChangeStatusbtn.ReadOnly = true;
+            this.ChangeStatusbtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ChangeStatusbtn.Width = 6;
             // 
             // Modifybtn
             // 
             this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
             this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Modifybtn.Location = new System.Drawing.Point(340, 484);
+            this.Modifybtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Modifybtn.Location = new System.Drawing.Point(17, 484);
             this.Modifybtn.Name = "Modifybtn";
-            this.Modifybtn.Size = new System.Drawing.Size(94, 29);
+            this.Modifybtn.Size = new System.Drawing.Size(139, 29);
             this.Modifybtn.TabIndex = 23;
-            this.Modifybtn.Text = "Modificar";
+            this.Modifybtn.Text = "Guardar Cambios";
             this.Modifybtn.UseVisualStyleBackColor = false;
             this.Modifybtn.Visible = false;
+            this.Modifybtn.Click += new System.EventHandler(this.Modifybtn_Click);
             // 
-            // Deletebtn
+            // DeletedPreviewbtn
             // 
-            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
-            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Deletebtn.Location = new System.Drawing.Point(448, 484);
-            this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(94, 29);
-            this.Deletebtn.TabIndex = 24;
-            this.Deletebtn.Text = "Eliminar";
-            this.Deletebtn.UseVisualStyleBackColor = false;
-            this.Deletebtn.Visible = false;
+            this.DeletedPreviewbtn.BackColor = System.Drawing.Color.Tomato;
+            this.DeletedPreviewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DeletedPreviewbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeletedPreviewbtn.Location = new System.Drawing.Point(500, 484);
+            this.DeletedPreviewbtn.Name = "DeletedPreviewbtn";
+            this.DeletedPreviewbtn.Size = new System.Drawing.Size(124, 29);
+            this.DeletedPreviewbtn.TabIndex = 24;
+            this.DeletedPreviewbtn.Text = "Ver Eliminados";
+            this.DeletedPreviewbtn.UseVisualStyleBackColor = false;
+            this.DeletedPreviewbtn.Click += new System.EventHandler(this.DeletedPreviewbtn_Click);
             // 
             // bttnViewSelected
             // 
             this.bttnViewSelected.BackColor = System.Drawing.Color.LightSalmon;
             this.bttnViewSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewSelected.Location = new System.Drawing.Point(681, 486);
+            this.bttnViewSelected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bttnViewSelected.Location = new System.Drawing.Point(814, 484);
             this.bttnViewSelected.Name = "bttnViewSelected";
-            this.bttnViewSelected.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelected.Size = new System.Drawing.Size(183, 29);
             this.bttnViewSelected.TabIndex = 33;
-            this.bttnViewSelected.Text = "Ver seleccionados";
+            this.bttnViewSelected.Text = "Actualizar Destinatarios";
             this.bttnViewSelected.UseVisualStyleBackColor = false;
             this.bttnViewSelected.Visible = false;
             this.bttnViewSelected.Click += new System.EventHandler(this.bttnViewSelected_Click);
-            // 
-            // bttnEraserText
-            // 
-            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
-            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnEraserText.Location = new System.Drawing.Point(440, 63);
-            this.bttnEraserText.Name = "bttnEraserText";
-            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
-            this.bttnEraserText.TabIndex = 38;
-            this.bttnEraserText.Text = "Borrar";
-            this.bttnEraserText.UseVisualStyleBackColor = false;
-            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
             // 
             // bttnSearch
             // 
             this.bttnSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.bttnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSearch.Location = new System.Drawing.Point(196, 64);
+            this.bttnSearch.Location = new System.Drawing.Point(46, 22);
             this.bttnSearch.Name = "bttnSearch";
-            this.bttnSearch.Size = new System.Drawing.Size(116, 26);
+            this.bttnSearch.Size = new System.Drawing.Size(174, 26);
             this.bttnSearch.TabIndex = 39;
-            this.bttnSearch.Text = "Buscar";
+            this.bttnSearch.Text = "Buscar Aviso";
             this.bttnSearch.UseVisualStyleBackColor = false;
             this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
             // 
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(41, 106);
+            this.SelectAllcbx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SelectAllcbx.Location = new System.Drawing.Point(17, 103);
             this.SelectAllcbx.Name = "SelectAllcbx";
-            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
+            this.SelectAllcbx.Size = new System.Drawing.Size(129, 24);
             this.SelectAllcbx.TabIndex = 40;
-            this.SelectAllcbx.Text = "Seleccionar Todos";
+            this.SelectAllcbx.Text = "Agregar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
+            this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
             // DeselectAllcbx
             // 
             this.DeselectAllcbx.AutoSize = true;
-            this.DeselectAllcbx.Location = new System.Drawing.Point(207, 106);
+            this.DeselectAllcbx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeselectAllcbx.Location = new System.Drawing.Point(183, 103);
             this.DeselectAllcbx.Name = "DeselectAllcbx";
-            this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
+            this.DeselectAllcbx.Size = new System.Drawing.Size(129, 24);
             this.DeselectAllcbx.TabIndex = 41;
-            this.DeselectAllcbx.Text = "Desmarcar Todos";
+            this.DeselectAllcbx.Text = "Eliminar Todos";
             this.DeselectAllcbx.UseVisualStyleBackColor = true;
             this.DeselectAllcbx.Visible = false;
-            // 
-            // bttnPersonSent
-            // 
-            this.bttnPersonSent.BackColor = System.Drawing.Color.PaleGreen;
-            this.bttnPersonSent.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnPersonSent.Location = new System.Drawing.Point(318, 63);
-            this.bttnPersonSent.Name = "bttnPersonSent";
-            this.bttnPersonSent.Size = new System.Drawing.Size(116, 26);
-            this.bttnPersonSent.TabIndex = 42;
-            this.bttnPersonSent.Text = "Ver personas";
-            this.bttnPersonSent.UseVisualStyleBackColor = false;
-            this.bttnPersonSent.Click += new System.EventHandler(this.bttnPersonSent_Click);
+            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
             // 
             // bttnViewAll
             // 
             this.bttnViewAll.BackColor = System.Drawing.Color.Khaki;
             this.bttnViewAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewAll.Location = new System.Drawing.Point(548, 484);
+            this.bttnViewAll.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bttnViewAll.Location = new System.Drawing.Point(630, 484);
             this.bttnViewAll.Name = "bttnViewAll";
-            this.bttnViewAll.Size = new System.Drawing.Size(127, 29);
+            this.bttnViewAll.Size = new System.Drawing.Size(178, 29);
             this.bttnViewAll.TabIndex = 43;
-            this.bttnViewAll.Text = "Ver todos";
+            this.bttnViewAll.Text = "Ver todas las personas";
             this.bttnViewAll.UseVisualStyleBackColor = false;
             this.bttnViewAll.Visible = false;
             this.bttnViewAll.Click += new System.EventHandler(this.bttnViewAll_Click);
             // 
+            // txtNoAviso
+            // 
+            this.txtNoAviso.Enabled = false;
+            this.txtNoAviso.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtNoAviso.Location = new System.Drawing.Point(16, 26);
+            this.txtNoAviso.Name = "txtNoAviso";
+            this.txtNoAviso.Size = new System.Drawing.Size(140, 27);
+            this.txtNoAviso.TabIndex = 44;
+            // 
+            // Destinatarios
+            // 
+            this.Destinatarios.BackColor = System.Drawing.SystemColors.Info;
+            this.Destinatarios.Controls.Add(this.cmbTypeSearch);
+            this.Destinatarios.Controls.Add(this.AddedPreviewbtn);
+            this.Destinatarios.Controls.Add(this.txtTextSearch);
+            this.Destinatarios.Controls.Add(this.bttnSearchPerson);
+            this.Destinatarios.Controls.Add(this.bttnViewAll);
+            this.Destinatarios.Controls.Add(this.bttnViewSelected);
+            this.Destinatarios.Controls.Add(this.DeselectAllcbx);
+            this.Destinatarios.Controls.Add(this.SelectAllcbx);
+            this.Destinatarios.Controls.Add(this.DeletedPreviewbtn);
+            this.Destinatarios.Controls.Add(this.Modifybtn);
+            this.Destinatarios.Controls.Add(this.dgvEmailSent);
+            this.Destinatarios.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Destinatarios.Location = new System.Drawing.Point(41, 159);
+            this.Destinatarios.Name = "Destinatarios";
+            this.Destinatarios.Size = new System.Drawing.Size(1027, 533);
+            this.Destinatarios.TabIndex = 45;
+            this.Destinatarios.TabStop = false;
+            this.Destinatarios.Text = "Destinatarios";
+            // 
+            // cmbTypeSearch
+            // 
+            this.cmbTypeSearch.FormattingEnabled = true;
+            this.cmbTypeSearch.Location = new System.Drawing.Point(496, 42);
+            this.cmbTypeSearch.Name = "cmbTypeSearch";
+            this.cmbTypeSearch.Size = new System.Drawing.Size(255, 28);
+            this.cmbTypeSearch.TabIndex = 48;
+            // 
+            // AddedPreviewbtn
+            // 
+            this.AddedPreviewbtn.BackColor = System.Drawing.Color.PaleGreen;
+            this.AddedPreviewbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddedPreviewbtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AddedPreviewbtn.Location = new System.Drawing.Point(370, 484);
+            this.AddedPreviewbtn.Name = "AddedPreviewbtn";
+            this.AddedPreviewbtn.Size = new System.Drawing.Size(124, 29);
+            this.AddedPreviewbtn.TabIndex = 44;
+            this.AddedPreviewbtn.Text = "Ver Agregados";
+            this.AddedPreviewbtn.UseVisualStyleBackColor = false;
+            this.AddedPreviewbtn.Click += new System.EventHandler(this.AddedPreviewbtn_Click);
+            // 
+            // txtTextSearch
+            // 
+            this.txtTextSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtTextSearch.Location = new System.Drawing.Point(28, 43);
+            this.txtTextSearch.Name = "txtTextSearch";
+            this.txtTextSearch.Size = new System.Drawing.Size(439, 27);
+            this.txtTextSearch.TabIndex = 47;
+            // 
+            // bttnSearchPerson
+            // 
+            this.bttnSearchPerson.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.bttnSearchPerson.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSearchPerson.Location = new System.Drawing.Point(794, 41);
+            this.bttnSearchPerson.Name = "bttnSearchPerson";
+            this.bttnSearchPerson.Size = new System.Drawing.Size(94, 29);
+            this.bttnSearchPerson.TabIndex = 49;
+            this.bttnSearchPerson.Text = "Buscar";
+            this.bttnSearchPerson.UseVisualStyleBackColor = false;
+            this.bttnSearchPerson.Click += new System.EventHandler(this.bttnSearchPerson_Click);
+            // 
+            // Aviso
+            // 
+            this.Aviso.BackColor = System.Drawing.SystemColors.Info;
+            this.Aviso.Controls.Add(this.txtNoAviso);
+            this.Aviso.Location = new System.Drawing.Point(41, 71);
+            this.Aviso.Name = "Aviso";
+            this.Aviso.Size = new System.Drawing.Size(185, 70);
+            this.Aviso.TabIndex = 46;
+            this.Aviso.TabStop = false;
+            this.Aviso.Text = "Aviso";
+            // 
             // EmailSentReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 527);
-            this.Controls.Add(this.bttnViewAll);
-            this.Controls.Add(this.bttnPersonSent);
-            this.Controls.Add(this.DeselectAllcbx);
-            this.Controls.Add(this.SelectAllcbx);
+            this.ClientSize = new System.Drawing.Size(1080, 703);
+            this.Controls.Add(this.Aviso);
+            this.Controls.Add(this.Destinatarios);
             this.Controls.Add(this.bttnSearch);
-            this.Controls.Add(this.bttnEraserText);
-            this.Controls.Add(this.bttnViewSelected);
-            this.Controls.Add(this.Deletebtn);
-            this.Controls.Add(this.Modifybtn);
-            this.Controls.Add(this.dgvEmailSent);
             this.Controls.Add(this.lblEscES);
             this.Controls.Add(this.bttnReturnEmailSent);
-            this.Controls.Add(this.txtbTextSearch);
-            this.Controls.Add(this.lblAdNumberES);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.KeyPreview = true;
             this.Name = "EmailSentReg";
-            this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).EndInit();
+            this.Destinatarios.ResumeLayout(false);
+            this.Destinatarios.PerformLayout();
+            this.Aviso.ResumeLayout(false);
+            this.Aviso.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblAdNumberES;
-        private System.Windows.Forms.TextBox txtbTextSearch;
         private System.Windows.Forms.Button bttnReturnEmailSent;
         private System.Windows.Forms.Label lblEscES;
         private System.Windows.Forms.DataGridView dgvEmailSent;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.Button Modifybtn;
-        private System.Windows.Forms.Button Deletebtn;
+        private System.Windows.Forms.Button DeletedPreviewbtn;
         private System.Windows.Forms.Button bttnViewSelected;
-        private System.Windows.Forms.Button bttnEraserText;
         private System.Windows.Forms.Button bttnSearch;
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
-        private System.Windows.Forms.Button bttnPersonSent;
         private System.Windows.Forms.Button bttnViewAll;
+        private System.Windows.Forms.TextBox txtNoAviso;
+        private System.Windows.Forms.GroupBox Destinatarios;
+        private System.Windows.Forms.GroupBox Aviso;
+        private System.Windows.Forms.DataGridViewButtonColumn ChangeStatusbtn;
+        private System.Windows.Forms.Button AddedPreviewbtn;
+        private System.Windows.Forms.ComboBox cmbTypeSearch;
+        private System.Windows.Forms.TextBox txtTextSearch;
+        private System.Windows.Forms.Button bttnSearchPerson;
     }
 }

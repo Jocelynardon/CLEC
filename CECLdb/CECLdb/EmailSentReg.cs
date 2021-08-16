@@ -15,17 +15,24 @@ namespace CECLdb
         public static int id = 0;
         public static int type = 0;
         public int amountSelected = 0;
-        public int PerID;
-
+        public int CurrentAdID;
+        public String textSearch;
+        public int LastSearchTypeSelected;
         public int amount = 0;
         public List<int> selectedIDList = new List<int>();
+        public List<int> RemovedIDList = new List<int>();
+        public List<int> OriginalIDList = new List<int>();
+        public List<int> AddedIDList = new List<int>();
+        string ChosenAdID;
+        char LastButtonClicked;
+        bool updating;
         //Falta agregar una lista con los seleccionados, mostrar las demás personas que no se encuentren en ese aviso
         public EmailSentReg()
         {
             InitializeComponent();
             if (Menu.action==2 || Menu.action==3)
             {
-                this.Height = 152;
+                this.Height = 111;
             }
         }
 
@@ -33,26 +40,24 @@ namespace CECLdb
         {
             CloseWindow();
         }
-        private void bttnEraserText_Click(object sender, EventArgs e)
-        {
-            txtbTextSearch.Text = "";
-        }
         private void bttnSearch_Click(object sender, EventArgs e)
         {
             Menu.action = 5;
             AdReg frmAdd = new AdReg();
             frmAdd.Show(this);
+            
         }
-        private void bttnPersonSent_Click(object sender, EventArgs e)
+        private void PersonSent()
         {
             amountSelected = 0;
-            string IDSearch = txtbTextSearch.Text.ToString();
+            LoadTypeSearch();
+            string IDSearch = txtNoAviso.Text.ToString();
             consultationAmount(IDSearch);
             if (amount>0)
             {
                 dgvEmailSent.Visible = true;
                 LoadTableID(IDSearch);
-                this.Height = 574;
+                this.Height = 750;
                 bttnReturnEmailSent.Location = new Point(448, 484);
                 SelectAllcbx.Visible = true;
                 DeselectAllcbx.Visible = true;
@@ -64,8 +69,8 @@ namespace CECLdb
                 }
                 if (Menu.action == 3)
                 {
-                    Deletebtn.Location = new Point(332, 484);
-                    Deletebtn.Visible = true;
+                    DeletedPreviewbtn.Location = new Point(332, 484);
+                    DeletedPreviewbtn.Visible = true;
                 }
             }
             if (amount == 0)
@@ -75,12 +80,10 @@ namespace CECLdb
         }
         private void bttnViewAll_Click(object sender, EventArgs e)
         {
-            List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvEmailSent.DataSource = person.consultationName(null);
             validateSelection();
-
-            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            LastButtonClicked = 'T';
             if (dgvEmailSent.Rows.Count > 0)
             {
                 try
@@ -89,12 +92,22 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se han ingresado personas");
+                    if (!updating) MessageBox.Show("No se han ingresado personas");
+                    else
+                    {
+                        dgvEmailSent.DataSource = null;
+                        updating = false;
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han ingresado personas");
+                if (!updating) MessageBox.Show("No se han ingresado personas");
+                else
+                {
+                    dgvEmailSent.DataSource = null;
+                    updating = false;
+                }
             }
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
@@ -105,7 +118,7 @@ namespace CECLdb
             }
             else if (amountSelected >= 1)
             {
-                LoadTableSelectedPerson(selectedIDList);
+                LoadTableFromPersonList(selectedIDList);
             }
         }
 
@@ -142,14 +155,14 @@ namespace CECLdb
                 MessageBox.Show("No se han encontrado datos");
             }
         }
-        private void LoadTableSelectedPerson(List<int> personSelected)
+        private void LoadTableFromPersonList(List<int> personList)
         {
             amountSelected = 0;
             CtrlPerson person = new CtrlPerson();
             int sentID = 0;
-            for (int i = 0; i < personSelected.Count; i++)
+            for (int i = 0; i < personList.Count; i++)
             {
-                sentID = int.Parse(personSelected[i].ToString());
+                sentID = int.Parse(personList[i].ToString());
                 person.SelectedEmailSent(sentID);
             }
             dgvEmailSent.DataSource = person.listSelected;
@@ -178,8 +191,11 @@ namespace CECLdb
         {
             foreach (DataGridViewRow row in dgvEmailSent.Rows)
             {
-                    row.Cells["CheckSelection"].Value = true;
-                    selectedIDList.Add(int.Parse(row.Cells["ID"].Value.ToString()));
+                row.Cells["ChangeStatusbtn"].Value = "Eliminar";
+                row.Cells["ChangeStatusbtn"].Style.SelectionBackColor = Color.Red;
+                row.Cells["ChangeStatusbtn"].Style.BackColor = Color.Red;
+                selectedIDList.Add(int.Parse(row.Cells["ID"].Value.ToString()));
+                OriginalIDList.Add(int.Parse(row.Cells["ID"].Value.ToString()));
             }
             amountSelected = selectedIDList.Count;
         }
@@ -210,12 +226,17 @@ namespace CECLdb
         {
             foreach (DataGridViewRow row in dgvEmailSent.Rows)
             {
-                for (int i = 0; i < selectedIDList.Count; i++)
+                if (selectedIDList.Contains(int.Parse(row.Cells["ID"].Value.ToString())))
                 {
-                    if (selectedIDList[i].Equals(row.Cells["ID"].Value))
-                    {
-                        row.Cells["CheckSelection"].Value = true;
-                    }
+                    row.Cells["ChangeStatusbtn"].Value = "Eliminar";
+                    row.Cells["ChangeStatusbtn"].Style.BackColor = Color.Red;
+                    row.Cells["ChangeStatusbtn"].Style.SelectionBackColor = Color.Red;
+                }
+                else
+                {
+                    row.Cells["ChangeStatusbtn"].Value = "Agregar";
+                    row.Cells["ChangeStatusbtn"].Style.BackColor = Color.LimeGreen;
+                    row.Cells["ChangeStatusbtn"].Style.SelectionBackColor = Color.LimeGreen;
                 }
             }
             amountSelected = selectedIDList.Count;
@@ -231,31 +252,339 @@ namespace CECLdb
         #region AddID data
         public void AddNewItem(DataGridViewCell row)
         {
-            string idPersonChoosen = row.Value.ToString();
-            this.txtbTextSearch.Text = idPersonChoosen;
+            ChosenAdID = row.Value.ToString();
+            this.txtNoAviso.Text = ChosenAdID;
+            bttnSearch.Text = "Buscar Otro Aviso";
+            PersonSent();
+            Modifybtn.Visible = true;
         }
         #endregion
-
-        private void dgvEmailSent_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            id = int.Parse(dgvEmailSent.CurrentRow.Cells["ID"].Value.ToString());
-            if (dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value)
-            {
-                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = false;
-                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = null;
-                amountSelected += -1;
-                selectedIDList.Remove(id);
-            }
-            else if (dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value == null)
-            {
-                dgvEmailSent.CurrentRow.Cells["CheckSelection"].Value = true;
-                amountSelected += 1;
-                selectedIDList.Add(id);
-            }
-        }
         private void txtbTextSearch_TextChanged(object sender, EventArgs e)
         {
             selectedIDList.Clear();
+        }
+
+        private void dgvEmailSent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+        e.RowIndex >= 0)
+            {
+                id = int.Parse(dgvEmailSent.CurrentRow.Cells["ID"].Value.ToString());
+                if (dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Value.ToString() == "Agregar")
+                {
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Value = "Eliminar";
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Style.BackColor = Color.Red;
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Style.SelectionBackColor = Color.Red;
+                    amountSelected += 1;
+                    selectedIDList.Add(id);
+                    if (RemovedIDList.Contains(id)) RemovedIDList.Remove(id);
+                    if (!OriginalIDList.Contains(id)) AddedIDList.Add(id);
+                    DeselectAllcbx.Checked = false;
+                }
+                else if (dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Value.ToString() == "Eliminar")
+                {
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Value = "Agregar";
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Style.BackColor = Color.LimeGreen;
+                    dgvEmailSent.CurrentRow.Cells["ChangeStatusbtn"].Style.SelectionBackColor = Color.LimeGreen;
+                    amountSelected -= 1;
+                    selectedIDList.Remove(id);
+                    if (OriginalIDList.Contains(id)) RemovedIDList.Add(id);
+                    if (AddedIDList.Contains(id)) AddedIDList.Remove(id);
+                    SelectAllcbx.Checked = false;
+                }
+            }
+        }
+
+        private void Modifybtn_Click(object sender, EventArgs e)
+        {
+            bool Changes = false;
+            string message = "¿Deseas realizar los siguientes cambios ?\r\n";
+            bool Fail = false;
+            if (AddedIDList.Count>0)
+            {
+                message += "    - AGREGAR destinatarios (Puedes revisar los destinatarios agregados en el botón 'Ver Agregados')\r\n";
+                Changes = true;
+            }
+            if (RemovedIDList.Count>0)
+            {
+                message += "    - ELIMINAR destinatarios (Puedes revisar los destinatarios eliminados en el botón 'Ver Eliminados')\r\n";
+                Changes = true;
+            }
+            if (Changes)
+            {
+                DialogResult dialogResult = MessageBox.Show(message, "Confirmar Cambios", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string sql;
+                    foreach (int item in AddedIDList)
+                    {
+                        sql = "INSERT INTO correoenviado(IDaviso, IDpersona) VALUES ('" + ChosenAdID + "', '" + item + "')";
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            OriginalIDList.Add(item);
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Hacer búsqueda con ID y mostrar cada error con los datos de la persona que no pudo ser agregada, lo mismo con las eliminadas
+                            MessageBox.Show("Error al guardar: " + ex.Message);
+                            Fail = true;
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                    foreach (int item in RemovedIDList)
+                    {
+                        sql = "DELETE FROM correoenviado WHERE IDaviso = " + ChosenAdID + " AND IDpersona = " + item;
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            OriginalIDList.Remove(item);
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Hacer búsqueda con ID y mostrar cada error con los datos de la persona que no pudo ser agregada, lo mismo con las eliminadas
+                            MessageBox.Show("Error al guardar: " + ex.Message);
+                            Fail = true;
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                    if (!Fail)
+                    {
+                        MessageBox.Show("Cambios realizados exitosamente");
+
+                    }
+                    else
+                    {
+
+                    }
+                    AddedIDList.Clear();
+                    RemovedIDList.Clear();
+                    UpdateDataGrid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han realizado cambios");
+            }
+            
+        }
+        private void UpdateDataGrid()
+        {
+            CtrlPerson person = new CtrlPerson();
+            PersonReg personReg = new PersonReg();
+            personReg.consultationAmount();
+            if (personReg.amountPerson > 0)
+            {
+                switch (LastButtonClicked)
+                {
+                    case 'S':
+                        if (textSearch == "")
+                        {
+                            dgvEmailSent.DataSource = person.consultationCode(null);
+                        }
+                        switch (LastSearchTypeSelected)
+                        {
+                            //0 Código, 1 Correo, 2 Nombre
+                            case 0:
+                                dgvEmailSent.DataSource = person.consultationCode(textSearch);
+                                break;
+                            case 1:
+                                dgvEmailSent.DataSource = person.consultationEmail(textSearch);
+                                break;
+                            case 2:
+                                dgvEmailSent.DataSource = person.consultationName(textSearch);
+                                break;
+                            default:
+                                MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                                cmbTypeSearch.Text = "";
+                                break;
+                        }
+                        validateSelection();
+                        if (dgvEmailSent.Rows.Count > 0)
+                        {
+                            try
+                            {
+                                this.dgvEmailSent.Columns["ID"].Visible = false;
+                                this.dgvEmailSent.Columns["Apellido"].Visible = false;
+                            }
+                            catch (MySqlException)
+                            {
+                                dgvEmailSent.DataSource = null;
+                            }
+                        }
+                        else
+                        {
+                            dgvEmailSent.DataSource = null;
+                        }
+
+                        break;
+                    case 'A':
+                        if (AddedIDList.Count > 0) LoadTableFromPersonList(AddedIDList);
+                        else dgvEmailSent.DataSource = null;
+                        break;
+                    case 'E':
+                        if (RemovedIDList.Count > 0) LoadTableFromPersonList(RemovedIDList);
+                        else dgvEmailSent.DataSource = null;
+                        break;
+                    case 'T':
+                        updating = true;
+                        bttnViewAll.PerformClick();
+                        
+                        break;
+                    default:
+                        if(amountSelected > 0)LoadTableFromPersonList(selectedIDList);
+                        else dgvEmailSent.DataSource = null;
+                        break;
+                }
+            }
+            else
+            {
+                dgvEmailSent.DataSource = null;
+            }
+        }
+        private void AddedPreviewbtn_Click(object sender, EventArgs e)
+        {
+            LastButtonClicked = 'A';
+            if (AddedIDList.Count > 0) LoadTableFromPersonList(AddedIDList);
+            else MessageBox.Show("No se ha agregado a ninguna persona");
+        }
+
+        private void DeletedPreviewbtn_Click(object sender, EventArgs e)
+        {
+            LastButtonClicked = 'E';
+            if (RemovedIDList.Count > 0) LoadTableFromPersonList(RemovedIDList);
+            else MessageBox.Show("No se ha eliminado a ninguna persona");
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvEmailSent.Rows)
+                {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (!selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Add(currentID);
+                        amountSelected++;
+                    }
+
+                    Fila.Cells[0].Value = "Eliminar";
+                    Fila.Cells[0].Style.BackColor = Color.Red;
+                    Fila.Cells[0].Style.SelectionBackColor = Color.Red;
+                    if (RemovedIDList.Contains(currentID)) RemovedIDList.Remove(currentID);
+                    if (!OriginalIDList.Contains(currentID) && !AddedIDList.Contains(currentID)) AddedIDList.Add(currentID);
+                    
+                }
+            }
+        }
+
+        private void bttnSearchPerson_Click(object sender, EventArgs e)
+        {
+            PersonReg personReg = new PersonReg();
+            CtrlPerson person = new CtrlPerson();
+            amountSelected = 0;
+            personReg.consultationAmount();
+            LastButtonClicked = 'S';
+            if (personReg.amountPerson > 0)
+            {
+                textSearch = txtTextSearch.Text;
+                LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;
+
+                if (textSearch == "")
+                {
+                    dgvEmailSent.DataSource = person.consultationCode(null);
+                }
+                switch (cmbTypeSearch.SelectedIndex)
+                {
+                    //0 Código, 1 Correo, 2 Nombre
+                    case 0:
+                        dgvEmailSent.DataSource = person.consultationCode(textSearch);
+                        break;
+                    case 1:
+                        dgvEmailSent.DataSource = person.consultationEmail(textSearch);
+                        break;
+                    case 2:
+                        dgvEmailSent.DataSource = person.consultationName(textSearch);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                        cmbTypeSearch.Text = "";
+                        break;
+                }
+                validateSelection();
+                if (dgvEmailSent.Rows.Count > 0)
+                {
+                    try
+                    {
+                        this.dgvEmailSent.Columns["ID"].Visible = false;
+                        this.dgvEmailSent.Columns["Apellido"].Visible = false;
+                    }
+                    catch (MySqlException)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        dgvEmailSent.DataSource = person.consultationCode(null);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    dgvEmailSent.DataSource = person.consultationCode(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encuentran personas registradas");
+            }
+        }
+        private void LoadTypeSearch()
+        {
+            cmbTypeSearch.DisplayMember = "Text";
+            cmbTypeSearch.ValueMember = "Value";
+            cmbTypeSearch.SelectedIndex = cmbTypeSearch.Items.IndexOf("Correo");
+
+            cmbTypeSearch.Items.Add(new { Text = "Código", Value = 1 });
+            cmbTypeSearch.Items.Add(new { Text = "Correo", Value = 2 });
+            cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
+            cmbTypeSearch.SelectedIndex = 0;
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DeselectAllcbx.Checked)
+            {
+                
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvEmailSent.Rows)
+                {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Remove(currentID);
+                        amountSelected--;
+                    }
+                   
+                    Fila.Cells[0].Value = "Agregar";
+                    Fila.Cells[0].Style.BackColor = Color.LimeGreen;
+                    Fila.Cells[0].Style.SelectionBackColor = Color.LimeGreen;
+                    if (OriginalIDList.Contains(currentID) && !RemovedIDList.Contains(currentID)) RemovedIDList.Add(currentID);
+                    if (AddedIDList.Contains(currentID)) AddedIDList.Remove(currentID);
+                }
+            }
         }
     }
 }

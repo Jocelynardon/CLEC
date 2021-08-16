@@ -163,7 +163,7 @@ namespace CLEC
             MySqlDataReader reader;
             string sql;
 
-            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona LIKE " + IDselected + " ORDER BY Nombre";
+            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona = " + IDselected + " ORDER BY Nombre";
 
             try
             {
@@ -195,7 +195,7 @@ namespace CLEC
             string sql;
 
             sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
-            "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso LIKE " + data + " ORDER BY persona.Nombre ASC";
+            "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso = " + data + " ORDER BY persona.Nombre ASC";
 
             try
             {
