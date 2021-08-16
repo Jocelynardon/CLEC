@@ -301,22 +301,25 @@ namespace CECLdb
                 {
                     LoadTableCode(null);
                 }
-                switch (cmbTypeSearch.SelectedIndex)
+                else
                 {
-                    //0 Código, 1 Correo, 2 Nombre
-                    case 0:
-                        LoadTableCode(textSearch);
-                        break;
-                    case 1:
-                        LoadTableEmail(textSearch);
-                        break;
-                    case 2:
-                        LoadTableName(textSearch);
-                        break;
-                    default:
-                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
-                        cmbTypeSearch.Text = "";
-                        break;
+                    switch (cmbTypeSearch.SelectedIndex)
+                    {
+                        //0 Código, 1 Correo, 2 Nombre
+                        case 0:
+                            LoadTableCode(textSearch);
+                            break;
+                        case 1:
+                            LoadTableEmail(textSearch);
+                            break;
+                        case 2:
+                            LoadTableName(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                            cmbTypeSearch.Text = "";
+                            break;
+                    }
                 }
             }
             else

@@ -232,6 +232,8 @@ namespace CECLdb
             this.dgvInscription.AllowUserToDeleteRows = false;
             this.dgvInscription.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvInscription.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvInscription.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvInscription.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvInscription.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInscription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
@@ -243,6 +245,7 @@ namespace CECLdb
             this.dgvInscription.Size = new System.Drawing.Size(992, 330);
             this.dgvInscription.TabIndex = 22;
             this.dgvInscription.Visible = false;
+            this.dgvInscription.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInscription_CellClick);
             // 
             // CheckSelection
             // 

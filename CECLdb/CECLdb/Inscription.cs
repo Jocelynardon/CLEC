@@ -14,7 +14,7 @@ namespace CLEC
         private int idPerson;
         private string startDate;
         private string endDate;
-        private int approved;
+        private string approved;
 
         public int IDarea { get => idArea; set => idArea = value; }
         public string Area { get => area; set => area = value; }
@@ -24,6 +24,6 @@ namespace CLEC
         public string Nombre { get => person; set => person = value; }
         public string FechaInicio { get => startDate; set => startDate = value; }
         public string FechaFin { get => endDate; set => endDate = value; }
-        public int Aprobado { get => approved; set => approved = value; }
+        public string Aprobado { get => approved; set => approved = value; }
     }
 }
