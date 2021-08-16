@@ -66,6 +66,7 @@ namespace CECLdb
                 btnSaveData.Visible = true;
                 btnClean.Visible = true;
                 btnSaveData.Visible = true;
+                DeselectAllcbx.Visible = true;
             }
             if (Menu.action == 3)
             {
@@ -77,10 +78,10 @@ namespace CECLdb
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
                 btnClean.Visible = false;
-                DeselectAllcbx.Visible = true;
             }
             if (Menu.action == 4||Menu.action==5)
             {
+                DeselectAllcbx.Visible = true;
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = true;

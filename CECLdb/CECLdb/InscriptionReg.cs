@@ -24,7 +24,7 @@ namespace CECLdb
         public String textSearch;
         public int amount = 0;
 
-        public List<int> selectedIDList = new List<int>();
+        List<string> selectedIDList = new List<string>();
         public InscriptionReg()
         {
             InitializeComponent();
@@ -182,10 +182,10 @@ namespace CECLdb
                     Deletebtn.Visible = true;
                     SelectAllcbx.Visible = true;
                 }
-                else
-                {
-                    bttnSelect.Visible = true;
-                }
+                //else
+                //{
+                //    bttnSelect.Visible = true;
+                //}
             }
             if (amount > 0)
             {
@@ -225,6 +225,18 @@ namespace CECLdb
                 MessageBox.Show("No se encuentran avisos/anuncios registrados");
             }
         }
+        private void bttnViewSelected_Click(object sender, EventArgs e)
+        {
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelected >= 1)
+            {
+                LoadTableSelected(selectedIDList);
+            }
+        }
+
 
 
         private void Access(object sender, KeyEventArgs e)
@@ -407,6 +419,39 @@ namespace CECLdb
                 LoadTableMonthYear(null);
             }
         }
+        private void LoadTableSelected(List<string> Selected)
+        {
+            amountSelected = 0;
+            CtrlInscription inscription = new CtrlInscription();
+            string sentID;
+            for (int i = 0; i < Selected.Count; i++)
+            {
+                sentID = Selected[i].ToString();
+                inscription.SelectedEmailSent(sentID);
+            }
+            dgvInscription.DataSource = inscription.listSelected;
+            validateSelection();
+
+            if (dgvInscription.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvInscription.Columns["IDpersona"].Visible = false;
+                    this.dgvInscription.Columns["IDarea"].Visible = false;
+                    this.dgvInscription.Columns["IDcurso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha seleccionado a alguna persona");
+                    LoadTableArea(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado datos");
+                LoadTableArea(null);
+            }
+        }
 
 
         private void ConsultationAmount()
@@ -437,7 +482,12 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
+                    string[] array = selectedIDList[i].ToString().Split(',');
+                    int idArea = int.Parse(array[0]);
+                    int idCurso = int.Parse(array[1]);
+                    int idPersona = int.Parse(array[2]);
+                    if (idArea.Equals(row.Cells["IDarea"].Value) && idCurso.Equals(row.Cells["IDcurso"].Value) && 
+                        idPersona.Equals(row.Cells["IDpersona"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
@@ -450,39 +500,60 @@ namespace CECLdb
             switch (textSearch)
             {
                 case "enero":
-                    textSearch= "01";
+                case "1":
+                case "01":
+                    textSearch = "01";
                     break;
                 case "febrero":
+                case "2":
+                case "02":
                     textSearch = "02";
                     break;
                 case "marzo":
+                case "3":
+                case "03":
                     textSearch = "03";
                     break;
                 case "abril":
+                case "4":
+                case "04":
                     textSearch = "04";
                     break;
                 case "mayo":
+                case "5":
+                case "05":
                     textSearch = "05";
                     break;
                 case "junio":
+                case "6":
+                case "06":
                     textSearch = "06";
                     break;
                 case "julio":
+                case "7":
+                case "07":
                     textSearch = "07";
                     break;
                 case "agosto":
+                case "8":
+                case "08":
                     textSearch = "08";
                     break;
                 case "septiembre":
+                case "9":
+                case "09":
                     textSearch = "09";
                     break;
                 case "octubre":
+                case "10":
                     textSearch = "10";
                     break;
                 case "noviembre":
+                case "11":
                     textSearch = "11";
                     break;
                 case "diciembre":
+                case "12":
                     textSearch = "12";
                     break;
                 default:
@@ -531,7 +602,7 @@ namespace CECLdb
             DeselectAllcbx.Location = new Point(183, 121);
             dgvInscription.Location = new Point(46, 156);
             Deletebtn.Location = new Point(387, 502);
-            bttnSelect.Location = new Point(387, 502);
+            //bttnSelect.Location = new Point(387, 502);
             bttnReturnInscription.Location = new Point(487, 502);
             bttnViewSelected.Location = new Point(592, 502);
         }
@@ -545,22 +616,25 @@ namespace CECLdb
 
         private void dgvInscription_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //idAd = int.Parse(dgvAdReg.CurrentRow.Cells["IDaviso"].Value.ToString());
-            //if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvAdReg.CurrentRow.Cells["CheckSelection"].Value)
-            //{
-            //    dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = false;
-            //    dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
-            //    amountSelectedAd += -1;
-            //    selectedIDList.Remove(idAd);
-            //    SelectAllcbx.Checked = false;
-            //}
-            //else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
-            //{
-            //    dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
-            //    amountSelectedAd += 1;
-            //    selectedIDList.Add(idAd);
-            //    DeselectAllcbx.Checked = false;
-            //}
+            int idArea = int.Parse(dgvInscription.CurrentRow.Cells["IDarea"].Value.ToString());
+            int idCurso = int.Parse(dgvInscription.CurrentRow.Cells["IDcurso"].Value.ToString());
+            int idPersona = int.Parse(dgvInscription.CurrentRow.Cells["IDpersona"].Value.ToString());
+            string keyInscription = idArea + "," + idCurso + "," + idPersona;
+            if (dgvInscription.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvInscription.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvInscription.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvInscription.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelected += -1;
+                selectedIDList.Remove(keyInscription);
+                SelectAllcbx.Checked = false;
+            }
+            else if (dgvInscription.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                dgvInscription.CurrentRow.Cells["CheckSelection"].Value = true;
+                amountSelected += 1;
+                selectedIDList.Add(keyInscription);
+                DeselectAllcbx.Checked = false;
+            }
         }
 
         private void cmbSelectAreaInscription_SelectionChangeCommitted_1(object sender, EventArgs e)
@@ -591,5 +665,6 @@ namespace CECLdb
             dateToday();
             mtbFinalDate.Text = "";
         }
+
     }
 }

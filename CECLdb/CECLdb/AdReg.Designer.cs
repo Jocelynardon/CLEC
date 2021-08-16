@@ -234,7 +234,6 @@ namespace CECLdb
             this.dgvAdReg.Size = new System.Drawing.Size(992, 330);
             this.dgvAdReg.TabIndex = 18;
             this.dgvAdReg.Visible = false;
-            this.dgvAdReg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdReg_CellClick);
             this.dgvAdReg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdReg_CellContentClick);
             // 
             // CheckSelection

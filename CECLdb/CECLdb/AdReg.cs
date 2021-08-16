@@ -701,12 +701,7 @@ namespace CECLdb
             cmbSelectCourseAd.Left = dtpDateAd.Location.X;
         }
         
-        
-
-        private void dgvAdReg_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+       
         private void CloseWindow()
         {
             if (Menu.action >= 5)

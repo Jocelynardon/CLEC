@@ -48,7 +48,6 @@ namespace CECLdb
             this.dgvInscription = new System.Windows.Forms.DataGridView();
             this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bttnViewSelected = new System.Windows.Forms.Button();
-            this.bttnSelect = new System.Windows.Forms.Button();
             this.Deletebtn = new System.Windows.Forms.Button();
             this.Modifybtn = new System.Windows.Forms.Button();
             this.bttnEraserText = new System.Windows.Forms.Button();
@@ -267,24 +266,13 @@ namespace CECLdb
             this.bttnViewSelected.Text = "Ver seleccionados";
             this.bttnViewSelected.UseVisualStyleBackColor = false;
             this.bttnViewSelected.Visible = false;
-            // 
-            // bttnSelect
-            // 
-            this.bttnSelect.BackColor = System.Drawing.Color.Khaki;
-            this.bttnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSelect.Location = new System.Drawing.Point(514, 677);
-            this.bttnSelect.Name = "bttnSelect";
-            this.bttnSelect.Size = new System.Drawing.Size(94, 29);
-            this.bttnSelect.TabIndex = 35;
-            this.bttnSelect.Text = "Seleccionar";
-            this.bttnSelect.UseVisualStyleBackColor = false;
-            this.bttnSelect.Visible = false;
+            this.bttnViewSelected.Click += new System.EventHandler(this.bttnViewSelected_Click);
             // 
             // Deletebtn
             // 
             this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
             this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Deletebtn.Location = new System.Drawing.Point(414, 677);
+            this.Deletebtn.Location = new System.Drawing.Point(511, 677);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(94, 29);
             this.Deletebtn.TabIndex = 34;
@@ -296,7 +284,7 @@ namespace CECLdb
             // 
             this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
             this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Modifybtn.Location = new System.Drawing.Point(314, 677);
+            this.Modifybtn.Location = new System.Drawing.Point(411, 677);
             this.Modifybtn.Name = "Modifybtn";
             this.Modifybtn.Size = new System.Drawing.Size(94, 29);
             this.Modifybtn.TabIndex = 33;
@@ -396,7 +384,6 @@ namespace CECLdb
             this.Controls.Add(this.cmbType);
             this.Controls.Add(this.txtText);
             this.Controls.Add(this.bttnViewSelected);
-            this.Controls.Add(this.bttnSelect);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Modifybtn);
             this.Controls.Add(this.dgvInscription);
@@ -448,7 +435,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridView dgvInscription;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.Button bttnViewSelected;
-        private System.Windows.Forms.Button bttnSelect;
         private System.Windows.Forms.Button Deletebtn;
         private System.Windows.Forms.Button Modifybtn;
         private System.Windows.Forms.Button bttnEraserText;
