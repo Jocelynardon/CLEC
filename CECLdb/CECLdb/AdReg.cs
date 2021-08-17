@@ -50,12 +50,12 @@ namespace CECLdb
                 case 2:
                     //ShowNumberAd();
                     LoadAreaAd();
-                    cmbSelectAreaAd.SelectedIndex = -1;
                     this.Height = 636;
                     bttnSaveAd.Visible = true;
                     btnCleanAd.Visible = true;
                     ModifybtnAd.Visible = true;
                     bttnViewSelectedAd.Visible = true;
+                    cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 3:
                     this.Height = 180;
@@ -67,6 +67,7 @@ namespace CECLdb
                 cmbSelectCourseAd.Enabled = false;
                 dtpDateAd.Enabled = false;
                 rtbDescriptionAd.Enabled = false;
+                    cmbSelectAreaAd.SelectedIndex = -1;
 
                     this.Height = 636;
                     break;
@@ -705,7 +706,7 @@ namespace CECLdb
        
         private void CloseWindow()
         {
-            if (Menu.action >= 5)
+            if (Menu.action == 5)
             {
                 Menu.action = 2;
                 this.Close();
@@ -738,7 +739,7 @@ namespace CECLdb
             rtbDescriptionAd.Text = "";
             dtpDateAd.Value = DateTime.Now;
             dtpDateAd.Format = DateTimePickerFormat.Custom;
-            dtpDateAd.CustomFormat = "yyyy/MM/dd";
+            dtpDateAd.CustomFormat = "yyyy/MM/dd hh:mm";
             //ShowNumberAd();
         }
 
