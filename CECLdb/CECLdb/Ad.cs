@@ -11,7 +11,7 @@ namespace CLEC
         public int idArea;
         private string course;
         private int idCourse;
-        private string date;
+        private DateTime date;
         private string description;
 
         public int IDaviso { get => idAd; set => idAd = value; }
@@ -19,7 +19,7 @@ namespace CLEC
         public string Area { get => area; set => area = value; }
         public string Curso { get => course; set => course = value; }
         public int IDcurso { get => idCourse; set => idCourse = value; }
-        public string Fecha { get => date; set => date = value; }
+        public DateTime Fecha { get => date; set => date = value; }
         public string Descripcion { get => description; set => description = value; }
     }
 }

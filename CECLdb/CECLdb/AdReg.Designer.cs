@@ -117,7 +117,7 @@ namespace CECLdb
             this.dtpDateAd.CalendarFont = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpDateAd.CalendarMonthBackground = System.Drawing.Color.LightCyan;
             this.dtpDateAd.CalendarTitleBackColor = System.Drawing.Color.LightSeaGreen;
-            this.dtpDateAd.CustomFormat = "yyyy/MM/dd";
+            this.dtpDateAd.CustomFormat = "yyyy/MM/dd hh:mm";
             this.dtpDateAd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateAd.Location = new System.Drawing.Point(605, 147);
             this.dtpDateAd.Name = "dtpDateAd";

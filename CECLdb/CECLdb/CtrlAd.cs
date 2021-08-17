@@ -40,7 +40,7 @@ namespace CLEC
                     ad.Area = reader[2].ToString();
                     ad.IDcurso = int.Parse(reader[3].ToString());
                     ad.Curso = reader[4].ToString();
-                    ad.Fecha = reader[5].ToString();
+                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
                     ad.Descripcion = reader.GetString(6);
                     list.Add(ad);
                 }
@@ -83,7 +83,7 @@ namespace CLEC
                     ad.Area = reader[2].ToString();
                     ad.IDcurso = int.Parse(reader[3].ToString());
                     ad.Curso = reader[4].ToString();
-                    ad.Fecha = reader[5].ToString();
+                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
                     ad.Descripcion = reader.GetString(6);
                     list.Add(ad);
                 }
@@ -126,7 +126,7 @@ namespace CLEC
                     ad.Area = reader[2].ToString();
                     ad.IDcurso = int.Parse(reader[3].ToString());
                     ad.Curso = reader[4].ToString();
-                    ad.Fecha = reader[5].ToString();
+                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
                     ad.Descripcion = reader.GetString(6);
                     list.Add(ad);
                 }
@@ -161,7 +161,7 @@ namespace CLEC
                     ad.Area = reader[2].ToString();
                     ad.IDcurso = int.Parse(reader[3].ToString());
                     ad.Curso = reader[4].ToString();
-                    ad.Fecha = reader[5].ToString();
+                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
                     ad.Descripcion = reader.GetString(6);
                     listSelected.Add(ad);
                 }
@@ -195,7 +195,7 @@ namespace CLEC
                     ad.Area = reader[0].ToString();
                     ad.Curso = reader[1].ToString();
                     ad.Descripcion = reader[2].ToString();
-                    ad.Fecha = reader[3].ToString();
+                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
                 }
             }
             catch (MySqlException ex)
