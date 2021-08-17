@@ -50,6 +50,7 @@ namespace CECLdb
                 case 2:
                     //ShowNumberAd();
                     LoadAreaAd();
+                    cmbSelectAreaAd.SelectedIndex = -1;
                     this.Height = 636;
                     bttnSaveAd.Visible = true;
                     btnCleanAd.Visible = true;

@@ -606,7 +606,6 @@ namespace CECLdb
             bttnReturnInscription.Location = new Point(487, 502);
             bttnViewSelected.Location = new Point(592, 502);
         }
-
         private void CloseWindow()
         {
             Menu Frm = new Menu();

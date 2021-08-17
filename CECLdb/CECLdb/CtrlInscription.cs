@@ -17,7 +17,7 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -26,12 +26,13 @@ namespace CLEC
             }
             else
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Area.Nombre LIKE '%" + data + "%' ORDER BY FechaInicio DESC";
+                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Area.Nombre LIKE '%" + data + "%' OR Area.Año LIKE '%" + data + "%' OR " +
+                   "Area.Convocatoria LIKE '%" + data + "%' ORDER BY FechaInicio DESC";
             }
             try
             {
@@ -70,7 +71,7 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -79,7 +80,7 @@ namespace CLEC
             }
             else
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -123,7 +124,7 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -132,7 +133,7 @@ namespace CLEC
             }
             else
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -177,7 +178,7 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -186,7 +187,7 @@ namespace CLEC
             }
             else
             {
-                sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+                sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
@@ -231,7 +232,7 @@ namespace CLEC
             MySqlDataReader reader;
             string sql;
 
-            sql = "SELECT Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
+            sql = "SELECT Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,persona.IDpersona," +
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
