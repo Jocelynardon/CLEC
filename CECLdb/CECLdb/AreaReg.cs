@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CLEC;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,44 +12,50 @@ namespace CECLdb
 {
     public partial class AreaReg : Form
     {
+        public int amountSelected = 0;
+        public int LastSearchTypeSelected;
+        public String textSearch;
+        public int amount = 0;
+
+        List<int> selectedIDList = new List<int>();
         public AreaReg()
         {
             InitializeComponent();
-            if (Menu.action == 2)
+            
+            switch (Menu.action)
             {
-                bttnSaveArea.Visible = true;
-                bttnAddArea.Visible = false;
-                bttnSearchArea.Visible = true;
-            }
-            FullCombobox();
-        }
-
-
-        private void lblAreaName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bttnReturnArea_Click(object sender, EventArgs e)
-        {
-            CloseWindow();
-        }
-
-        private void AreaReg_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void Exit(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                CloseWindow();
+                case 1:
+                    this.Height = 306;
+                    FullCombobox();
+                    bttnAddArea.Visible = true;
+                    break;
+                case 2:
+                    this.Height = 355;
+                    LoadTypeSearch();
+                    bttnSaveArea.Visible = true;
+                    txtText.Visible = true;
+                    cmbType.Visible = true;
+                    bttnSearch.Visible = true;
+                    bttnEraserText.Visible = true;
+                    break;
+                case 3:
+                    this.Height = 167;
+                    LoadTypeSearch();
+                    HideAndMove();
+                    bttnSaveArea.Visible = true;
+                    txtText.Visible = true;
+                    cmbType.Visible = true;
+                    bttnSearch.Visible = true;
+                    bttnEraserText.Visible = true;
+                    break;
+                default:
+                    break;
             }
         }
 
         private void bttnAddArea_Click(object sender, EventArgs e)
         {
-            if (cmbAnnouncement.Text!=null && cmbYear.Text!=null && txtbAreaName.Text!="")
+            if (cmbAnnouncement.Text != null && cmbYear.Text != null && txtbAreaName.Text != "")
             {
                 int yearArea = int.Parse(cmbYear.Text);
                 int convocatoryArea = int.Parse(cmbAnnouncement.Text);
@@ -93,6 +100,203 @@ namespace CECLdb
                 MessageBox.Show("Por favor, Ingrese la información solicitada");
             }
         }
+        private void bttnReturnArea_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+        private void bttnSearch_Click(object sender, EventArgs e)
+        {
+            amountSelected = 0;
+            ConsultationAmount();
+
+            dgvArea.Visible = true;
+            bttnViewSelected.Visible = true;
+            switch (Menu.action)
+            {
+                case 2:
+                    this.Height = 772;
+                    Modifybtn.Visible = true;
+                    bttnReturnArea.Location = new Point(301, 687);
+                    DeselectAllcbx.Visible = true;
+                    break;
+                case 3:
+                    bttnReturnArea.Location = new Point(325, 511);
+                    this.Height = 597;
+                    DeselectAllcbx.Visible = true;
+                    SelectAllcbx.Visible = true;
+                    Deletebtn.Visible = true;
+                    break;
+                default:
+                    break;
+            }
+
+            if (amount > 0)
+            {
+                textSearch = txtText.Text.ToLower();
+                LastSearchTypeSelected = cmbType.SelectedIndex;
+                if (textSearch == "")
+                {
+                    LoadTableYear(null);
+                }
+                else
+                {
+                    switch (cmbType.SelectedIndex)
+                    {
+                        //0 Área, 1 Curso, 2 Persona, Mes
+                        case 0:
+                            LoadTableYear(textSearch);
+                            break;
+                        case 1:
+                            LoadTableConvocatory(textSearch);
+                            break;
+                        case 2:
+                            LoadTableName(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
+                            cmbType.Text = "";
+                            break;
+                    }
+                }
+            }
+            if (amount == 0)
+            {
+                MessageBox.Show("No se encuentran avisos/anuncios registrados");
+            }
+        }
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            txtText.Text = "";
+        }
+        private void bttnViewSelected_Click(object sender, EventArgs e)
+        {
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a alguna persona");
+            }
+            else if (amountSelected >= 1)
+            {
+                LoadTableSelected(selectedIDList);
+            }
+        }
+
+
+        private void LoadTypeSearch()
+        {
+            cmbType.DisplayMember = "Text";
+            cmbType.ValueMember = "Value";
+            cmbType.SelectedIndex = cmbType.Items.IndexOf("Área");
+
+            cmbType.Items.Add(new { Text = "Año", Value = 1 });
+            cmbType.Items.Add(new { Text = "Convocatoria", Value = 2 });
+            cmbType.Items.Add(new { Text = "Nombre", Value = 3 });
+            cmbType.SelectedIndex = 0;
+        }
+        private void LoadTableYear(string data)
+        {
+            CtrlArea area = new CtrlArea();
+            dgvArea.DataSource = area.consultationYear(data);
+            validateSelection();
+
+            if (dgvArea.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvArea.Columns["IDarea"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableYear(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableYear(null);
+            }
+        }
+        private void LoadTableConvocatory(string data)
+        {
+            CtrlArea area = new CtrlArea();
+            dgvArea.DataSource = area.consultationConvocatory(data);
+            validateSelection();
+
+            if (dgvArea.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvArea.Columns["IDarea"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableConvocatory(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableConvocatory(null);
+            }
+        }
+        private void LoadTableName(string data)
+        {
+            CtrlArea area = new CtrlArea();
+            dgvArea.DataSource = area.consultationName(data);
+            validateSelection();
+
+            if (dgvArea.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvArea.Columns["IDarea"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha encontrado coincidencias");
+                    LoadTableName(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han encontrado datos");
+                LoadTableName(null);
+            }
+        }
+        private void LoadTableSelected(List<int> Selected)
+        {
+            amountSelected = 0;
+            CtrlArea area = new CtrlArea();
+            int sentID;
+            for (int i = 0; i < Selected.Count; i++)
+            {
+                sentID = int.Parse(Selected[i].ToString());
+                area.Selected(sentID);
+            }
+            dgvArea.DataSource = area.listSelected;
+            validateSelection();
+
+            if (dgvArea.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvArea.Columns["IDarea"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("No se ha seleccionado a alguna persona");
+                    LoadTableYear(null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado datos");
+                LoadTableYear(null);
+            }
+        }
+
+
         private void FullCombobox()
         {
             //Años
@@ -115,6 +319,69 @@ namespace CECLdb
             cmbAnnouncement.Items.Add("2");
             cmbAnnouncement.Items.Add("3");
         }
+        private void ConsultationAmount()
+        {
+            string sql = "SELECT COUNT(1) FROM area ";
+            MySqlConnection connectionBD = Connection.connection();
+            connectionBD.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                command.Parameters.AddWithValue(sql, amount);
+                command.ExecuteNonQuery();
+                amount = int.Parse(command.ExecuteScalar().ToString());
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("No hay personas ingresadas ");
+                amount = -1;
+            }
+            finally
+            {
+                connectionBD.Close();
+            }
+        }
+        public void validateSelection()
+        {
+            foreach (DataGridViewRow row in dgvArea.Rows)
+            {
+                for (int i = 0; i < selectedIDList.Count; i++)
+                {
+                    if (selectedIDList[i].Equals(row.Cells["IDarea"].Value))
+                    {
+                        row.Cells["CheckSelection"].Value = true;
+                    }
+                }
+            }
+            amountSelected = selectedIDList.Count;
+        }
+
+
+        private void HideAndMove()
+        {
+            lblYear.Visible = false;
+            cmbYear.Visible = false;
+            lblAnnouncement.Visible = false;
+            cmbAnnouncement.Visible = false;
+            lblAreaName.Visible = false;
+            txtbAreaName.Visible = false;
+            txtText.Location = new Point(12, 76);
+            cmbType.Location = new Point(481, 75);
+            bttnSearch.Location = new Point(687, 77);
+            bttnEraserText.Location = new Point(809, 78);
+            SelectAllcbx.Location = new Point(24, 127);
+            DeselectAllcbx.Location = new Point(181, 127);
+            dgvArea.Location = new Point(24, 165);
+            Deletebtn.Location = new Point(225, 511);
+            bttnViewSelected.Location = new Point(425, 511);
+        }
+        private void Exit(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                CloseWindow();
+            }
+        }
         private void Clean()
         {
             cmbYear.Text="";
@@ -126,6 +393,26 @@ namespace CECLdb
             Menu Frm = new Menu();
             Frm.Show();
             this.Close();
+        }
+
+        private void dgvArea_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idArea = int.Parse(dgvArea.CurrentRow.Cells["IDarea"].Value.ToString());
+            if (dgvArea.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvArea.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvArea.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvArea.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelected += -1;
+                selectedIDList.Remove(idArea);
+                SelectAllcbx.Checked = false;
+            }
+            else if (dgvArea.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                dgvArea.CurrentRow.Cells["CheckSelection"].Value = true;
+                amountSelected += 1;
+                selectedIDList.Add(idArea);
+                DeselectAllcbx.Checked = false;
+            }
         }
     }
 }

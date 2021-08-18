@@ -17,13 +17,14 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
             }
             else
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Area.Nombre LIKE '%" + data + "%' ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Area.Nombre LIKE '%" + data + "%' " +
+                    "OR Area.Año LIKE '%" + data + "%' OR Area.Convocatoria LIKE '%" + data + "%' ORDER BY Fecha DESC";
             }
             try
             {
@@ -60,13 +61,13 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
             }
             else
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY Fecha DESC";
             }
             try
             {
@@ -103,13 +104,13 @@ namespace CLEC
 
             if (data == null)
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
             }
             else
             {
-                sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre,Fecha,Descripcion" +
-                    " FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Descripcion LIKE '%" + data + "%' ORDER BY Fecha DESC";
+                sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre,Fecha,Descripcion" +
+                    " FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE Descripcion LIKE '%" + data + "%' ORDER BY Fecha DESC";
             }
             try
             {
@@ -143,8 +144,8 @@ namespace CLEC
             MySqlDataReader reader;
             string sql;
 
-            sql = "SELECT IDaviso,Area.IDarea,Area.Nombre,Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
-                    "FROM aviso AS Ad JOIN Area ON Area.IDarea=Ad.IDarea JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE IDaviso LIKE '%" + IDselected + "%' ORDER BY Fecha DESC";
+            sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre,Fecha,Descripcion " +
+                    "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso WHERE IDaviso LIKE '%" + IDselected + "%' ORDER BY Fecha DESC";
 
             try
             {
@@ -177,7 +178,7 @@ namespace CLEC
 
             string sql;
             Ad ad = new Ad();
-            sql = "SELECT area.Nombre, curso.Nombre, aviso.Descripcion, aviso.Fecha " +
+            sql = "SELECT CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria), curso.Nombre, aviso.Descripcion, aviso.Fecha " +
                 "FROM aviso" +
                 " INNER JOIN area ON aviso.IDarea = area.IDarea" +
                 " INNER JOIN curso ON aviso.IDcurso = curso.IDcurso" +

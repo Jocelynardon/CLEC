@@ -656,7 +656,7 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
+                    if (selectedIDList[i].Equals(row.Cells["IDarea"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
