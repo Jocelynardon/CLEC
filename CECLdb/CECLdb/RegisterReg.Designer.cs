@@ -40,9 +40,20 @@ namespace CECLdb
             this.bttnAddRegister = new System.Windows.Forms.Button();
             this.bttnReturnRegister = new System.Windows.Forms.Button();
             this.bttnSaveRegister = new System.Windows.Forms.Button();
-            this.bttnSearchRegister = new System.Windows.Forms.Button();
+            this.bttnSearchPersonReg = new System.Windows.Forms.Button();
             this.lblEscRegister = new System.Windows.Forms.Label();
-            this.bttnImportRegister = new System.Windows.Forms.Button();
+            this.dgvRegister = new System.Windows.Forms.DataGridView();
+            this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtText = new System.Windows.Forms.TextBox();
+            this.bttnEraserText = new System.Windows.Forms.Button();
+            this.bttnSearch = new System.Windows.Forms.Button();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
+            this.SelectAllcbx = new System.Windows.Forms.CheckBox();
+            this.bttnViewSelected = new System.Windows.Forms.Button();
+            this.Deletebtn = new System.Windows.Forms.Button();
+            this.Modifybtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).BeginInit();
             this.SuspendLayout();
             // 
             // txtbPersonIDRegister
@@ -109,7 +120,7 @@ namespace CECLdb
             // 
             // dtpConsultationDateRegister
             // 
-            this.dtpConsultationDateRegister.CustomFormat = "yyyy/MM/dd";
+            this.dtpConsultationDateRegister.CustomFormat = "yyyy/MM/dd hh:mm";
             this.dtpConsultationDateRegister.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpConsultationDateRegister.Location = new System.Drawing.Point(12, 230);
             this.dtpConsultationDateRegister.Name = "dtpConsultationDateRegister";
@@ -119,18 +130,19 @@ namespace CECLdb
             // bttnAddRegister
             // 
             this.bttnAddRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddRegister.Location = new System.Drawing.Point(316, 326);
+            this.bttnAddRegister.Location = new System.Drawing.Point(377, 275);
             this.bttnAddRegister.Name = "bttnAddRegister";
             this.bttnAddRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnAddRegister.TabIndex = 5;
             this.bttnAddRegister.Text = "Agregar";
             this.bttnAddRegister.UseVisualStyleBackColor = false;
+            this.bttnAddRegister.Visible = false;
             this.bttnAddRegister.Click += new System.EventHandler(this.bttnAddRegister_Click);
             // 
             // bttnReturnRegister
             // 
             this.bttnReturnRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnRegister.Location = new System.Drawing.Point(555, 326);
+            this.bttnReturnRegister.Location = new System.Drawing.Point(476, 275);
             this.bttnReturnRegister.Name = "bttnReturnRegister";
             this.bttnReturnRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnReturnRegister.TabIndex = 7;
@@ -141,7 +153,7 @@ namespace CECLdb
             // bttnSaveRegister
             // 
             this.bttnSaveRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveRegister.Location = new System.Drawing.Point(434, 326);
+            this.bttnSaveRegister.Location = new System.Drawing.Point(377, 275);
             this.bttnSaveRegister.Name = "bttnSaveRegister";
             this.bttnSaveRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnSaveRegister.TabIndex = 20;
@@ -149,16 +161,16 @@ namespace CECLdb
             this.bttnSaveRegister.UseVisualStyleBackColor = false;
             this.bttnSaveRegister.Visible = false;
             // 
-            // bttnSearchRegister
+            // bttnSearchPersonReg
             // 
-            this.bttnSearchRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSearchRegister.Location = new System.Drawing.Point(762, 141);
-            this.bttnSearchRegister.Name = "bttnSearchRegister";
-            this.bttnSearchRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnSearchRegister.TabIndex = 3;
-            this.bttnSearchRegister.Text = "Buscar";
-            this.bttnSearchRegister.UseVisualStyleBackColor = false;
-            this.bttnSearchRegister.Click += new System.EventHandler(this.bttnSearchRegister_Click);
+            this.bttnSearchPersonReg.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bttnSearchPersonReg.Location = new System.Drawing.Point(762, 141);
+            this.bttnSearchPersonReg.Name = "bttnSearchPersonReg";
+            this.bttnSearchPersonReg.Size = new System.Drawing.Size(93, 29);
+            this.bttnSearchPersonReg.TabIndex = 3;
+            this.bttnSearchPersonReg.Text = "Buscar";
+            this.bttnSearchPersonReg.UseVisualStyleBackColor = false;
+            this.bttnSearchPersonReg.Click += new System.EventHandler(this.bttnSearchPersonReg_Click);
             // 
             // lblEscRegister
             // 
@@ -171,25 +183,158 @@ namespace CECLdb
             this.lblEscRegister.TabIndex = 22;
             this.lblEscRegister.Text = "(ESC) Regresar al Menú";
             // 
-            // bttnImportRegister
+            // dgvRegister
             // 
-            this.bttnImportRegister.BackColor = System.Drawing.Color.LightCoral;
-            this.bttnImportRegister.Location = new System.Drawing.Point(434, 326);
-            this.bttnImportRegister.Name = "bttnImportRegister";
-            this.bttnImportRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnImportRegister.TabIndex = 6;
-            this.bttnImportRegister.Text = "Importar";
-            this.bttnImportRegister.UseVisualStyleBackColor = false;
-            this.bttnImportRegister.Click += new System.EventHandler(this.bttnImportRegister_Click);
+            this.dgvRegister.AllowUserToAddRows = false;
+            this.dgvRegister.AllowUserToDeleteRows = false;
+            this.dgvRegister.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvRegister.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvRegister.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvRegister.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckSelection});
+            this.dgvRegister.Location = new System.Drawing.Point(27, 393);
+            this.dgvRegister.Name = "dgvRegister";
+            this.dgvRegister.ReadOnly = true;
+            this.dgvRegister.RowHeadersWidth = 51;
+            this.dgvRegister.RowTemplate.Height = 29;
+            this.dgvRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRegister.Size = new System.Drawing.Size(992, 330);
+            this.dgvRegister.TabIndex = 23;
+            this.dgvRegister.Visible = false;
+            this.dgvRegister.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellContentClick);
+            // 
+            // CheckSelection
+            // 
+            this.CheckSelection.HeaderText = "Seleccionar";
+            this.CheckSelection.MinimumWidth = 6;
+            this.CheckSelection.Name = "CheckSelection";
+            this.CheckSelection.ReadOnly = true;
+            this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CheckSelection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CheckSelection.Width = 114;
+            // 
+            // txtText
+            // 
+            this.txtText.Location = new System.Drawing.Point(5, 319);
+            this.txtText.Name = "txtText";
+            this.txtText.Size = new System.Drawing.Size(564, 27);
+            this.txtText.TabIndex = 39;
+            this.txtText.Visible = false;
+            // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(972, 319);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 46;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Visible = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
+            // 
+            // bttnSearch
+            // 
+            this.bttnSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.bttnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnSearch.Location = new System.Drawing.Point(840, 319);
+            this.bttnSearch.Name = "bttnSearch";
+            this.bttnSearch.Size = new System.Drawing.Size(116, 26);
+            this.bttnSearch.TabIndex = 45;
+            this.bttnSearch.Text = "Buscar";
+            this.bttnSearch.UseVisualStyleBackColor = false;
+            this.bttnSearch.Visible = false;
+            this.bttnSearch.Click += new System.EventHandler(this.bttnSearch_Click);
+            // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Location = new System.Drawing.Point(575, 318);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(249, 28);
+            this.cmbType.TabIndex = 44;
+            this.cmbType.Visible = false;
+            // 
+            // DeselectAllcbx
+            // 
+            this.DeselectAllcbx.AutoSize = true;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(179, 363);
+            this.DeselectAllcbx.Name = "DeselectAllcbx";
+            this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
+            this.DeselectAllcbx.TabIndex = 51;
+            this.DeselectAllcbx.Text = "Desmarcar Todos";
+            this.DeselectAllcbx.UseVisualStyleBackColor = true;
+            this.DeselectAllcbx.Visible = false;
+            // 
+            // SelectAllcbx
+            // 
+            this.SelectAllcbx.AutoSize = true;
+            this.SelectAllcbx.Location = new System.Drawing.Point(22, 363);
+            this.SelectAllcbx.Name = "SelectAllcbx";
+            this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
+            this.SelectAllcbx.TabIndex = 50;
+            this.SelectAllcbx.Text = "Seleccionar Todos";
+            this.SelectAllcbx.UseVisualStyleBackColor = true;
+            this.SelectAllcbx.Visible = false;
+            // 
+            // bttnViewSelected
+            // 
+            this.bttnViewSelected.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnViewSelected.Location = new System.Drawing.Point(559, 738);
+            this.bttnViewSelected.Name = "bttnViewSelected";
+            this.bttnViewSelected.Size = new System.Drawing.Size(187, 29);
+            this.bttnViewSelected.TabIndex = 49;
+            this.bttnViewSelected.Text = "Ver seleccionados";
+            this.bttnViewSelected.UseVisualStyleBackColor = false;
+            this.bttnViewSelected.Visible = false;
+            this.bttnViewSelected.Click += new System.EventHandler(this.bttnViewSelected_Click);
+            // 
+            // Deletebtn
+            // 
+            this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
+            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Deletebtn.Location = new System.Drawing.Point(459, 738);
+            this.Deletebtn.Name = "Deletebtn";
+            this.Deletebtn.Size = new System.Drawing.Size(94, 29);
+            this.Deletebtn.TabIndex = 48;
+            this.Deletebtn.Text = "Eliminar";
+            this.Deletebtn.UseVisualStyleBackColor = false;
+            this.Deletebtn.Visible = false;
+            // 
+            // Modifybtn
+            // 
+            this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Modifybtn.Location = new System.Drawing.Point(359, 738);
+            this.Modifybtn.Name = "Modifybtn";
+            this.Modifybtn.Size = new System.Drawing.Size(94, 29);
+            this.Modifybtn.TabIndex = 47;
+            this.Modifybtn.Text = "Modificar";
+            this.Modifybtn.UseVisualStyleBackColor = false;
+            this.Modifybtn.Visible = false;
             // 
             // RegisterReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 422);
-            this.Controls.Add(this.bttnImportRegister);
+            this.ClientSize = new System.Drawing.Size(1048, 780);
+            this.Controls.Add(this.DeselectAllcbx);
+            this.Controls.Add(this.SelectAllcbx);
+            this.Controls.Add(this.bttnViewSelected);
+            this.Controls.Add(this.Deletebtn);
+            this.Controls.Add(this.Modifybtn);
+            this.Controls.Add(this.bttnEraserText);
+            this.Controls.Add(this.bttnSearch);
+            this.Controls.Add(this.cmbType);
+            this.Controls.Add(this.txtText);
+            this.Controls.Add(this.dgvRegister);
             this.Controls.Add(this.lblEscRegister);
-            this.Controls.Add(this.bttnSearchRegister);
+            this.Controls.Add(this.bttnSearchPersonReg);
             this.Controls.Add(this.bttnSaveRegister);
             this.Controls.Add(this.bttnReturnRegister);
             this.Controls.Add(this.bttnAddRegister);
@@ -205,6 +350,7 @@ namespace CECLdb
             this.Name = "RegisterReg";
             this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,9 +367,19 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnAddRegister;
         private System.Windows.Forms.Button bttnReturnRegister;
         private System.Windows.Forms.Button bttnSaveRegister;
-        private System.Windows.Forms.Button bttnSearchRegister;
+        private System.Windows.Forms.Button bttnSearchPersonReg;
         private System.Windows.Forms.Label lblEscRegister;
-        private System.Windows.Forms.Button bttnImportRegister;
         public System.Windows.Forms.TextBox txtbPersonIDRegister;
+        private System.Windows.Forms.DataGridView dgvRegister;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
+        private System.Windows.Forms.TextBox txtText;
+        private System.Windows.Forms.Button bttnEraserText;
+        private System.Windows.Forms.Button bttnSearch;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.CheckBox DeselectAllcbx;
+        private System.Windows.Forms.CheckBox SelectAllcbx;
+        private System.Windows.Forms.Button bttnViewSelected;
+        private System.Windows.Forms.Button Deletebtn;
+        private System.Windows.Forms.Button Modifybtn;
     }
 }

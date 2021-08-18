@@ -49,6 +49,7 @@ namespace CECLdb
         }
         private void PersonSent()
         {
+            cmbTypeSearch.Items.Clear();
             amountSelected = 0;
             LoadTypeSearch();
             string IDSearch = txtNoAviso.Text.ToString();
@@ -511,7 +512,7 @@ namespace CECLdb
                 }
                 switch (cmbTypeSearch.SelectedIndex)
                 {
-                    //0 Código, 1 Correo, 2 Nombre
+                    //0 Código, 1 Correo, 2 Nombre, 3 Aviso
                     case 0:
                         dgvEmailSent.DataSource = person.consultationCode(textSearch);
                         break;
@@ -520,6 +521,9 @@ namespace CECLdb
                         break;
                     case 2:
                         dgvEmailSent.DataSource = person.consultationName(textSearch);
+                        break;
+                    case 3:
+                        dgvEmailSent.DataSource = person.consultationIDEmailSent(textSearch);
                         break;
                     default:
                         MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
@@ -560,6 +564,8 @@ namespace CECLdb
             cmbTypeSearch.Items.Add(new { Text = "Código", Value = 1 });
             cmbTypeSearch.Items.Add(new { Text = "Correo", Value = 2 });
             cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
+            cmbTypeSearch.Items.Add(new { Text = "Aviso", Value = 4 });
+
             cmbTypeSearch.SelectedIndex = 0;
         }
 

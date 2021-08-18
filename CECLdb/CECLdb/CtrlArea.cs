@@ -8,6 +8,155 @@ namespace CLEC
 {
     class CtrlArea:ConnectionSearchResult
     {
+        public List<Object> listSelected = new List<Object>();
+        public List<Object> consultationYear(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+            if (data == null)
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area ORDER BY Año DESC";
+            }
+            else
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area WHERE Año LIKE '%" + data + "%' ORDER BY Año DESC";
+            }
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Area area = new Area();
+                    area.IDarea = int.Parse(reader[0].ToString());
+                    area.Nombre = reader[1].ToString();
+                    area.Año =int.Parse(reader[2].ToString());
+                    area.Convocatoria = int.Parse(reader[3].ToString());
+                    list.Add(area);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
+        public List<Object> consultationConvocatory(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+            if (data == null)
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area ORDER BY Año DESC";
+            }
+            else
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area WHERE Convocatoria LIKE '%" + data + "%' ORDER BY Año DESC";
+            }
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Area area = new Area();
+                    area.IDarea = int.Parse(reader[0].ToString());
+                    area.Nombre = reader[1].ToString();
+                    area.Año = int.Parse(reader[2].ToString());
+                    area.Convocatoria = int.Parse(reader[3].ToString());
+                    list.Add(area);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
+        public List<Object> consultationName(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+            if (data == null)
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area ORDER BY Año DESC";
+            }
+            else
+            {
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area WHERE Nombre LIKE '%" + data + "%' ORDER BY Año DESC";
+            }
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Area area = new Area();
+                    area.IDarea = int.Parse(reader[0].ToString());
+                    area.Nombre = reader[1].ToString();
+                    area.Año = int.Parse(reader[2].ToString());
+                    area.Convocatoria = int.Parse(reader[3].ToString());
+                    list.Add(area);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
+        public void Selected(int data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+                sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
+                    "FROM area WHERE IDarea LIKE '%" + data + "%' ORDER BY Año DESC";
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Area area = new Area();
+                    area.IDarea = int.Parse(reader[0].ToString());
+                    area.Nombre = reader[1].ToString();
+                    area.Año = int.Parse(reader[2].ToString());
+                    area.Convocatoria = int.Parse(reader[3].ToString());
+                    listSelected.Add(area);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+        }
+
         public List<Area> GetAreasQuery(string Filter, char Attribute)
         {
             MySqlDataReader reader;
@@ -40,7 +189,7 @@ namespace CLEC
                 while (reader.Read())
                 {
                     Area area = new Area();
-                    area.ID = int.Parse(reader[0].ToString());
+                    area.IDarea = int.Parse(reader[0].ToString());
                     area.Año = int.Parse(reader[1].ToString());
                     area.Convocatoria = int.Parse(reader[2].ToString());
                     area.Nombre = reader[2].ToString();

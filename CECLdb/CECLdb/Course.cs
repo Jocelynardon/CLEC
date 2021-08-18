@@ -4,15 +4,15 @@ using System.Text;
 
 namespace CLEC
 {
-    class Area
+    class Course
     {
         private int idArea;
-        private int convocatoria;
-        private int año;
+        private int idCourse;
         private string nombre;
+        private string area;
         public int IDarea { get => idArea; set => idArea = value; }
+        public int IDcurso { get => idCourse; set => idCourse = value; }
         public string Nombre { get => nombre; set => nombre = value; }
-        public int Año { get => año; set => año = value; }
-        public int Convocatoria { get => convocatoria; set => convocatoria = value; }
+        public string Area { get => area; set => area = value; }
     }
 }

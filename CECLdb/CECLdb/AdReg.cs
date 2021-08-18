@@ -55,6 +55,7 @@ namespace CECLdb
                     btnCleanAd.Visible = true;
                     ModifybtnAd.Visible = true;
                     bttnViewSelectedAd.Visible = true;
+                    cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 3:
                     this.Height = 180;
@@ -66,6 +67,7 @@ namespace CECLdb
                 cmbSelectCourseAd.Enabled = false;
                 dtpDateAd.Enabled = false;
                 rtbDescriptionAd.Enabled = false;
+                    cmbSelectAreaAd.SelectedIndex = -1;
 
                     this.Height = 636;
                     break;
@@ -654,7 +656,7 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
+                    if (selectedIDList[i].Equals(row.Cells["IDarea"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
@@ -704,7 +706,7 @@ namespace CECLdb
        
         private void CloseWindow()
         {
-            if (Menu.action >= 5)
+            if (Menu.action == 5)
             {
                 Menu.action = 2;
                 this.Close();
@@ -737,7 +739,7 @@ namespace CECLdb
             rtbDescriptionAd.Text = "";
             dtpDateAd.Value = DateTime.Now;
             dtpDateAd.Format = DateTimePickerFormat.Custom;
-            dtpDateAd.CustomFormat = "yyyy/MM/dd";
+            dtpDateAd.CustomFormat = "yyyy/MM/dd hh:mm";
             //ShowNumberAd();
         }
 
