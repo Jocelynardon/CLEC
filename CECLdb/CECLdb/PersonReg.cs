@@ -477,22 +477,7 @@ namespace CECLdb
         }
         private void dgvPersonReg_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            idPerson = int.Parse(dgvPersonReg.CurrentRow.Cells["ID"].Value.ToString());
-            if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value)
-            {
-                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
-                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
-                amountSelected += -1;
-                selectedIDList.Remove(idPerson);
-                SelectAllcbx.Checked = false;/******************************************/
-            }
-            else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
-            {
-                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
-                amountSelected += 1;
-                selectedIDList.Add(idPerson);
-                DeselectAllcbx.Checked = false;/****************************************/
-            }
+            
         }
 
         private void bttnSelectPerson_Click(object sender, EventArgs e)
@@ -760,7 +745,7 @@ namespace CECLdb
             }
             else
             {
-                dgvPersonReg.Rows.Clear();
+                dgvPersonReg.DataSource = null;
             }
         }
         private void EmptyChecked()/********************************************/
@@ -781,6 +766,43 @@ namespace CECLdb
                 {
                     Fila.Cells[0].Value = null;
                 }
+            }
+        }
+
+        private void dgvPersonReg_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idPerson = int.Parse(dgvPersonReg.CurrentRow.Cells["ID"].Value.ToString());
+            if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value)
+            {
+                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
+                dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
+                amountSelected += -1;
+                if (Menu.action != 5)
+                {
+
+                    selectedIDList.Remove(idPerson);
+                    SelectAllcbx.Checked = false;/******************************************/
+                }
+            }
+            else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
+            {
+                if (Menu.action != 5)
+                {
+                    dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
+
+                    selectedIDList.Add(idPerson);
+                    DeselectAllcbx.Checked = false;/****************************/
+                }
+                else
+                {
+                    foreach (DataGridViewRow Fila in dgvPersonReg.Rows)
+                    {
+                        Fila.Cells[0].Value = null;
+                    }
+                    amountSelected = 0;
+                    dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
+                }
+                amountSelected += 1;
             }
         }
     }

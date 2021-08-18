@@ -903,7 +903,7 @@ namespace CECLdb
             }
             else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                DataGridViewCheckBoxCell check = (DataGridViewCheckBoxCell)dgvAdReg.CurrentRow.Cells["CheckSelection"].Value;
+                
                 if (Menu.action != 5)
                 {
                     dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
