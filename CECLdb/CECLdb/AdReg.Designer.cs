@@ -226,6 +226,7 @@ namespace CECLdb
             this.CheckSelection});
             this.dgvAdReg.Location = new System.Drawing.Point(29, 602);
             this.dgvAdReg.Name = "dgvAdReg";
+            this.dgvAdReg.ReadOnly = true;
             this.dgvAdReg.RowHeadersWidth = 51;
             this.dgvAdReg.RowTemplate.Height = 29;
             this.dgvAdReg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -239,6 +240,7 @@ namespace CECLdb
             this.CheckSelection.HeaderText = "Seleccionar";
             this.CheckSelection.MinimumWidth = 6;
             this.CheckSelection.Name = "CheckSelection";
+            this.CheckSelection.ReadOnly = true;
             this.CheckSelection.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CheckSelection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.CheckSelection.Width = 114;

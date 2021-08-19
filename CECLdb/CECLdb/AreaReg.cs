@@ -606,7 +606,7 @@ namespace CECLdb
             }
         }
 
-        private void dgvArea_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvArea_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int idArea = int.Parse(dgvArea.CurrentRow.Cells["IDarea"].Value.ToString());
             if (dgvArea.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvArea.CurrentRow.Cells["CheckSelection"].Value)
@@ -614,7 +614,7 @@ namespace CECLdb
                 dgvArea.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvArea.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                if ( Menu.action != 2)
+                if (Menu.action != 2)
                 {
                     selectedIDList.Remove(idArea);
                     SelectAllcbx.Checked = false;
