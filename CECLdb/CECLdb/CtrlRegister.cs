@@ -249,5 +249,35 @@ namespace CLEC
                 MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
             }
         }
+        public Register ModifyQuery(string IDcurso, string IDarea, string IDperson)/********************************************************/
+        {
+            MySqlDataReader reader;
+
+            string sql;
+            sql = "SELECT IDcurso, IDarea, IDpersona,  FechaConsulta " +
+                "FROM registro "+
+                "WHERE IDcurso =" + IDcurso + " AND IDarea = " + IDarea + " AND IDpersona = " + IDperson;
+            Register register = new Register();
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    register.IDcurso = int.Parse(reader[0].ToString());
+                    register.IDarea = int.Parse(reader[1].ToString());
+                    register.IDpersona = int.Parse(reader[2].ToString());
+                    register.FechaConsulta = Convert.ToDateTime(reader[3].ToString());
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return register;
+        }
     }
 }

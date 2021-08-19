@@ -20,7 +20,10 @@ namespace CECLdb
         public int LastSearchTypeSelected;
         public String textSearch;
         public int amount = 0;
-
+        string ID_area;
+        string ID_persona;
+        string ID_curso;
+        bool FirstBttnSearchClick = true;
         List<string> selectedIDList = new List<string>();
         public RegisterReg()
         {
@@ -34,27 +37,32 @@ namespace CECLdb
                     this.Height = 362;
                     break;
                 case 2:
-                    this.Height = 406;
-                    LoadTypeSearch();
-                    cmbSelectAreaRegister.SelectedIndex = -1;
-                    txtbPersonIDRegister.Enabled = true;
-                    txtbPersonIDRegister.ReadOnly = false;
-                    bttnSaveRegister.Visible = true;
-                    bttnSearchPersonReg.Visible = true;
-                    txtText.Visible = true;
-                    cmbType.Visible = true;
-                    bttnSearch.Visible = true;
-                    bttnEraserText.Visible = true;
-                    //bttnImportRegister.Visible = false;
+                    
+                    LoadTypeSearch();//
+                    SaveChanges.Visible = true;
+                    Modifybtn.Visible = true;
+                    txtText.Visible = true;//
+                    cmbType.Visible = true;//
+                    bttnSearch.Visible = true;//
+                    bttnEraserText.Visible = true;//
+                    SearchGBox.Top = 47;
+                    DataGBox.Top += 510;
+                    this.Height = 604;
                     break;
                 case 3:
-                    this.Height = 146;
-                    HideAndMove();
-                    LoadTypeSearch();
-                    txtText.Visible = true;
-                    cmbType.Visible = true;
-                    bttnSearch.Visible = true;
-                    bttnEraserText.Visible = true;
+                    LoadTypeSearch();//
+                    txtText.Visible = true;//
+                    cmbType.Visible = true;//
+                    bttnSearch.Visible = true;//
+                    bttnEraserText.Visible = true;//
+                    SearchGBox.Top = 47;
+                    DataGBox.Top += 510;
+                    this.Height = 604;
+                    SaveChanges.Visible = true;
+                    bttnViewSelected.Visible = true;
+                    Deletebtn.Visible = true;
+                    SelectAllcbx.Visible = true;
+                    DeselectAllcbx.Visible = true;
                     break;
                 default:
                     break;
@@ -195,25 +203,25 @@ namespace CECLdb
             amountSelected = 0;
             ConsultationAmount();
 
-            dgvRegister.Visible = true;
-            bttnViewSelected.Visible = true;
-            switch (Menu.action)
+            if (FirstBttnSearchClick)
             {
-                case 2:
-                    this.Height = 832;
-                    DeselectAllcbx.Visible = true;
-                    bttnReturnRegister.Location = new Point(459, 738);
-                    Modifybtn.Visible = true;
-                    break;
-                case 3:
-                    this.Height = 575;
-                    SelectAllcbx.Visible = true;
-                    DeselectAllcbx.Visible = true;
-                    Deletebtn.Visible = true;
-                    bttnReturnRegister.Location = new Point(483, 486);
-                    break;
-                default:
-                    break;
+                dgvRegister.Visible = true;
+                if (Menu.action != 2) bttnViewSelected.Visible = true;
+                switch (Menu.action)
+                {
+                    case 2:
+                        Modifybtn.Enabled = true;
+                        break;
+                    case 3:
+                        SelectAllcbx.Enabled = true;
+                        DeselectAllcbx.Enabled = true;
+                        Deletebtn.Enabled = true;
+                        bttnViewSelected.Enabled = true;
+                        break;
+                    default:
+                        break;
+                }
+                FirstBttnSearchClick = false;
             }
             if (amount > 0)
             {
@@ -250,14 +258,14 @@ namespace CECLdb
             }
             if (amount == 0)
             {
-                MessageBox.Show("No se encuentran avisos/anuncios registrados");
+                MessageBox.Show("No se encuentran consultas registradas");
             }
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                MessageBox.Show("No se ha seleccionado ninguna consulta");
             }
             else if (amountSelected >= 1)
             {
@@ -640,15 +648,31 @@ namespace CECLdb
                 dgvRegister.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvRegister.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                selectedIDList.Remove(key);
-                SelectAllcbx.Checked = false;
+                if (Menu.action != 2)
+                {
+                    selectedIDList.Remove(key);
+                    SelectAllcbx.Checked = false;
+                }
             }
             else if (dgvRegister.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                dgvRegister.CurrentRow.Cells["CheckSelection"].Value = true;
+                if (Menu.action != 2)
+                {
+                    dgvRegister.CurrentRow.Cells["CheckSelection"].Value = true;
+
+                    selectedIDList.Add(key);
+                    DeselectAllcbx.Checked = false;
+                }
+                else
+                {
+                    foreach (DataGridViewRow Fila in dgvRegister.Rows)
+                    {
+                        Fila.Cells[0].Value = null;
+                    }
+                    amountSelected = 0;
+                    dgvRegister.CurrentRow.Cells["CheckSelection"].Value = true;
+                }
                 amountSelected += 1;
-                selectedIDList.Add(key);
-                DeselectAllcbx.Checked = false;
             }
         }
         
@@ -662,5 +686,230 @@ namespace CECLdb
         }
         #endregion
 
+        private void Modifybtn_Click(object sender, EventArgs e)
+        {
+            
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado ninguna consulta");
+            }
+            if (amountSelected == 1)
+            {
+                this.Height = 876;
+                CtrlRegister ctrlReg = new CtrlRegister();
+                foreach (DataGridViewRow row in dgvRegister.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        ID_area = row.Cells["IDarea"].Value.ToString();
+                        ID_curso = row.Cells["IDcurso"].Value.ToString();
+                        ID_persona = row.Cells["IDpersona"].Value.ToString();
+                        Register reg = ctrlReg.ModifyQuery(ID_curso, ID_area, ID_persona);
+                        cmbSelectAreaRegister.SelectedValue = reg.IDarea;
+                        LoadCourseRegister();
+                        cmbSelectCourseRegister.SelectedValue = reg.IDcurso;
+                        txtbPersonIDRegister.Text = reg.IDpersona.ToString();
+                        dtpConsultationDateRegister.Value = reg.FechaConsulta;
+                    }
+                }
+            }
+
+            if (amountSelected > 1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 consulta");
+            }
+        }
+
+        private void SaveChanges_Click(object sender, EventArgs e)
+        {
+            if (cmbSelectAreaRegister.Text != "")
+            {
+                if (cmbSelectCourseRegister.Text != "")
+                {
+                    if (dtpConsultationDateRegister.Text != "")
+                    {
+                        if (txtbPersonIDRegister.Text != "" || txtbPersonIDRegister.Text != "0")
+                        {
+                            int idArea = int.Parse(cmbSelectAreaRegister.SelectedValue.ToString());
+                            int idCourse = int.Parse(cmbSelectCourseRegister.SelectedValue.ToString());
+                            int idPerson = int.Parse(txtbPersonIDRegister.Text);
+
+                            string sql = "UPDATE registro SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', FechaConsulta = '" +dtpConsultationDateRegister.Text+
+                                    "' WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
+                            MySqlConnection connectionBD = Connection.connection();
+                            connectionBD.Open();
+                            try
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Consulta correctamente modificado");
+                                EmptyChecked();
+
+                                UpdateDataGrid();
+                            }
+                            catch (MySqlException ex1)
+                            {
+                                MessageBox.Show("Error al guardar " + ex1.Message);
+                            }
+                            finally
+                            {
+                                connectionBD.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingrese el ID de la persona");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una fecha");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione el curso al que pertenece");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el área al que pertenece");
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            amountSelected = 0;
+            ConsultationAmount();
+            if (amount > 0)
+            {
+                if (textSearch == "")
+                {
+                    LoadTableArea(null);
+                }
+                else
+                {
+                    switch (cmbType.SelectedIndex)
+                    {
+                        //0 Área, 1 Curso, 2 Persona, Mes
+                        case 0:
+                            LoadTableArea(textSearch);
+                            break;
+                        case 1:
+                            LoadTableCourse(textSearch);
+                            break;
+                        case 2:
+                            LoadTablePerson(textSearch);
+                            break;
+                        case 3:
+                            ChangingInfo();
+                            LoadTableMonthYear(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                            cmbType.Text = "";
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                dgvRegister.DataSource = null;
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+        }
+
+        private void Deletebtn_Click(object sender, EventArgs e)
+        {
+            string[] saveId;
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado ninguna consulta");
+            }
+            if (amountSelected >= 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar las consultas seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedIDList.Count; i++)
+                    {
+                        saveId = selectedIDList[i].Split(',');
+                        string sql = "DELETE FROM registro WHERE IDcurso =" + saveId[1] + " AND IDarea = " + saveId[0] + " AND IDpersona = " + saveId[2];
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            if (i == selectedIDList.Count - 1)
+                            {
+                                MessageBox.Show("Se ha eliminado exitosamente");
+                                EmptyChecked();
+                                UpdateDataGrid();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Decir cuál NO se logró eliminar
+                            MessageBox.Show("Error al eliminar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvRegister.Rows)
+                {
+                    int idArea = int.Parse(Fila.Cells["IDarea"].Value.ToString());
+                    int idCurso = int.Parse(Fila.Cells["IDcurso"].Value.ToString());
+                    int idPersona = int.Parse(Fila.Cells["IDpersona"].Value.ToString());
+                    string keyInscription = idArea + "," + idCurso + "," + idPersona;
+
+                    if (!selectedIDList.Contains(keyInscription))
+                    {
+                        selectedIDList.Add(keyInscription);
+                        amountSelected++;
+                    }
+                    Fila.Cells[0].Value = true;
+                }
+            }
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DeselectAllcbx.Checked)
+            {
+
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvRegister.Rows)
+                {
+                    int idArea = int.Parse(Fila.Cells["IDarea"].Value.ToString());
+                    int idCurso = int.Parse(Fila.Cells["IDcurso"].Value.ToString());
+                    int idPersona = int.Parse(Fila.Cells["IDpersona"].Value.ToString());
+                    string keyInscription = idArea + "," + idCurso + "," + idPersona;
+                    if (selectedIDList.Contains(keyInscription))
+                    {
+                        selectedIDList.Remove(keyInscription);
+                        amountSelected--;
+                    }
+
+                    Fila.Cells[0].Value = null;
+                }
+            }
+        }
     }
 }

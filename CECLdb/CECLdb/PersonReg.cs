@@ -511,7 +511,7 @@ namespace CECLdb
             CtrlPerson ctrl = new CtrlPerson();
             if (amountSelected==0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                MessageBox.Show("No se ha seleccionado a ninguna persona");
             }
             if (amountSelected==1)
             {

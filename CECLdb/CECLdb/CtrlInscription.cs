@@ -273,14 +273,12 @@ namespace CLEC
 
             string sql;
             Inscription inscription = new Inscription();
-            sql = "SELECT curso.IDcurso, curso.Nombre, area.IDarea, CONCAT(area.Nombre,'-',area.Convocatoria,'-', area.Año) AS infoArea, ins.IDpersona, CASE WHEN ins.Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado , ins.FechaInicio, IFNULL(ins.FechaFin,'') " +
-                "FROM inscripcion  ins " +
-                "INNER JOIN area ON area.IDarea = ins.IDarea " +
-                "INNER JOIN curso ON curso.IDcurso = ins.IDcurso " +
-                "WHERE ins.IDcurso =" + IDcurso+" AND ins.IDarea = "+IDarea+" AND ins.IDpersona = "+IDperson;
+            sql = "SELECT IDcurso, IDarea, IDpersona, CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado , FechaInicio, IFNULL(FechaFin,'') " +
+                "FROM inscripcion  " +
+                "WHERE IDcurso =" + IDcurso+" AND IDarea = "+IDarea+" AND IDpersona = "+IDperson;
 
-            //try
-            //{
+            try
+            {
                 MySqlConnection connectionBD = base.connectionTable();
                 connectionBD.Open();
                 MySqlCommand command = new MySqlCommand(sql, connectionBD);
@@ -288,20 +286,18 @@ namespace CLEC
                 while (reader.Read())
                 {
                     inscription.IDcurso = int.Parse(reader[0].ToString());
-                    inscription.Curso = reader[1].ToString();
-                    inscription.IDarea = int.Parse(reader[2].ToString());
-                    inscription.Area = reader[3].ToString();
-                    inscription.IDpersona = int.Parse(reader[4].ToString());
-                    inscription.Aprobado = reader[5].ToString();
-                    inscription.FechaInicio = reader[6].ToString();
-                    inscription.FechaFin = reader[7].ToString();
+                    inscription.IDarea = int.Parse(reader[1].ToString());
+                    inscription.IDpersona = int.Parse(reader[2].ToString());
+                    inscription.Aprobado = reader[3].ToString();
+                    inscription.FechaInicio = reader[4].ToString();
+                    inscription.FechaFin = reader[5].ToString();
 
                 }
-            //}
-            //catch (MySqlException ex)
-            //{
-            //    MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
-            //}
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
             return inscription;
         }
 

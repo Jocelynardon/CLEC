@@ -16,7 +16,7 @@ namespace CECLdb
         //Menu.action= 1 es agregar, 2 modificar, 3 eliminar
         int winOrLose;
         DateTime actualDate = DateTime.Today;
-
+        bool FirstBttnSearchClick = true;
         string ID_area;
         string ID_persona;
         string ID_curso;
@@ -179,30 +179,34 @@ namespace CECLdb
             amountSelected = 0;//Por qué?
             ConsultationAmount();
 
-            if(Menu.action != 2) bttnViewSelected.Visible = true;
-            dgvInscription.Visible = true;
-            if (Menu.action==2)
+            if (FirstBttnSearchClick)
             {
-                Modifybtn.Enabled = true;
-            }
-            if ( Menu.action == 4)
-            {
-                this.Height = 594;
-                DeselectAllcbx.Visible = true;
-                DeselectAllcbx.Enabled = true;
-                //Mostrar botones según la opción
-                
-                //else
-                //{
-                //    bttnSelect.Visible = true;
-                //}
-            }
-            if (Menu.action ==3)
-            {
-                DeselectAllcbx.Enabled = true;
-                SelectAllcbx.Enabled = true;
-                Deletebtn.Enabled = true;
-                bttnViewSelected.Enabled = true;
+                if (Menu.action != 2) bttnViewSelected.Visible = true;
+                dgvInscription.Visible = true;
+                if (Menu.action == 2)
+                {
+                    Modifybtn.Enabled = true;
+                }
+                if (Menu.action == 4)
+                {
+                    this.Height = 594;
+                    DeselectAllcbx.Visible = true;
+                    DeselectAllcbx.Enabled = true;
+                    //Mostrar botones según la opción
+
+                    //else
+                    //{
+                    //    bttnSelect.Visible = true;
+                    //}
+                }
+                if (Menu.action == 3)
+                {
+                    DeselectAllcbx.Enabled = true;
+                    SelectAllcbx.Enabled = true;
+                    Deletebtn.Enabled = true;
+                    bttnViewSelected.Enabled = true;
+                }
+                FirstBttnSearchClick = false;
             }
             if (amount > 0)
             {
@@ -239,14 +243,14 @@ namespace CECLdb
             }
             if (amount==0)
             {
-                MessageBox.Show("No se encuentran avisos/anuncios registrados");
+                MessageBox.Show("No se encuentran inscripciones registradas");
             }
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                MessageBox.Show("No se ha seleccionado ninguna inscripción");
             }
             else if (amountSelected >= 1)
             {
@@ -629,12 +633,6 @@ namespace CECLdb
             Frm.Show();
             this.Close();
         }
-
-        private void dgvInscription_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void cmbSelectAreaInscription_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
             LoadCourseInscription();
@@ -686,7 +684,7 @@ namespace CECLdb
                         Inscription ins = ctrlIns.ModifyQuery(ID_curso, ID_area, ID_persona);
                         cmbSelectAreaInscription.SelectedValue= ins.IDarea;
                         LoadCourseInscription();
-                        cmbSelectCourseInscription.SelectedValue = ins.IDarea;
+                        cmbSelectCourseInscription.SelectedValue = ins.IDcurso;
                         txtbPersonIDInscription.Text = ins.IDpersona.ToString();
                         if (ins.Aprobado == "SI") ckbApproved.Checked = true;
                         else ckbApproved.Checked = false;
@@ -853,7 +851,7 @@ namespace CECLdb
                 dgvInscription.DataSource = null;
             }
         }
-        private void EmptyChecked()/********************************************/
+        private void EmptyChecked()
         {
             amountSelected = 0;
             selectedIDList.Clear();
