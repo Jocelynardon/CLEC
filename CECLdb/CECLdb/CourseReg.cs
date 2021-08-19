@@ -363,10 +363,6 @@ namespace CECLdb
             this.Close();
         }
 
-        private void dgvCourse_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
 
         private void Modifybtn_Click(object sender, EventArgs e)
         {
