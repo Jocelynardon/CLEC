@@ -288,7 +288,6 @@ namespace CECLdb
             this.dgvArea.TabIndex = 54;
             this.dgvArea.Visible = false;
             this.dgvArea.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellClick);
-            this.dgvArea.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellContentClick);
             // 
             // btnSaveData
             // 
