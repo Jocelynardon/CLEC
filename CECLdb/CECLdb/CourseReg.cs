@@ -382,8 +382,8 @@ namespace CECLdb
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        CourseID = Convert.ToInt32(row.Cells[1].Value);
-                        Course course = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
+                        CourseID = Convert.ToInt32(row.Cells["IDcurso"].Value);
+                        Course course = ctrl.ModifyQuery(row.Cells["IDcurso"].Value.ToString());
                         cmbSelectArea.SelectedValue = course.IDarea;
                         txtbCourseName.Text = course.Nombre;
                     }
@@ -492,7 +492,7 @@ namespace CECLdb
                 DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvCourse.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells["IDcurso"].Value);
                     if (!selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Add(currentID);
@@ -548,7 +548,7 @@ namespace CECLdb
                 SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvCourse.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells["IDcurso"].Value);
                     if (selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Remove(currentID);
