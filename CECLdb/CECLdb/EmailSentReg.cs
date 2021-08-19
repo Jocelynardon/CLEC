@@ -77,6 +77,7 @@ namespace CECLdb
             if (amount == 0)
             {
                 MessageBox.Show("No hay correos enviados con ese aviso");
+                AdReg.empty = -1;
             }
         }
         private void bttnViewAll_Click(object sender, EventArgs e)
@@ -260,6 +261,7 @@ namespace CECLdb
             ChosenAdID = row.Value.ToString();
             this.txtNoAviso.Text = ChosenAdID;
             bttnSearch.Text = "Buscar Otro Aviso";
+            AdReg.empty = 1;
             PersonSent();
             Modifybtn.Visible = true;
         }

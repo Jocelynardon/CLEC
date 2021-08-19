@@ -20,6 +20,7 @@ namespace CECLdb
         public int AdID;
         public int LastSearchTyprSelected;
         public int amountAd = 0;
+        public static int empty = 0;
 
         public List<int> selectedIDList = new List<int>();
         //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado en agregar, 5 viene
@@ -596,44 +597,6 @@ namespace CECLdb
                 LoadTableArea(null);
             }
         }
-        //private void ShowNumberAd()
-        //{
-        //    MySqlDataReader reader = null;
-        //    string sql = "SELECT MAX(IDaviso)+1 FROM aviso";
-        //    MySqlConnection connectionBD = Connection.connection();
-        //        connectionBD.Open();
-        //        try
-        //        {
-        //            MySqlCommand command = new MySqlCommand(sql, connectionBD);
-        //        reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                try
-        //                {
-        //                    txtbAdNumber.Text = reader.GetString(0);
-        //                    idAd = int.Parse(txtbAdNumber.Text);
-        //                }
-        //                catch (Exception)
-        //                {
-
-        //                    txtbAdNumber.Text = "1";
-        //                    idAd = int.Parse(txtbAdNumber.Text);
-        //                }
-
-        //            }
-        //        }
-        //        }
-        //        catch (MySqlException ex)
-        //        {
-        //            MessageBox.Show("Error al cargar los avisos " + ex.Message);
-        //        }
-        //    finally
-        //    {
-        //        connectionBD.Close();
-        //    }
-        //}
         private void ConsultationAmountAd()
         {
             amountAd = 0;
@@ -649,7 +612,7 @@ namespace CECLdb
             }
             catch (MySqlException)
             {
-                MessageBox.Show("No hay personas ingresadas ");
+                MessageBox.Show("No hay avisos ingresados ");
                 amountAd = -1;
             }
             finally
@@ -730,7 +693,10 @@ namespace CECLdb
                         DataGridViewCell choosenID = row.Cells[1];
                         AddID parent = this.Owner as AddID;
                         parent.AddNewItem(choosenID);
+                    if (empty==1)
+                    {
                         this.Close();
+                    }
                     }
                 }
         }
