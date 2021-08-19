@@ -178,10 +178,8 @@ namespace CLEC
 
             string sql;
             Ad ad = new Ad();
-            sql = "SELECT CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria), curso.Nombre, aviso.Descripcion, aviso.Fecha " +
+            sql = "SELECT IDarea, IDcurso, Descripcion, Fecha " +
                 "FROM aviso" +
-                " INNER JOIN area ON aviso.IDarea = area.IDarea" +
-                " INNER JOIN curso ON aviso.IDcurso = curso.IDcurso" +
                 " WHERE IDaviso = " + IDaviso;
 
             try
@@ -192,11 +190,10 @@ namespace CLEC
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    ad.IDaviso = int.Parse(IDaviso);
-                    ad.Area = reader[0].ToString();
-                    ad.Curso = reader[1].ToString();
+                    ad.IDarea = int.Parse(reader[0].ToString());
+                    ad.IDcurso = int.Parse(reader[1].ToString());
                     ad.Descripcion = reader[2].ToString();
-                    ad.Fecha = Convert.ToDateTime(reader[5].ToString());
+                    ad.Fecha = Convert.ToDateTime(reader[3].ToString());
                 }
             }
             catch (MySqlException ex)

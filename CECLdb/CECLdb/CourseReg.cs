@@ -16,7 +16,7 @@ namespace CECLdb
         public int LastSearchTypeSelected;
         public String textSearch;
         public int amount = 0;
-
+        int CourseID;
         List<int> selectedIDList = new List<int>();
         public CourseReg()
         {
@@ -33,7 +33,7 @@ namespace CECLdb
                     this.Height = 312;
                     LoadTypeSearch();
                     cmbType.SelectedIndex = -1;
-                    bttnSaveCourse.Visible = true;
+                    btnSaveData.Visible = true;
                     cmbSelectArea.SelectedIndex = -1;
                     txtText.Visible = true;
                     cmbType.Visible = true;
@@ -153,14 +153,14 @@ namespace CECLdb
             }
             if (amount == 0)
             {
-                MessageBox.Show("No se encuentran avisos/anuncios registrados");
+                MessageBox.Show("No se encuentran cursos registrados");
             }
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                MessageBox.Show("No se ha seleccionado ningún curso");
             }
             else if (amountSelected >= 1)
             {
@@ -361,21 +361,223 @@ namespace CECLdb
 
         private void dgvCourse_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
+
+        private void Modifybtn_Click(object sender, EventArgs e)
+        {
+            CtrlCourse ctrl = new CtrlCourse();
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado ningún curso");
+            }
+            if (amountSelected == 1)
+            {
+                foreach (DataGridViewRow row in dgvCourse.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        CourseID = Convert.ToInt32(row.Cells[1].Value);
+                        Course course = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
+                        cmbSelectArea.SelectedValue = course.IDarea;
+                        txtbCourseName.Text = course.Nombre;
+                    }
+                }
+            }
+
+            if (amountSelected > 1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 curso");
+            }
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            if (cmbSelectArea.SelectedValue != null && txtbCourseName.Text != "")
+            {
+                int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                try
+                {
+                    String NameCourse = txtbCourseName.Text;
+                    string sql = "UPDATE curso SET IDarea = '" + idArea + "', Nombre = '" + NameCourse + "' " +
+                    "WHERE IDcurso =" + CourseID;
+                    MySqlConnection connectionBD = Connection.connection();
+                    connectionBD.Open();
+                    try
+                    {
+                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Curso correctamente modificado");
+                        EmptyChecked();
+
+                        UpdateDataGrid();
+                    }
+                    catch (MySqlException ex1)
+                    {
+                        MessageBox.Show("Error al guardar" + ex1.Message);
+                    }
+                    finally
+                    {
+                        connectionBD.Close();
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Seleccione el área" + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese los datos");
+            }
+        }
+
+        private void Deletebtn_Click(object sender, EventArgs e)
+        {
+            int saveId = 0;
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado ningún curso");
+            }
+            if (amountSelected >= 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar los cursos seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedIDList.Count; i++)
+                    {
+                        saveId = int.Parse(selectedIDList[i].ToString());
+                        string sql = "DELETE FROM curso WHERE IDcurso =" + saveId;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            if (i == selectedIDList.Count - 1)
+                            {
+                                MessageBox.Show("Se ha eliminado exitosamente");
+                                EmptyChecked();
+                                UpdateDataGrid();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Decir cuál NO se logró eliminar
+                            MessageBox.Show("Error al eliminar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvCourse.Rows)
+                {
+                    Fila.Cells[0].Value = true;
+                    amountSelected++;
+                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
+                }
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            amountSelected = 0;
+            ConsultationAmount();
+            if (amount > 0)
+            {
+                if (textSearch == "")
+                {
+                    LoadTableArea(null);
+                }
+                else
+                {
+                    switch (cmbType.SelectedIndex)
+                    {
+                        //0 Area, 1 Nombre
+                        case 0:
+                            LoadTableArea(textSearch);
+                            break;
+                        case 1:
+                            LoadTableName(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                            cmbType.Text = "";
+                            break;
+                    }
+                }
+            }
+            if (amount == 0)
+            {
+                dgvCourse.DataSource = null;
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DeselectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvCourse.Rows)
+                {
+                    Fila.Cells[0].Value = null;
+                }
+            }
+        }
+
+        private void dgvCourse_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
             int idCourse = int.Parse(dgvCourse.CurrentRow.Cells["IDcurso"].Value.ToString());
             if (dgvCourse.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvCourse.CurrentRow.Cells["CheckSelection"].Value)
             {
                 dgvCourse.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvCourse.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                selectedIDList.Remove(idCourse);
-                SelectAllcbx.Checked = false;
+                if (Menu.action != 2)
+                {
+                    selectedIDList.Remove(idCourse);
+                    SelectAllcbx.Checked = false;
+                }
             }
             else if (dgvCourse.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                dgvCourse.CurrentRow.Cells["CheckSelection"].Value = true;
+                if (Menu.action != 2)
+                {
+                    dgvCourse.CurrentRow.Cells["CheckSelection"].Value = true;
+
+                    selectedIDList.Add(idCourse);
+                    DeselectAllcbx.Checked = false;
+                }
+                else
+                {
+                    foreach (DataGridViewRow Fila in dgvCourse.Rows)
+                    {
+                        Fila.Cells[0].Value = null;
+                    }
+                    amountSelected = 0;
+                    dgvCourse.CurrentRow.Cells["CheckSelection"].Value = true;
+                }
                 amountSelected += 1;
-                selectedIDList.Add(idCourse);
-                DeselectAllcbx.Checked = false;
             }
         }
     }

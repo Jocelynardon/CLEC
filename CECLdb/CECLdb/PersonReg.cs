@@ -777,7 +777,7 @@ namespace CECLdb
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                if (Menu.action != 5)
+                if (Menu.action != 5 && Menu.action !=2)
                 {
 
                     selectedIDList.Remove(idPerson);
@@ -786,7 +786,7 @@ namespace CECLdb
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                if (Menu.action != 5)
+                if (Menu.action != 5 && Menu.action != 2)
                 {
                     dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
 

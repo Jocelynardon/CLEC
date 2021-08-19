@@ -868,8 +868,9 @@ namespace CECLdb
                     {
                         AdID = Convert.ToInt32(row.Cells[1].Value);
                         Ad ad = ctrlAd.ModifyQuery(AdID.ToString());
-                        cmbSelectAreaAd.Text = ad.Area;
-                        cmbSelectCourseAd.Text = ad.Curso;
+                        cmbSelectAreaAd.SelectedValue = ad.IDarea;
+                        LoadCourseAd();
+                        cmbSelectCourseAd.SelectedValue = ad.IDcurso;
                         rtbDescriptionAd.Text = ad.Descripcion;
                         dtpDateAd.Value = Convert.ToDateTime(ad.Fecha);
                     }

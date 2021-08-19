@@ -16,7 +16,7 @@ namespace CECLdb
         public int LastSearchTypeSelected;
         public String textSearch;
         public int amount = 0;
-
+        int AreaID;
         List<int> selectedIDList = new List<int>();
         public AreaReg()
         {
@@ -32,7 +32,7 @@ namespace CECLdb
                 case 2:
                     this.Height = 355;
                     LoadTypeSearch();
-                    bttnSaveArea.Visible = true;
+                    btnSaveData.Visible = true;
                     txtText.Visible = true;
                     cmbType.Visible = true;
                     bttnSearch.Visible = true;
@@ -395,7 +395,203 @@ namespace CECLdb
             this.Close();
         }
 
-        private void dgvArea_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Modifybtn_Click(object sender, EventArgs e)
+        {
+            CtrlArea ctrl = new CtrlArea();
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado ningún Área");
+            }
+            if (amountSelected == 1)
+            {
+                foreach (DataGridViewRow row in dgvArea.Rows)
+                {
+                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                    if (isChecked)
+                    {
+                        AreaID = Convert.ToInt32(row.Cells[1].Value);
+                        Area area = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
+                        FullCombobox();
+                        cmbYear.SelectedItem = area.Año.ToString();
+                        cmbAnnouncement.SelectedItem = area.Convocatoria.ToString();
+                        txtbAreaName.Text = area.Nombre;
+                    }
+                }
+            }
+
+            if (amountSelected > 1)
+            {
+                MessageBox.Show("Selecciona únicamente a 1 Área");
+            }
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            if (cmbAnnouncement.Text != null && cmbYear.Text != null && txtbAreaName.Text != "")
+            {
+                int yearArea = int.Parse(cmbYear.Text);
+                int convocatoryArea = int.Parse(cmbAnnouncement.Text);
+                String nameArea = txtbAreaName.Text;
+                if (yearArea > 2010 && yearArea < 2999)
+                {
+                    if (convocatoryArea > 0 && convocatoryArea < 10)
+                    {
+                        string sql = "UPDATE area SET Nombre = '" + nameArea + "', Año = '" + yearArea + "', Convocatoria = '" + convocatoryArea + 
+                        "' WHERE IDarea =" + AreaID;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Se ha modificado exitosamente");
+                            EmptyChecked();
+
+                            UpdateDataGrid();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            MessageBox.Show("Error al guardar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione la convocatoria");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El año debe ser desde 2010 en adelante");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, Ingrese la información solicitada");
+            }
+        }
+
+        private void Deletebtn_Click(object sender, EventArgs e)
+        {
+            int saveId = 0;
+            if (amountSelected == 0)
+            {
+                MessageBox.Show("No se ha seleccionado a ningún Área");
+            }
+            if (amountSelected >= 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar las áreas seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    for (int i = 0; i < selectedIDList.Count; i++)
+                    {
+                        saveId = int.Parse(selectedIDList[i].ToString());
+                        string sql = "DELETE FROM area WHERE IDarea =" + saveId;
+
+                        MySqlConnection connectionBD = Connection.connection();
+                        connectionBD.Open();
+                        try
+                        {
+                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                            command.ExecuteNonQuery();
+                            if (i == selectedIDList.Count - 1)
+                            {
+                                MessageBox.Show("Se ha eliminado exitosamente");
+                                EmptyChecked();
+                                UpdateDataGrid();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Decir cuál NO se logró eliminar
+                            MessageBox.Show("Error al eliminar: " + ex.Message);
+                        }
+                        finally
+                        {
+                            connectionBD.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SelectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SelectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                DeselectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvArea.Rows)
+                {
+                    Fila.Cells[0].Value = true;
+                    amountSelected++;
+                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
+                }
+            }
+        }
+
+        private void UpdateDataGrid()
+        {
+            amountSelected = 0;
+            ConsultationAmount();
+            if (amount > 0)
+            {
+                if (textSearch == "")
+                {
+                    LoadTableYear(null);
+                }
+                else
+                {
+                    switch (cmbType.SelectedIndex)
+                    {
+                        //0 Área, 1 Curso, 2 Persona, Mes
+                        case 0:
+                            LoadTableYear(textSearch);
+                            break;
+                        case 1:
+                            LoadTableConvocatory(textSearch);
+                            break;
+                        case 2:
+                            LoadTableName(textSearch);
+                            break;
+                        default:
+                            MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                            cmbType.Text = "";
+                            break;
+                    }
+                }
+            }
+            if (amount == 0)
+            {
+                dgvArea.DataSource = null;
+            }
+        }
+        private void EmptyChecked()
+        {
+            amountSelected = 0;
+            selectedIDList.Clear();
+        }
+
+        private void DeselectAllcbx_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DeselectAllcbx.Checked)
+            {
+                amountSelected = 0;
+                selectedIDList.Clear();
+                SelectAllcbx.Checked = false;
+                foreach (DataGridViewRow Fila in dgvArea.Rows)
+                {
+                    Fila.Cells[0].Value = null;
+                }
+            }
+        }
+
+        private void dgvArea_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int idArea = int.Parse(dgvArea.CurrentRow.Cells["IDarea"].Value.ToString());
             if (dgvArea.CurrentRow.Cells["CheckSelection"].Value != null && (bool)dgvArea.CurrentRow.Cells["CheckSelection"].Value)
@@ -403,15 +599,31 @@ namespace CECLdb
                 dgvArea.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvArea.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                selectedIDList.Remove(idArea);
-                SelectAllcbx.Checked = false;
+                if ( Menu.action != 2)
+                {
+                    selectedIDList.Remove(idArea);
+                    SelectAllcbx.Checked = false;
+                }
             }
             else if (dgvArea.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                dgvArea.CurrentRow.Cells["CheckSelection"].Value = true;
+                if (Menu.action != 5 && Menu.action != 2)
+                {
+                    dgvArea.CurrentRow.Cells["CheckSelection"].Value = true;
+
+                    selectedIDList.Add(idArea);
+                    DeselectAllcbx.Checked = false;
+                }
+                else
+                {
+                    foreach (DataGridViewRow Fila in dgvArea.Rows)
+                    {
+                        Fila.Cells[0].Value = null;
+                    }
+                    amountSelected = 0;
+                    dgvArea.CurrentRow.Cells["CheckSelection"].Value = true;
+                }
                 amountSelected += 1;
-                selectedIDList.Add(idArea);
-                DeselectAllcbx.Checked = false;
             }
         }
     }

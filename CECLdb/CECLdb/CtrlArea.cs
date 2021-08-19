@@ -202,5 +202,32 @@ namespace CLEC
             }
             return list;
         }
+        public Area ModifyQuery(string IDarea)/********************************************************/
+        {
+            MySqlDataReader reader;
+
+            string sql;
+            Area area = new Area();
+            sql = "SELECT Nombre, Año, Convocatoria FROM area WHERE IDarea =" + IDarea;
+
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    area.Nombre = reader[0].ToString();
+                    area.Año = int.Parse(reader[1].ToString());
+                    area.Convocatoria = int.Parse(reader[2].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return area;
+        }
     }
 }

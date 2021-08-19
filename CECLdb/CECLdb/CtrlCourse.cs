@@ -116,6 +116,32 @@ namespace CLEC
                 MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
             }
         }
+        public Course ModifyQuery(string IDcourse)
+        {
+            MySqlDataReader reader;
+
+            string sql;
+            Course course = new Course();
+            sql = "SELECT IDarea, Nombre FROM curso WHERE IDcurso =" + IDcourse;
+
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    course.IDarea = int.Parse(reader[0].ToString());
+                    course.Nombre = reader[1].ToString();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return course;
+        }
 
     }
 }

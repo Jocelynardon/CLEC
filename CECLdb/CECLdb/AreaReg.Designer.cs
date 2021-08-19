@@ -50,6 +50,7 @@ namespace CECLdb
             this.Modifybtn = new System.Windows.Forms.Button();
             this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvArea = new System.Windows.Forms.DataGridView();
+            this.btnSaveData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,6 +204,7 @@ namespace CECLdb
             this.DeselectAllcbx.Text = "Desmarcar Todos";
             this.DeselectAllcbx.UseVisualStyleBackColor = true;
             this.DeselectAllcbx.Visible = false;
+            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
             // 
             // SelectAllcbx
             // 
@@ -214,6 +216,7 @@ namespace CECLdb
             this.SelectAllcbx.Text = "Seleccionar Todos";
             this.SelectAllcbx.UseVisualStyleBackColor = true;
             this.SelectAllcbx.Visible = false;
+            this.SelectAllcbx.CheckedChanged += new System.EventHandler(this.SelectAllcbx_CheckedChanged);
             // 
             // bttnViewSelected
             // 
@@ -239,6 +242,7 @@ namespace CECLdb
             this.Deletebtn.Text = "Eliminar";
             this.Deletebtn.UseVisualStyleBackColor = false;
             this.Deletebtn.Visible = false;
+            this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
             // Modifybtn
             // 
@@ -251,6 +255,7 @@ namespace CECLdb
             this.Modifybtn.Text = "Modificar";
             this.Modifybtn.UseVisualStyleBackColor = false;
             this.Modifybtn.Visible = false;
+            this.Modifybtn.Click += new System.EventHandler(this.Modifybtn_Click);
             // 
             // CheckSelection
             // 
@@ -282,13 +287,27 @@ namespace CECLdb
             this.dgvArea.Size = new System.Drawing.Size(768, 330);
             this.dgvArea.TabIndex = 54;
             this.dgvArea.Visible = false;
-            this.dgvArea.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellClick);
+            this.dgvArea.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArea_CellContentClick);
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveData.Location = new System.Drawing.Point(145, 218);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(161, 29);
+            this.btnSaveData.TabIndex = 58;
+            this.btnSaveData.Text = "Guardar Datos";
+            this.btnSaveData.UseVisualStyleBackColor = false;
+            this.btnSaveData.Visible = false;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
             // AreaReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 725);
+            this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.bttnViewSelected);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Modifybtn);
@@ -343,5 +362,6 @@ namespace CECLdb
         private System.Windows.Forms.Button Modifybtn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.DataGridView dgvArea;
+        private System.Windows.Forms.Button btnSaveData;
     }
 }
