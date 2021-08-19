@@ -106,6 +106,8 @@ namespace CECLdb
         }
         private void bttnSearch_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             amountSelected = 0;
             ConsultationAmount();
 
@@ -170,6 +172,8 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (amountSelected == 0)
             {
                 MessageBox.Show("No se ha seleccionado a alguna persona");
@@ -427,6 +431,8 @@ namespace CECLdb
 
         private void btnSaveData_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (cmbAnnouncement.Text != null && cmbYear.Text != null && txtbAreaName.Text != "")
             {
                 int yearArea = int.Parse(cmbYear.Text);
@@ -477,6 +483,8 @@ namespace CECLdb
 
         private void Deletebtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             int saveId = 0;
             if (amountSelected == 0)
             {
@@ -523,14 +531,16 @@ namespace CECLdb
         {
             if (SelectAllcbx.Checked)
             {
-                amountSelected = 0;
-                selectedIDList.Clear();
                 DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvArea.Rows)
                 {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (!selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Add(currentID);
+                        amountSelected++;
+                    }
                     Fila.Cells[0].Value = true;
-                    amountSelected++;
-                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
                 }
             }
         }
@@ -581,11 +591,16 @@ namespace CECLdb
         {
             if (DeselectAllcbx.Checked)
             {
-                amountSelected = 0;
-                selectedIDList.Clear();
                 SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvArea.Rows)
                 {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Remove(currentID);
+                        amountSelected--;
+                    }
+
                     Fila.Cells[0].Value = null;
                 }
             }

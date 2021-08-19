@@ -176,6 +176,8 @@ namespace CECLdb
         }
         private void bttnSearch_Click_1(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             amountSelected = 0;//Por qué?
             ConsultationAmount();
 
@@ -248,6 +250,8 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (amountSelected == 0)
             {
                 MessageBox.Show("No se ha seleccionado ninguna inscripción");
@@ -744,6 +748,8 @@ namespace CECLdb
 
         private void SaveChanges_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (cmbSelectAreaInscription.Text != "")
             {
                 if (cmbSelectCourseInscription.Text != "")
@@ -859,6 +865,8 @@ namespace CECLdb
 
         private void Deletebtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             string[] saveId;
             if (amountSelected == 0)
             {

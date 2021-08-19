@@ -200,6 +200,8 @@ namespace CECLdb
         }
         private void bttnSearch_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             amountSelected = 0;
             ConsultationAmount();
 
@@ -263,6 +265,8 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (amountSelected == 0)
             {
                 MessageBox.Show("No se ha seleccionado ninguna consulta");
@@ -723,6 +727,8 @@ namespace CECLdb
 
         private void SaveChanges_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (cmbSelectAreaRegister.Text != "")
             {
                 if (cmbSelectCourseRegister.Text != "")
@@ -825,6 +831,8 @@ namespace CECLdb
 
         private void Deletebtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             string[] saveId;
             if (amountSelected == 0)
             {

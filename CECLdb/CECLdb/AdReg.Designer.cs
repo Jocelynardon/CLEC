@@ -58,8 +58,6 @@ namespace CECLdb
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnEraserText = new System.Windows.Forms.Button();
             this.bttnConfirm = new System.Windows.Forms.Button();
-            this.txtArea = new System.Windows.Forms.TextBox();
-            this.txtCurso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -364,6 +362,7 @@ namespace CECLdb
             this.DeselectAllcbx.Text = "Desmarcar Todos";
             this.DeselectAllcbx.UseVisualStyleBackColor = true;
             this.DeselectAllcbx.Visible = false;
+            this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
             // 
             // bttnEraserText
             // 
@@ -392,29 +391,11 @@ namespace CECLdb
             this.bttnConfirm.Visible = false;
             this.bttnConfirm.Click += new System.EventHandler(this.bttnConfirm_Click);
             // 
-            // txtArea
-            // 
-            this.txtArea.Location = new System.Drawing.Point(42, 55);
-            this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(392, 27);
-            this.txtArea.TabIndex = 39;
-            this.txtArea.Visible = false;
-            // 
-            // txtCurso
-            // 
-            this.txtCurso.Location = new System.Drawing.Point(42, 146);
-            this.txtCurso.Name = "txtCurso";
-            this.txtCurso.Size = new System.Drawing.Size(392, 27);
-            this.txtCurso.TabIndex = 40;
-            this.txtCurso.Visible = false;
-            // 
             // AdReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 975);
-            this.Controls.Add(this.txtCurso);
-            this.Controls.Add(this.txtArea);
             this.Controls.Add(this.bttnConfirm);
             this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.DeselectAllcbx);
@@ -486,7 +467,5 @@ namespace CECLdb
         private System.Windows.Forms.CheckBox DeselectAllcbx;
         private System.Windows.Forms.Button bttnEraserText;
         private System.Windows.Forms.Button bttnConfirm;
-        private System.Windows.Forms.TextBox txtArea;
-        private System.Windows.Forms.TextBox txtCurso;
     }
 }

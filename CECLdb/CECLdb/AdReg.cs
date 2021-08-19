@@ -73,6 +73,7 @@ namespace CECLdb
                     break;
                 case 5:
                     this.Height = 180;
+                    LoadAreaAd();
                     HideAndMove();
                     bttnSelectPerson.Visible = false;
                     
@@ -179,6 +180,8 @@ namespace CECLdb
         }
         private void bttnSearchAd_Click_1(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             amountSelectedAd = 0;
             ConsultationAmountAd();
 
@@ -276,6 +279,8 @@ namespace CECLdb
         }
         private void bttnSaveAd_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (cmbSelectAreaAd.Text != "")
             {
                 if (cmbSelectCourseAd.Text != "")
@@ -339,11 +344,10 @@ namespace CECLdb
                         bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                         if (isChecked)
                         {
-                            txtArea.Visible = true;
-                            txtCurso.Visible = true;
                             idAd = int.Parse(row.Cells[1].Value.ToString());
-                            txtArea.Text = row.Cells[3].Value.ToString();
-                            txtCurso.Text = row.Cells[4].Value.ToString();
+                            cmbSelectAreaAd.SelectedValue = int.Parse(row.Cells[2].Value.ToString());
+                            LoadCourseAd();
+                            cmbSelectCourseAd.SelectedValue = int.Parse(row.Cells[5].Value.ToString());
                             dtpDateAd.Text = row.Cells[6].Value.ToString();
                             rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
                         }
@@ -354,16 +358,16 @@ namespace CECLdb
                 {
                     this.Height = 1022;
                     lblSelectAreaAd.Visible = true;
-                    txtArea.Visible = true;
+                    cmbSelectAreaAd.Visible = true;
                     lblSelectCourseAd.Visible = true;
-                    txtCurso.Visible = true;
+                    cmbSelectCourseAd.Visible = true;
                     lblDateAd.Visible = true;
                     dtpDateAd.Visible = true;
                     lblDescriptionAd.Visible = true;
                     rtbDescriptionAd.Visible = true;
 
-                    txtArea.Enabled = false;
-                    txtCurso.Enabled = false;
+                    cmbSelectAreaAd.Enabled = false;
+                    cmbSelectCourseAd.Enabled = false;
                     dtpDateAd.Enabled = false;
                     rtbDescriptionAd.Enabled = false;
 
@@ -372,8 +376,9 @@ namespace CECLdb
                         bool isChecked = Convert.ToBoolean(Fila.Cells[0].Value);
                         if (isChecked)
                         {
-                            txtArea.Text = Fila.Cells[3].Value.ToString();
-                            txtCurso.Text = Fila.Cells[4].Value.ToString();
+                            cmbSelectAreaAd.SelectedValue = int.Parse(Fila.Cells[2].Value.ToString());
+                            LoadCourseAd();
+                            cmbSelectCourseAd.SelectedValue = int.Parse(Fila.Cells[5].Value.ToString());
                             dtpDateAd.Value = Convert.ToDateTime(Fila.Cells[6].Value.ToString());
                             rtbDescriptionAd.Text = Fila.Cells[7].Value.ToString();
                         }
@@ -390,6 +395,8 @@ namespace CECLdb
         }
         private void bttnViewSelectedAd_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (amountSelectedAd == 0)
             {
                 MessageBox.Show("No se ha seleccionado a alguna persona");
@@ -689,21 +696,16 @@ namespace CECLdb
             SelectAllcbx.Location = new Point(42, 133);
             DeselectAllcbx.Location = new Point(213, 133);
             lblSelectAreaAd.Top += 520;
-            txtArea.Top += 520;
             cmbSelectAreaAd.Top += 520;
             lblDescriptionAd.Top = lblSelectCourseAd.Location.Y + 520;
             rtbDescriptionAd.Top = cmbSelectCourseAd.Location.Y + 520;
             lblSelectCourseAd.Top = lblSelectAreaAd.Location.Y;
-            txtCurso.Top = txtArea.Location.Y;
-            cmbSelectCourseAd.Top = txtArea.Location.Y;
+            cmbSelectCourseAd.Top = cmbSelectAreaAd.Location.Y;
             lblDateAd.Top += 520;
             dtpDateAd.Top += 520;
             lblSelectCourseAd.Left = lblDateAd.Location.X;
-            txtCurso.Left = dtpDateAd.Location.X;
             cmbSelectCourseAd.Left = dtpDateAd.Location.X;
         }
-        
-       
         private void CloseWindow()
         {
             if (Menu.action == 5)
@@ -755,6 +757,8 @@ namespace CECLdb
                 DialogResult dialogResult = MessageBox.Show("¿Deseas eliminar los avisos/anuncios seleccionadas de la base de datos? (Puedes revisar tu selección al presionar el botón 'Ver Seleccionados')", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    SelectAllcbx.Checked = false;
+                    DeselectAllcbx.Checked = false;
                     for (int i = 0; i < selectedIDList.Count; i++)
                     {
                         saveId = int.Parse(selectedIDList[i].ToString());
@@ -790,14 +794,16 @@ namespace CECLdb
         {
             if (SelectAllcbx.Checked)
             {
-                amountSelectedAd = 0;
-                selectedIDList.Clear();
                 DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvAdReg.Rows)
                 {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (!selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Add(currentID);
+                        amountSelectedAd++;
+                    }
                     Fila.Cells[0].Value = true;
-                    amountSelectedAd++;
-                    selectedIDList.Add(Convert.ToInt32(Fila.Cells[1].Value));
                 }
             }
         }
@@ -843,11 +849,16 @@ namespace CECLdb
         {
             if (DeselectAllcbx.Checked)
             {
-                amountSelectedAd = 0;
-                selectedIDList.Clear();
                 SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvAdReg.Rows)
                 {
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    if (selectedIDList.Contains(currentID))
+                    {
+                        selectedIDList.Remove(currentID);
+                        amountSelectedAd--;
+                    }
+
                     Fila.Cells[0].Value = null;
                 }
             }

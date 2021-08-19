@@ -81,6 +81,8 @@ namespace CECLdb
         }
         private void bttnViewAll_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             CtrlPerson person = new CtrlPerson();
             dgvEmailSent.DataSource = person.consultationName(null);
             validateSelection();
@@ -113,6 +115,8 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             if (amountSelected == 0)
             {
                 MessageBox.Show("No se ha seleccionado a alguna persona");
@@ -299,6 +303,8 @@ namespace CECLdb
 
         private void Modifybtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             bool Changes = false;
             string message = "¿Deseas realizar los siguientes cambios ?\r\n";
             bool Fail = false;
@@ -458,6 +464,8 @@ namespace CECLdb
         }
         private void AddedPreviewbtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             LastButtonClicked = 'A';
             if (AddedIDList.Count > 0) LoadTableFromPersonList(AddedIDList);
             else MessageBox.Show("No se ha agregado a ninguna persona");
@@ -465,6 +473,8 @@ namespace CECLdb
 
         private void DeletedPreviewbtn_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             LastButtonClicked = 'E';
             if (RemovedIDList.Count > 0) LoadTableFromPersonList(RemovedIDList);
             else MessageBox.Show("No se ha eliminado a ninguna persona");
@@ -496,6 +506,8 @@ namespace CECLdb
 
         private void bttnSearchPerson_Click(object sender, EventArgs e)
         {
+            SelectAllcbx.Checked = false;
+            DeselectAllcbx.Checked = false;
             PersonReg personReg = new PersonReg();
             CtrlPerson person = new CtrlPerson();
             amountSelected = 0;
