@@ -56,6 +56,7 @@ namespace CECLdb
                     bttnSaveAd.Visible = true;
                     btnCleanAd.Visible = true;
                     ModifybtnAd.Visible = true;
+                    bttnViewSelectedAd.Visible = true;
                     cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 3:
@@ -917,7 +918,7 @@ namespace CECLdb
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
 
                 amountSelectedAd += -1;
-                if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
+                if (Menu.action != 5)
                 {
 
                     selectedIDList.Remove(idAd);
@@ -927,7 +928,7 @@ namespace CECLdb
             else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 
-                if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
+                if (Menu.action != 5)
                 {
                     dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
 
