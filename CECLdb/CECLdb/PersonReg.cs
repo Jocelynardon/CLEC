@@ -41,10 +41,11 @@ namespace CECLdb
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
                 lblModify.Visible = false;
-                bttnViewSelectedPerson.Visible = true;
-                bttnViewSelectedPerson.Location = new Point(762, 513);
                 if (Menu.action>=3 && Menu.action<=6)
                 {
+
+                    bttnViewSelectedPerson.Visible = true;
+                    bttnViewSelectedPerson.Location = new Point(762, 513);
                     this.Height = 169;
                     HideAndMove();
                 }
@@ -68,7 +69,6 @@ namespace CECLdb
                 btnSaveData.Visible = true;
                 btnClean.Visible = true;
                 btnSaveData.Visible = true;
-                DeselectAllcbx.Visible = true;
             }
             if (Menu.action == 3)
             {
@@ -836,7 +836,7 @@ namespace CECLdb
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = null;
                 amountSelected += -1;
-                if (Menu.action != 5 && Menu.action !=2)
+                if (Menu.action != 5 && Menu.action !=2 && Menu.action != 4)
                 {
 
                     selectedIDList.Remove(idPerson);
@@ -845,7 +845,7 @@ namespace CECLdb
             }
             else if (dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                if (Menu.action != 5 && Menu.action != 2)
+                if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
                 {
                     dgvPersonReg.CurrentRow.Cells["CheckSelection"].Value = true;
 

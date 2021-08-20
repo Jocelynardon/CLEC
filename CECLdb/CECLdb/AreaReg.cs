@@ -177,15 +177,13 @@ namespace CECLdb
             ConsultationAmount();
 
             dgvArea.Visible = true;
-            bttnViewSelected.Visible = true;
+            if(Menu.action !=2)bttnViewSelected.Visible = true;
             switch (Menu.action)
             {
                 case 2:
                     this.Height = 772;
                     Modifybtn.Visible = true;
                     bttnReturnArea.Location = new Point(301, 687);
-                    DeselectAllcbx.Visible = true;
-                    SelectAllcbx.Visible = true;
                     break;
                 case 3:
                     bttnReturnArea.Location = new Point(325, 511);
@@ -731,7 +729,7 @@ namespace CECLdb
             }
             else if (dgvArea.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                if (Menu.action != 5 && Menu.action != 2)
+                if (Menu.action != 2)
                 {
                     dgvArea.CurrentRow.Cells["CheckSelection"].Value = true;
 

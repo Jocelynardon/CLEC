@@ -195,6 +195,8 @@ namespace CECLdb
                     this.Height = 594;
                     DeselectAllcbx.Visible = true;
                     DeselectAllcbx.Enabled = true;
+                    SelectAllcbx.Visible = true;
+                    SelectAllcbx.Enabled = true;
                     //Mostrar botones según la opción
 
                     //else
