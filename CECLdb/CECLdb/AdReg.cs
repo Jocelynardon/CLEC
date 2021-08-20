@@ -795,7 +795,7 @@ namespace CECLdb
                 DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvAdReg.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells["IDaviso"].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
                     if (!selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Add(currentID);
@@ -861,7 +861,7 @@ namespace CECLdb
                 SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvAdReg.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells["IDaviso"].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
                     if (selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Remove(currentID);
@@ -886,7 +886,7 @@ namespace CECLdb
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        AdID = Convert.ToInt32(row.Cells["IDaviso"].Value);
+                        AdID = Convert.ToInt32(row.Cells[1].Value);
                         Ad ad = ctrlAd.ModifyQuery(AdID.ToString());
                         cmbSelectAreaAd.SelectedValue = ad.IDarea;
                         LoadCourseAd();
