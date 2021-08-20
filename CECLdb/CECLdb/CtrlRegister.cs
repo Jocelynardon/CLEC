@@ -21,7 +21,7 @@ namespace CLEC
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaConsulta " +
                     "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             else
             {
@@ -30,7 +30,7 @@ namespace CLEC
                    "FechaConsulta " +
                    "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE Area.Nombre LIKE '%" + data + "%' OR Area.Año LIKE '%" + data + "%' OR " +
-                   "Area.Convocatoria LIKE '%" + data + "%' ORDER BY FechaConsulta DESC";
+                   "Area.Convocatoria LIKE '%" + data + "%' ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             try
             {
@@ -71,7 +71,7 @@ namespace CLEC
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaConsulta " +
                     "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             else
             {
@@ -79,7 +79,7 @@ namespace CLEC
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaConsulta " +
                    "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                   "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY FechaConsulta DESC";
+                   "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             try
             {
@@ -120,7 +120,7 @@ namespace CLEC
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaConsulta " +
                     "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             else
             {
@@ -129,7 +129,7 @@ namespace CLEC
                    "FechaConsulta " +
                    "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE Persona.Nombre LIKE '%" + data + "%' OR " +
-                   "Persona.Apellido LIKE '%" + data + "%' ORDER BY FechaConsulta DESC";
+                   "Persona.Apellido LIKE '%" + data + "%' ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             try
             {
@@ -170,7 +170,7 @@ namespace CLEC
                     "CONCAT(Persona.Nombre,', ',Persona.Apellido)," +
                     "FechaConsulta " +
                     "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             else
             {
@@ -178,7 +178,8 @@ namespace CLEC
                    "CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombreCom," +
                    "FechaConsulta " +
                    "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
-                   "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE YEAR(FechaConsulta) = YEAR(CURRENT_DATE()) AND MONTH(FechaConsulta) ='" + data + "' ORDER BY FechaConsulta DESC";
+                   "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE YEAR(FechaConsulta) = YEAR(CURRENT_DATE()) AND MONTH(FechaConsulta) ='" + data + "' " +
+                   "ORDER BY FechaConsulta DESC,Area.Año DESC";
             }
             try
             {
@@ -221,7 +222,8 @@ namespace CLEC
                    "FechaConsulta " +
                    "FROM registro AS Reg INNER JOIN Area ON Area.IDarea=Reg.IDarea INNER JOIN Curso ON Curso.IDcurso=Reg.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Reg.IDpersona WHERE Area.IDarea LIKE '%" + idArea + "%' AND " +
-                   "Curso.IDcurso LIKE '%" + idCurso + "%' AND persona.IDpersona LIKE '%" + idPersona + "%' ORDER BY FechaConsulta DESC";
+                   "Curso.IDcurso LIKE '%" + idCurso + "%' AND persona.IDpersona LIKE '%" + idPersona + "%' " +
+                   "ORDER BY FechaConsulta DESC,Area.Año DESC";
 
             try
             {

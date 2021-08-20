@@ -18,12 +18,12 @@ namespace CLEC
             if (data == null)
             {
                 sql = "SELECT area.IDarea,IDcurso,curso.Nombre,CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) " +
-                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea ORDER BY curso.Nombre ASC";
+                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea ORDER BY curso.Nombre ASC,Area.Año DESC";
             }
             else
             {
                 sql = "SELECT area.IDarea,IDcurso,curso.Nombre,CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) " +
-                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE Area.Nombre LIKE '%" + data + "%'  ORDER BY curso.Nombre ASC";
+                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE Area.Nombre LIKE '%" + data + "%'  ORDER BY curso.Nombre ASC,Area.Año DESC";
             }
             try
             {
@@ -57,12 +57,14 @@ namespace CLEC
             if (data == null)
             {
                 sql = "SELECT area.IDarea,IDcurso,curso.Nombre,CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) " +
-                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea ORDER BY curso.Nombre ASC";
+                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea " +
+                    "ORDER BY curso.Nombre ASC,Area.Año DESC";
             }
             else
             {
                 sql = "SELECT area.IDarea,IDcurso,curso.Nombre,CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) " +
-                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE curso.Nombre LIKE '%" + data + "%'  ORDER BY curso.Nombre ASC";
+                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE curso.Nombre LIKE '%" + data + "%'  " +
+                    "ORDER BY curso.Nombre ASC,Area.Año DESC";
             }
             try
             {
@@ -93,7 +95,8 @@ namespace CLEC
             string sql;
 
             sql = "SELECT area.IDarea,IDcurso,curso.Nombre,CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) " +
-                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE IDcurso= '" + data + "'  ORDER BY curso.Nombre ASC";
+                    "FROM curso INNER JOIN area ON area.IDarea=curso.IDarea WHERE IDcurso= '" + data + "'  " +
+                    "ORDER BY curso.Nombre ASC,Area.Año DESC";
             try
             {
                 MySqlConnection connectionBD = base.connectionTable();

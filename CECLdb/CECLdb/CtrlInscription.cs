@@ -22,7 +22,7 @@ namespace CLEC
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                     "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             else
             {
@@ -32,7 +32,7 @@ namespace CLEC
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Area.Nombre LIKE '%" + data + "%' OR Area.Año LIKE '%" + data + "%' OR " +
-                   "Area.Convocatoria LIKE '%" + data + "%' ORDER BY FechaInicio DESC";
+                   "Area.Convocatoria LIKE '%" + data + "%' ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             try
             {
@@ -76,7 +76,7 @@ namespace CLEC
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                     "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             else
             {
@@ -85,7 +85,7 @@ namespace CLEC
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY FechaInicio DESC";
+                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             try
             {
@@ -129,7 +129,7 @@ namespace CLEC
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                     "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             else
             {
@@ -139,7 +139,7 @@ namespace CLEC
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Persona.Nombre LIKE '%" + data + "%' OR " +
-                   "Persona.Apellido LIKE '%" + data + "%' ORDER BY FechaInicio DESC";
+                   "Persona.Apellido LIKE '%" + data + "%' ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             try
             {
@@ -183,7 +183,7 @@ namespace CLEC
                     "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                     "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC";
+                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             else
             {
@@ -192,7 +192,7 @@ namespace CLEC
                    "FechaInicio,IFNULL(FechaFin,'---') AS FechaFin," +
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
-                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE YEAR(FechaInicio) = YEAR(CURRENT_DATE()) AND MONTH(FechaInicio) ='"+data+"' ORDER BY FechaInicio DESC";
+                   "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE YEAR(FechaInicio) = YEAR(CURRENT_DATE()) AND MONTH(FechaInicio) ='"+data+ "' ORDER BY FechaInicio DESC,Area.Año DESC";
             }
             try
             {
@@ -238,7 +238,7 @@ namespace CLEC
                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado " +
                    "FROM inscripcion AS Ins INNER JOIN Area ON Area.IDarea=Ins.IDarea INNER JOIN Curso ON Curso.IDcurso=Ins.IDcurso " +
                    "INNER JOIN persona ON persona.IDpersona=Ins.IDpersona WHERE Area.IDarea LIKE '%" + idArea + "%' AND " +
-                   "Curso.IDcurso LIKE '%" + idCurso + "%' AND persona.IDpersona LIKE '%" + idPersona + "%' ORDER BY FechaInicio DESC";
+                   "Curso.IDcurso LIKE '%" + idCurso + "%' AND persona.IDpersona LIKE '%" + idPersona + "%' ORDER BY FechaInicio DESC,Area.Año DESC";
 
             try
             {

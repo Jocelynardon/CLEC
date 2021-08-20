@@ -18,12 +18,12 @@ namespace CLEC
             if (data == null)
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area ORDER BY Año DESC";
+                    "FROM area ORDER BY Año DESC, Nombre ASC";
             }
             else
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area WHERE Año LIKE '%" + data + "%' ORDER BY Año DESC";
+                    "FROM area WHERE Año LIKE '%" + data + "%' ORDER BY Año DESC, Nombre ASC";
             }
             try
             {
@@ -57,12 +57,12 @@ namespace CLEC
             if (data == null)
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area ORDER BY Año DESC";
+                    "FROM area ORDER BY Año DESC,Nombre ASC";
             }
             else
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area WHERE Convocatoria LIKE '%" + data + "%' ORDER BY Año DESC";
+                    "FROM area WHERE Convocatoria LIKE '%" + data + "%' ORDER BY Año DESC,Nombre ASC";
             }
             try
             {
@@ -96,12 +96,12 @@ namespace CLEC
             if (data == null)
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area ORDER BY Año DESC";
+                    "FROM area ORDER BY Año DESC,Nombre ASC";
             }
             else
             {
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area WHERE Nombre LIKE '%" + data + "%' ORDER BY Año DESC";
+                    "FROM area WHERE Nombre LIKE '%" + data + "%' ORDER BY Año DESC,Nombre ASC";
             }
             try
             {
@@ -133,7 +133,7 @@ namespace CLEC
             string sql;
 
                 sql = "SELECT IDarea,Nombre,Año,Convocatoria " +
-                    "FROM area WHERE IDarea LIKE '%" + data + "%' ORDER BY Año DESC";
+                    "FROM area WHERE IDarea LIKE '%" + data + "%' ORDER BY Año DESC,Nombre ASC";
             try
             {
                 MySqlConnection connectionBD = base.connectionTable();
@@ -166,7 +166,7 @@ namespace CLEC
             switch (Attribute)
             {
                 case '0':
-                    sql += "ORDER BY Nombre";
+                    sql += "ORDER BY Nombre,Año DESC";
                     break;
                 case 'i':
                     break;
