@@ -25,7 +25,8 @@ namespace CECLdb
         public int LastSearchTypeSelected;
         public String textSearch;
         public int amount = 0;
-
+        private bool update = false;
+        char LastBtnClicked;
         List<string> selectedIDList = new List<string>();
         public InscriptionReg()
         {
@@ -180,7 +181,7 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             amountSelected = 0;//Por qué?
             ConsultationAmount();
-
+            LastBtnClicked = 'b';
             if (FirstBttnSearchClick)
             {
                 if (Menu.action != 2) bttnViewSelected.Visible = true;
@@ -250,11 +251,19 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
-            SelectAllcbx.Checked = false;
-            DeselectAllcbx.Checked = false;
+            if (!update)
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastBtnClicked = 'v';
+            }
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado ninguna inscripción");
+                if (!update) MessageBox.Show("No se ha seleccionado ninguna inscripción");
+                else
+                {
+                    dgvInscription.DataSource = null;
+                }
             }
             else if (amountSelected >= 1)
             {
@@ -356,14 +365,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableArea(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableArea(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableArea(null);
+                }
             }
         }
         private void LoadTableCourse(string data)
@@ -382,14 +397,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableCourse(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableCourse(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableCourse(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableCourse(null);
+                }
             }
         }
         private void LoadTablePerson(string data)
@@ -408,14 +429,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTablePerson(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTablePerson(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTablePerson(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTablePerson(null);
+                }
             }
         }
         private void LoadTableMonthYear(string data)
@@ -434,14 +461,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableMonthYear(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableMonthYear(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableMonthYear(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableMonthYear(null);
+                }
             }
         }
         private void LoadTableSelected(List<string> Selected)
@@ -467,14 +500,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha seleccionado a alguna persona");
-                    LoadTableArea(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha seleccionado a alguna persona");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado datos");
-                LoadTableArea(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han seleccionado datos");
+                    LoadTableArea(null);
+                }
             }
         }
 
@@ -819,43 +858,55 @@ namespace CECLdb
         }
         private void UpdateDataGrid()/******************************************/
         {
-            amountSelected = 0;
+            
             ConsultationAmount();
+            update = true;
             if (amount > 0)
             {
-                if (textSearch == "")
+                switch (LastBtnClicked)
                 {
-                    LoadTableArea(null);
-                }
-                else
-                {
-                    switch (cmbType.SelectedIndex)
-                    {
-                        //0 Área, 1 Curso, 2 Persona, Mes
-                        case 0:
-                            LoadTableArea(textSearch);
-                            break;
-                        case 1:
-                            LoadTableCourse(textSearch);
-                            break;
-                        case 2:
-                            LoadTablePerson(textSearch);
-                            break;
-                        case 3:
-                            ChangingInfo();
-                            LoadTableMonthYear(textSearch);
-                            break;
-                        default:
-                            MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
-                            cmbType.Text = "";
-                            break;
-                    }
+                    case 'b':
+                        if (textSearch == "")
+                        {
+                            LoadTableArea(null);
+                        }
+                        else
+                        {
+                            switch (cmbType.SelectedIndex)
+                            {
+                                //0 Área, 1 Curso, 2 Persona, Mes
+                                case 0:
+                                    LoadTableArea(textSearch);
+                                    break;
+                                case 1:
+                                    LoadTableCourse(textSearch);
+                                    break;
+                                case 2:
+                                    LoadTablePerson(textSearch);
+                                    break;
+                                case 3:
+                                    ChangingInfo();
+                                    LoadTableMonthYear(textSearch);
+                                    break;
+                                default:
+                                    MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                                    cmbType.Text = "";
+                                    break;
+                            }
+                        }
+                        break;
+                    case 'v':
+                        bttnViewSelected.PerformClick();
+                        break;
+                    default:
+                        break;
                 }
             }
             else
             {
                 dgvInscription.DataSource = null;
             }
+            update = false;
         }
         private void EmptyChecked()
         {

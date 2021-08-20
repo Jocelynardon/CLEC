@@ -21,7 +21,8 @@ namespace CECLdb
         public int LastSearchTyprSelected;
         public int amountAd = 0;
         public static int empty = 0;
-
+        private bool update = false;/*********************************************************/
+        char LastBtnClicked;/*********************************************************/
         public List<int> selectedIDList = new List<int>();
         //Menu.action 1 es agregar, 2 modificar, 3 eliminar, 4 viene de email enviado en agregar, 5 viene
         // de email enviado pero modificar
@@ -183,6 +184,7 @@ namespace CECLdb
         {
             SelectAllcbx.Checked = false;
             DeselectAllcbx.Checked = false;
+            LastBtnClicked = 'b';/********************************************************************/
             amountSelectedAd = 0;
             ConsultationAmountAd();
 
@@ -282,6 +284,7 @@ namespace CECLdb
         {
             SelectAllcbx.Checked = false;
             DeselectAllcbx.Checked = false;
+            LastBtnClicked = 'g';
             if (cmbSelectAreaAd.Text != "")
             {
                 if (cmbSelectCourseAd.Text != "")
@@ -396,11 +399,19 @@ namespace CECLdb
         }
         private void bttnViewSelectedAd_Click(object sender, EventArgs e)
         {
-            SelectAllcbx.Checked = false;
-            DeselectAllcbx.Checked = false;
+            if (!update)/********************************************************************/
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastBtnClicked = 'v';
+            }
             if (amountSelectedAd == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                if(!update) MessageBox.Show("No se ha seleccionado ningún aviso");/***************/
+                else
+                {
+                    dgvAdReg.DataSource = null;
+                }
             }
             else if (amountSelectedAd >= 1)
             {
@@ -502,14 +513,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableArea(null);
+                    if (!update)/******************************************/
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableArea(null);
+                if (!update)/**********************************************/
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableArea(null);
+                }
             }
         }
         private void LoadTableCourse(string data)
@@ -528,14 +545,21 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableCourse(null);
+                    if (!update)/*************************************************/
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableCourse(null);
+                    }
+                    else update = false;
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableCourse(null);
+                if (!update)/**************************************/
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableCourse(null);
+                }
             }
         }
         private void LoadTableDescription(string data)
@@ -554,14 +578,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableDescription(null);
+                    if (!update)/************************************************/
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableDescription(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableDescription(null);
+                if (!update)/***********************************/
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableDescription(null);
+                }
             }
         }
         private void LoadTableSelectedAd(List<int> adSelected)
@@ -587,14 +617,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha seleccionado a alguna persona");
-                    LoadTableArea(null);
+                    if (!update)/***************************************************/
+                    {
+                        MessageBox.Show("No se ha seleccionado a alguna persona");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado datos");
-                LoadTableArea(null);
+                if (!update)/***************************************/
+                {
+                    MessageBox.Show("No se han seleccionado datos");
+                    LoadTableArea(null);
+                }
             }
         }
         private void ConsultationAmountAd()
@@ -773,38 +809,49 @@ namespace CECLdb
                 }
             }
         }
-        private void UpdateDataGrid()
+        private void UpdateDataGrid()/***************************************************************/
         {
-            amountSelectedAd = 0;
             ConsultationAmountAd();
+            update = true;
             if (amountAd > 0)
             {
-                if (textSearch == "")
+                switch (LastBtnClicked)
                 {
-                    LoadTableArea(null);
-                }
-                switch (cmbTypeAd.SelectedIndex)
-                {
-                    //0 Código, 1 Correo, 2 Nombre
-                    case 0:
-                        LoadTableArea(textSearch);
+                    case 'b':
+                        if (textSearch == "")
+                        {
+                            LoadTableArea(null);
+                        }
+                        switch (cmbTypeAd.SelectedIndex)
+                        {
+                            //0 Código, 1 Correo, 2 Nombre
+                            case 0:
+                                LoadTableArea(textSearch);
+                                break;
+                            case 1:
+                                LoadTableCourse(textSearch);
+                                break;
+                            case 2:
+                                LoadTableDescription(textSearch);
+                                break;
+                            default:
+                                MessageBox.Show("ERROOOOOOOOOOOOOOOOOR");
+                                cmbTypeAd.Text = "";
+                                break;
+                        }
                         break;
-                    case 1:
-                        LoadTableCourse(textSearch);
-                        break;
-                    case 2:
-                        LoadTableDescription(textSearch);
+                    case 'v':
+                        bttnViewSelectedAd.PerformClick();
                         break;
                     default:
-                        MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
-                        cmbTypeAd.Text = "";
                         break;
                 }
             }
             else
             {
-                dgvAdReg.Rows.Clear();
+                dgvAdReg.DataSource = null;
             }
+            update = false;
         }
         private void EmptyChecked()
         {

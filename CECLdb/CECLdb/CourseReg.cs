@@ -18,6 +18,8 @@ namespace CECLdb
         public int amount = 0;
         int CourseID;
         List<int> selectedIDList = new List<int>();
+        private bool update = false;
+        char LastBtnClicked;
         public CourseReg()
         {
             InitializeComponent();
@@ -106,7 +108,7 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             amountSelected = 0;
             ConsultationAmount();
-
+            LastBtnClicked = 'b';
             dgvCourse.Visible = true;
             bttnViewSelected.Visible = true;
             switch (Menu.action)
@@ -160,11 +162,19 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
-            SelectAllcbx.Checked = false;
-            DeselectAllcbx.Checked = false;
+            if (!update)
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastBtnClicked = 'v';
+            }
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado ningún curso");
+                if (!update) MessageBox.Show("No se ha seleccionado ningún curso");
+                else
+                {
+                    dgvCourse.DataSource = null;
+                }
             }
             else if (amountSelected >= 1)
             {
@@ -221,14 +231,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableArea(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableArea(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableArea(null);
+                }
             }
         }
         private void LoadTableName(string data)
@@ -246,14 +262,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableName(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableName(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableName(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableName(null);
+                }
             }
         }
         private void LoadTableSelected(List<int> Selected)
@@ -278,14 +300,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha seleccionado a alguna persona");
-                    LoadTableArea(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha seleccionado a alguna persona");
+                        LoadTableArea(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado datos");
-                LoadTableArea(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han seleccionado datos");
+                    LoadTableArea(null);
+                }
             }
         }
 
@@ -500,36 +528,48 @@ namespace CECLdb
         }
         private void UpdateDataGrid()
         {
-            amountSelected = 0;
+            
             ConsultationAmount();
+            update = true;
             if (amount > 0)
             {
-                if (textSearch == "")
+                switch (LastBtnClicked)
                 {
-                    LoadTableArea(null);
-                }
-                else
-                {
-                    switch (cmbType.SelectedIndex)
-                    {
-                        //0 Area, 1 Nombre
-                        case 0:
-                            LoadTableArea(textSearch);
-                            break;
-                        case 1:
-                            LoadTableName(textSearch);
-                            break;
-                        default:
-                            MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
-                            cmbType.Text = "";
-                            break;
-                    }
+                    case 'b':
+                        if (textSearch == "")
+                        {
+                            LoadTableArea(null);
+                        }
+                        else
+                        {
+                            switch (cmbType.SelectedIndex)
+                            {
+                                //0 Area, 1 Nombre
+                                case 0:
+                                    LoadTableArea(textSearch);
+                                    break;
+                                case 1:
+                                    LoadTableName(textSearch);
+                                    break;
+                                default:
+                                    MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                                    cmbType.Text = "";
+                                    break;
+                            }
+                        }
+                        break;
+                    case 'v':
+                        bttnViewSelected.PerformClick();
+                        break;
+                    default:
+                        break;
                 }
             }
-            if (amount == 0)
+            else
             {
                 dgvCourse.DataSource = null;
             }
+            update = false;
         }
         private void EmptyChecked()
         {

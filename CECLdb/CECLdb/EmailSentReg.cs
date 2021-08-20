@@ -49,6 +49,12 @@ namespace CECLdb
         }
         private void PersonSent()
         {
+            if (!updating)
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastButtonClicked = 'p';
+            }
             cmbTypeSearch.Items.Clear();
             amountSelected = 0;
             LoadTypeSearch();
@@ -76,8 +82,17 @@ namespace CECLdb
             }
             if (amount == 0)
             {
-                MessageBox.Show("No hay correos enviados con ese aviso");
-                AdReg.empty = -1;
+                if (!updating) 
+                {
+                    MessageBox.Show("No hay correos enviados con ese aviso");
+                    AdReg.empty = -1;
+                }
+                else
+                {
+                    updating = false;
+                    dgvEmailSent.DataSource = null;
+                }
+                
             }
         }
         private void bttnViewAll_Click(object sender, EventArgs e)
@@ -116,11 +131,20 @@ namespace CECLdb
         }
         private void bttnViewSelected_Click(object sender, EventArgs e)
         {
-            SelectAllcbx.Checked = false;
-            DeselectAllcbx.Checked = false;
+            if (!updating)
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastButtonClicked = 'v';
+            }
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                if (!updating) MessageBox.Show("No se ha seleccionado ningún destinatario");
+                else
+                {
+                    updating = false;
+                    dgvEmailSent.DataSource = null;
+                }
             }
             else if (amountSelected >= 1)
             {
@@ -153,12 +177,14 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
+                    if (!updating) MessageBox.Show("No se ha encontrado coincidencias");
+                    else updating = false;
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
+                if (!updating) MessageBox.Show("No se han encontrado datos");
+                else updating = false;
             }
         }
         private void LoadTableFromPersonList(List<int> personList)
@@ -183,14 +209,22 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha seleccionado a alguna persona");
-                    person.consultationName(null);
+                    if (!updating)
+                    {
+                        MessageBox.Show("No se ha seleccionado a alguna persona");
+                        person.consultationName(null);
+                    }
+                    else updating = false;
                 }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado datos");
-                person.consultationName(null);
+                if (!updating)
+                {
+                    MessageBox.Show("No se han seleccionado datos");
+                    person.consultationName(null);
+                }
+                else updating = false;
             }
         }
         private void CheckShow()
@@ -395,6 +429,7 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             PersonReg personReg = new PersonReg();
             personReg.consultationAmount();
+            updating = true;
             if (personReg.amountPerson > 0)
             {
                 switch (LastButtonClicked)
@@ -449,13 +484,15 @@ namespace CECLdb
                         else dgvEmailSent.DataSource = null;
                         break;
                     case 'T':
-                        updating = true;
                         bttnViewAll.PerformClick();
-                        
+                        break;
+                    case 'p':
+                        PersonSent();
+                        break;
+                    case 'v':
+                        bttnViewSelected.PerformClick();
                         break;
                     default:
-                        if(amountSelected > 0)LoadTableFromPersonList(selectedIDList);
-                        else dgvEmailSent.DataSource = null;
                         break;
                 }
             }
@@ -463,6 +500,7 @@ namespace CECLdb
             {
                 dgvEmailSent.DataSource = null;
             }
+            updating = false;
         }
         private void AddedPreviewbtn_Click(object sender, EventArgs e)
         {

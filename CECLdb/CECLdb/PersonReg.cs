@@ -24,7 +24,8 @@ namespace CECLdb
         public int amountPerson = 0;
         public int idPerson = 0;
         public List<int> selectedIDList= new List<int>();
-
+        private bool update = false;
+        char LastBtnClicked;
         //opción 1 agregar, 2 modificar, 3 eliminar, 4 viene de registro, 5 viene de inscripción,6 viene de de aviso
         public PersonReg()
         {
@@ -268,11 +269,19 @@ namespace CECLdb
         }
         private void bttnViewSelectedPerson_Click(object sender, EventArgs e)
         {
-            SelectAllcbx.Checked = false;
-            DeselectAllcbx.Checked = false;
+            if (!update)
+            {
+                SelectAllcbx.Checked = false;
+                DeselectAllcbx.Checked = false;
+                LastBtnClicked = 'v';
+            }
             if (amountSelected == 0)
             {
-                MessageBox.Show("No se ha seleccionado a alguna persona");
+                if (!update) MessageBox.Show("No se ha seleccionado ninguna persona");
+                else
+                {
+                    dgvPersonReg.DataSource = null;
+                }
             }
             else if (amountSelected>=1)
             {
@@ -285,7 +294,7 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             amountSelected = 0;
             consultationAmount();
-            
+            LastBtnClicked = 'b';
             if (amountPerson > 0)
             {
                 if (Menu.action>=3 && Menu.action<=6)
@@ -384,14 +393,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableCode(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableCode(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableCode(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableCode(null);
+                }
             }
         }
         public void LoadTableEmail(string date)
@@ -410,14 +425,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableEmail(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableEmail(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableEmail(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableEmail(null);
+                }
             }
         }
         public void LoadTableName(string date)
@@ -437,14 +458,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha encontrado coincidencias");
-                    LoadTableName(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableName(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han encontrado datos");
-                LoadTableName(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableName(null);
+                }
             }
         }
         public void LoadTableSelectedPerson(List<int> personSelected)
@@ -469,14 +496,20 @@ namespace CECLdb
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("No se ha seleccionado a alguna persona");
-                    LoadTableCode(null);
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha seleccionado a alguna persona");
+                        LoadTableCode(null);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado datos");
-                LoadTableCode(null);
+                if (!update)
+                {
+                    MessageBox.Show("No se han seleccionado datos");
+                    LoadTableCode(null);
+                }
             }
         }
 
@@ -722,29 +755,40 @@ namespace CECLdb
         }
         private void UpdateDataGrid()/******************************************/
         {
-            amountSelected = 0;
+            
             consultationAmount();
+            update = true;
             if (amountPerson > 0)
             {
-                if (textSearch == "")
+                switch (LastBtnClicked)
                 {
-                    LoadTableCode(null);
-                }
-                switch (LastSearchTypeSelected)
-                {
-                    //0 Código, 1 Correo, 2 Nombre
-                    case 0:
-                        LoadTableCode(textSearch);
+                    case 'b':
+                        if (textSearch == "")
+                        {
+                            LoadTableCode(null);
+                        }
+                        switch (LastSearchTypeSelected)
+                        {
+                            //0 Código, 1 Correo, 2 Nombre
+                            case 0:
+                                LoadTableCode(textSearch);
+                                break;
+                            case 1:
+                                LoadTableEmail(textSearch);
+                                break;
+                            case 2:
+                                LoadTableName(textSearch);
+                                break;
+                            default:
+                                MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
+                                cmbTypeSearch.Text = "";
+                                break;
+                        }
                         break;
-                    case 1:
-                        LoadTableEmail(textSearch);
-                        break;
-                    case 2:
-                        LoadTableName(textSearch);
+                    case 'v':
+                        bttnViewSelectedPerson.PerformClick();
                         break;
                     default:
-                        MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
-                        cmbTypeSearch.Text = "";
                         break;
                 }
             }
@@ -752,6 +796,7 @@ namespace CECLdb
             {
                 dgvPersonReg.DataSource = null;
             }
+            update = false;
         }
         private void EmptyChecked()/********************************************/
         {
