@@ -216,8 +216,6 @@ namespace CECLdb
                 case 2:
                     ModifybtnAd.Location = new Point(340, 938);
                     bttnReturnAd.Location = new Point(440, 938);
-                    DeselectAllcbx.Visible = true;
-                    bttnViewSelectedAd.Visible = true;
                     this.Height = 1022;
                     break;
                 case 3:
