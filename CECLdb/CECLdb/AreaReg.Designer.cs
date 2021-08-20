@@ -83,6 +83,7 @@ namespace CECLdb
             // 
             // cmbYear
             // 
+            this.cmbYear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbYear.FormattingEnabled = true;
             this.cmbYear.Location = new System.Drawing.Point(43, 76);
             this.cmbYear.Name = "cmbYear";

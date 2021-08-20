@@ -120,7 +120,7 @@ namespace CECLdb
             {
                 if (txtbCodePerson.TextLength == 7)
                 {
-                    if (txtbTelephone.TextLength>=8 || txtbTelephone.TextLength<=9)
+                    if (txtbTelephone.TextLength==8 || txtbTelephone.TextLength==9)
                     {
                         String personName = txtbNamePerson.Text;
                         String personLastName = txtbLastNamePerson.Text;
@@ -529,6 +529,7 @@ namespace CECLdb
                         DataGridViewCell choosenID = row.Cells[1];
                         AddID parent = this.Owner as AddID;
                         parent.AddNewItem(choosenID);
+                        Menu.action = 4;
                         this.Close();
                     }
                 }

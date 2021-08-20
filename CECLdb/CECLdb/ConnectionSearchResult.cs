@@ -10,14 +10,15 @@ namespace CLEC
         public MySqlConnection connectionTable()
         {
             //Falta el connector
-            string server = "127.0.0.1";
-            string port = "3306";
+            string server = "localhost";//192.168.1.183
+            //string port = "3306";
             string bd = "cecldb";
             string user = "URLuser";
             string password = "Algebra123";
 
+            //Port=" + port + ";
             string stringconnection = "Database= " + bd + ";Data Source= " + server +
-                ";Port=" + port + ";User Id= " + user + "; Password= " + password + "";
+                ";User Id= " + user + "; Password= " + password + "";
 
             try
             {

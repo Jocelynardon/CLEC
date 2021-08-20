@@ -29,11 +29,13 @@ namespace CECLdb
                 case 1:
                     this.Height = 269;
                     bttnAddCourse.Visible = true;
+                    cmbSelectArea.SelectedIndex = -1;
                     cmbType.SelectedIndex = -1;
                     break;
                 case 2:
                     this.Height = 312;
                     LoadTypeSearch();
+                    cmbSelectArea.SelectedIndex = -1;
                     cmbType.SelectedIndex = -1;
                     btnSaveData.Visible = true;
                     cmbSelectArea.SelectedIndex = -1;
