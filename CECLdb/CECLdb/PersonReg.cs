@@ -522,7 +522,7 @@ namespace CECLdb
                     {
                         PerID = Convert.ToInt32(row.Cells[1].Value);
                         Person person = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
-                        txtbCodePerson.Text = person.Código;
+                        txtbCodePerson.Text = Convert.ToString(person.Código);
                         txtbLastNamePerson.Text = person.Apellido;
                         txtbNamePerson.Text = person.Nombre;
                         txtEmailPerson.Text = person.Email;

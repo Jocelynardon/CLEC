@@ -38,7 +38,7 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }
@@ -77,7 +77,7 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }
@@ -115,7 +115,7 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }
@@ -147,7 +147,7 @@ namespace CLEC
                     person.Apellido = reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
 
                 }
             }
@@ -179,7 +179,7 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
                     listSelected.Add(person);
                 }
             }
@@ -211,7 +211,7 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = reader.GetString(5);
+                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }

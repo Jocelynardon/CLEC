@@ -10,7 +10,7 @@ namespace CLEC
         private int telephone;
         private string name;
         private string email;
-        private string codePerson;
+        private int codePerson;
         private string lastname;
 
         public int ID { get => idPerson; set => idPerson = value; }
@@ -18,7 +18,7 @@ namespace CLEC
         public string Apellido { get => lastname; set => lastname = value; }
         public string Email { get => email; set => email = value; }
         public int Teléfono { get => telephone; set => telephone = value; }
-        public string Código { get => codePerson; set => codePerson = value; }
+        public int Código { get => codePerson; set => codePerson = value; }
 
     }
 }
