@@ -447,8 +447,8 @@ namespace CECLdb
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
                     if (isChecked)
                     {
-                        AreaID = Convert.ToInt32(row.Cells[1].Value);
-                        Area area = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
+                        AreaID = Convert.ToInt32(row.Cells["IDarea"].Value);
+                        Area area = ctrl.ModifyQuery(row.Cells["IDarea"].Value.ToString());
                         FullCombobox();
                         cmbYear.SelectedItem = area.Año.ToString();
                         cmbAnnouncement.SelectedItem = area.Convocatoria.ToString();
@@ -568,7 +568,7 @@ namespace CECLdb
                 DeselectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvArea.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells["IDarea"].Value);
                     if (!selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Add(currentID);
@@ -639,7 +639,7 @@ namespace CECLdb
                 SelectAllcbx.Checked = false;
                 foreach (DataGridViewRow Fila in dgvArea.Rows)
                 {
-                    int currentID = Convert.ToInt32(Fila.Cells[1].Value);
+                    int currentID = Convert.ToInt32(Fila.Cells["IDarea"].Value);
                     if (selectedIDList.Contains(currentID))
                     {
                         selectedIDList.Remove(currentID);

@@ -29,7 +29,20 @@ namespace CECLdb
 
         private void rbttnAddEmailSent_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (rbttnAddEmailSent.Checked)
+            {
+                bttnAddMenu.Visible = false;
+                bttnModifyMenu.Visible = false;
+                bttnDeleteMenu.Text = "Agregar o Eliminar Destinatarios";
+                bttnDeleteMenu.Height += 34;
+            }
+            else
+            {
+                bttnAddMenu.Visible = true;
+                bttnModifyMenu.Visible = true;
+                bttnDeleteMenu.Text = "Eliminar";
+                bttnDeleteMenu.Height -= 34;
+            }
         }
 
         private void Buscar_Click(object sender, EventArgs e)
