@@ -84,7 +84,7 @@ namespace CECLdb
             this.gpbAdd.Controls.Add(this.rbttnAddInscription);
             this.gpbAdd.Controls.Add(this.rbttnAddRegister);
             this.gpbAdd.Controls.Add(this.rbttnAddPerson);
-            this.gpbAdd.Location = new System.Drawing.Point(59, 73);
+            this.gpbAdd.Location = new System.Drawing.Point(165, 77);
             this.gpbAdd.Name = "gpbAdd";
             this.gpbAdd.Size = new System.Drawing.Size(396, 288);
             this.gpbAdd.TabIndex = 2;
@@ -202,6 +202,7 @@ namespace CECLdb
             this.groupBox3.Size = new System.Drawing.Size(178, 182);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
             // 
             // rbttnSearchCourseorAd
             // 
