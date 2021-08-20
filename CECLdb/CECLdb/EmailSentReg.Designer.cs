@@ -313,6 +313,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "EmailSentReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Email Enviado";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).EndInit();
             this.Destinatarios.ResumeLayout(false);

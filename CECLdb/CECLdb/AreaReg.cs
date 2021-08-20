@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -28,6 +29,7 @@ namespace CECLdb
             {
                 case 1:
                     this.Height = 306;
+                    bttnImport.Visible = true;
                     FullCombobox();
                     bttnAddArea.Visible = true;
                     break;
@@ -102,6 +104,66 @@ namespace CECLdb
                 MessageBox.Show("Por favor, Ingrese la información solicitada");
             }
         }
+        private void bttnImportPerson_Click(object sender, EventArgs e)
+        {
+            int linesCount = 0;
+            MessageBox.Show("El formato para el archivo .csv es:\n NOMBRE, AÑO (2010 en adelante), CONVOCATORIA (Solo número, ej: 2)");
+
+            OpenFileDialog window = new OpenFileDialog();
+            window.Title = "Importar archivo (.txt, .csv)";
+            window.Filter = "Text files (*.Csv)|*.csv|(*.txt)|*.txt";
+            if (window.ShowDialog() == DialogResult.OK)
+            {
+                MySqlConnection connectionBD = Connection.connection();
+                connectionBD.Open();
+                try
+                {
+                    String[] lines = File.ReadAllLines(window.FileName);
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        if (lines[i] != "")
+                        {
+                            String[] lineConverted = lines[i].Split(";");
+
+                            string sql = "INSERT INTO Area (Nombre,Año,Convocatoria) VALUES" +
+                        "('" + lineConverted[0] + "','" + lineConverted[1] + "','" + lineConverted[2] + "')";
+
+                            if (lineConverted.Length == 3)
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                if (i == lines.Length - 1)
+                                {
+                                    MessageBox.Show("Se ha insertado exitosamente");
+                                    Clean();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No tiene la cantidad de datos indicado");
+                            }
+                        }
+                        else
+                        {
+                            linesCount++;
+                            if (linesCount == lines.Length)
+                            {
+                                MessageBox.Show("El archivo se encuentra vacío");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al insertar: Revise los datos ingresados \n" + ex.Message);
+                }
+                finally
+                {
+                    connectionBD.Close();
+                }
+            }
+        }
+
         private void bttnReturnArea_Click(object sender, EventArgs e)
         {
             CloseWindow();
@@ -686,5 +748,6 @@ namespace CECLdb
                 amountSelected += 1;
             }
         }
+       
     }
 }

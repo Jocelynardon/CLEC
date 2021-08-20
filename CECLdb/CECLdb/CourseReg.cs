@@ -393,6 +393,7 @@ namespace CECLdb
         }
 
 
+
         private void Modifybtn_Click(object sender, EventArgs e)
         {
             CtrlCourse ctrl = new CtrlCourse();

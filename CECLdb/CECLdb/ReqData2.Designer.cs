@@ -152,7 +152,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "ReqData2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ReqData2";
+            this.Text = "Inscripción por cursos";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReqData2)).EndInit();
             this.ResumeLayout(false);

@@ -36,6 +36,7 @@ namespace CECLdb
                 bttnAddPerson.Visible = false;
                 bttnSearchPerson.Visible = true;
                 bttnImportPerson.Visible = false;
+                bttnEraserText.Visible = true;
                 dgvPersonReg.Visible = true;
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
@@ -539,7 +540,6 @@ namespace CECLdb
                 MessageBox.Show("Selecciona únicamente a 1 persona");
             }
         }
-
         private void Modifybtn_Click(object sender, EventArgs e)/*************************/
         {
             CtrlPerson ctrl = new CtrlPerson();
@@ -570,8 +570,6 @@ namespace CECLdb
                 MessageBox.Show("Selecciona únicamente a 1 persona");
             }
         }
-
-
         private void btnSaveData_Click(object sender, EventArgs e)/********************/
         {
             SelectAllcbx.Checked = false;
@@ -627,6 +625,11 @@ namespace CECLdb
                 MessageBox.Show("Por favor, complete la información");
             }
         }
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            txtTextSearch.Text = "";
+        }
+
 
         private void btnClean_Click(object sender, EventArgs e)
         {
@@ -690,6 +693,7 @@ namespace CECLdb
             txtbTelephone.Text = "";
             amountSelected = 0;
         }
+
 
         private void Deletebtn_Click(object sender, EventArgs e)/***************/
         {

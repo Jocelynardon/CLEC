@@ -456,7 +456,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "InscriptionReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "InscriptionReg";
+            this.Text = "Inscripción";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InscriptionReg_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).EndInit();
             this.SearchGBox.ResumeLayout(false);

@@ -56,6 +56,7 @@ namespace CECLdb
                     bttnSaveAd.Visible = true;
                     btnCleanAd.Visible = true;
                     ModifybtnAd.Visible = true;
+                    bttnViewSelectedAd.Visible = true;
                     cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 3:
@@ -348,8 +349,9 @@ namespace CECLdb
                         if (isChecked)
                         {
                             idAd = int.Parse(row.Cells[1].Value.ToString());
-                            cmbSelectAreaAd.Text = row.Cells[3].Value.ToString();
-                            cmbSelectCourseAd.Text = row.Cells[4].Value.ToString();
+                            cmbSelectAreaAd.SelectedValue = int.Parse(row.Cells[2].Value.ToString());
+                            LoadCourseAd();
+                            cmbSelectCourseAd.SelectedValue = int.Parse(row.Cells[5].Value.ToString());
                             dtpDateAd.Text = row.Cells[6].Value.ToString();
                             rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
                         }
@@ -419,6 +421,23 @@ namespace CECLdb
         private void bttnEraserText_Click(object sender, EventArgs e)
         {
             txtTextAd.Text = "";
+        }
+        private void bttnConfirm_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvAdReg.Rows)
+            {
+                bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
+                if (isChecked)
+                {
+                    DataGridViewCell choosenID = row.Cells[1];
+                    AddID parent = this.Owner as AddID;
+                    parent.AddNewItem(choosenID);
+                    if (empty == 1)
+                    {
+                        this.Close();
+                    }
+                }
+            }
         }
 
         private void Exit(object sender, KeyEventArgs e)
@@ -717,23 +736,6 @@ namespace CECLdb
                 this.Close();
             }
         }
-        private void bttnConfirm_Click(object sender, EventArgs e)
-        {
-                foreach (DataGridViewRow row in dgvAdReg.Rows)
-                {
-                    bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
-                    if (isChecked)
-                    {
-                        DataGridViewCell choosenID = row.Cells[1];
-                        AddID parent = this.Owner as AddID;
-                        parent.AddNewItem(choosenID);
-                    if (empty==1)
-                    {
-                        this.Close();
-                    }
-                    }
-                }
-        }
         private void Clean()
         {
             cmbSelectAreaAd.Text = "";
@@ -744,6 +746,7 @@ namespace CECLdb
             dtpDateAd.CustomFormat = "yyyy/MM/dd hh:mm";
             //ShowNumberAd();
         }
+
 
         private void DeletebtnAd_Click(object sender, EventArgs e)
         {
@@ -919,7 +922,7 @@ namespace CECLdb
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
 
                 amountSelectedAd += -1;
-                if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
+                if (Menu.action != 5)
                 {
 
                     selectedIDList.Remove(idAd);
@@ -929,7 +932,7 @@ namespace CECLdb
             else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
                 
-                if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
+                if (Menu.action != 5)
                 {
                     dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
 

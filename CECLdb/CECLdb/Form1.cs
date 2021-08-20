@@ -24,10 +24,6 @@ namespace CECLdb
             LoadAreaCheckList();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

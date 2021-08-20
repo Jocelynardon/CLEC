@@ -60,6 +60,7 @@ namespace CECLdb
             this.bttnSentEmail = new System.Windows.Forms.Button();
             this.bttnViewSelectedPerson = new System.Windows.Forms.Button();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
+            this.bttnEraserText = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -347,7 +348,7 @@ namespace CECLdb
             // 
             this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClean.Location = new System.Drawing.Point(599, 273);
+            this.btnClean.Location = new System.Drawing.Point(593, 273);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
             this.btnClean.TabIndex = 8;
@@ -406,11 +407,25 @@ namespace CECLdb
             this.DeselectAllcbx.Visible = false;
             this.DeselectAllcbx.CheckedChanged += new System.EventHandler(this.DeselectAllcbx_CheckedChanged);
             // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(940, 345);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 51;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Visible = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
+            // 
             // PersonReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 828);
+            this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.DeselectAllcbx);
             this.Controls.Add(this.bttnViewSelectedPerson);
             this.Controls.Add(this.bttnSentEmail);
@@ -443,7 +458,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "PersonReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "PersonRegister";
+            this.Text = "Registro de persona";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).EndInit();
             this.ResumeLayout(false);
@@ -483,5 +498,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSentEmail;
         private System.Windows.Forms.Button bttnViewSelectedPerson;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
+        private System.Windows.Forms.Button bttnEraserText;
     }
 }

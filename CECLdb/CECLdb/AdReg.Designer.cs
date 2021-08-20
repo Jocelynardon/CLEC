@@ -427,7 +427,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AdReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AdReg";
+            this.Text = "Aviso";
             this.Click += new System.EventHandler(this.bttnSaveAd_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdReg)).EndInit();

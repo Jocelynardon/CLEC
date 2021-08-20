@@ -51,6 +51,7 @@ namespace CECLdb
             this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvArea = new System.Windows.Forms.DataGridView();
             this.btnSaveData = new System.Windows.Forms.Button();
+            this.bttnImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).BeginInit();
             this.SuspendLayout();
             // 
@@ -303,11 +304,25 @@ namespace CECLdb
             this.btnSaveData.Visible = false;
             this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
+            // bttnImport
+            // 
+            this.bttnImport.BackColor = System.Drawing.Color.LightCoral;
+            this.bttnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bttnImport.Location = new System.Drawing.Point(412, 218);
+            this.bttnImport.Name = "bttnImport";
+            this.bttnImport.Size = new System.Drawing.Size(94, 29);
+            this.bttnImport.TabIndex = 59;
+            this.bttnImport.Text = "Importar";
+            this.bttnImport.UseVisualStyleBackColor = false;
+            this.bttnImport.Visible = false;
+            this.bttnImport.Click += new System.EventHandler(this.bttnImportPerson_Click);
+            // 
             // AreaReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 725);
+            this.Controls.Add(this.bttnImport);
             this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.bttnViewSelected);
             this.Controls.Add(this.Deletebtn);
@@ -332,7 +347,7 @@ namespace CECLdb
             this.KeyPreview = true;
             this.Name = "AreaReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AreaReg";
+            this.Text = "Área";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).EndInit();
             this.ResumeLayout(false);
@@ -364,5 +379,6 @@ namespace CECLdb
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.DataGridView dgvArea;
         private System.Windows.Forms.Button btnSaveData;
+        private System.Windows.Forms.Button bttnImport;
     }
 }
