@@ -110,14 +110,13 @@ namespace CECLdb
             ConsultationAmount();
             LastBtnClicked = 'b';
             dgvCourse.Visible = true;
-            bttnViewSelected.Visible = true;
+            if(Menu.action!=2)bttnViewSelected.Visible = true;
             switch (Menu.action)
             {
                 case 2:
                     this.Height = 730;
                     Modifybtn.Visible = true;
                     bttnReturnCourse.Location = new Point(366, 648);
-                    DeselectAllcbx.Visible = true;
                     break;
                 case 3:
                     this.Height = 593;
