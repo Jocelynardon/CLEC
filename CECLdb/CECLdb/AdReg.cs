@@ -281,7 +281,6 @@ namespace CECLdb
         {
             SelectAllcbx.Checked = false;
             DeselectAllcbx.Checked = false;
-            LastBtnClicked = 'g';
             if (cmbSelectAreaAd.Text != "")
             {
                 if (cmbSelectCourseAd.Text != "")
