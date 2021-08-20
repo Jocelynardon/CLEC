@@ -137,6 +137,7 @@ namespace CECLdb
             this.Controls.Add(this.DGVDelete);
             this.KeyPreview = true;
             this.Name = "GeneralDelete";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GeneralDelete";
             this.Load += new System.EventHandler(this.PersonDelete_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);

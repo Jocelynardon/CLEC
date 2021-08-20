@@ -73,7 +73,6 @@ namespace CECLdb
             // cmbSelectAreaAd
             // 
             this.cmbSelectAreaAd.BackColor = System.Drawing.Color.MintCream;
-            this.cmbSelectAreaAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectAreaAd.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cmbSelectAreaAd.FormattingEnabled = true;
             this.cmbSelectAreaAd.Location = new System.Drawing.Point(42, 56);
@@ -94,7 +93,6 @@ namespace CECLdb
             // cmbSelectCourseAd
             // 
             this.cmbSelectCourseAd.BackColor = System.Drawing.Color.MintCream;
-            this.cmbSelectCourseAd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectCourseAd.FormattingEnabled = true;
             this.cmbSelectCourseAd.Location = new System.Drawing.Point(42, 146);
             this.cmbSelectCourseAd.Name = "cmbSelectCourseAd";
@@ -307,7 +305,7 @@ namespace CECLdb
             // 
             this.bttnSelectPerson.BackColor = System.Drawing.Color.Khaki;
             this.bttnSelectPerson.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSelectPerson.Location = new System.Drawing.Point(460, 938);
+            this.bttnSelectPerson.Location = new System.Drawing.Point(457, 938);
             this.bttnSelectPerson.Name = "bttnSelectPerson";
             this.bttnSelectPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnSelectPerson.TabIndex = 24;

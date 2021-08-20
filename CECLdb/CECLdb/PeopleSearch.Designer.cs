@@ -234,6 +234,7 @@ namespace CECLdb
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
             this.Name = "PeopleSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PeopleSearch";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             this.groupBox1.ResumeLayout(false);

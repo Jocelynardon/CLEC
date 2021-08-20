@@ -57,12 +57,12 @@ namespace CECLdb
 
         private void bttnAddArea_Click(object sender, EventArgs e)
         {
-            if (cmbAnnouncement.Text != null && cmbYear.Text != null && txtbAreaName.Text != "")
+            if (cmbAnnouncement.Text != "" && cmbYear.Text != "" && txtbAreaName.Text != "")
             {
                 int yearArea = int.Parse(cmbYear.Text);
                 int convocatoryArea = int.Parse(cmbAnnouncement.Text);
                 String nameArea = txtbAreaName.Text;
-                if (yearArea > 2010 && yearArea < 2999)
+                if (yearArea > 2010 && yearArea < 9999)
                 {
                     if (convocatoryArea > 0 && convocatoryArea < 10)
                     {
@@ -94,7 +94,7 @@ namespace CECLdb
                 }
                 else
                 {
-                    MessageBox.Show("El año debe ser 2010 en adelante");
+                    MessageBox.Show("El año debe tener 4 dígitos");
                 }
             }
             else

@@ -309,6 +309,7 @@ namespace CECLdb
             this.Controls.Add(this.lblSelectAreaCourse);
             this.KeyPreview = true;
             this.Name = "CourseReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CourseReg";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).EndInit();

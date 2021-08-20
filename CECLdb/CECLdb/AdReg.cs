@@ -348,9 +348,8 @@ namespace CECLdb
                         if (isChecked)
                         {
                             idAd = int.Parse(row.Cells[1].Value.ToString());
-                            cmbSelectAreaAd.SelectedValue = int.Parse(row.Cells[2].Value.ToString());
-                            LoadCourseAd();
-                            cmbSelectCourseAd.SelectedValue = int.Parse(row.Cells[5].Value.ToString());
+                            cmbSelectAreaAd.Text = row.Cells[3].Value.ToString();
+                            cmbSelectCourseAd.Text = row.Cells[4].Value.ToString();
                             dtpDateAd.Text = row.Cells[6].Value.ToString();
                             rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
                         }

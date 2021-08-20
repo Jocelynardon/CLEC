@@ -292,7 +292,7 @@ namespace CECLdb
         {
             cmbSelectAreaRegister.DataSource = null;
             cmbSelectAreaRegister.Items.Clear();
-            string sql = "SELECT IDarea,Nombre FROM area ORDER BY Nombre";
+            string sql = "SELECT IDarea,CONCAT(Nombre,', ',Año,', ',Convocatoria) AS NomCom FROM area ORDER BY Nombre";
             MySqlConnection connectionBD = Connection.connection();
             connectionBD.Open();
             try
@@ -303,7 +303,7 @@ namespace CECLdb
                 data.Fill(dataTable);
 
                 cmbSelectAreaRegister.ValueMember = "IDarea";
-                cmbSelectAreaRegister.DisplayMember = "Nombre";
+                cmbSelectAreaRegister.DisplayMember = "NomCom";
                 cmbSelectAreaRegister.DataSource = dataTable;
             }
             catch (Exception ex)

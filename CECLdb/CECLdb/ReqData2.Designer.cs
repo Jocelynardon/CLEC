@@ -151,6 +151,7 @@ namespace CECLdb
             this.Controls.Add(this.dgvReqData2);
             this.KeyPreview = true;
             this.Name = "ReqData2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ReqData2";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReqData2)).EndInit();

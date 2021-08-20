@@ -395,6 +395,7 @@ namespace CECLdb
             this.Controls.Add(this.lblEscRegister);
             this.KeyPreview = true;
             this.Name = "RegisterReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).EndInit();
