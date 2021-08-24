@@ -27,13 +27,13 @@ namespace CECLdb
             switch (Menu.action)
             {
                 case 1:
-                    this.Height = 269;
+                    this.Height = 268;
                     bttnAddCourse.Visible = true;
                     cmbSelectArea.SelectedIndex = -1;
                     cmbType.SelectedIndex = -1;
                     break;
                 case 2:
-                    this.Height = 312;
+                    HideAndMove(true);
                     LoadTypeSearch();
                     cmbSelectArea.SelectedIndex = -1;
                     cmbType.SelectedIndex = -1;
@@ -43,15 +43,20 @@ namespace CECLdb
                     cmbType.Visible = true;
                     bttnSearch.Visible = true;
                     bttnEraserText.Visible = true;
+                    Modifybtn.Visible = true;
                     break;
                 case 3:
-                    this.Height = 174;
                     LoadTypeSearch();
-                    HideAndMove();
+                    HideAndMove(false);
                     txtText.Visible = true;
                     cmbType.Visible = true;
                     bttnSearch.Visible = true;
                     bttnEraserText.Visible = true;
+                    Deletebtn.Visible = true;/*******************/
+                    SelectAllcbx.Visible = true;/****************/
+                    DeselectAllcbx.Visible = true;/**************/
+                    bttnViewSelected.Visible = true;/************/
+
                     break;
                 default:
                     break;
@@ -116,15 +121,13 @@ namespace CECLdb
             switch (Menu.action)
             {
                 case 2:
-                    this.Height = 730;
-                    Modifybtn.Visible = true;
-                    bttnReturnCourse.Location = new Point(366, 648);
+                    Modifybtn.Enabled = true;
                     break;
                 case 3:
-                    this.Height = 593;
-                    bttnReturnCourse.Location = new Point(380, 500);
-                    SelectAllcbx.Visible = true;
-                    Deletebtn.Visible = true;
+                    Deletebtn.Enabled = true;/*******************/
+                    SelectAllcbx.Enabled = true;/****************/
+                    DeselectAllcbx.Enabled = true;/**************/
+                    bttnViewSelected.Enabled = true;/************/
                     break;
                 default:
                     break;
@@ -319,21 +322,17 @@ namespace CECLdb
         }
 
 
-        private void HideAndMove()
+        private void HideAndMove(bool justOneSelection)
         {
-            lblSelectAreaCourse.Visible = false;
-            cmbSelectArea.Visible = false;
-            lblCourseName.Visible = false;
-            txtbCourseName.Visible = false;
-            txtText.Location = new Point(12, 83);
-            cmbType.Location = new Point(481, 83);
-            bttnSearch.Location = new Point(687, 83);
-            bttnEraserText.Location = new Point(809, 83);
-            SelectAllcbx.Location = new Point(15, 124);
-            DeselectAllcbx.Location = new Point(172, 124);
-            dgvCourse.Location = new Point(34, 154);
-            Deletebtn.Location = new Point(280, 500);
-            bttnViewSelected.Location = new Point(494, 500);
+            this.Height = 587;
+            SearchGBox.Top = 34;
+            DataGBox.Top += 516;
+            if (!justOneSelection)
+            {
+                SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
+                bttnViewSelected.Visible = true;
+            }
         }
         private void ConsultationAmount()
         {
@@ -396,6 +395,7 @@ namespace CECLdb
 
         private void Modifybtn_Click(object sender, EventArgs e)
         {
+            
             CtrlCourse ctrl = new CtrlCourse();
             if (amountSelected == 0)
             {
@@ -403,6 +403,8 @@ namespace CECLdb
             }
             if (amountSelected == 1)
             {
+                this.Height = 783;/***************************************/
+                btnSaveData.Enabled = true;/******************************/
                 foreach (DataGridViewRow row in dgvCourse.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);

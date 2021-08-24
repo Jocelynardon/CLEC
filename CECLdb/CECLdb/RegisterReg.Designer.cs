@@ -38,8 +38,6 @@ namespace CECLdb
             this.lblConsultationDate = new System.Windows.Forms.Label();
             this.dtpConsultationDateRegister = new System.Windows.Forms.DateTimePicker();
             this.bttnAddRegister = new System.Windows.Forms.Button();
-            this.bttnReturnRegister = new System.Windows.Forms.Button();
-            this.bttnSaveRegister = new System.Windows.Forms.Button();
             this.bttnSearchPersonReg = new System.Windows.Forms.Button();
             this.lblEscRegister = new System.Windows.Forms.Label();
             this.dgvRegister = new System.Windows.Forms.DataGridView();
@@ -135,7 +133,7 @@ namespace CECLdb
             // bttnAddRegister
             // 
             this.bttnAddRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddRegister.Location = new System.Drawing.Point(404, 207);
+            this.bttnAddRegister.Location = new System.Drawing.Point(494, 205);
             this.bttnAddRegister.Name = "bttnAddRegister";
             this.bttnAddRegister.Size = new System.Drawing.Size(93, 29);
             this.bttnAddRegister.TabIndex = 5;
@@ -143,28 +141,6 @@ namespace CECLdb
             this.bttnAddRegister.UseVisualStyleBackColor = false;
             this.bttnAddRegister.Visible = false;
             this.bttnAddRegister.Click += new System.EventHandler(this.bttnAddRegister_Click);
-            // 
-            // bttnReturnRegister
-            // 
-            this.bttnReturnRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnRegister.Location = new System.Drawing.Point(503, 207);
-            this.bttnReturnRegister.Name = "bttnReturnRegister";
-            this.bttnReturnRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnReturnRegister.TabIndex = 7;
-            this.bttnReturnRegister.Text = "Regresar";
-            this.bttnReturnRegister.UseVisualStyleBackColor = false;
-            this.bttnReturnRegister.Click += new System.EventHandler(this.bttnReturnRegister_Click);
-            // 
-            // bttnSaveRegister
-            // 
-            this.bttnSaveRegister.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveRegister.Location = new System.Drawing.Point(404, 207);
-            this.bttnSaveRegister.Name = "bttnSaveRegister";
-            this.bttnSaveRegister.Size = new System.Drawing.Size(93, 29);
-            this.bttnSaveRegister.TabIndex = 20;
-            this.bttnSaveRegister.Text = "Guardar";
-            this.bttnSaveRegister.UseVisualStyleBackColor = false;
-            this.bttnSaveRegister.Visible = false;
             // 
             // bttnSearchPersonReg
             // 
@@ -356,8 +332,6 @@ namespace CECLdb
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
             this.DataGBox.Controls.Add(this.SaveChanges);
             this.DataGBox.Controls.Add(this.bttnSearchPersonReg);
-            this.DataGBox.Controls.Add(this.bttnSaveRegister);
-            this.DataGBox.Controls.Add(this.bttnReturnRegister);
             this.DataGBox.Controls.Add(this.bttnAddRegister);
             this.DataGBox.Controls.Add(this.dtpConsultationDateRegister);
             this.DataGBox.Controls.Add(this.lblConsultationDate);
@@ -376,7 +350,8 @@ namespace CECLdb
             // SaveChanges
             // 
             this.SaveChanges.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.SaveChanges.Location = new System.Drawing.Point(341, 207);
+            this.SaveChanges.Enabled = false;
+            this.SaveChanges.Location = new System.Drawing.Point(431, 205);
             this.SaveChanges.Name = "SaveChanges";
             this.SaveChanges.Size = new System.Drawing.Size(156, 29);
             this.SaveChanges.TabIndex = 21;
@@ -389,7 +364,7 @@ namespace CECLdb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 819);
+            this.ClientSize = new System.Drawing.Size(1048, 827);
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.lblEscRegister);
@@ -417,8 +392,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblConsultationDate;
         private System.Windows.Forms.DateTimePicker dtpConsultationDateRegister;
         private System.Windows.Forms.Button bttnAddRegister;
-        private System.Windows.Forms.Button bttnReturnRegister;
-        private System.Windows.Forms.Button bttnSaveRegister;
         private System.Windows.Forms.Button bttnSearchPersonReg;
         private System.Windows.Forms.Label lblEscRegister;
         public System.Windows.Forms.TextBox txtbPersonIDRegister;

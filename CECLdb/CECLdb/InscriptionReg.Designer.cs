@@ -39,11 +39,9 @@ namespace CECLdb
             this.lblStartDate = new System.Windows.Forms.Label();
             this.lblFinalDateInscription = new System.Windows.Forms.Label();
             this.bttnAddInscription = new System.Windows.Forms.Button();
-            this.bttnReturnInscription = new System.Windows.Forms.Button();
             this.mtbStartDate = new System.Windows.Forms.MaskedTextBox();
             this.mtbFinalDate = new System.Windows.Forms.MaskedTextBox();
             this.bttnSearchPerson = new System.Windows.Forms.Button();
-            this.bttnSaveInscription = new System.Windows.Forms.Button();
             this.lblEscInscription = new System.Windows.Forms.Label();
             this.btnClean = new System.Windows.Forms.Button();
             this.dgvInscription = new System.Windows.Forms.DataGridView();
@@ -163,17 +161,6 @@ namespace CECLdb
             this.bttnAddInscription.Visible = false;
             this.bttnAddInscription.Click += new System.EventHandler(this.bttnAddInscription_Click);
             // 
-            // bttnReturnInscription
-            // 
-            this.bttnReturnInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnInscription.Location = new System.Drawing.Point(471, 199);
-            this.bttnReturnInscription.Name = "bttnReturnInscription";
-            this.bttnReturnInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnReturnInscription.TabIndex = 9;
-            this.bttnReturnInscription.Text = "Regresar";
-            this.bttnReturnInscription.UseVisualStyleBackColor = false;
-            this.bttnReturnInscription.Click += new System.EventHandler(this.bttnReturnInscription_Click);
-            // 
             // mtbStartDate
             // 
             this.mtbStartDate.AccessibleDescription = "";
@@ -208,17 +195,6 @@ namespace CECLdb
             this.bttnSearchPerson.UseVisualStyleBackColor = false;
             this.bttnSearchPerson.Click += new System.EventHandler(this.bttnSearchPerson_Click);
             // 
-            // bttnSaveInscription
-            // 
-            this.bttnSaveInscription.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveInscription.Location = new System.Drawing.Point(354, 198);
-            this.bttnSaveInscription.Name = "bttnSaveInscription";
-            this.bttnSaveInscription.Size = new System.Drawing.Size(97, 27);
-            this.bttnSaveInscription.TabIndex = 20;
-            this.bttnSaveInscription.Text = "Guardar";
-            this.bttnSaveInscription.UseVisualStyleBackColor = false;
-            this.bttnSaveInscription.Visible = false;
-            // 
             // lblEscInscription
             // 
             this.lblEscInscription.AutoSize = true;
@@ -234,7 +210,7 @@ namespace CECLdb
             // 
             this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClean.Location = new System.Drawing.Point(586, 198);
+            this.btnClean.Location = new System.Drawing.Point(536, 196);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
             this.btnClean.TabIndex = 44;
@@ -411,11 +387,9 @@ namespace CECLdb
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
             this.DataGBox.Controls.Add(this.SaveChanges);
             this.DataGBox.Controls.Add(this.btnClean);
-            this.DataGBox.Controls.Add(this.bttnSaveInscription);
             this.DataGBox.Controls.Add(this.bttnSearchPerson);
             this.DataGBox.Controls.Add(this.mtbFinalDate);
             this.DataGBox.Controls.Add(this.mtbStartDate);
-            this.DataGBox.Controls.Add(this.bttnReturnInscription);
             this.DataGBox.Controls.Add(this.bttnAddInscription);
             this.DataGBox.Controls.Add(this.lblFinalDateInscription);
             this.DataGBox.Controls.Add(this.lblStartDate);
@@ -435,6 +409,7 @@ namespace CECLdb
             // SaveChanges
             // 
             this.SaveChanges.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.SaveChanges.Enabled = false;
             this.SaveChanges.Location = new System.Drawing.Point(318, 198);
             this.SaveChanges.Name = "SaveChanges";
             this.SaveChanges.Size = new System.Drawing.Size(133, 27);
@@ -480,11 +455,9 @@ namespace CECLdb
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label lblFinalDateInscription;
         private System.Windows.Forms.Button bttnAddInscription;
-        private System.Windows.Forms.Button bttnReturnInscription;
         private System.Windows.Forms.MaskedTextBox mtbStartDate;
         private System.Windows.Forms.MaskedTextBox mtbFinalDate;
         private System.Windows.Forms.Button bttnSearchPerson;
-        private System.Windows.Forms.Button bttnSaveInscription;
         private System.Windows.Forms.Label lblEscInscription;
         private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.DataGridView dgvInscription;
