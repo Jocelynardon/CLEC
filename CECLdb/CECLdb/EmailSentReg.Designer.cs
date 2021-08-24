@@ -301,8 +301,7 @@ namespace CECLdb
             // 
             // EmailSentReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1080, 703);
             this.Controls.Add(this.Aviso);
             this.Controls.Add(this.Destinatarios);

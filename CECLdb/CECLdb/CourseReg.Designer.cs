@@ -304,8 +304,7 @@ namespace CECLdb
             // 
             // CourseReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(917, 736);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.DataGBox);

@@ -440,15 +440,14 @@ namespace CECLdb
             // 
             // PersonReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1045, 878);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.lblEscPerson);
             this.KeyPreview = true;
             this.Name = "PersonReg";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de persona";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Access);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).EndInit();

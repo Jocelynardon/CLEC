@@ -5,16 +5,20 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLEC", "CECLdb\CLEC.csproj", "{D1A3947F-94B2-4258-A35C-D13F1161A5C1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{A42B3389-E87A-4375-BE2E-A96BE35A860C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1A3947F-94B2-4258-A35C-D13F1161A5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42B3389-E87A-4375-BE2E-A96BE35A860C}.Debug|Any CPU.ActiveCfg = Debug
+		{A42B3389-E87A-4375-BE2E-A96BE35A860C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -191,7 +191,6 @@ namespace CECLdb
             this.lblEscAd.Size = new System.Drawing.Size(165, 22);
             this.lblEscAd.TabIndex = 17;
             this.lblEscAd.Text = "(ESC) Regresar al Menu";
-            this.lblEscAd.Click += new System.EventHandler(this.lblEscAd_Click);
             // 
             // bttnEmailSent
             // 
@@ -436,8 +435,7 @@ namespace CECLdb
             // 
             // AdReg
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1049, 1016);
             this.Controls.Add(this.bttnSelectPerson);
             this.Controls.Add(this.bttnConfirm);

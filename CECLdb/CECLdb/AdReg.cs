@@ -809,10 +809,5 @@ namespace CECLdb
                 amountSelectedAd += 1;
             }
         }
-
-        private void lblEscAd_Click(object sender, EventArgs e)
-        {
-
         }
     }
-}
