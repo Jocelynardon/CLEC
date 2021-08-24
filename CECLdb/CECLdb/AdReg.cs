@@ -235,7 +235,13 @@ namespace CECLdb
                 case 5:
                     this.Height = 607;
 <<<<<<< HEAD
+<<<<<<< HEAD
                     bttnReturnAd.Location = new Point(437, 930);
+=======
+                    bttnReturnAd.Location = new Point(712, 518);
+                    bttnEmailSent.Location = new Point(347, 518);
+                    bttnEmailSent.Visible = true;
+>>>>>>> parent of e5a5135 (Cambios raros)
 =======
                     bttnReturnAd.Location = new Point(712, 518);
                     bttnEmailSent.Location = new Point(347, 518);
@@ -390,8 +396,14 @@ namespace CECLdb
                         }
                     }
 <<<<<<< HEAD
+<<<<<<< HEAD
                     bttnConfirm.Location = new Point(560, 930);
                     bttnConfirm.Visible = true;
+=======
+                    //bttnConfirm.Location = new Point(560, 930);
+                    //bttnConfirm.Visible = true;
+                    //bttnReturnAd.Location = new Point(437, 930);
+>>>>>>> parent of e5a5135 (Cambios raros)
 =======
                     //bttnConfirm.Location = new Point(560, 930);
                     //bttnConfirm.Visible = true;

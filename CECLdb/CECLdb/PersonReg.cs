@@ -56,6 +56,10 @@ namespace CECLdb
                 this.Height = 367;
                 btnSaveData.Visible = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                bttnImportPerson.Visible = true;
+>>>>>>> parent of e5a5135 (Cambios raros)
 =======
                 bttnImportPerson.Visible = true;
 >>>>>>> parent of e5a5135 (Cambios raros)
@@ -374,6 +378,10 @@ namespace CECLdb
             cmbTypeSearch.Location = new Point(517, 76);
             bttnSearchPerson.Location = new Point(811, 76);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            bttnEraserText.Location = new Point(911, 76);
+>>>>>>> parent of e5a5135 (Cambios raros)
 =======
             bttnEraserText.Location = new Point(911, 76);
 >>>>>>> parent of e5a5135 (Cambios raros)
