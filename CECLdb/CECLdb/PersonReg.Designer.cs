@@ -29,7 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@ namespace CECLdb
             // 
             this.bttnAddPerson.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.bttnAddPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnAddPerson.Location = new System.Drawing.Point(328, 242);
+            this.bttnAddPerson.Location = new System.Drawing.Point(364, 242);
             this.bttnAddPerson.Name = "bttnAddPerson";
             this.bttnAddPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnAddPerson.TabIndex = 5;
@@ -149,7 +149,7 @@ namespace CECLdb
             // 
             this.bttnImportPerson.BackColor = System.Drawing.Color.LightCoral;
             this.bttnImportPerson.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bttnImportPerson.Location = new System.Drawing.Point(508, 242);
+            this.bttnImportPerson.Location = new System.Drawing.Point(635, 242);
             this.bttnImportPerson.Name = "bttnImportPerson";
             this.bttnImportPerson.Size = new System.Drawing.Size(94, 29);
             this.bttnImportPerson.TabIndex = 13;
@@ -200,14 +200,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPersonReg.Location = new System.Drawing.Point(24, 124);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -316,7 +316,7 @@ namespace CECLdb
             // 
             this.btnSaveData.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveData.Location = new System.Drawing.Point(294, 242);
+            this.btnSaveData.Location = new System.Drawing.Point(297, 242);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(161, 29);
             this.btnSaveData.TabIndex = 6;
@@ -329,7 +329,7 @@ namespace CECLdb
             // 
             this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClean.Location = new System.Drawing.Point(508, 242);
+            this.btnClean.Location = new System.Drawing.Point(483, 242);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
             this.btnClean.TabIndex = 8;
