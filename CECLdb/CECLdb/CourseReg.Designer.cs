@@ -34,8 +34,6 @@ namespace CECLdb
             this.lblCourseName = new System.Windows.Forms.Label();
             this.txtbCourseName = new System.Windows.Forms.TextBox();
             this.bttnAddCourse = new System.Windows.Forms.Button();
-            this.bttnReturnCourse = new System.Windows.Forms.Button();
-            this.bttnSaveCourse = new System.Windows.Forms.Button();
             this.lblEscReturnMenu = new System.Windows.Forms.Label();
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
@@ -49,13 +47,17 @@ namespace CECLdb
             this.dgvCourse = new System.Windows.Forms.DataGridView();
             this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSaveData = new System.Windows.Forms.Button();
+            this.DataGBox = new System.Windows.Forms.GroupBox();
+            this.SearchGBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
+            this.DataGBox.SuspendLayout();
+            this.SearchGBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSelectAreaCourse
             // 
             this.lblSelectAreaCourse.AutoSize = true;
-            this.lblSelectAreaCourse.Location = new System.Drawing.Point(12, 86);
+            this.lblSelectAreaCourse.Location = new System.Drawing.Point(15, 35);
             this.lblSelectAreaCourse.Name = "lblSelectAreaCourse";
             this.lblSelectAreaCourse.Size = new System.Drawing.Size(167, 20);
             this.lblSelectAreaCourse.TabIndex = 0;
@@ -65,7 +67,7 @@ namespace CECLdb
             // 
             this.cmbSelectArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectArea.FormattingEnabled = true;
-            this.cmbSelectArea.Location = new System.Drawing.Point(12, 130);
+            this.cmbSelectArea.Location = new System.Drawing.Point(15, 68);
             this.cmbSelectArea.Name = "cmbSelectArea";
             this.cmbSelectArea.Size = new System.Drawing.Size(402, 28);
             this.cmbSelectArea.TabIndex = 0;
@@ -73,7 +75,7 @@ namespace CECLdb
             // lblCourseName
             // 
             this.lblCourseName.AutoSize = true;
-            this.lblCourseName.Location = new System.Drawing.Point(436, 86);
+            this.lblCourseName.Location = new System.Drawing.Point(445, 35);
             this.lblCourseName.Name = "lblCourseName";
             this.lblCourseName.Size = new System.Drawing.Size(128, 20);
             this.lblCourseName.TabIndex = 2;
@@ -81,7 +83,7 @@ namespace CECLdb
             // 
             // txtbCourseName
             // 
-            this.txtbCourseName.Location = new System.Drawing.Point(441, 130);
+            this.txtbCourseName.Location = new System.Drawing.Point(445, 68);
             this.txtbCourseName.Name = "txtbCourseName";
             this.txtbCourseName.Size = new System.Drawing.Size(392, 27);
             this.txtbCourseName.TabIndex = 1;
@@ -89,7 +91,7 @@ namespace CECLdb
             // bttnAddCourse
             // 
             this.bttnAddCourse.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnAddCourse.Location = new System.Drawing.Point(288, 182);
+            this.bttnAddCourse.Location = new System.Drawing.Point(380, 131);
             this.bttnAddCourse.Name = "bttnAddCourse";
             this.bttnAddCourse.Size = new System.Drawing.Size(108, 28);
             this.bttnAddCourse.TabIndex = 3;
@@ -98,34 +100,12 @@ namespace CECLdb
             this.bttnAddCourse.Visible = false;
             this.bttnAddCourse.Click += new System.EventHandler(this.bttnAddCourse_Click);
             // 
-            // bttnReturnCourse
-            // 
-            this.bttnReturnCourse.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnReturnCourse.Location = new System.Drawing.Point(416, 182);
-            this.bttnReturnCourse.Name = "bttnReturnCourse";
-            this.bttnReturnCourse.Size = new System.Drawing.Size(108, 28);
-            this.bttnReturnCourse.TabIndex = 5;
-            this.bttnReturnCourse.Text = "Regresar";
-            this.bttnReturnCourse.UseVisualStyleBackColor = false;
-            this.bttnReturnCourse.Click += new System.EventHandler(this.bttnReturnCourse_Click);
-            // 
-            // bttnSaveCourse
-            // 
-            this.bttnSaveCourse.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.bttnSaveCourse.Location = new System.Drawing.Point(288, 182);
-            this.bttnSaveCourse.Name = "bttnSaveCourse";
-            this.bttnSaveCourse.Size = new System.Drawing.Size(108, 28);
-            this.bttnSaveCourse.TabIndex = 4;
-            this.bttnSaveCourse.Text = "Guardar";
-            this.bttnSaveCourse.UseVisualStyleBackColor = false;
-            this.bttnSaveCourse.Visible = false;
-            // 
             // lblEscReturnMenu
             // 
             this.lblEscReturnMenu.AutoSize = true;
             this.lblEscReturnMenu.BackColor = System.Drawing.Color.NavajoWhite;
             this.lblEscReturnMenu.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEscReturnMenu.Location = new System.Drawing.Point(604, 39);
+            this.lblEscReturnMenu.Location = new System.Drawing.Point(714, 9);
             this.lblEscReturnMenu.Name = "lblEscReturnMenu";
             this.lblEscReturnMenu.Size = new System.Drawing.Size(165, 22);
             this.lblEscReturnMenu.TabIndex = 8;
@@ -134,7 +114,8 @@ namespace CECLdb
             // DeselectAllcbx
             // 
             this.DeselectAllcbx.AutoSize = true;
-            this.DeselectAllcbx.Location = new System.Drawing.Point(185, 272);
+            this.DeselectAllcbx.Enabled = false;
+            this.DeselectAllcbx.Location = new System.Drawing.Point(169, 77);
             this.DeselectAllcbx.Name = "DeselectAllcbx";
             this.DeselectAllcbx.Size = new System.Drawing.Size(146, 24);
             this.DeselectAllcbx.TabIndex = 59;
@@ -146,7 +127,8 @@ namespace CECLdb
             // SelectAllcbx
             // 
             this.SelectAllcbx.AutoSize = true;
-            this.SelectAllcbx.Location = new System.Drawing.Point(28, 272);
+            this.SelectAllcbx.Enabled = false;
+            this.SelectAllcbx.Location = new System.Drawing.Point(12, 77);
             this.SelectAllcbx.Name = "SelectAllcbx";
             this.SelectAllcbx.Size = new System.Drawing.Size(151, 24);
             this.SelectAllcbx.TabIndex = 58;
@@ -159,7 +141,7 @@ namespace CECLdb
             // 
             this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
             this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnEraserText.Location = new System.Drawing.Point(808, 227);
+            this.bttnEraserText.Location = new System.Drawing.Point(806, 32);
             this.bttnEraserText.Name = "bttnEraserText";
             this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
             this.bttnEraserText.TabIndex = 57;
@@ -172,7 +154,7 @@ namespace CECLdb
             // 
             this.bttnSearch.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.bttnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnSearch.Location = new System.Drawing.Point(686, 229);
+            this.bttnSearch.Location = new System.Drawing.Point(684, 32);
             this.bttnSearch.Name = "bttnSearch";
             this.bttnSearch.Size = new System.Drawing.Size(116, 26);
             this.bttnSearch.TabIndex = 56;
@@ -185,7 +167,7 @@ namespace CECLdb
             // 
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(480, 227);
+            this.cmbType.Location = new System.Drawing.Point(467, 32);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(200, 28);
             this.cmbType.TabIndex = 55;
@@ -193,17 +175,18 @@ namespace CECLdb
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(11, 228);
+            this.txtText.Location = new System.Drawing.Point(11, 33);
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(463, 27);
+            this.txtText.Size = new System.Drawing.Size(449, 27);
             this.txtText.TabIndex = 54;
             this.txtText.Visible = false;
             // 
             // bttnViewSelected
             // 
             this.bttnViewSelected.BackColor = System.Drawing.Color.LightSalmon;
+            this.bttnViewSelected.Enabled = false;
             this.bttnViewSelected.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnViewSelected.Location = new System.Drawing.Point(480, 646);
+            this.bttnViewSelected.Location = new System.Drawing.Point(480, 451);
             this.bttnViewSelected.Name = "bttnViewSelected";
             this.bttnViewSelected.Size = new System.Drawing.Size(187, 29);
             this.bttnViewSelected.TabIndex = 63;
@@ -215,8 +198,9 @@ namespace CECLdb
             // Deletebtn
             // 
             this.Deletebtn.BackColor = System.Drawing.Color.Honeydew;
+            this.Deletebtn.Enabled = false;
             this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Deletebtn.Location = new System.Drawing.Point(380, 646);
+            this.Deletebtn.Location = new System.Drawing.Point(380, 451);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(94, 29);
             this.Deletebtn.TabIndex = 62;
@@ -228,8 +212,9 @@ namespace CECLdb
             // Modifybtn
             // 
             this.Modifybtn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.Modifybtn.Enabled = false;
             this.Modifybtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Modifybtn.Location = new System.Drawing.Point(271, 646);
+            this.Modifybtn.Location = new System.Drawing.Point(271, 451);
             this.Modifybtn.Name = "Modifybtn";
             this.Modifybtn.Size = new System.Drawing.Size(94, 29);
             this.Modifybtn.TabIndex = 61;
@@ -249,7 +234,7 @@ namespace CECLdb
             this.dgvCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCourse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            this.dgvCourse.Location = new System.Drawing.Point(47, 302);
+            this.dgvCourse.Location = new System.Drawing.Point(11, 107);
             this.dgvCourse.Name = "dgvCourse";
             this.dgvCourse.ReadOnly = true;
             this.dgvCourse.RowHeadersWidth = 51;
@@ -257,7 +242,6 @@ namespace CECLdb
             this.dgvCourse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCourse.Size = new System.Drawing.Size(810, 330);
             this.dgvCourse.TabIndex = 60;
-            this.dgvCourse.Visible = false;
             this.dgvCourse.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCourse_CellContentClick);
             // 
             // CheckSelection
@@ -274,7 +258,7 @@ namespace CECLdb
             // 
             this.btnSaveData.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveData.Location = new System.Drawing.Point(235, 181);
+            this.btnSaveData.Location = new System.Drawing.Point(348, 130);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(161, 29);
             this.btnSaveData.TabIndex = 64;
@@ -283,36 +267,59 @@ namespace CECLdb
             this.btnSaveData.Visible = false;
             this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
+            // DataGBox
+            // 
+            this.DataGBox.BackColor = System.Drawing.Color.Ivory;
+            this.DataGBox.Controls.Add(this.txtbCourseName);
+            this.DataGBox.Controls.Add(this.btnSaveData);
+            this.DataGBox.Controls.Add(this.lblCourseName);
+            this.DataGBox.Controls.Add(this.cmbSelectArea);
+            this.DataGBox.Controls.Add(this.lblSelectAreaCourse);
+            this.DataGBox.Controls.Add(this.bttnAddCourse);
+            this.DataGBox.Location = new System.Drawing.Point(13, 34);
+            this.DataGBox.Name = "DataGBox";
+            this.DataGBox.Size = new System.Drawing.Size(866, 174);
+            this.DataGBox.TabIndex = 65;
+            this.DataGBox.TabStop = false;
+            // 
+            // SearchGBox
+            // 
+            this.SearchGBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SearchGBox.Controls.Add(this.bttnViewSelected);
+            this.SearchGBox.Controls.Add(this.Deletebtn);
+            this.SearchGBox.Controls.Add(this.Modifybtn);
+            this.SearchGBox.Controls.Add(this.dgvCourse);
+            this.SearchGBox.Controls.Add(this.DeselectAllcbx);
+            this.SearchGBox.Controls.Add(this.SelectAllcbx);
+            this.SearchGBox.Controls.Add(this.bttnEraserText);
+            this.SearchGBox.Controls.Add(this.bttnSearch);
+            this.SearchGBox.Controls.Add(this.cmbType);
+            this.SearchGBox.Controls.Add(this.txtText);
+            this.SearchGBox.Location = new System.Drawing.Point(13, 229);
+            this.SearchGBox.Name = "SearchGBox";
+            this.SearchGBox.Size = new System.Drawing.Size(875, 496);
+            this.SearchGBox.TabIndex = 66;
+            this.SearchGBox.TabStop = false;
+            this.SearchGBox.Text = "BÚSQUEDA";
+            // 
             // CourseReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 683);
-            this.Controls.Add(this.btnSaveData);
-            this.Controls.Add(this.bttnViewSelected);
-            this.Controls.Add(this.Deletebtn);
-            this.Controls.Add(this.Modifybtn);
-            this.Controls.Add(this.dgvCourse);
-            this.Controls.Add(this.DeselectAllcbx);
-            this.Controls.Add(this.SelectAllcbx);
-            this.Controls.Add(this.bttnEraserText);
-            this.Controls.Add(this.bttnSearch);
-            this.Controls.Add(this.cmbType);
-            this.Controls.Add(this.txtText);
+            this.ClientSize = new System.Drawing.Size(917, 736);
+            this.Controls.Add(this.SearchGBox);
+            this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.lblEscReturnMenu);
-            this.Controls.Add(this.bttnSaveCourse);
-            this.Controls.Add(this.bttnReturnCourse);
-            this.Controls.Add(this.bttnAddCourse);
-            this.Controls.Add(this.txtbCourseName);
-            this.Controls.Add(this.lblCourseName);
-            this.Controls.Add(this.cmbSelectArea);
-            this.Controls.Add(this.lblSelectAreaCourse);
             this.KeyPreview = true;
             this.Name = "CourseReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Curso";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Exit);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).EndInit();
+            this.DataGBox.ResumeLayout(false);
+            this.DataGBox.PerformLayout();
+            this.SearchGBox.ResumeLayout(false);
+            this.SearchGBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,8 +332,6 @@ namespace CECLdb
         private System.Windows.Forms.Label lblCourseName;
         private System.Windows.Forms.TextBox txtbCourseName;
         private System.Windows.Forms.Button bttnAddCourse;
-        private System.Windows.Forms.Button bttnReturnCourse;
-        private System.Windows.Forms.Button bttnSaveCourse;
         private System.Windows.Forms.Label lblEscReturnMenu;
         private System.Windows.Forms.CheckBox DeselectAllcbx;
         private System.Windows.Forms.CheckBox SelectAllcbx;
@@ -340,5 +345,7 @@ namespace CECLdb
         private System.Windows.Forms.DataGridView dgvCourse;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckSelection;
         private System.Windows.Forms.Button btnSaveData;
+        private System.Windows.Forms.GroupBox DataGBox;
+        private System.Windows.Forms.GroupBox SearchGBox;
     }
 }
