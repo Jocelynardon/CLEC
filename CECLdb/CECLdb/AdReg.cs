@@ -45,77 +45,34 @@ namespace CECLdb
                 case 1:
                     //ShowNumberAd();
                     LoadAreaAd();
-                    this.Height = 555;
+                    this.Height = 556;
                     btnCleanAd.Visible = true;
                     cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 2:
                     //ShowNumberAd();
                     LoadAreaAd();
-                    this.Height = 636;
-                    bttnSaveAd.Visible = true;
+                    HideAndMove(true);
+                    bttnSaveAd.Visible = true;/*********************************/
+                    
                     btnCleanAd.Visible = true;
                     ModifybtnAd.Visible = true;
                     cmbSelectAreaAd.SelectedIndex = -1;
                     break;
                 case 3:
-                    this.Height = 180;
-                    HideAndMove();
+                    HideAndMove(false);
                     DeletebtnAd.Visible = true;
                     break;
-                case 4:
-                    cmbSelectAreaAd.Enabled= false;
-                cmbSelectCourseAd.Enabled = false;
-                dtpDateAd.Enabled = false;
-                rtbDescriptionAd.Enabled = false;
-                    cmbSelectAreaAd.SelectedIndex = -1;
-
-                    this.Height = 636;
-                    break;
                 case 5:
-                    this.Height = 180;
                     LoadAreaAd();
-                    HideAndMove();
-                    bttnSelectPerson.Visible = false;
-                    
+                    HideAndMove(true);
+                    bttnSelectPerson.Visible = true;
+                    bttnConfirm.Visible = true;
                     break;
                 default:
                     break;
             }
-            //if (Menu.action == 1)
-            //{
-            //    //ShowNumberAd();
-            //    LoadAreaAd();
-            //    this.Height = 555;
-            //    btnCleanAd.Visible = true;
-            //    cmbSelectAreaAd.SelectedIndex = -1;
-            //}
-            //if (Menu.action == 2)
-            //{
-            //    //ShowNumberAd();
-            //    LoadAreaAd();
-            //    this.Height = 636;
-            //    bttnSaveAd.Visible = true;
-            //    btnCleanAd.Visible = true;
-            //    ModifybtnAd.Visible = true;
-            //    bttnViewSelectedAd.Visible = true;
-            //}
-            //if (Menu.action == 3)
-            //{
-            //    this.Height = 180;
-            //    HideAndMove();
-            //    DeletebtnAd.Visible = true;
-            //}
-            //if (Menu.action == 4||Menu.action==5)
-            //{
-            //    cmbSelectAreaAd.Visible= false;
-            //    cmbSelectCourseAd.Visible = false;
-            //    dtpDateAd.Visible = false;
-            //    rtbDescriptionAd.Visible = false;
-
-            //    this.Height = 636;
-                
-            //}
+           
         }
         private void bttnReturnAd_Click(object sender, EventArgs e)
         {
@@ -185,64 +142,15 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             LastBtnClicked = 'b';/********************************************************************/
             amountSelectedAd = 0;
+            SelectAllcbx.Enabled = true;
+            DeselectAllcbx.Enabled = true;
+            ModifybtnAd.Enabled = true;
+            DeletebtnAd.Enabled = true;
+            bttnSelectPerson.Enabled = true;
+            bttnConfirm.Enabled = true;
+            bttnViewSelectedAd.Enabled = true;
             ConsultationAmountAd();
-
-            /*if (Menu.action == 2)
-            {
-                ModifybtnAd.Location = new Point(340, 938);
-                bttnReturnAd.Location = new Point(440, 938);
-                DeselectAllcbx.Visible = true;
-                bttnViewSelectedAd.Visible = true;
-                this.Height = 1022;
-            }
-            if (Menu.action == 3)
-            {
-                SelectAllcbx.Visible = true;
-                DeselectAllcbx.Visible = true;
-                bttnViewSelectedAd.Visible = true;
-                this.Height = 607;
-            }
-            if (Menu.action == 4 || Menu.action==5)
-            {
-                this.Height = 1022;
-                DeselectAllcbx.Visible = true;
-                bttnSelectPerson.Visible = true;
-                bttnReturnAd.Location = new Point(437, 938);
-                bttnSelectPerson.Location = new Point(323, 938);
-                bttnViewSelectedAd.Visible = true;
-            }*/
-            switch (Menu.action)
-            {
-                case 2:
-                    ModifybtnAd.Location = new Point(340, 938);
-                    bttnReturnAd.Location = new Point(440, 938);
-                    this.Height = 1022;
-                    break;
-                case 3:
-                    SelectAllcbx.Visible = true;
-                    DeselectAllcbx.Visible = true;
-                    bttnViewSelectedAd.Visible = true;
-                    this.Height = 607;
-                    break;
-                case 4:
-                    this.Height = 1022;
-                    DeselectAllcbx.Visible = true;
-                    bttnSelectPerson.Visible = true;
-                    bttnReturnAd.Location = new Point(437, 938);
-                    bttnSelectPerson.Location = new Point(323, 938);
-                    bttnViewSelectedAd.Visible = true;
-                    break;
-                case 5:
-                    this.Height = 607;
-                    bttnReturnAd.Location = new Point(437, 930);
-                    bttnSelectPerson.Visible = true;
-                    bttnSelectPerson.Location = new Point(473, 517);
-                    bttnSelectPerson.Text = "Verificar";
-                    bttnConfirm.Visible = true;
-                    break;
-                default:
-                    break;
-            }
+            
             if (amountAd > 0)
             {
                 textSearch = txtTextAd.Text;
@@ -281,7 +189,6 @@ namespace CECLdb
         {
             SelectAllcbx.Checked = false;
             DeselectAllcbx.Checked = false;
-            LastBtnClicked = 'g';
             if (cmbSelectAreaAd.Text != "")
             {
                 if (cmbSelectCourseAd.Text != "")
@@ -337,56 +244,26 @@ namespace CECLdb
             }
             else if (amountSelectedAd == 1)
             {
-                
-                if (Menu.action==4)
+                this.Height = 1063;
+
+                cmbSelectAreaAd.Enabled = false;
+                cmbSelectCourseAd.Enabled = false;
+                dtpDateAd.Enabled = false;
+                rtbDescriptionAd.Enabled = false;
+
+                foreach (DataGridViewRow Fila in dgvAdReg.Rows)
                 {
-                    foreach (DataGridViewRow row in dgvAdReg.Rows)
+                    bool isChecked = Convert.ToBoolean(Fila.Cells[0].Value);
+                    if (isChecked)
                     {
-                        bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
-                        if (isChecked)
-                        {
-                            idAd = int.Parse(row.Cells[1].Value.ToString());
-                            cmbSelectAreaAd.Text = row.Cells[3].Value.ToString();
-                            cmbSelectCourseAd.Text = row.Cells[4].Value.ToString();
-                            dtpDateAd.Text = row.Cells[6].Value.ToString();
-                            rtbDescriptionAd.Text = row.Cells[7].Value.ToString();
-                        }
+                        cmbSelectAreaAd.SelectedValue = int.Parse(Fila.Cells[2].Value.ToString());
+                        LoadCourseAd();
+                        cmbSelectCourseAd.SelectedValue = int.Parse(Fila.Cells[5].Value.ToString());
+                        dtpDateAd.Value = Convert.ToDateTime(Fila.Cells[6].Value.ToString());
+                        rtbDescriptionAd.Text = Fila.Cells[7].Value.ToString();
                     }
-                    bttnEmailSent.Visible = true;
                 }
-                else if (Menu.action==5)
-                {
-                    this.Height = 1022;
-                    lblSelectAreaAd.Visible = true;
-                    cmbSelectAreaAd.Visible = true;
-                    lblSelectCourseAd.Visible = true;
-                    cmbSelectCourseAd.Visible = true;
-                    lblDateAd.Visible = true;
-                    dtpDateAd.Visible = true;
-                    lblDescriptionAd.Visible = true;
-                    rtbDescriptionAd.Visible = true;
-
-                    cmbSelectAreaAd.Enabled = false;
-                    cmbSelectCourseAd.Enabled = false;
-                    dtpDateAd.Enabled = false;
-                    rtbDescriptionAd.Enabled = false;
-
-                    foreach (DataGridViewRow Fila in dgvAdReg.Rows)
-                    {
-                        bool isChecked = Convert.ToBoolean(Fila.Cells[0].Value);
-                        if (isChecked)
-                        {
-                            cmbSelectAreaAd.SelectedValue = int.Parse(Fila.Cells[2].Value.ToString());
-                            LoadCourseAd();
-                            cmbSelectCourseAd.SelectedValue = int.Parse(Fila.Cells[5].Value.ToString());
-                            dtpDateAd.Value = Convert.ToDateTime(Fila.Cells[6].Value.ToString());
-                            rtbDescriptionAd.Text = Fila.Cells[7].Value.ToString();
-                        }
-                    }
-                    bttnConfirm.Location = new Point(560, 930);
-                    bttnConfirm.Visible = true;
-
-                }
+                bttnConfirm.Top = 951;
             }
             else
             {
@@ -658,7 +535,7 @@ namespace CECLdb
             {
                 for (int i = 0; i < selectedIDList.Count; i++)
                 {
-                    if (selectedIDList[i].Equals(row.Cells["IDarea"].Value))
+                    if (selectedIDList[i].Equals(row.Cells["IDaviso"].Value))
                     {
                         row.Cells["CheckSelection"].Value = true;
                     }
@@ -666,40 +543,17 @@ namespace CECLdb
             }
             amountSelectedAd = selectedIDList.Count;
         }
-        private void HideAndMove()
+        private void HideAndMove(bool justOneSelection)
         {
-            bttnSearchAd.Visible = true;
-            lblSelectAreaAd.Visible = false;
-            cmbSelectAreaAd.Visible = false;
-            lblSelectCourseAd.Visible = false;
-            cmbSelectCourseAd.Visible = false;
-            lblDateAd.Visible = false;
-            dtpDateAd.Visible = false;
-            lblDescriptionAd.Visible = false;
-            rtbDescriptionAd.Visible = false;
-            bttnSaveAd.Visible = false;
-            bttnEmailSent.Visible = false;
-            txtTextAd.Location = new Point(12, 89);
-            cmbTypeAd.Location = new Point(591, 89);
-            bttnSearchAd.Location = new Point(857, 89);
-            bttnEraserText.Location = new Point(989, 91);
-            dgvAdReg.Location = new Point(30, 163);
-            bttnReturnAd.Location = new Point(495, 517);
-            bttnViewSelectedAd.Location = new Point(628, 517);
-            DeletebtnAd.Location = new Point(386, 517);
-            bttnSelectPerson.Location = new Point(386, 517);
-            SelectAllcbx.Location = new Point(42, 133);
-            DeselectAllcbx.Location = new Point(213, 133);
-            lblSelectAreaAd.Top += 520;
-            cmbSelectAreaAd.Top += 520;
-            lblDescriptionAd.Top = lblSelectCourseAd.Location.Y + 520;
-            rtbDescriptionAd.Top = cmbSelectCourseAd.Location.Y + 520;
-            lblSelectCourseAd.Top = lblSelectAreaAd.Location.Y;
-            cmbSelectCourseAd.Top = cmbSelectAreaAd.Location.Y;
-            lblDateAd.Top += 520;
-            dtpDateAd.Top += 520;
-            lblSelectCourseAd.Left = lblDateAd.Location.X;
-            cmbSelectCourseAd.Left = dtpDateAd.Location.X;
+            this.Height = 605;
+            SearchGBox.Top = 46;
+            DataGBox.Top += 512;
+            if (!justOneSelection)
+            {
+                SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
+                bttnViewSelectedAd.Visible = true;
+            }
         }
         private void CloseWindow()
         {
@@ -717,6 +571,12 @@ namespace CECLdb
         }
         private void bttnConfirm_Click(object sender, EventArgs e)
         {
+            if (amountSelectedAd == 0)
+            {
+                MessageBox.Show("No se ha seleccionado un aviso");
+            }
+            else
+            {
                 foreach (DataGridViewRow row in dgvAdReg.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
@@ -725,12 +585,14 @@ namespace CECLdb
                         DataGridViewCell choosenID = row.Cells[1];
                         AddID parent = this.Owner as AddID;
                         parent.AddNewItem(choosenID);
-                    if (empty==1)
-                    {
-                        this.Close();
-                    }
+                        if (empty == 1)
+                        {
+                            this.Close();
+                        }
                     }
                 }
+            }
+            
         }
         private void Clean()
         {
@@ -874,6 +736,7 @@ namespace CECLdb
         }
         private void ModifybtnAd_Click(object sender, EventArgs e)
         {
+            
             CtrlAd ctrlAd = new CtrlAd();
             if (amountSelectedAd == 0)
             {
@@ -881,6 +744,8 @@ namespace CECLdb
             }
             if (amountSelectedAd == 1)
             {
+                this.Height = 1063;
+                bttnSaveAd.Enabled = true;/*********************************/
                 foreach (DataGridViewRow row in dgvAdReg.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
@@ -915,7 +780,6 @@ namespace CECLdb
             {
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = false;
                 dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = null;
-
                 amountSelectedAd += -1;
                 if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
                 {
@@ -926,7 +790,6 @@ namespace CECLdb
             }
             else if (dgvAdReg.CurrentRow.Cells["CheckSelection"].Value == null)
             {
-                
                 if (Menu.action != 5 && Menu.action != 2 && Menu.action != 4)
                 {
                     dgvAdReg.CurrentRow.Cells["CheckSelection"].Value = true;
@@ -945,6 +808,11 @@ namespace CECLdb
                 }
                 amountSelectedAd += 1;
             }
+        }
+
+        private void lblEscAd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
