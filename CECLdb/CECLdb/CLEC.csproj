@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>data_database_icon_177024.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

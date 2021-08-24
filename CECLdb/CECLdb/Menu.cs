@@ -106,13 +106,13 @@ namespace CECLdb
                 Frm.Show();
                 this.Close();
             }
-            else if (rbttnAddEmailSent.Checked)
-            {
-                Menu.action = 4;
-                AdReg Frm = new AdReg();
-                Frm.Show();
-                this.Close();
-            }
+            //else if (rbttnAddEmailSent.Checked)
+            //{
+            //    Menu.action = 4;
+            //    AdReg Frm = new AdReg();
+            //    Frm.Show();
+            //    this.Close();
+            //}
             else
             {
                 MessageBox.Show("Seleccione alguna opción");

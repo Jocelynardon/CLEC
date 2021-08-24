@@ -369,6 +369,7 @@ namespace CECLdb
             txtTextSearch.Location = new Point(46, 76);
             cmbTypeSearch.Location = new Point(517, 76);
             bttnSearchPerson.Location = new Point(811, 76);
+            bttnEraserText.Location = new Point(911, 76);
             SelectAllcbx.Location = new Point(46, 133);
             DeselectAllcbx.Location = new Point(231, 133);
             dgvPersonReg.Location = new Point(46, 174);
