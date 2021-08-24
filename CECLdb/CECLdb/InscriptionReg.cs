@@ -39,6 +39,12 @@ namespace CECLdb
                 cmbType.Visible = true;
                 bttnSearch.Visible = true;
                 bttnEraserText.Visible = true;
+                if (Menu.action==4)
+                {
+                    //Ocultar y reducir
+                    this.Height = 168;
+                    HideAndMove();
+                }
             }
             if (Menu.action==1)
             {
@@ -50,8 +56,8 @@ namespace CECLdb
             }
             if (Menu.action==2)
             {
-                SearchGBox.Top = 47;/*******************************/
-                DataGBox.Top += 510;/*******************************/
+                SearchGBox.Top = 47;
+                DataGBox.Top += 510;
                 this.Height = 604;
                 btnClean.Visible = true;
                 SaveChanges.Visible = true;
@@ -640,6 +646,32 @@ namespace CECLdb
                 mtbStartDate.Text = actualDate.Year + "" + actualDate.Month + "" + actualDate.Day;
             }
         }
+        private void HideAndMove()
+        {
+            lblSelectAreaInscription.Visible = false;
+            cmbSelectAreaInscription.Visible = false;
+            lblSelectCourseInscription.Visible = false;
+            cmbSelectCourseInscription.Visible = false;
+            lblPersonIDInscription.Visible = false;
+            txtbPersonIDInscription.Visible = false;
+            bttnSearchPerson.Visible = false;
+            ckbApproved.Visible = false;
+            lblStartDate.Visible = false;
+            mtbStartDate.Visible = false;
+            lblFinalDateInscription.Visible = false;
+            mtbFinalDate.Visible = false;
+            txtText.Location = new Point(12, 79);
+            cmbType.Location = new Point(592, 79);
+            bttnSearch.Location = new Point(857, 79);
+            bttnEraserText.Location = new Point(989, 79);
+            SelectAllcbx.Location = new Point(26, 121);
+            DeselectAllcbx.Location = new Point(183, 121);
+            dgvInscription.Location = new Point(46, 156);
+            Deletebtn.Location = new Point(387, 502);
+            //bttnSelect.Location = new Point(387, 502);
+            bttnReturnInscription.Location = new Point(487, 502);
+            bttnViewSelected.Location = new Point(592, 502);
+        }
         private void CloseWindow()
         {
             Menu Frm = new Menu();
@@ -684,7 +716,6 @@ namespace CECLdb
             }
             if (amountSelected == 1)
             {
-                SaveChanges.Enabled = true;/******************************/
                 this.Height = 876;
                 CtrlInscription ctrlIns = new CtrlInscription();
                 foreach (DataGridViewRow row in dgvInscription.Rows)
