@@ -234,7 +234,13 @@ namespace CECLdb
                     break;
                 case 5:
                     this.Height = 607;
+<<<<<<< HEAD
                     bttnReturnAd.Location = new Point(437, 930);
+=======
+                    bttnReturnAd.Location = new Point(712, 518);
+                    bttnEmailSent.Location = new Point(347, 518);
+                    bttnEmailSent.Visible = true;
+>>>>>>> parent of e5a5135 (Cambios raros)
                     bttnSelectPerson.Visible = true;
                     bttnSelectPerson.Location = new Point(473, 517);
                     bttnSelectPerson.Text = "Verificar";
@@ -383,8 +389,14 @@ namespace CECLdb
                             rtbDescriptionAd.Text = Fila.Cells[7].Value.ToString();
                         }
                     }
+<<<<<<< HEAD
                     bttnConfirm.Location = new Point(560, 930);
                     bttnConfirm.Visible = true;
+=======
+                    //bttnConfirm.Location = new Point(560, 930);
+                    //bttnConfirm.Visible = true;
+                    //bttnReturnAd.Location = new Point(437, 930);
+>>>>>>> parent of e5a5135 (Cambios raros)
 
                 }
             }

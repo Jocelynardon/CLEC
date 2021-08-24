@@ -29,7 +29,11 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+=======
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+>>>>>>> parent of e5a5135 (Cambios raros)
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -212,14 +216,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPersonReg.Location = new System.Drawing.Point(74, 449);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -349,7 +353,7 @@ namespace CECLdb
             // 
             this.btnClean.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClean.Location = new System.Drawing.Point(593, 273);
+            this.btnClean.Location = new System.Drawing.Point(597, 273);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(129, 29);
             this.btnClean.TabIndex = 8;
