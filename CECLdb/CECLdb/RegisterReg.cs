@@ -719,6 +719,7 @@ namespace CECLdb
             if (amountSelected == 1)
             {
                 this.Height = 876;
+                SaveChanges.Enabled = true;
                 CtrlRegister ctrlReg = new CtrlRegister();
                 foreach (DataGridViewRow row in dgvRegister.Rows)
                 {

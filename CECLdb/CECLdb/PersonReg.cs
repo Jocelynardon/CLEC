@@ -40,30 +40,19 @@ namespace CECLdb
                 dgvPersonReg.Visible = true;
                 txtTextSearch.Visible = true;
                 cmbTypeSearch.Visible = true;
-                lblModify.Visible = false;
-                if (Menu.action>=3 && Menu.action<=6)
-                {
-
-                    bttnViewSelectedPerson.Visible = true;
-                    bttnViewSelectedPerson.Location = new Point(762, 513);
-                    this.Height = 169;
-                    HideAndMove();
-                }
+                DataGBox.Text = "DATOS A MODIFICAR";
             }
             if (Menu.action == 1)
             {
-                lblDataPerson.Visible = true;
-                this.Height = 367;
+                this.Height = 396;
                 btnSaveData.Visible = false;
-                btnClean.Location = new Point(739,273);
                 btnClean.Visible = true;
             }
             if (Menu.action == 2)
             {
-                lblModify.Visible = true;
-                this.Height = 440;
+                DataGBox.Text = "DATOS A MODIFICAR";
+                HideAndMove(true);
                 Modifybtn.Visible = true;
-                lblModify.Visible = true;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = true;
@@ -72,35 +61,38 @@ namespace CECLdb
             }
             if (Menu.action == 3)
             {
-                SelectAllcbx.Visible = true;
-                DeselectAllcbx.Visible = true;
+                HideAndMove(false);
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = true;
-                Deletebtn.Location = new Point(459, 513);
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
                 btnClean.Visible = false;
+                Deletebtn.Visible = true;/*******************/
+                SelectAllcbx.Visible = true;/****************/
+                DeselectAllcbx.Visible = true;/**************/
+                bttnViewSelectedPerson.Visible = true;/************/
+                bttnViewSelectedPerson.Visible = true;
             }
             if (Menu.action == 4||Menu.action==5)
             {
-                DeselectAllcbx.Visible = true;
+                HideAndMove(true);
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = true;
-                bttnSelectPerson.Location = new Point(459, 513);
                 btnSaveData.Visible = false;
             }
             if (Menu.action==6)
             {
-                SelectAllcbx.Visible = true;
+                HideAndMove(false);
                 Modifybtn.Visible = false;
                 Deletebtn.Visible = false;
                 bttnSelectPerson.Visible = false;
                 btnSaveData.Visible = false;
                 bttnSentEmail.Visible = true;
-                DeselectAllcbx.Visible = true;
-                bttnSentEmail.Location = new Point(403,513) ;
-                bttnViewSelectedPerson.Location = new Point(762, 513);
+                SelectAllcbx.Visible = true;/****************/
+                DeselectAllcbx.Visible = true;/**************/
+                bttnViewSelectedPerson.Visible = true;/************/
+                bttnViewSelectedPerson.Visible = true;
             }
         }
 
@@ -298,17 +290,30 @@ namespace CECLdb
             LastBtnClicked = 'b';
             if (amountPerson > 0)
             {
-                if (Menu.action>=3 && Menu.action<=6)
+                switch (Menu.action)
                 {
-                    this.Height = 615;
+                    case 2:
+                        Modifybtn.Enabled = true;
+                        break;
+                    case 3:
+                        Deletebtn.Enabled = true;/*******************/
+                        SelectAllcbx.Enabled = true;/****************/
+                        DeselectAllcbx.Enabled = true;/**************/
+                        bttnViewSelectedPerson.Enabled = true;/************/
+                        break;
+                    case 4:
+                    case 5:
+                        bttnSelectPerson.Enabled = true;
+                        break;
+                    case 6:
+                        bttnSentEmail.Enabled = true;
+                        SelectAllcbx.Enabled = true;/****************/
+                        DeselectAllcbx.Enabled = true;/**************/
+                        bttnViewSelectedPerson.Enabled = true;/************/
+                        break;
+                    default:
+                        break;
                 }
-                if (Menu.action == 2)
-                {
-                    this.Height = 875;
-                    bttnReturnPerson.Location = new Point(496, 787);
-                    bttnViewSelectedPerson.Location = new Point(618, 787);
-                }
-
                 textSearch = txtTextSearch.Text;/***************************************/
                 LastSearchTypeSelected = cmbTypeSearch.SelectedIndex;/******************/
 
@@ -354,28 +359,17 @@ namespace CECLdb
             cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
             cmbTypeSearch.SelectedIndex = 0;
         }
-        private void HideAndMove()
+        private void HideAndMove(bool justOneSelection)
         {
-            txtbNamePerson.Visible = false;
-            txtbLastNamePerson.Visible = false;
-            txtbCodePerson.Visible = false;
-            txtbTelephone.Visible = false;
-            txtEmailPerson.Visible = false;
-            lblName.Visible = false;
-            lblLastNamePerson.Visible = false;
-            lblTelNumber.Visible = false;
-            lblEmail.Visible = false;
-            lblCodePerson.Visible = false;
-            txtTextSearch.Location = new Point(46, 76);
-            cmbTypeSearch.Location = new Point(517, 76);
-            bttnSearchPerson.Location = new Point(811, 76);
-            SelectAllcbx.Location = new Point(46, 133);
-            DeselectAllcbx.Location = new Point(231, 133);
-            dgvPersonReg.Location = new Point(46, 174);
-            bttnReturnPerson.Location = new Point(618, 513);
-            Modifybtn.Location = new Point(285, 513);
-            Deletebtn.Location = new Point(408, 513);
-            bttnSelectPerson.Location = new Point(533, 513);
+            this.Height = 616;
+            SearchGBox.Top = 46;
+            DataGBox.Top += 523;
+            if (!justOneSelection)
+            {
+                SelectAllcbx.Visible = true;
+                DeselectAllcbx.Visible = true;
+                bttnViewSelectedPerson.Visible = true;
+            }
         }
         //CAMBIAR ENSEÑAR EL APELLIDO
         public void LoadTableCode(string data)
@@ -522,6 +516,7 @@ namespace CECLdb
             }
             if (amountSelected == 1)
             {
+                this.Height = 925;
                 foreach (DataGridViewRow row in dgvPersonReg.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
@@ -549,6 +544,8 @@ namespace CECLdb
             }
             if (amountSelected==1)
             {
+                this.Height = 925;/***************************************/
+                btnSaveData.Enabled = true;/******************************/
                 foreach (DataGridViewRow row in dgvPersonReg.Rows)
                 {
                     bool isChecked = Convert.ToBoolean(row.Cells[0].Value);
