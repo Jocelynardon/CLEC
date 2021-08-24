@@ -585,7 +585,7 @@ namespace CECLdb
                         DataGridViewCell choosenID = row.Cells[1];
                         AddID parent = this.Owner as AddID;
                         parent.AddNewItem(choosenID);
-                        if (empty == 1)
+                        if (empty == 1 ||empty==-1)
                         {
                             this.Close();
                         }

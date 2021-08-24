@@ -86,6 +86,7 @@ namespace CECLdb
                 {
                     MessageBox.Show("No hay correos enviados con ese aviso");
                     AdReg.empty = -1;
+                    dgvEmailSent.DataSource = null;
                 }
                 else
                 {
@@ -296,6 +297,10 @@ namespace CECLdb
             this.txtNoAviso.Text = ChosenAdID;
             bttnSearch.Text = "Buscar Otro Aviso";
             AdReg.empty = 1;
+            AddedIDList.Clear();
+            RemovedIDList.Clear();
+            selectedIDList.Clear();
+            amountSelected = 0;
             PersonSent();
             Modifybtn.Visible = true;
         }
