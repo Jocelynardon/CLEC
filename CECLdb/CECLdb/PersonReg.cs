@@ -55,14 +55,7 @@ namespace CECLdb
                 lblDataPerson.Visible = true;
                 this.Height = 367;
                 btnSaveData.Visible = false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                 bttnImportPerson.Visible = true;
->>>>>>> parent of e5a5135 (Cambios raros)
-=======
-                bttnImportPerson.Visible = true;
->>>>>>> parent of e5a5135 (Cambios raros)
                 btnClean.Location = new Point(739,273);
                 btnClean.Visible = true;
             }
@@ -377,14 +370,7 @@ namespace CECLdb
             txtTextSearch.Location = new Point(46, 76);
             cmbTypeSearch.Location = new Point(517, 76);
             bttnSearchPerson.Location = new Point(811, 76);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
             bttnEraserText.Location = new Point(911, 76);
->>>>>>> parent of e5a5135 (Cambios raros)
-=======
-            bttnEraserText.Location = new Point(911, 76);
->>>>>>> parent of e5a5135 (Cambios raros)
             SelectAllcbx.Location = new Point(46, 133);
             DeselectAllcbx.Location = new Point(231, 133);
             dgvPersonReg.Location = new Point(46, 174);
