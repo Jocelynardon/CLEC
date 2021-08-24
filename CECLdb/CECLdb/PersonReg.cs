@@ -55,6 +55,7 @@ namespace CECLdb
                 lblDataPerson.Visible = true;
                 this.Height = 367;
                 btnSaveData.Visible = false;
+                bttnImportPerson.Visible = true;
                 btnClean.Location = new Point(739,273);
                 btnClean.Visible = true;
             }
