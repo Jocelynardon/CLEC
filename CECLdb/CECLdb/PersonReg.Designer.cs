@@ -41,8 +41,6 @@ namespace CECLdb
             this.bttnImportPerson = new System.Windows.Forms.Button();
             this.lblLastNamePerson = new System.Windows.Forms.Label();
             this.txtbLastNamePerson = new System.Windows.Forms.TextBox();
-            this.txtbCodePerson = new System.Windows.Forms.TextBox();
-            this.lblCodePerson = new System.Windows.Forms.Label();
             this.dgvPersonReg = new System.Windows.Forms.DataGridView();
             this.CheckSelection = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.SelectAllcbx = new System.Windows.Forms.CheckBox();
@@ -173,23 +171,6 @@ namespace CECLdb
             this.txtbLastNamePerson.Name = "txtbLastNamePerson";
             this.txtbLastNamePerson.Size = new System.Drawing.Size(353, 27);
             this.txtbLastNamePerson.TabIndex = 1;
-            // 
-            // txtbCodePerson
-            // 
-            this.txtbCodePerson.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtbCodePerson.Location = new System.Drawing.Point(705, 167);
-            this.txtbCodePerson.Name = "txtbCodePerson";
-            this.txtbCodePerson.Size = new System.Drawing.Size(166, 27);
-            this.txtbCodePerson.TabIndex = 4;
-            // 
-            // lblCodePerson
-            // 
-            this.lblCodePerson.AutoSize = true;
-            this.lblCodePerson.Location = new System.Drawing.Point(705, 121);
-            this.lblCodePerson.Name = "lblCodePerson";
-            this.lblCodePerson.Size = new System.Drawing.Size(58, 20);
-            this.lblCodePerson.TabIndex = 17;
-            this.lblCodePerson.Text = "Código";
             // 
             // dgvPersonReg
             // 
@@ -398,8 +379,6 @@ namespace CECLdb
             this.DataGBox.Controls.Add(this.btnClean);
             this.DataGBox.Controls.Add(this.btnSaveData);
             this.DataGBox.Controls.Add(this.txtbTelephone);
-            this.DataGBox.Controls.Add(this.lblCodePerson);
-            this.DataGBox.Controls.Add(this.txtbCodePerson);
             this.DataGBox.Controls.Add(this.txtbLastNamePerson);
             this.DataGBox.Controls.Add(this.lblLastNamePerson);
             this.DataGBox.Controls.Add(this.bttnImportPerson);
@@ -474,8 +453,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnImportPerson;
         private System.Windows.Forms.Label lblLastNamePerson;
         private System.Windows.Forms.TextBox txtbLastNamePerson;
-        private System.Windows.Forms.TextBox txtbCodePerson;
-        private System.Windows.Forms.Label lblCodePerson;
         private System.Windows.Forms.DataGridView dgvPersonReg;
         private System.Windows.Forms.CheckBox SelectAllcbx;
         private System.Windows.Forms.Button Modifybtn;

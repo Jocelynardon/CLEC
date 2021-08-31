@@ -442,18 +442,15 @@ namespace CECLdb
                     case 'S':
                         if (textSearch == "")
                         {
-                            dgvEmailSent.DataSource = person.consultationCode(null);
+                            dgvEmailSent.DataSource = person.consultationEmail(null);
                         }
                         switch (LastSearchTypeSelected)
                         {
-                            //0 Código, 1 Correo, 2 Nombre
+                            // 0 Correo, 1 Nombre
                             case 0:
-                                dgvEmailSent.DataSource = person.consultationCode(textSearch);
-                                break;
-                            case 1:
                                 dgvEmailSent.DataSource = person.consultationEmail(textSearch);
                                 break;
-                            case 2:
+                            case 1:
                                 dgvEmailSent.DataSource = person.consultationName(textSearch);
                                 break;
                             default:
@@ -565,21 +562,18 @@ namespace CECLdb
 
                 if (textSearch == "")
                 {
-                    dgvEmailSent.DataSource = person.consultationCode(null);
+                    dgvEmailSent.DataSource = person.consultationEmail(null);
                 }
                 switch (cmbTypeSearch.SelectedIndex)
                 {
-                    //0 Código, 1 Correo, 2 Nombre, 3 Aviso
+                    //0 Correo, 1 Nombre, 2 Aviso
                     case 0:
-                        dgvEmailSent.DataSource = person.consultationCode(textSearch);
-                        break;
-                    case 1:
                         dgvEmailSent.DataSource = person.consultationEmail(textSearch);
                         break;
-                    case 2:
+                    case 1:
                         dgvEmailSent.DataSource = person.consultationName(textSearch);
                         break;
-                    case 3:
+                    case 2:
                         dgvEmailSent.DataSource = person.consultationIDEmailSent(textSearch);
                         break;
                     default:
@@ -598,13 +592,13 @@ namespace CECLdb
                     catch (MySqlException)
                     {
                         MessageBox.Show("No se ha encontrado coincidencias");
-                        dgvEmailSent.DataSource = person.consultationCode(null);
+                        dgvEmailSent.DataSource = person.consultationEmail(null);
                     }
                 }
                 else
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    dgvEmailSent.DataSource = person.consultationCode(null);
+                    dgvEmailSent.DataSource = person.consultationEmail(null);
                 }
             }
             else
@@ -618,7 +612,6 @@ namespace CECLdb
             cmbTypeSearch.ValueMember = "Value";
             cmbTypeSearch.SelectedIndex = cmbTypeSearch.Items.IndexOf("Correo");
 
-            cmbTypeSearch.Items.Add(new { Text = "Código", Value = 1 });
             cmbTypeSearch.Items.Add(new { Text = "Correo", Value = 2 });
             cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
             cmbTypeSearch.Items.Add(new { Text = "Aviso", Value = 4 });

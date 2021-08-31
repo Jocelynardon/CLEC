@@ -111,47 +111,39 @@ namespace CECLdb
         {
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
-                if (txtbCodePerson.TextLength == 7)
+                if (txtbTelephone.TextLength == 8 || txtbTelephone.TextLength == 9)
                 {
-                    if (txtbTelephone.TextLength==8 || txtbTelephone.TextLength==9)
+                    String personName = txtbNamePerson.Text;
+                    String personLastName = txtbLastNamePerson.Text;
+                    String personEmail = txtEmailPerson.Text;
+                    int personNumber = int.Parse(txtbTelephone.Text);
+
+                    string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Teléfono) VALUES" +
+                        "('" + personName + "','" + personLastName + "','" + personEmail + "'," +
+                        "'"  + personNumber + "')";
+
+                    MySqlConnection connectionBD = Connection.connection();
+                    connectionBD.Open();
+                    try
                     {
-                        String personName = txtbNamePerson.Text;
-                        String personLastName = txtbLastNamePerson.Text;
-                        String personEmail = txtEmailPerson.Text;
-                        int codePerson = int.Parse(txtbCodePerson.Text);
-                        int personNumber = int.Parse(txtbTelephone.Text);
-
-                        string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,codigo,Teléfono) VALUES" +
-                            "('" + personName + "','" + personLastName + "','" + personEmail + "'," +
-                            "'" + codePerson + "','" + personNumber + "')";
-
-                        MySqlConnection connectionBD = Connection.connection();
-                        connectionBD.Open();
-                        try
-                        {
-                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Se ha insertado exitosamente");
-                            Clean();
-                        }
-                        catch (MySqlException ex)
-                        {
-
-                            MessageBox.Show("Error al guardar: " + ex.Message);
-                        }
-                        finally
-                        {
-                            connectionBD.Close();
-                        }
+                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Se ha insertado exitosamente");
+                        Clean();
                     }
-                    else
+                    catch (MySqlException ex)
                     {
-                        MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
+
+                        MessageBox.Show("Error al guardar: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connectionBD.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El código debe tener 7 dígitos");
+                    MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
                 }
             }
             else
@@ -319,20 +311,17 @@ namespace CECLdb
 
                 if (textSearch == "")
                 {
-                    LoadTableCode(null);
+                    LoadTableEmail(null);
                 }
                 else
                 {
                     switch (cmbTypeSearch.SelectedIndex)
                     {
-                        //0 Código, 1 Correo, 2 Nombre
+                        //1 Correo, 2 Nombre
                         case 0:
-                            LoadTableCode(textSearch);
-                            break;
-                        case 1:
                             LoadTableEmail(textSearch);
                             break;
-                        case 2:
+                        case 1:
                             LoadTableName(textSearch);
                             break;
                         default:
@@ -354,7 +343,6 @@ namespace CECLdb
             cmbTypeSearch.ValueMember = "Value";
             cmbTypeSearch.SelectedIndex = cmbTypeSearch.Items.IndexOf("Correo");
 
-            cmbTypeSearch.Items.Add(new { Text = "Código", Value = 1 });
             cmbTypeSearch.Items.Add(new { Text = "Correo", Value = 2 });
             cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
             cmbTypeSearch.SelectedIndex = 0;
@@ -372,38 +360,7 @@ namespace CECLdb
             }
         }
         //CAMBIAR ENSEÑAR EL APELLIDO
-        public void LoadTableCode(string data)
-        {
-            List<Person> list = new List<Person>();
-            CtrlPerson person = new CtrlPerson();
-            dgvPersonReg.DataSource = person.consultationCode(data);
-            validateSelection();
-
-            if (dgvPersonReg.Rows.Count > 0)
-            {
-                try
-                {
-                    this.dgvPersonReg.Columns["ID"].Visible = false;
-                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
-                }
-                catch (MySqlException)
-                {
-                    if (!update)
-                    {
-                        MessageBox.Show("No se ha encontrado coincidencias");
-                        LoadTableCode(null);
-                    }
-                }
-            }
-            else
-            {
-                if (!update)
-                {
-                    MessageBox.Show("No se han encontrado datos");
-                    LoadTableCode(null);
-                }
-            }
-        }
+        
         public void LoadTableEmail(string date)
         {
             List<Person> list = new List<Person>();
@@ -494,7 +451,7 @@ namespace CECLdb
                     if (!update)
                     {
                         MessageBox.Show("No se ha seleccionado a alguna persona");
-                        LoadTableCode(null);
+                        LoadTableEmail(null);
                     }
                 }
             }
@@ -503,7 +460,7 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han seleccionado datos");
-                    LoadTableCode(null);
+                    LoadTableEmail(null);
                 }
             }
         }
@@ -553,7 +510,6 @@ namespace CECLdb
                     {
                         PerID = Convert.ToInt32(row.Cells[1].Value);
                         Person person = ctrl.ModifyQuery(row.Cells[1].Value.ToString());
-                        txtbCodePerson.Text = Convert.ToString(person.Código);
                         txtbLastNamePerson.Text = person.Apellido;
                         txtbNamePerson.Text = person.Nombre;
                         txtEmailPerson.Text = person.Email;
@@ -573,48 +529,40 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
-                if (txtbCodePerson.TextLength == 7)
+                if (txtbTelephone.TextLength >= 8 || txtbTelephone.TextLength <= 9)
                 {
-                    if (txtbTelephone.TextLength >= 8 || txtbTelephone.TextLength <= 9)
+                    String personName = txtbNamePerson.Text;
+                    String personLastName = txtbLastNamePerson.Text;
+                    String personEmail = txtEmailPerson.Text;
+                    int personNumber = int.Parse(txtbTelephone.Text);
+
+                    string sql = "UPDATE persona SET Nombre = '" + personName + "', Apellido = '" + personLastName + "', Correo = '" + personEmail + "', Teléfono = '" + personNumber + "' " +
+            "WHERE IDpersona =" + PerID;
+
+                    MySqlConnection connectionBD = Connection.connection();
+                    connectionBD.Open();
+                    try
                     {
-                        String personName = txtbNamePerson.Text;
-                        String personLastName = txtbLastNamePerson.Text;
-                        String personEmail = txtEmailPerson.Text;
-                        string codePerson = txtbCodePerson.Text;
-                        int personNumber = int.Parse(txtbTelephone.Text);
+                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Se ha modificado exitosamente");
+                        EmptyChecked();/****************************************************/
 
-                        string sql = "UPDATE persona SET Codigo = '" + codePerson + "', Nombre = '" + personName + "', Apellido = '" + personLastName + "', Correo = '" + personEmail + "', Teléfono = '" + personNumber + "' " +
-                "WHERE IDpersona =" + PerID;
-
-                        MySqlConnection connectionBD = Connection.connection();
-                        connectionBD.Open();
-                        try
-                        {
-                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Se ha modificado exitosamente");
-                            EmptyChecked();/****************************************************/
-
-                            UpdateDataGrid();/**************************************************/
-                        }
-                        catch (MySqlException ex)
-                        {
-
-                            MessageBox.Show("Error al guardar: " + ex.Message);
-                        }
-                        finally
-                        {
-                            connectionBD.Close();
-                        }
+                        UpdateDataGrid();/**************************************************/
                     }
-                    else
+                    catch (MySqlException ex)
                     {
-                        MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
+
+                        MessageBox.Show("Error al guardar: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connectionBD.Close();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El código debe tener 7 dígitos");
+                    MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
                 }
             }
             else
@@ -683,7 +631,6 @@ namespace CECLdb
         }
         private void Clean()
         {
-            txtbCodePerson.Text = "";
             txtbLastNamePerson.Text = "";
             txtbNamePerson.Text = "";
             txtEmailPerson.Text = "";
@@ -767,14 +714,11 @@ namespace CECLdb
                     case 'b':
                         if (textSearch == "")
                         {
-                            LoadTableCode(null);
+                            LoadTableEmail(null);
                         }
                         switch (LastSearchTypeSelected)
                         {
-                            //0 Código, 1 Correo, 2 Nombre
-                            case 0:
-                                LoadTableCode(textSearch);
-                                break;
+                            //1 Correo, 2 Nombre
                             case 1:
                                 LoadTableEmail(textSearch);
                                 break;

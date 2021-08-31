@@ -58,6 +58,8 @@ namespace CECLdb
             this.SearchGBox = new System.Windows.Forms.GroupBox();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.SaveChanges = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mTxBxCode = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).BeginInit();
             this.SearchGBox.SuspendLayout();
             this.DataGBox.SuspendLayout();
@@ -97,9 +99,9 @@ namespace CECLdb
             this.cmbSelectCourseInscription.BackColor = System.Drawing.Color.MintCream;
             this.cmbSelectCourseInscription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectCourseInscription.FormattingEnabled = true;
-            this.cmbSelectCourseInscription.Location = new System.Drawing.Point(471, 67);
+            this.cmbSelectCourseInscription.Location = new System.Drawing.Point(471, 68);
             this.cmbSelectCourseInscription.Name = "cmbSelectCourseInscription";
-            this.cmbSelectCourseInscription.Size = new System.Drawing.Size(397, 28);
+            this.cmbSelectCourseInscription.Size = new System.Drawing.Size(365, 28);
             this.cmbSelectCourseInscription.TabIndex = 1;
             // 
             // lblPersonIDInscription
@@ -133,7 +135,7 @@ namespace CECLdb
             // lblStartDate
             // 
             this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(749, 113);
+            this.lblStartDate.Location = new System.Drawing.Point(760, 113);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(108, 20);
             this.lblStartDate.TabIndex = 10;
@@ -164,7 +166,7 @@ namespace CECLdb
             // mtbStartDate
             // 
             this.mtbStartDate.AccessibleDescription = "";
-            this.mtbStartDate.Location = new System.Drawing.Point(760, 144);
+            this.mtbStartDate.Location = new System.Drawing.Point(771, 144);
             this.mtbStartDate.Mask = "0000/00/00";
             this.mtbStartDate.Name = "mtbStartDate";
             this.mtbStartDate.Size = new System.Drawing.Size(88, 27);
@@ -385,6 +387,8 @@ namespace CECLdb
             // DataGBox
             // 
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
+            this.DataGBox.Controls.Add(this.mTxBxCode);
+            this.DataGBox.Controls.Add(this.label1);
             this.DataGBox.Controls.Add(this.SaveChanges);
             this.DataGBox.Controls.Add(this.btnClean);
             this.DataGBox.Controls.Add(this.bttnSearchPerson);
@@ -418,6 +422,23 @@ namespace CECLdb
             this.SaveChanges.UseVisualStyleBackColor = false;
             this.SaveChanges.Visible = false;
             this.SaveChanges.Click += new System.EventHandler(this.SaveChanges_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(885, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 20);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Código asignado";
+            // 
+            // mTxBxCode
+            // 
+            this.mTxBxCode.Location = new System.Drawing.Point(885, 68);
+            this.mTxBxCode.Mask = "0000000";
+            this.mTxBxCode.Name = "mTxBxCode";
+            this.mTxBxCode.Size = new System.Drawing.Size(123, 27);
+            this.mTxBxCode.TabIndex = 47;
             // 
             // InscriptionReg
             // 
@@ -474,5 +495,7 @@ namespace CECLdb
         private System.Windows.Forms.GroupBox SearchGBox;
         private System.Windows.Forms.GroupBox DataGBox;
         private System.Windows.Forms.Button SaveChanges;
+        private System.Windows.Forms.MaskedTextBox mTxBxCode;
+        private System.Windows.Forms.Label label1;
     }
 }
