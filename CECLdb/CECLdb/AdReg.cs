@@ -244,7 +244,7 @@ namespace CECLdb
             }
             else if (amountSelectedAd == 1)
             {
-                this.Height = 1063;
+                this.Height = 1027;
 
                 cmbSelectAreaAd.Enabled = false;
                 cmbSelectCourseAd.Enabled = false;
@@ -263,7 +263,7 @@ namespace CECLdb
                         rtbDescriptionAd.Text = Fila.Cells[7].Value.ToString();
                     }
                 }
-                bttnConfirm.Top = 951;
+                //bttnConfirm.Top = 951;
             }
             else
             {
