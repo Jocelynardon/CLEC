@@ -311,18 +311,42 @@ namespace CECLdb
 
                 if (textSearch == "")
                 {
-                    LoadTableEmail(null);
+                    switch (cmbTypeSearch.SelectedIndex)
+                    {
+                        case 0:
+                        case 1:
+                            LoadTableEmail(null);
+                            break;
+                        case 2:
+                            LoadTableArea(null);
+                            break;
+                        case 3:
+                            LoadTableCourse(null);
+                            break;
+                        default:
+                            break;
+                    }
+                    if (cmbTypeSearch.SelectedIndex==2)
+                    {
+                        LoadTableArea(null);
+                    }
                 }
                 else
                 {
                     switch (cmbTypeSearch.SelectedIndex)
                     {
-                        //1 Correo, 2 Nombre
+                        //1 Correo, 2 Nombre, 3 Área, 4 Curso
                         case 0:
                             LoadTableEmail(textSearch);
                             break;
                         case 1:
                             LoadTableName(textSearch);
+                            break;
+                        case 2:
+                            LoadTableArea(textSearch);
+                            break;
+                        case 3:
+                            LoadTableCourse(textSearch);
                             break;
                         default:
                             MessageBox.Show("Seleccione una de las opciones por las que desea buscar");
@@ -376,6 +400,8 @@ namespace CECLdb
                 {
                     this.dgvPersonReg.Columns["ID"].Visible = false;
                     this.dgvPersonReg.Columns["Apellido"].Visible = false;
+                    this.dgvPersonReg.Columns["Área"].Visible = false;
+                    this.dgvPersonReg.Columns["Curso"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -409,6 +435,8 @@ namespace CECLdb
                 {
                     this.dgvPersonReg.Columns["ID"].Visible = false;
                     this.dgvPersonReg.Columns["Apellido"].Visible = false;
+                    this.dgvPersonReg.Columns["Área"].Visible = false;
+                    this.dgvPersonReg.Columns["Curso"].Visible = false;
                 }
                 catch (MySqlException)
                 {
@@ -428,6 +456,77 @@ namespace CECLdb
                 }
             }
         }
+        public void LoadTableArea(string date)
+        {
+            List<Person> list = new List<Person>();
+            CtrlPerson person = new CtrlPerson();
+            dgvPersonReg.DataSource = person.consultationArea(date);
+            validateSelection();
+
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            if (dgvPersonReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
+                    this.dgvPersonReg.Columns["Área"].Visible = true;
+                    this.dgvPersonReg.Columns["Curso"].Visible = true;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableArea(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableArea(null);
+                }
+            }
+        }
+        public void LoadTableCourse(string date)
+        {
+            List<Person> list = new List<Person>();
+            CtrlPerson person = new CtrlPerson();
+            dgvPersonReg.DataSource = person.consultationCourse(date);
+            validateSelection();
+
+            DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
+            if (dgvPersonReg.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPersonReg.Columns["ID"].Visible = false;
+                    this.dgvPersonReg.Columns["Apellido"].Visible = false;
+                    this.dgvPersonReg.Columns["Área"].Visible = true;
+                    this.dgvPersonReg.Columns["Curso"].Visible = true;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        LoadTableCourse(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    LoadTableCourse(null);
+                }
+            }
+        }
+
         public void LoadTableSelectedPerson(List<int> personSelected)
         {
             amountSelected = 0;

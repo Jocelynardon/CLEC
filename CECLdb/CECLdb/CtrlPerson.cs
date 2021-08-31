@@ -86,7 +86,106 @@ namespace CLEC
             }
             return list;
         }
-        
+        public List<Object> consultationArea(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+            if (data == null)
+            {
+                sql = "SELECT Ins.IDpersona, persona.Nombre, persona.Apellido, " +
+                    "persona.Correo,persona.Teléfono," +
+                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre " +
+                    "FROM persona INNER JOIN Inscripcion as Ins " +
+                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Area.Nombre";
+            }
+            else
+            {
+                sql = "SELECT Ins.IDpersona, persona.Nombre, " +
+                    "persona.Apellido, persona.Correo,persona.Teléfono," +
+                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre " +
+                    "FROM persona INNER JOIN Inscripcion as Ins " +
+                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Area.Nombre LIKE '%" + data + "%' ORDER BY Area.Nombre";
+            }
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Person person = new Person();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
+                    person.Email = reader[3].ToString();
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Área = reader[5].ToString();
+                    person.Curso = reader[6].ToString();
+                    list.Add(person);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
+        public List<Object> consultationCourse(string data)
+        {
+            MySqlDataReader reader;
+            List<Object> list = new List<object>();
+            string sql;
+
+            if (data == null)
+            {
+                sql = "SELECT Ins.IDpersona, persona.Nombre, persona.Apellido, " +
+                    "persona.Correo,persona.Teléfono," +
+                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre " +
+                    "FROM persona INNER JOIN Inscripcion as Ins " +
+                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Curso.Nombre";
+            }
+            else
+            {
+                sql = "SELECT Ins.IDpersona, persona.Nombre, " +
+                    "persona.Apellido, persona.Correo,persona.Teléfono," +
+                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre " +
+                    "FROM persona INNER JOIN Inscripcion as Ins " +
+                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Curso.Nombre LIKE '%" + data + "%' ORDER BY Curso.Nombre";
+            }
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Person person = new Person();
+                    person.ID = int.Parse(reader[0].ToString());
+                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
+                    person.Email = reader[3].ToString();
+                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Área = reader[5].ToString();
+                    person.Curso = reader[6].ToString();
+                    list.Add(person);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            return list;
+        }
+
+
         public Person ModifyQuery(string IDpersona)/********************************************************/
         {
             MySqlDataReader reader;
