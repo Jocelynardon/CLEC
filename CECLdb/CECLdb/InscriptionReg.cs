@@ -96,7 +96,7 @@ namespace CECLdb
                     {
                         if (mtbStartDate.Text!="")
                         {
-                            if (mTxBxCode.Text != "")
+                            if (mTxBxCode.Text != "" && mTxBxCode.TextLength==7)
                             {
                                 int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
                                 int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
@@ -135,7 +135,7 @@ namespace CECLdb
                             }
                             else
                             {
-                                MessageBox.Show("Ingrese el código asignado");
+                                MessageBox.Show("Ingrese el código asignado, debe ser de 7 dígitos");
                             }
                         }
                         else

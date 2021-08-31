@@ -175,10 +175,10 @@ namespace CECLdb
             this.rbttnAddRegister.AutoSize = true;
             this.rbttnAddRegister.Location = new System.Drawing.Point(30, 56);
             this.rbttnAddRegister.Name = "rbttnAddRegister";
-            this.rbttnAddRegister.Size = new System.Drawing.Size(85, 24);
+            this.rbttnAddRegister.Size = new System.Drawing.Size(87, 24);
             this.rbttnAddRegister.TabIndex = 1;
             this.rbttnAddRegister.TabStop = true;
-            this.rbttnAddRegister.Text = "Registro";
+            this.rbttnAddRegister.Text = "Consulta";
             this.rbttnAddRegister.UseVisualStyleBackColor = true;
             // 
             // rbttnAddPerson

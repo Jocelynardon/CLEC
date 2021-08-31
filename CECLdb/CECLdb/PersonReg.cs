@@ -345,6 +345,8 @@ namespace CECLdb
 
             cmbTypeSearch.Items.Add(new { Text = "Correo", Value = 2 });
             cmbTypeSearch.Items.Add(new { Text = "Nombre", Value = 3 });
+            cmbTypeSearch.Items.Add(new { Text = "Área", Value = 4 });
+            cmbTypeSearch.Items.Add(new { Text = "Curso", Value = 5 });
             cmbTypeSearch.SelectedIndex = 0;
         }
         private void HideAndMove(bool justOneSelection)

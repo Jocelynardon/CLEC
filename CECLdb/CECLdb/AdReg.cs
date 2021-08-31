@@ -244,7 +244,7 @@ namespace CECLdb
             }
             else if (amountSelectedAd == 1)
             {
-                this.Height = 1027;
+                this.Height = 1000;
 
                 cmbSelectAreaAd.Enabled = false;
                 cmbSelectCourseAd.Enabled = false;
