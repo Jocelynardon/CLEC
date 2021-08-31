@@ -96,39 +96,46 @@ namespace CECLdb
                     {
                         if (mtbStartDate.Text!="")
                         {
-                            int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
-                            int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
-                            int idPerson = int.Parse(txtbPersonIDInscription.Text);
-                            string sql;
-
-                            if (mtbFinalDate.Text=="    /  /" || mtbFinalDate.Visible==false)
+                            if (mTxBxCode.Text != "")
                             {
-                                sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,Aprobo) VALUES ('" + idArea + "'," +
-                                "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + winOrLose + "')";
+                                int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
+                                int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
+                                int idPerson = int.Parse(txtbPersonIDInscription.Text);
+                                string sql;
+
+                                if (mtbFinalDate.Text == "    /  /" || mtbFinalDate.Visible == false)
+                                {
+                                    sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,Aprobo, Codigo) VALUES ('" + idArea + "'," +
+                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + winOrLose + "', '" + mTxBxCode.Text + "')";
+                                }
+                                else
+                                {
+                                    sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,FechaFin,Aprobo, Codigo) VALUES ('" + idArea + "'," +
+                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "', '" + mTxBxCode.Text + "')";
+                                }
+
+
+                                MySqlConnection connectionBD = Connection.connection();
+                                connectionBD.Open();
+                                try
+                                {
+                                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                    command.ExecuteNonQuery();
+                                    MessageBox.Show("Registro correctamente agregado");
+                                    Clean();
+                                }
+                                catch (MySqlException ex1)
+                                {
+                                    MessageBox.Show("Error al guardar " + ex1.Message);
+                                }
+                                finally
+                                {
+                                    connectionBD.Close();
+                                }
                             }
                             else
                             {
-                                sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,FechaFin,Aprobo) VALUES ('" + idArea + "'," +
-                                "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "')";
-                            }
-                            
-
-                            MySqlConnection connectionBD = Connection.connection();
-                            connectionBD.Open();
-                            try
-                            {
-                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                                command.ExecuteNonQuery();
-                                MessageBox.Show("Registro correctamente agregado");
-                                Clean();
-                            }
-                            catch (MySqlException ex1)
-                            {
-                                MessageBox.Show("Error al guardar " + ex1.Message);
-                            }
-                            finally
-                            {
-                                connectionBD.Close();
+                                MessageBox.Show("Ingrese el código asignado");
                             }
                         }
                         else
@@ -670,6 +677,7 @@ namespace CECLdb
             cmbSelectAreaInscription.SelectedIndex = -1;
             cmbSelectCourseInscription.SelectedIndex = -1;
             txtbPersonIDInscription.Text = "";
+            mTxBxCode.Text = "";
             ckbApproved.Checked = false;
             dateToday();
             mtbFinalDate.Text = "";
@@ -705,7 +713,7 @@ namespace CECLdb
                         mtbStartDate.Text = ins.FechaInicio.Substring(6,4)+ ins.FechaInicio.Substring(3, 2) + ins.FechaInicio.Substring(0, 2);
                         if(ins.FechaFin == "") mtbFinalDate.Text = ins.FechaFin;
                         else mtbFinalDate.Text = ins.FechaFin.Substring(0, 4) + ins.FechaFin.Substring(5, 2) + ins.FechaFin.Substring(8, 2);
-
+                        mTxBxCode.Text = ins.Código;
                     }
                 }
             }
@@ -768,43 +776,50 @@ namespace CECLdb
                     {
                         if (mtbStartDate.Text != "")
                         {
-                            int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
-                            int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
-                            int idPerson = int.Parse(txtbPersonIDInscription.Text);
-                            if (ckbApproved.Checked) winOrLose = 1;
-                            else winOrLose = 0;
-                            string sql;
-
-                            if (mtbFinalDate.Text == "    /  /" || mtbFinalDate.Visible == false)
+                            if (mTxBxCode.Text != "")
                             {
-                                sql = "UPDATE inscripcion SET IDcurso = '"+idCourse+"', IDarea = '"+idArea+"', IDpersona = '"+idPerson+"', Aprobo = '"+winOrLose+"', FechaInicio = '"+mtbStartDate.Text+ "', FechaFin = null "+
-                                    " WHERE IDcurso = " +ID_curso+" AND IDarea = "+ID_area+" AND IDpersona = "+ID_persona;
+                                int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
+                                int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
+                                int idPerson = int.Parse(txtbPersonIDInscription.Text);
+                                if (ckbApproved.Checked) winOrLose = 1;
+                                else winOrLose = 0;
+                                string sql;
+
+                                if (mtbFinalDate.Text == "    /  /" || mtbFinalDate.Visible == false)
+                                {
+                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '"+mTxBxCode.Text+"', FechaFin = null " +
+                                        " WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
+                                }
+                                else
+                                {
+                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '" + mTxBxCode.Text + "', FechaFin = '" + mtbFinalDate.Text +
+                                         "' WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
+                                }
+
+
+                                MySqlConnection connectionBD = Connection.connection();
+                                connectionBD.Open();
+                                try
+                                {
+                                    MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                    command.ExecuteNonQuery();
+                                    MessageBox.Show("Inscripción correctamente modificada");
+                                    EmptyChecked();
+
+                                    UpdateDataGrid();
+                                }
+                                catch (MySqlException ex1)
+                                {
+                                    MessageBox.Show("Error al guardar " + ex1.Message);
+                                }
+                                finally
+                                {
+                                    connectionBD.Close();
+                                }
                             }
                             else
                             {
-                                sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text +"', FechaFin = '"+mtbFinalDate.Text+
-                                     "' WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
-                            }
-
-
-                            MySqlConnection connectionBD = Connection.connection();
-                            connectionBD.Open();
-                            try
-                            {
-                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                                command.ExecuteNonQuery();
-                                MessageBox.Show("Inscripción correctamente modificada");
-                                EmptyChecked();
-
-                                UpdateDataGrid();
-                            }
-                            catch (MySqlException ex1)
-                            {
-                                MessageBox.Show("Error al guardar " + ex1.Message);
-                            }
-                            finally
-                            {
-                                connectionBD.Close();
+                                MessageBox.Show("Ingrese código asignado a la persona");
                             }
                         }
                         else

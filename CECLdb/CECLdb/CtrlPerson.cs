@@ -10,44 +10,7 @@ namespace CLEC
     class CtrlPerson: ConnectionSearchResult
     {
         public List<Object> listSelected = new List<Object>();
-        public List<Object> consultationCode(string date)
-        {
-            MySqlDataReader reader;
-            List<Object> list = new List<object>();
-            string sql;
-
-            if (date == null)
-            {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona ORDER BY Nombre";
-            }
-            else
-            {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE codigo LIKE '%" + date + "%'ORDER BY Nombre";
-            }
-            try
-            {
-                MySqlConnection connectionBD = base.connectionTable();
-                connectionBD.Open();
-                MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Person person = new Person();
-                    person.ID = int.Parse(reader[0].ToString());
-                    person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
-                    person.Email = reader[3].ToString();
-                    person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
-                    list.Add(person);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
-            }
-            return list;
-        }
+        
 
         public List<Object> consultationEmail(string date)
         {
@@ -57,11 +20,11 @@ namespace CLEC
 
             if (date == null)
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona ORDER BY Nombre";
             }
             else
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE Correo LIKE '%" + date + "%'ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Correo LIKE '%" + date + "%'ORDER BY Nombre";
             }
             try
             {
@@ -77,7 +40,6 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }
@@ -95,11 +57,11 @@ namespace CLEC
 
             if (date == null)
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona ORDER BY Nombre";
             }
             else
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE Nombre LIKE '%" + date + "%' OR Apellido LIKE '%" + date + "%' ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Nombre LIKE '%" + date + "%' OR Apellido LIKE '%" + date + "%' ORDER BY Nombre";
             }
             try
             {
@@ -115,7 +77,6 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }
@@ -132,7 +93,7 @@ namespace CLEC
 
             string sql;
             Person person = new Person();
-            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona =" + IDpersona;
+            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE IDpersona =" + IDpersona;
 
             try
             {
@@ -147,7 +108,6 @@ namespace CLEC
                     person.Apellido = reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
 
                 }
             }
@@ -163,7 +123,7 @@ namespace CLEC
             MySqlDataReader reader;
             string sql;
 
-            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono,codigo FROM persona WHERE IDpersona = " + IDselected + " ORDER BY Nombre";
+            sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE IDpersona = " + IDselected + " ORDER BY Nombre";
 
             try
             {
@@ -179,7 +139,6 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
                     listSelected.Add(person);
                 }
             }
@@ -194,7 +153,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono,codigo FROM correoenviado " +
+            sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono FROM correoenviado " +
             "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso = " + data + " ORDER BY persona.Nombre ASC";
 
             try
@@ -211,7 +170,6 @@ namespace CLEC
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
                     person.Teléfono = int.Parse(reader[4].ToString());
-                    person.Código = int.Parse(reader.GetString(5));
                     list.Add(person);
                 }
             }

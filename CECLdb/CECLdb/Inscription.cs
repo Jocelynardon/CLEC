@@ -12,6 +12,7 @@ namespace CLEC
         private int idCourse;
         private string person;
         private int idPerson;
+        private string code;
         private string startDate;
         private string endDate;
         private string approved;
@@ -25,5 +26,6 @@ namespace CLEC
         public string FechaInicio { get => startDate; set => startDate = value; }
         public string FechaFin { get => endDate; set => endDate = value; }
         public string Aprobado { get => approved; set => approved = value; }
+        public string Código { get => code; set => code = value; }
     }
 }
