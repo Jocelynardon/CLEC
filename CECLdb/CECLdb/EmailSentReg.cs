@@ -153,6 +153,39 @@ namespace CECLdb
             }
         }
 
+        public void ExportData(DataGridView dataList)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application exportExcel = new Microsoft.Office.Interop.Excel.Application();
+                exportExcel.Application.Workbooks.Add(true);
+
+                int indexColumn = 0;
+                foreach (DataGridViewColumn column in dataList.Columns)
+                {
+                    indexColumn++;
+
+                    exportExcel.Cells[1, indexColumn] = column.Name;
+                }
+                int indexRow = 0;
+                foreach (DataGridViewRow row in dataList.Rows)
+                {
+                    indexRow++;
+                    indexColumn = 0;
+                    foreach (DataGridViewColumn column in dataList.Columns)
+                    {
+                        indexColumn++;
+                        exportExcel.Cells[indexRow + 1, indexColumn] = row.Cells[column.Name].Value;
+                    }
+                }
+                exportExcel.Visible = true;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No hay Correos a Exportar."); ;
+            }
+        }
         private void Access(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -643,5 +676,9 @@ namespace CECLdb
             }
         }
 
+        private void bttnExport_Click(object sender, EventArgs e)
+        {
+            ExportData(dgvEmailSent);
+        }
     }
 }

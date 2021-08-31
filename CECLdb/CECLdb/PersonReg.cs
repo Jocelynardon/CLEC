@@ -44,7 +44,7 @@ namespace CECLdb
             }
             if (Menu.action == 1)
             {
-                this.Height = 396;
+                this.Height = 393;
                 btnSaveData.Visible = false;
                 btnClean.Visible = true;
             }
