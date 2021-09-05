@@ -424,6 +424,7 @@ namespace CECLdb
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.lblEscPerson);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "PersonReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
