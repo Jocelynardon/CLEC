@@ -111,12 +111,12 @@ namespace CECLdb
         {
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
-                if (txtbTelephone.TextLength == 8 || txtbTelephone.TextLength == 9)
+                if (txtbTelephone.Text != "")
                 {
                     String personName = txtbNamePerson.Text;
                     String personLastName = txtbLastNamePerson.Text;
                     String personEmail = txtEmailPerson.Text;
-                    int personNumber = int.Parse(txtbTelephone.Text);
+                    string personNumber = txtbTelephone.Text;
 
                     string sql = "INSERT INTO Persona (Nombre,Apellido,Correo,Teléfono) VALUES" +
                         "('" + personName + "','" + personLastName + "','" + personEmail + "'," +
@@ -134,7 +134,7 @@ namespace CECLdb
                     catch (MySqlException ex)
                     {
 
-                        MessageBox.Show("Error al guardar: " + ex.Message);
+                        MessageBox.Show("ERROR AL GUARDAR: " + ex.Message);
                     }
                     finally
                     {
@@ -143,7 +143,7 @@ namespace CECLdb
                 }
                 else
                 {
-                    MessageBox.Show("El teléfono debe tener 8 o 9 dígitos");
+                    MessageBox.Show("Ingrese un número telefónico");
                 }
             }
             else
@@ -531,12 +531,12 @@ namespace CECLdb
             DeselectAllcbx.Checked = false;
             if (txtbNamePerson.Text != "" && txtbLastNamePerson.Text != "" && txtEmailPerson.Text != "")
             {
-                if (txtbTelephone.TextLength >= 8 || txtbTelephone.TextLength <= 9)
+                if (txtbTelephone.Text != "")
                 {
                     String personName = txtbNamePerson.Text;
                     String personLastName = txtbLastNamePerson.Text;
                     String personEmail = txtEmailPerson.Text;
-                    int personNumber = int.Parse(txtbTelephone.Text);
+                    string personNumber = txtbTelephone.Text;
 
                     string sql = "UPDATE persona SET Nombre = '" + personName + "', Apellido = '" + personLastName + "', Correo = '" + personEmail + "', Teléfono = '" + personNumber + "' " +
             "WHERE IDpersona =" + PerID;

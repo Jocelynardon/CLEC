@@ -57,9 +57,9 @@ namespace CECLdb
             this.bttnEraserText = new System.Windows.Forms.Button();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
             this.DataGBox = new System.Windows.Forms.GroupBox();
-            this.SaveChanges = new System.Windows.Forms.Button();
+            this.Codetxtbx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.mTxBxCode = new System.Windows.Forms.MaskedTextBox();
+            this.SaveChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).BeginInit();
             this.SearchGBox.SuspendLayout();
             this.DataGBox.SuspendLayout();
@@ -115,6 +115,7 @@ namespace CECLdb
             // 
             // txtbPersonIDInscription
             // 
+            this.txtbPersonIDInscription.Enabled = false;
             this.txtbPersonIDInscription.Location = new System.Drawing.Point(20, 145);
             this.txtbPersonIDInscription.Name = "txtbPersonIDInscription";
             this.txtbPersonIDInscription.Size = new System.Drawing.Size(172, 27);
@@ -387,7 +388,7 @@ namespace CECLdb
             // DataGBox
             // 
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
-            this.DataGBox.Controls.Add(this.mTxBxCode);
+            this.DataGBox.Controls.Add(this.Codetxtbx);
             this.DataGBox.Controls.Add(this.label1);
             this.DataGBox.Controls.Add(this.SaveChanges);
             this.DataGBox.Controls.Add(this.btnClean);
@@ -410,18 +411,13 @@ namespace CECLdb
             this.DataGBox.TabIndex = 46;
             this.DataGBox.TabStop = false;
             // 
-            // SaveChanges
+            // Codetxtbx
             // 
-            this.SaveChanges.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.SaveChanges.Enabled = false;
-            this.SaveChanges.Location = new System.Drawing.Point(318, 198);
-            this.SaveChanges.Name = "SaveChanges";
-            this.SaveChanges.Size = new System.Drawing.Size(133, 27);
-            this.SaveChanges.TabIndex = 45;
-            this.SaveChanges.Text = "Guardar Cambios";
-            this.SaveChanges.UseVisualStyleBackColor = false;
-            this.SaveChanges.Visible = false;
-            this.SaveChanges.Click += new System.EventHandler(this.SaveChanges_Click);
+            this.Codetxtbx.Location = new System.Drawing.Point(885, 69);
+            this.Codetxtbx.Name = "Codetxtbx";
+            this.Codetxtbx.Size = new System.Drawing.Size(123, 27);
+            this.Codetxtbx.TabIndex = 47;
+            this.Codetxtbx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Codetxtbx_KeyPress);
             // 
             // label1
             // 
@@ -432,13 +428,18 @@ namespace CECLdb
             this.label1.TabIndex = 46;
             this.label1.Text = "Código asignado";
             // 
-            // mTxBxCode
+            // SaveChanges
             // 
-            this.mTxBxCode.Location = new System.Drawing.Point(885, 68);
-            this.mTxBxCode.Mask = "0000000";
-            this.mTxBxCode.Name = "mTxBxCode";
-            this.mTxBxCode.Size = new System.Drawing.Size(123, 27);
-            this.mTxBxCode.TabIndex = 47;
+            this.SaveChanges.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.SaveChanges.Enabled = false;
+            this.SaveChanges.Location = new System.Drawing.Point(333, 196);
+            this.SaveChanges.Name = "SaveChanges";
+            this.SaveChanges.Size = new System.Drawing.Size(133, 27);
+            this.SaveChanges.TabIndex = 45;
+            this.SaveChanges.Text = "Guardar Cambios";
+            this.SaveChanges.UseVisualStyleBackColor = false;
+            this.SaveChanges.Visible = false;
+            this.SaveChanges.Click += new System.EventHandler(this.SaveChanges_Click);
             // 
             // InscriptionReg
             // 
@@ -494,7 +495,7 @@ namespace CECLdb
         private System.Windows.Forms.GroupBox SearchGBox;
         private System.Windows.Forms.GroupBox DataGBox;
         private System.Windows.Forms.Button SaveChanges;
-        private System.Windows.Forms.MaskedTextBox mTxBxCode;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox Codetxtbx;
     }
 }

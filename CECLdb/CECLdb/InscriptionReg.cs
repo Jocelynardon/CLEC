@@ -8,7 +8,6 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
 namespace CECLdb
 {
     public partial class InscriptionReg : Form, AddID
@@ -96,7 +95,7 @@ namespace CECLdb
                     {
                         if (mtbStartDate.Text!="")
                         {
-                            if (mTxBxCode.Text != "" && mTxBxCode.TextLength==7)
+                            if (Codetxtbx.Text != "")
                             {
                                 int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
                                 int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
@@ -106,12 +105,12 @@ namespace CECLdb
                                 if (mtbFinalDate.Text == "    /  /" || mtbFinalDate.Visible == false)
                                 {
                                     sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,Aprobo, Codigo) VALUES ('" + idArea + "'," +
-                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + winOrLose + "', '" + mTxBxCode.Text + "')";
+                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + winOrLose + "', '" + Codetxtbx.Text + "')";
                                 }
                                 else
                                 {
                                     sql = "INSERT INTO inscripcion (IDarea,IDcurso,IDpersona,FechaInicio,FechaFin,Aprobo, Codigo) VALUES ('" + idArea + "'," +
-                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "', '" + mTxBxCode.Text + "')";
+                                    "'" + idCourse + "','" + idPerson + "','" + mtbStartDate.Text + "','" + mtbFinalDate.Text + "','" + winOrLose + "', '" + Codetxtbx.Text + "')";
                                 }
 
 
@@ -126,7 +125,7 @@ namespace CECLdb
                                 }
                                 catch (MySqlException ex1)
                                 {
-                                    MessageBox.Show("Error al guardar " + ex1.Message);
+                                    MessageBox.Show("ERROR AL GUARDAR: " + ex1.Message);
                                 }
                                 finally
                                 {
@@ -677,7 +676,7 @@ namespace CECLdb
             cmbSelectAreaInscription.SelectedIndex = -1;
             cmbSelectCourseInscription.SelectedIndex = -1;
             txtbPersonIDInscription.Text = "";
-            mTxBxCode.Text = "";
+            Codetxtbx.Text = "";
             ckbApproved.Checked = false;
             dateToday();
             mtbFinalDate.Text = "";
@@ -713,7 +712,7 @@ namespace CECLdb
                         mtbStartDate.Text = ins.FechaInicio.Substring(6,4)+ ins.FechaInicio.Substring(3, 2) + ins.FechaInicio.Substring(0, 2);
                         if(ins.FechaFin == "") mtbFinalDate.Text = ins.FechaFin;
                         else mtbFinalDate.Text = ins.FechaFin.Substring(0, 4) + ins.FechaFin.Substring(5, 2) + ins.FechaFin.Substring(8, 2);
-                        mTxBxCode.Text = ins.Código;
+                        Codetxtbx.Text = ins.Código;
                     }
                 }
             }
@@ -776,7 +775,7 @@ namespace CECLdb
                     {
                         if (mtbStartDate.Text != "")
                         {
-                            if (mTxBxCode.Text != "")
+                            if (Codetxtbx.Text != "")
                             {
                                 int idArea = int.Parse(cmbSelectAreaInscription.SelectedValue.ToString());
                                 int idCourse = int.Parse(cmbSelectCourseInscription.SelectedValue.ToString());
@@ -787,12 +786,12 @@ namespace CECLdb
 
                                 if (mtbFinalDate.Text == "    /  /" || mtbFinalDate.Visible == false)
                                 {
-                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '"+mTxBxCode.Text+"', FechaFin = null " +
+                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '"+Codetxtbx.Text+"', FechaFin = null " +
                                         " WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
                                 }
                                 else
                                 {
-                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '" + mTxBxCode.Text + "', FechaFin = '" + mtbFinalDate.Text +
+                                    sql = "UPDATE inscripcion SET IDcurso = '" + idCourse + "', IDarea = '" + idArea + "', IDpersona = '" + idPerson + "', Aprobo = '" + winOrLose + "', FechaInicio = '" + mtbStartDate.Text + "', Codigo = '" + Codetxtbx.Text + "', FechaFin = '" + mtbFinalDate.Text +
                                          "' WHERE IDcurso = " + ID_curso + " AND IDarea = " + ID_area + " AND IDpersona = " + ID_persona;
                                 }
 
@@ -810,7 +809,7 @@ namespace CECLdb
                                 }
                                 catch (MySqlException ex1)
                                 {
-                                    MessageBox.Show("Error al guardar " + ex1.Message);
+                                    MessageBox.Show("ERROR AL GUARDAR: " + ex1.Message);
                                 }
                                 finally
                                 {
@@ -991,5 +990,45 @@ namespace CECLdb
             }
         }
 
+        private void Codetxtbx_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (!char.IsControl((char)e.KeyValue) && !char.IsDigit((char)e.KeyValue))
+            //{
+            //    e.Handled = true;
+            //    if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            //    {
+            //        Codetxtbx.Text = Regex.Replace(Clipboard.GetText(), @"[^\d]", "");
+
+            //    }
+            //}
+
+ 
+
+            if (e.Control == true)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.C:
+                    case Keys.P:
+                    case Keys.X:
+                        e.Handled = true;
+                        Codetxtbx.SelectionLength = 0;
+                        break;
+                }
+            }
+        }
+
+        private void Codetxtbx_Enter(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.Clear();
+        }
+
+        private void Codetxtbx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

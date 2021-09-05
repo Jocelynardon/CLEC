@@ -72,25 +72,34 @@ namespace CECLdb
                 {
                     if (convocatoryArea > 0 && convocatoryArea < 10)
                     {
-                        string sql = "INSERT INTO Area (Año,Convocatoria,Nombre) VALUES" +
+                        CtrlArea ctrlArea = new CtrlArea();
+                        bool duplicated = ctrlArea.IsDuplicated(nameArea, yearArea, convocatoryArea);
+                        if (!duplicated)
+                        {
+                            string sql = "INSERT INTO Area (Año,Convocatoria,Nombre) VALUES" +
                     "('" + yearArea + "','" + convocatoryArea + "','" + nameArea + "')";
 
-                        MySqlConnection connectionBD = Connection.connection();
-                        connectionBD.Open();
-                        try
-                        {
-                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Se ha insertado exitosamente");
-                            Clean();
+                            MySqlConnection connectionBD = Connection.connection();
+                            connectionBD.Open();
+                            try
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Se ha insertado exitosamente");
+                                Clean();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                MessageBox.Show("Error al guardar: " + ex.Message);
+                            }
+                            finally
+                            {
+                                connectionBD.Close();
+                            }
                         }
-                        catch (MySqlException ex)
+                        else
                         {
-                            MessageBox.Show("Error al guardar: " + ex.Message);
-                        }
-                        finally
-                        {
-                            connectionBD.Close();
+                            MessageBox.Show("Ya existe un área con esos datos");
                         }
                     }
                     else
@@ -536,27 +545,36 @@ namespace CECLdb
                 {
                     if (convocatoryArea > 0 && convocatoryArea < 10)
                     {
-                        string sql = "UPDATE area SET Nombre = '" + nameArea + "', Año = '" + yearArea + "', Convocatoria = '" + convocatoryArea + 
+                        CtrlArea ctrlArea = new CtrlArea();
+                        bool Duplicated = ctrlArea.IsDuplicated(nameArea, yearArea, convocatoryArea);
+                        if (!Duplicated)
+                        {
+                            string sql = "UPDATE area SET Nombre = '" + nameArea + "', Año = '" + yearArea + "', Convocatoria = '" + convocatoryArea +
                         "' WHERE IDarea =" + AreaID;
 
-                        MySqlConnection connectionBD = Connection.connection();
-                        connectionBD.Open();
-                        try
-                        {
-                            MySqlCommand command = new MySqlCommand(sql, connectionBD);
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Se ha modificado exitosamente");
-                            EmptyChecked();
+                            MySqlConnection connectionBD = Connection.connection();
+                            connectionBD.Open();
+                            try
+                            {
+                                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                                command.ExecuteNonQuery();
+                                MessageBox.Show("Se ha modificado exitosamente");
+                                EmptyChecked();
 
-                            UpdateDataGrid();
+                                UpdateDataGrid();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                MessageBox.Show("Error al guardar: " + ex.Message);
+                            }
+                            finally
+                            {
+                                connectionBD.Close();
+                            }
                         }
-                        catch (MySqlException ex)
+                        else
                         {
-                            MessageBox.Show("Error al guardar: " + ex.Message);
-                        }
-                        finally
-                        {
-                            connectionBD.Close();
+                            MessageBox.Show("Ya existe un área con los mismos datos");
                         }
                     }
                     else

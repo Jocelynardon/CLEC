@@ -229,5 +229,29 @@ namespace CLEC
             }
             return area;
         }
+
+        public bool IsDuplicated(string Name, int Year, int Convocatory)
+        {
+            int result = 0;
+            string sql = "SELECT COUNT(1) FROM Area WHERE Nombre = '" + Name + "' AND Año = '" + Year + "' AND Convocatoria = '" + Convocatory + "'";
+            MySqlDataReader reader;
+            try
+            {
+                MySqlConnection connectionBD = base.connectionTable();
+                connectionBD.Open();
+                MySqlCommand command = new MySqlCommand(sql, connectionBD);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    result = int.Parse(reader[0].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("No se ha podido cargar los resultados " + ex.Message);
+            }
+            if (result > 0) return true;
+            else return false;
+        }
     }
 }

@@ -292,7 +292,7 @@ namespace CECLdb
             this.btnSaveData.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveData.Enabled = false;
-            this.btnSaveData.Location = new System.Drawing.Point(245, 126);
+            this.btnSaveData.Location = new System.Drawing.Point(257, 98);
             this.btnSaveData.Name = "btnSaveData";
             this.btnSaveData.Size = new System.Drawing.Size(161, 29);
             this.btnSaveData.TabIndex = 58;
