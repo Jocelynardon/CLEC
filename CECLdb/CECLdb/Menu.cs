@@ -49,7 +49,7 @@ namespace CECLdb
                 Frm.Show();
                 this.Close();
             }
-            else if (rbttnSearchCourseorAd.Checked)
+            else if (rbttnSearchCourse.Checked)
             {
                 Form1 Frm = new Form1();
                 Frm.Show();

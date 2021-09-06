@@ -389,7 +389,6 @@ namespace CECLdb
         
         public void LoadTableEmail(string date)
         {
-            List<Person> list = new List<Person>();
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationEmail(date);
             validateSelection();

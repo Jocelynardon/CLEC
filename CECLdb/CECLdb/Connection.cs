@@ -8,7 +8,7 @@ namespace CECLdb
         public static MySqlConnection connection()
         {
             //Falta el connector
-            string server = "Localhost";//192.168.1.183
+            string server = "localhost";//192.168.1.183
             //string port = "3306";
             string bd = "cecldb";
             string user = "URLuser";

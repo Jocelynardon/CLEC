@@ -164,8 +164,10 @@ namespace CECLdb
                 foreach (DataGridViewColumn column in dataList.Columns)
                 {
                     indexColumn++;
-
-                    exportExcel.Cells[1, indexColumn] = column.Name;
+                    if (indexColumn==3 || indexColumn==5)
+                    {
+                        exportExcel.Cells[1, indexColumn] = column.Name;
+                    }
                 }
                 int indexRow = 0;
                 foreach (DataGridViewRow row in dataList.Rows)
@@ -175,7 +177,10 @@ namespace CECLdb
                     foreach (DataGridViewColumn column in dataList.Columns)
                     {
                         indexColumn++;
-                        exportExcel.Cells[indexRow + 1, indexColumn] = row.Cells[column.Name].Value;
+                        if (indexColumn==3 || indexColumn==5)
+                        {
+                            exportExcel.Cells[indexRow + 1, indexColumn] = row.Cells[column.Name].Value;
+                        }
                     }
                 }
                 exportExcel.Visible = true;

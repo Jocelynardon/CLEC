@@ -42,7 +42,7 @@ namespace CECLdb
             this.rbttnAddRegister = new System.Windows.Forms.RadioButton();
             this.rbttnAddPerson = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rbttnSearchCourseorAd = new System.Windows.Forms.RadioButton();
+            this.rbttnSearchCourse = new System.Windows.Forms.RadioButton();
             this.bttnSearchMenu = new System.Windows.Forms.Button();
             this.rbttnSearchPerson = new System.Windows.Forms.RadioButton();
             this.lblEscExit = new System.Windows.Forms.Label();
@@ -194,26 +194,25 @@ namespace CECLdb
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.rbttnSearchCourseorAd);
+            this.groupBox3.Controls.Add(this.rbttnSearchCourse);
             this.groupBox3.Controls.Add(this.bttnSearchMenu);
             this.groupBox3.Controls.Add(this.rbttnSearchPerson);
-            this.groupBox3.Location = new System.Drawing.Point(494, 139);
+            this.groupBox3.Location = new System.Drawing.Point(593, 113);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(178, 182);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Visible = false;
             // 
-            // rbttnSearchCourseorAd
+            // rbttnSearchCourse
             // 
-            this.rbttnSearchCourseorAd.AutoSize = true;
-            this.rbttnSearchCourseorAd.Location = new System.Drawing.Point(30, 56);
-            this.rbttnSearchCourseorAd.Name = "rbttnSearchCourseorAd";
-            this.rbttnSearchCourseorAd.Size = new System.Drawing.Size(118, 24);
-            this.rbttnSearchCourseorAd.TabIndex = 11;
-            this.rbttnSearchCourseorAd.TabStop = true;
-            this.rbttnSearchCourseorAd.Text = "Curso o aviso";
-            this.rbttnSearchCourseorAd.UseVisualStyleBackColor = true;
+            this.rbttnSearchCourse.AutoSize = true;
+            this.rbttnSearchCourse.Location = new System.Drawing.Point(43, 65);
+            this.rbttnSearchCourse.Name = "rbttnSearchCourse";
+            this.rbttnSearchCourse.Size = new System.Drawing.Size(67, 24);
+            this.rbttnSearchCourse.TabIndex = 11;
+            this.rbttnSearchCourse.TabStop = true;
+            this.rbttnSearchCourse.Text = "Curso";
+            this.rbttnSearchCourse.UseVisualStyleBackColor = true;
             // 
             // bttnSearchMenu
             // 
@@ -229,7 +228,7 @@ namespace CECLdb
             // rbttnSearchPerson
             // 
             this.rbttnSearchPerson.AutoSize = true;
-            this.rbttnSearchPerson.Location = new System.Drawing.Point(30, 26);
+            this.rbttnSearchPerson.Location = new System.Drawing.Point(43, 35);
             this.rbttnSearchPerson.Name = "rbttnSearchPerson";
             this.rbttnSearchPerson.Size = new System.Drawing.Size(81, 24);
             this.rbttnSearchPerson.TabIndex = 10;
@@ -263,7 +262,7 @@ namespace CECLdb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 408);
+            this.ClientSize = new System.Drawing.Size(901, 408);
             this.Controls.Add(this.lblEnterMenu);
             this.Controls.Add(this.lblEscExit);
             this.Controls.Add(this.groupBox3);
@@ -298,7 +297,7 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnModifyMenu;
         private System.Windows.Forms.Button bttnDeleteMenu;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton rbttnSearchCourseorAd;
+        private System.Windows.Forms.RadioButton rbttnSearchCourse;
         private System.Windows.Forms.RadioButton rbttnSearchPerson;
         private System.Windows.Forms.Button bttnSearchMenu;
         private System.Windows.Forms.Label lblEscExit;

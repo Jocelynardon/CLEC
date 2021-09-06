@@ -809,5 +809,5 @@ namespace CECLdb
                 amountSelectedAd += 1;
             }
         }
-        }
+    }
     }
