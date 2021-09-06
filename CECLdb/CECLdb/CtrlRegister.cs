@@ -1,12 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CLEC
 {
-    class CtrlRegister:ConnectionSearchResult
+    class CtrlRegister : ConnectionSearchResult
     {
         public List<Object> listSelected = new List<Object>();
         public List<Object> consultationArea(string data)
@@ -257,7 +256,7 @@ namespace CLEC
 
             string sql;
             sql = "SELECT IDcurso, IDarea, IDpersona,  FechaConsulta " +
-                "FROM registro "+
+                "FROM registro " +
                 "WHERE IDcurso =" + IDcurso + " AND IDarea = " + IDarea + " AND IDpersona = " + IDperson;
             Register register = new Register();
             try

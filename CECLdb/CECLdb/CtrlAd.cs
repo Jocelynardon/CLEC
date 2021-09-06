@@ -1,12 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CLEC
 {
-    class CtrlAd:ConnectionSearchResult
+    class CtrlAd : ConnectionSearchResult
     {
         public List<Object> listSelected = new List<Object>();
         public List<Object> consultationAreaAd(string data)
@@ -202,6 +201,6 @@ namespace CLEC
             }
             return ad;
         }
-        
+
     }
 }

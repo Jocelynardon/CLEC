@@ -1,7 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CECLdb
 {
@@ -17,8 +15,8 @@ namespace CECLdb
             string password = "Algebra123";
 
             /*Port="+port+";*/
-            string stringconnection = "Database= " + bd + ";Data Source= " + server + 
-                ";User Id= " + user + "; Password= " + password +"";
+            string stringconnection = "Database= " + bd + ";Data Source= " + server +
+                ";User Id= " + user + "; Password= " + password + "";
 
             try
             {

@@ -1,12 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CLEC
 {
-    class CtrlCourse:ConnectionSearchResult
+    class CtrlCourse : ConnectionSearchResult
     {
         public List<Object> listSelected = new List<Object>();
         public List<Object> consultationArea(string data)
@@ -108,7 +107,7 @@ namespace CLEC
                 {
                     Course course = new Course();
                     course.IDarea = int.Parse(reader[0].ToString());
-                    course.IDcurso= int.Parse(reader[1].ToString());
+                    course.IDcurso = int.Parse(reader[1].ToString());
                     course.Nombre = reader[2].ToString();
                     course.Area = reader[3].ToString();
                     listSelected.Add(course);

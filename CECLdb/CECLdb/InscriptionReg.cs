@@ -990,39 +990,6 @@ namespace CECLdb
             }
         }
 
-        private void Codetxtbx_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (!char.IsControl((char)e.KeyValue) && !char.IsDigit((char)e.KeyValue))
-            //{
-            //    e.Handled = true;
-            //    if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
-            //    {
-            //        Codetxtbx.Text = Regex.Replace(Clipboard.GetText(), @"[^\d]", "");
-
-            //    }
-            //}
-
- 
-
-            if (e.Control == true)
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.C:
-                    case Keys.P:
-                    case Keys.X:
-                        e.Handled = true;
-                        Codetxtbx.SelectionLength = 0;
-                        break;
-                }
-            }
-        }
-
-        private void Codetxtbx_Enter(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Clipboard.Clear();
-        }
-
         private void Codetxtbx_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

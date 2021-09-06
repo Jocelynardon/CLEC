@@ -123,7 +123,7 @@ namespace CLEC
                     person.ID = int.Parse(reader[0].ToString());
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Teléfono = reader[4].ToString();
                     person.Área = reader[5].ToString();
                     person.Curso = reader[6].ToString();
                     list.Add(person);
@@ -172,7 +172,7 @@ namespace CLEC
                     person.ID = int.Parse(reader[0].ToString());
                     person.Nombre = reader[1].ToString() + " " + reader[2].ToString();
                     person.Email = reader[3].ToString();
-                    person.Teléfono = int.Parse(reader[4].ToString());
+                    person.Teléfono = reader[4].ToString();
                     person.Área = reader[5].ToString();
                     person.Curso = reader[6].ToString();
                     list.Add(person);
