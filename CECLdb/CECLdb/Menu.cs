@@ -9,6 +9,7 @@ namespace CECLdb
         public Menu()
         {
             InitializeComponent();
+            rbttnSearchPerson.Checked = true;
         }
         //Variable global que indica en qué opción se trabajará, 1 es agregar, 2 es modificar, 3 es eliminar, 4 va a email enviado
         public static int action = 0;
@@ -46,12 +47,6 @@ namespace CECLdb
             if (rbttnSearchPerson.Checked)
             {
                 PeopleSearch Frm = new PeopleSearch();
-                Frm.Show();
-                this.Close();
-            }
-            else if (rbttnSearchCourse.Checked)
-            {
-                Form1 Frm = new Form1();
                 Frm.Show();
                 this.Close();
             }
@@ -283,6 +278,5 @@ namespace CECLdb
                 MessageBox.Show("Seleccione alguna opción");
             }
         }
-
     }
 }

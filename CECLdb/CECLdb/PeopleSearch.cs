@@ -1,6 +1,7 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
+using CLEC;
+using MySql.Data.MySqlClient;
+using System;
+using System.Data;
 ﻿using CLEC;
 using MySql.Data.MySqlClient;
 using System;
@@ -9,7 +10,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
->>>>>>> Stashed changes
 using System.Windows.Forms;
 
 namespace CECLdb
@@ -28,7 +28,10 @@ namespace CECLdb
             InitializeComponent();
             rbttnCode.Checked=true;
         }
-
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
         private void PeopleSrcBtn_Click(object sender, EventArgs e)
         {
             //selectionType=1 Código, 2 correo, 3 Nombre
@@ -38,7 +41,7 @@ namespace CECLdb
                 case 1:
                     if (emailOrStatus == 1)
                     {
-                        if (txtCode.Text == "") ;
+                        if (txtCode.Text == "") 
                         {
                             SearchCodeEmail(null);
                         }
@@ -49,11 +52,39 @@ namespace CECLdb
                     }
                     if (emailOrStatus == 2)
                     {
-                        
+                        if (rbttnInscribed.Checked==true)
+                        {
+                            if (ckbApproved.Checked==true)
+                            {
+                                if (txtCode.Text == "")
+                                {
+                                   SearchByCodeStatus(null,1);
+                                }
+                                if (txtCode.Text != "")
+                                {
+                                    SearchByCodeStatus(txtCode.Text,1);
+                                }
+                            }
+                            if (ckbApproved.Checked==false)
+                            {
+                                if (txtCode.Text == "")
+                                {
+                                    SearchByCodeStatus(null, 0);
+                                }
+                                if (txtCode.Text != "")
+                                {
+                                    SearchByCodeStatus(txtCode.Text, 0);
+                                }
+                            }
+                        }
+                        if (rbttnConsulted.Checked == true)
+                        {
+
+                        }
                     }
                     if (emailOrStatus == 0)
                     {
-                        if (txtCode.Text == "") ;
+                        if (txtCode.Text == "")
                         {
                             SearchByCode(null);
                         }
@@ -66,7 +97,7 @@ namespace CECLdb
                 case 2:
                     if (emailOrStatus==1)
                     {
-                        if (txtSearch.Text == "") ;
+                        if (txtSearch.Text == "")
                         {
                             SearchEmailEmailSent(null);
                         }
@@ -77,11 +108,39 @@ namespace CECLdb
                     }
                     if (emailOrStatus==2)
                     {
+                        if (rbttnInscribed.Checked == true)
+                        {
+                            if (ckbApproved.Checked == true)
+                            {
+                                if (txtSearch.Text == "")
+                                {
+                                    SearchByEmailStatus(null, 1);
+                                }
+                                if (txtSearch.Text != "")
+                                {
+                                    SearchByEmailStatus(txtSearch.Text, 1);
+                                }
+                            }
+                            if (ckbApproved.Checked == false)
+                            {
+                                if (txtSearch.Text == "")
+                                {
+                                    SearchByEmailStatus(null, 0);
+                                }
+                                if (txtSearch.Text != "")
+                                {
+                                    SearchByEmailStatus(txtSearch.Text, 0);
+                                }
+                            }
+                        }
+                        if (rbttnConsulted.Checked == true)
+                        {
 
+                        }
                     }
                     if (emailOrStatus==0)
                     {
-                        if (txtSearch.Text == "") ;
+                        if (txtSearch.Text == "") 
                         {
                             SearchByEmail(null);
                         }
@@ -94,7 +153,7 @@ namespace CECLdb
                 case 3:
                     if (emailOrStatus==1)
                     {
-                        if (txtSearch.Text == "") ;
+                        if (txtSearch.Text == "") 
                         {
                             SearchByNameEmailSent(null);
                         }
@@ -105,11 +164,39 @@ namespace CECLdb
                     }
                     if (emailOrStatus==2)
                     {
+                        if (rbttnInscribed.Checked == true)
+                        {
+                            if (ckbApproved.Checked == true)
+                            {
+                                if (txtSearch.Text == "") 
+                                {
+                                    SearchByNameStatus(null, 1);
+                                }
+                                if (txtSearch.Text != "")
+                                {
+                                    SearchByNameStatus(txtSearch.Text, 1);
+                                }
+                            }
+                            if (ckbApproved.Checked == false)
+                            {
+                                if (txtSearch.Text == "")
+                                {
+                                    SearchByNameStatus(null, 0);
+                                }
+                                if (txtSearch.Text != "")
+                                {
+                                    SearchByNameStatus(txtSearch.Text, 0);
+                                }
+                            }
+                        }
+                        if (rbttnConsulted.Checked == true)
+                        {
 
+                        }
                     }
                     if (emailOrStatus==0)
                     {
-                        if (txtSearch.Text == "") ;
+                        if (txtSearch.Text == "") 
                         {
                             SearchByName(null);
                         }
@@ -135,7 +222,39 @@ namespace CECLdb
                     }
                     if (emailOrStatus == 2)
                     {
+                        if (rbttnInscribed.Checked == true)
+                        {
+                            if (ckbApproved.Checked == true)
+                            {
+                                if (cmbSelectArea.Text=="") ;
+                                {
+                                    SearchByCourseStatus(0,0, 1);
+                                }
+                                if (cmbSelectArea.Text != "")
+                                {
+                                    int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                                    int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                                    SearchByCourseStatus(idArea,idCourse,1);
+                                }
+                            }
+                            if (ckbApproved.Checked == false)
+                            {
+                                if (cmbSelectArea.Text == "") ;
+                                {
+                                    SearchByCourseStatus(0,0,0);
+                                }
+                                if (cmbSelectArea.Text != "")
+                                {
+                                    int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                                    int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                                    SearchByCourseStatus(idArea,idCourse,0);
+                                }
+                            }
+                        }
+                        if (rbttnConsulted.Checked == true)
+                        {
 
+                        }
                     }
                     if (emailOrStatus == 0)
                     {
@@ -458,6 +577,154 @@ namespace CECLdb
                 }
             }
         }
+        private void SearchByCodeStatus(string data,int approved)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationCodeStatus(data,approved);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByCode(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    SearchByCode(null);
+                }
+            }
+        }
+        private void SearchByNameStatus(string data, int approved)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationNameStatus(data, approved);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByCode(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    SearchByCode(null);
+                }
+            }
+        }
+        private void SearchByEmailStatus(string data, int approved)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationEmailStatus(data, approved);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByCode(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    SearchByCode(null);
+                }
+            }
+        }
+        private void SearchByCourseStatus(int idArea, int idCourse, int approved)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationCourseByStatus(idArea, idCourse,approved);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByCourse(0, 0);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                    SearchByCourse(0, 0);
+                }
+            }
+        }
 
 
         private void LoadArea()
@@ -518,6 +785,19 @@ namespace CECLdb
         }
 
 
+        private void Clean()
+        {
+            txtCode.Text = "";
+            txtSearch.Text = "";
+            cmbSelectArea.SelectedIndex = -1;
+            cmbSelectCourse.DataSource=null;
+            cmbSelectCourse.Items.Clear();
+            rbttnEmailSent.Checked = false;
+            rbttnStatus.Checked = false;
+            rbttnInscribed.Checked = false;
+            ckbApproved.Checked = false;
+            rbttnConsulted.Checked = false;
+        }
         private void ControlKey(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -622,6 +902,18 @@ namespace CECLdb
                 emailOrStatus = 0;
             }
         }
+        private void rbttnInscribed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbttnInscribed.Checked)
+            {
+                ckbApproved.Visible = true;
+            }
+            else
+            {
+                ckbApproved.Visible = false;
+            }
+        }
+
 
         private void cmbSelectArea_SelectionChangeCommitted(object sender, EventArgs e)
         {

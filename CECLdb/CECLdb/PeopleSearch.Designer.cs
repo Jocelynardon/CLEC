@@ -34,6 +34,7 @@ namespace CECLdb
             this.PeopleSrcBtn = new System.Windows.Forms.Button();
             this.bttnReturn = new System.Windows.Forms.Button();
             this.gpbStatus = new System.Windows.Forms.GroupBox();
+            this.rbttnInscribed = new System.Windows.Forms.RadioButton();
             this.ckbApproved = new System.Windows.Forms.CheckBox();
             this.rbttnConsulted = new System.Windows.Forms.RadioButton();
             this.lblType = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace CECLdb
             this.lblEscReturnMenu = new System.Windows.Forms.Label();
             this.dgvPeopleSearch = new System.Windows.Forms.DataGridView();
             this.lblTotalResult = new System.Windows.Forms.Label();
+            this.bttnEraserText = new System.Windows.Forms.Button();
             this.gpbStatus.SuspendLayout();
             this.gpbCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeopleSearch)).BeginInit();
@@ -106,29 +108,43 @@ namespace CECLdb
             // gpbStatus
             // 
             this.gpbStatus.BackColor = System.Drawing.Color.LightYellow;
+            this.gpbStatus.Controls.Add(this.rbttnInscribed);
             this.gpbStatus.Controls.Add(this.ckbApproved);
             this.gpbStatus.Controls.Add(this.rbttnConsulted);
             this.gpbStatus.Location = new System.Drawing.Point(424, 156);
             this.gpbStatus.Name = "gpbStatus";
-            this.gpbStatus.Size = new System.Drawing.Size(266, 67);
+            this.gpbStatus.Size = new System.Drawing.Size(293, 83);
             this.gpbStatus.TabIndex = 11;
             this.gpbStatus.TabStop = false;
             this.gpbStatus.Visible = false;
             // 
+            // rbttnInscribed
+            // 
+            this.rbttnInscribed.AutoSize = true;
+            this.rbttnInscribed.Location = new System.Drawing.Point(26, 23);
+            this.rbttnInscribed.Name = "rbttnInscribed";
+            this.rbttnInscribed.Size = new System.Drawing.Size(101, 24);
+            this.rbttnInscribed.TabIndex = 67;
+            this.rbttnInscribed.TabStop = true;
+            this.rbttnInscribed.Text = "Inscripción";
+            this.rbttnInscribed.UseVisualStyleBackColor = true;
+            this.rbttnInscribed.CheckedChanged += new System.EventHandler(this.rbttnInscribed_CheckedChanged);
+            // 
             // ckbApproved
             // 
             this.ckbApproved.AutoSize = true;
-            this.ckbApproved.Location = new System.Drawing.Point(18, 26);
+            this.ckbApproved.Location = new System.Drawing.Point(59, 53);
             this.ckbApproved.Name = "ckbApproved";
             this.ckbApproved.Size = new System.Drawing.Size(99, 24);
             this.ckbApproved.TabIndex = 6;
             this.ckbApproved.Text = "Aprobado";
             this.ckbApproved.UseVisualStyleBackColor = true;
+            this.ckbApproved.Visible = false;
             // 
             // rbttnConsulted
             // 
             this.rbttnConsulted.AutoSize = true;
-            this.rbttnConsulted.Location = new System.Drawing.Point(162, 26);
+            this.rbttnConsulted.Location = new System.Drawing.Point(153, 23);
             this.rbttnConsulted.Name = "rbttnConsulted";
             this.rbttnConsulted.Size = new System.Drawing.Size(87, 24);
             this.rbttnConsulted.TabIndex = 13;
@@ -308,11 +324,24 @@ namespace CECLdb
             this.lblTotalResult.TabIndex = 66;
             this.lblTotalResult.Visible = false;
             // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(247, 211);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 67;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
+            // 
             // PeopleSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1299, 609);
+            this.Controls.Add(this.bttnEraserText);
             this.Controls.Add(this.lblTotalResult);
             this.Controls.Add(this.dgvPeopleSearch);
             this.Controls.Add(this.lblEscReturnMenu);
@@ -361,5 +390,7 @@ namespace CECLdb
         private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Label lblTotalResult;
+        private System.Windows.Forms.RadioButton rbttnInscribed;
+        private System.Windows.Forms.Button bttnEraserText;
     }
 }

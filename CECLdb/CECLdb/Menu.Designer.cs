@@ -42,7 +42,6 @@ namespace CECLdb
             this.rbttnAddRegister = new System.Windows.Forms.RadioButton();
             this.rbttnAddPerson = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rbttnSearchCourse = new System.Windows.Forms.RadioButton();
             this.bttnSearchMenu = new System.Windows.Forms.Button();
             this.rbttnSearchPerson = new System.Windows.Forms.RadioButton();
             this.lblEscExit = new System.Windows.Forms.Label();
@@ -84,7 +83,7 @@ namespace CECLdb
             this.gpbAdd.Controls.Add(this.rbttnAddInscription);
             this.gpbAdd.Controls.Add(this.rbttnAddRegister);
             this.gpbAdd.Controls.Add(this.rbttnAddPerson);
-            this.gpbAdd.Location = new System.Drawing.Point(165, 77);
+            this.gpbAdd.Location = new System.Drawing.Point(59, 90);
             this.gpbAdd.Name = "gpbAdd";
             this.gpbAdd.Size = new System.Drawing.Size(396, 288);
             this.gpbAdd.TabIndex = 2;
@@ -194,30 +193,18 @@ namespace CECLdb
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.rbttnSearchCourse);
             this.groupBox3.Controls.Add(this.bttnSearchMenu);
             this.groupBox3.Controls.Add(this.rbttnSearchPerson);
-            this.groupBox3.Location = new System.Drawing.Point(593, 113);
+            this.groupBox3.Location = new System.Drawing.Point(487, 126);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(178, 182);
+            this.groupBox3.Size = new System.Drawing.Size(232, 182);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
-            // 
-            // rbttnSearchCourse
-            // 
-            this.rbttnSearchCourse.AutoSize = true;
-            this.rbttnSearchCourse.Location = new System.Drawing.Point(43, 65);
-            this.rbttnSearchCourse.Name = "rbttnSearchCourse";
-            this.rbttnSearchCourse.Size = new System.Drawing.Size(67, 24);
-            this.rbttnSearchCourse.TabIndex = 11;
-            this.rbttnSearchCourse.TabStop = true;
-            this.rbttnSearchCourse.Text = "Curso";
-            this.rbttnSearchCourse.UseVisualStyleBackColor = true;
             // 
             // bttnSearchMenu
             // 
             this.bttnSearchMenu.BackColor = System.Drawing.Color.SteelBlue;
-            this.bttnSearchMenu.Location = new System.Drawing.Point(7, 118);
+            this.bttnSearchMenu.Location = new System.Drawing.Point(37, 106);
             this.bttnSearchMenu.Name = "bttnSearchMenu";
             this.bttnSearchMenu.Size = new System.Drawing.Size(165, 34);
             this.bttnSearchMenu.TabIndex = 12;
@@ -228,12 +215,12 @@ namespace CECLdb
             // rbttnSearchPerson
             // 
             this.rbttnSearchPerson.AutoSize = true;
-            this.rbttnSearchPerson.Location = new System.Drawing.Point(43, 35);
+            this.rbttnSearchPerson.Location = new System.Drawing.Point(7, 63);
             this.rbttnSearchPerson.Name = "rbttnSearchPerson";
-            this.rbttnSearchPerson.Size = new System.Drawing.Size(81, 24);
+            this.rbttnSearchPerson.Size = new System.Drawing.Size(223, 24);
             this.rbttnSearchPerson.TabIndex = 10;
             this.rbttnSearchPerson.TabStop = true;
-            this.rbttnSearchPerson.Text = "Persona";
+            this.rbttnSearchPerson.Text = "Información cursos y persona";
             this.rbttnSearchPerson.UseVisualStyleBackColor = true;
             // 
             // lblEscExit
@@ -262,7 +249,7 @@ namespace CECLdb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 408);
+            this.ClientSize = new System.Drawing.Size(764, 408);
             this.Controls.Add(this.lblEnterMenu);
             this.Controls.Add(this.lblEscExit);
             this.Controls.Add(this.groupBox3);
@@ -297,7 +284,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnModifyMenu;
         private System.Windows.Forms.Button bttnDeleteMenu;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton rbttnSearchCourse;
         private System.Windows.Forms.RadioButton rbttnSearchPerson;
         private System.Windows.Forms.Button bttnSearchMenu;
         private System.Windows.Forms.Label lblEscExit;
