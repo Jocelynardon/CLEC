@@ -360,6 +360,7 @@ namespace CECLdb
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.lblEscArea);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "AreaReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

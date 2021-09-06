@@ -79,7 +79,14 @@ namespace CECLdb
                         }
                         if (rbttnConsulted.Checked == true)
                         {
-
+                            if (txtCode.Text == "")
+                            {
+                                SearchCodeRegister(null);
+                            }
+                            if (txtCode.Text != "")
+                            {
+                                SearchCodeRegister(txtCode.Text);
+                            }
                         }
                     }
                     if (emailOrStatus == 0)
@@ -135,7 +142,14 @@ namespace CECLdb
                         }
                         if (rbttnConsulted.Checked == true)
                         {
-
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByEmailRegister(null);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByEmailRegister(txtSearch.Text);
+                            }
                         }
                     }
                     if (emailOrStatus==0)
@@ -191,7 +205,14 @@ namespace CECLdb
                         }
                         if (rbttnConsulted.Checked == true)
                         {
-
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByNameRegister(null);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByNameRegister(txtSearch.Text);
+                            }
                         }
                     }
                     if (emailOrStatus==0)
@@ -209,7 +230,7 @@ namespace CECLdb
                 case 4:
                     if (emailOrStatus == 1)
                     {
-                        if (cmbSelectArea.Text == "") ;
+                        if (cmbSelectArea.Text == "")
                         {
                             SearchByCourseEmailSent(0, 0);
                         }
@@ -226,7 +247,7 @@ namespace CECLdb
                         {
                             if (ckbApproved.Checked == true)
                             {
-                                if (cmbSelectArea.Text=="") ;
+                                if (cmbSelectArea.Text=="")
                                 {
                                     SearchByCourseStatus(0,0, 1);
                                 }
@@ -239,7 +260,7 @@ namespace CECLdb
                             }
                             if (ckbApproved.Checked == false)
                             {
-                                if (cmbSelectArea.Text == "") ;
+                                if (cmbSelectArea.Text == "")
                                 {
                                     SearchByCourseStatus(0,0,0);
                                 }
@@ -253,12 +274,21 @@ namespace CECLdb
                         }
                         if (rbttnConsulted.Checked == true)
                         {
-
+                            if (cmbSelectArea.Text == "")
+                            {
+                                SearchByCourseRegister(0, 0);
+                            }
+                            if (cmbSelectArea.Text != "")
+                            {
+                                int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                                int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                                SearchByCourseRegister(idArea, idCourse);
+                            }
                         }
                     }
                     if (emailOrStatus == 0)
                     {
-                        if (cmbSelectArea.Text == "") ;
+                        if (cmbSelectArea.Text == "")
                         {
                             SearchByCourse(0, 0);
                         }
@@ -299,6 +329,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -314,7 +346,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCode(null);
                 }
             }
         }
@@ -336,6 +367,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -351,7 +384,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByEmail(null);
                 }
             }
         }
@@ -373,6 +405,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -388,7 +422,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByName(null);
                 }
             }
         }
@@ -410,6 +443,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -425,7 +460,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCourse(0,0);
                 }
             }
         }
@@ -447,6 +481,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -462,7 +498,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchCodeEmail(null);
                 }
             }
         }
@@ -484,6 +519,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -499,7 +536,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchCodeEmail(null);
                 }
             }
         }
@@ -521,6 +557,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -536,7 +574,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchCodeEmail(null);
                 }
             }
         }
@@ -558,6 +595,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -573,7 +612,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCourse(0, 0);
                 }
             }
         }
@@ -595,6 +633,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -610,7 +650,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCode(null);
                 }
             }
         }
@@ -632,6 +671,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -647,7 +688,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCode(null);
                 }
             }
         }
@@ -669,6 +709,8 @@ namespace CECLdb
                     this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
                     this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
                     this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -684,7 +726,6 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCode(null);
                 }
             }
         }
@@ -701,11 +742,13 @@ namespace CECLdb
                 {
                     this.dgvPeopleSearch.Columns["ID"].Visible = false;
                     this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
-                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
-                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
-                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
-                    this.dgvPeopleSearch.Columns["Descripción"].Visible = true;
-                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = true;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
                 }
                 catch (MySqlException)
                 {
@@ -721,7 +764,158 @@ namespace CECLdb
                 if (!update)
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    SearchByCourse(0, 0);
+                }
+            }
+        }
+        private void SearchCodeRegister(string data)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationCodeRegister(data);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = true;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchCodeRegister(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                }
+            }
+        }
+        private void SearchByEmailRegister(string data)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationEmailRegister(data);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByEmailRegister(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                }
+            }
+        }
+        private void SearchByNameRegister(string data)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationNameRegister(data);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByEmailRegister(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
+                }
+            }
+        }
+        private void SearchByCourseRegister(int idArea,int idCourse)
+        {
+            CtrlSearchPeople person = new CtrlSearchPeople();
+            dgvPeopleSearch.DataSource = person.consultationCourseRegister(idArea,idCourse);
+            lblTotalResult.Visible = true;
+            lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
+
+            if (dgvPeopleSearch.Rows.Count > 0)
+            {
+                try
+                {
+                    this.dgvPeopleSearch.Columns["ID"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Apellido"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaInicio"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaFin"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Aprobado"].Visible = false;
+                    this.dgvPeopleSearch.Columns["Descripción"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaAviso"].Visible = false;
+                    this.dgvPeopleSearch.Columns["FechaConsulta"].Visible = true;
+                    this.dgvPeopleSearch.Columns["Código"].Visible = false;
+                }
+                catch (MySqlException)
+                {
+                    if (!update)
+                    {
+                        MessageBox.Show("No se ha encontrado coincidencias");
+                        SearchByEmailRegister(null);
+                    }
+                }
+            }
+            else
+            {
+                if (!update)
+                {
+                    MessageBox.Show("No se han encontrado datos");
                 }
             }
         }
@@ -783,7 +977,6 @@ namespace CECLdb
                 connectionBD.Close();
             }
         }
-
 
         private void Clean()
         {

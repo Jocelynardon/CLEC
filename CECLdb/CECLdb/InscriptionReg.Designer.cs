@@ -449,6 +449,7 @@ namespace CECLdb
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.lblEscInscription);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "InscriptionReg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

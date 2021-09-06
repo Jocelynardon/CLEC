@@ -255,6 +255,7 @@ namespace CECLdb
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gpbAdd);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

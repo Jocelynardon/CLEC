@@ -19,6 +19,7 @@ namespace CLEC
         private string approved;
         private string description;
         private string dateAd;
+        private string dateRegister;
 
         public int ID { get => idPerson; set => idPerson = value; }
         public string Nombre { get => name; set => name = value; }
@@ -33,5 +34,6 @@ namespace CLEC
         public string Aprobado { get => approved; set => approved = value; }
         public string Descripción { get => description; set => description = value; }
         public string FechaAviso { get => dateAd; set => dateAd = value; }
+        public string FechaConsulta { get => dateRegister; set => dateRegister = value; }
     }
 }
