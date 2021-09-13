@@ -461,7 +461,7 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
-
+            //approved -> 0 = not passed, 1 = passed, 2 = all
             if (approved == 0 && data==null)
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
@@ -471,7 +471,7 @@ namespace CLEC
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
                     "FROM persona INNER JOIN Inscripcion as Ins " +
                     "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
-                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=0 ORDER BY Persona.Nombre";
             }
             else
             {
@@ -490,7 +490,7 @@ namespace CLEC
                 else
                 {
                     if(approved == 1 && data == null)
-                {
+                    {
                         sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                             "persona.Correo,persona.Teléfono," +
                             "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
@@ -502,7 +502,9 @@ namespace CLEC
                     }
                     else
                     {
-                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                        if (data != null && approved == 1)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                              "persona.Correo,persona.Teléfono," +
                              "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
                              "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
@@ -511,6 +513,30 @@ namespace CLEC
                              "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
                              "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 AND Ins.Codigo " +
                              "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else if (data != null && approved == 2)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                             "persona.Correo,persona.Teléfono," +
+                             "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                             "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                             "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                             "FROM persona INNER JOIN Inscripcion as Ins " +
+                             "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                             "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Codigo " +
+                             "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                            "persona.Correo,persona.Teléfono," +
+                            "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                            "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                            "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                            "FROM persona INNER JOIN Inscripcion as Ins " +
+                            "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                            "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
+                        }
                     }
                 }
             }
@@ -548,7 +574,7 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
-
+            //approved -> 0 = not passed, 1 = passed, 2 = all
             if (approved == 0 && data!=null)
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
@@ -589,7 +615,9 @@ namespace CLEC
                     }
                     else
                     {
-                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                        if (data != null && approved == 1)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                              "persona.Correo,persona.Teléfono," +
                              "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
                              "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
@@ -598,6 +626,30 @@ namespace CLEC
                              "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
                              "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 AND persona.Correo " +
                              "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else if (data != null && approved == 2)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                             "persona.Correo,persona.Teléfono," +
+                             "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                             "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                             "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                             "FROM persona INNER JOIN Inscripcion as Ins " +
+                             "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                             "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE persona.Correo " +
+                             "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                           "persona.Correo,persona.Teléfono," +
+                           "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                           "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                           "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                           "FROM persona INNER JOIN Inscripcion as Ins " +
+                           "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                           "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
+                        }
                     }
                 }
             }
@@ -635,7 +687,7 @@ namespace CLEC
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
-            
+            //approved -> 0 = NotPassed, 1 = Passed, 2 = All
             if (approved == 0 && data==null)
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
@@ -645,7 +697,7 @@ namespace CLEC
                     "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
                     "FROM persona INNER JOIN Inscripcion as Ins " +
                     "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
-                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=0 ORDER BY Persona.Nombre";
             }
             else
             {
@@ -676,7 +728,9 @@ namespace CLEC
                     }
                     else
                     {
-                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                        if (data != null && approved == 1)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                              "persona.Correo,persona.Teléfono," +
                              "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
                              "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
@@ -685,6 +739,30 @@ namespace CLEC
                              "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
                              "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 AND persona.Nombre " +
                              "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else if (data != null && approved == 2)
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                             "persona.Correo,persona.Teléfono," +
+                             "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                             "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                             "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                             "FROM persona INNER JOIN Inscripcion as Ins " +
+                             "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                             "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE persona.Nombre " +
+                             "LIKE '%" + data + "%' ORDER BY Persona.Nombre";
+                        }
+                        else
+                        {
+                            sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                        "persona.Correo,persona.Teléfono," +
+                        "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                        "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                        "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                        "FROM persona INNER JOIN Inscripcion as Ins " +
+                        "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                        "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
+                        }
                     }
                 }
             }
@@ -721,37 +799,14 @@ namespace CLEC
         {
             MySqlDataReader reader;
             List<Object> list = new List<object>();
-            string sql;
-
-            if (idArea == 0 && idCourse == 0 && approved==0)
+            string sql = "";
+            //approved -> 0 = NotPassed, 1 = Passed, 2 = All
+            
+            if (idArea != 0 && idCourse != 0)
             {
-                sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
-                    "persona.Correo,persona.Teléfono," +
-                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
-                    "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
-                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
-                    "FROM persona INNER JOIN Inscripcion as Ins " +
-                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
-                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso ORDER BY Persona.Nombre";
-            }
-            else
-            {
-                if (idArea != 0 && idCourse != 0 && approved == 0)
+                switch (approved)
                 {
-                    sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
-                   "persona.Correo,persona.Teléfono," +
-                   "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
-                   "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
-                   "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
-                   "FROM persona INNER JOIN Inscripcion as Ins " +
-                   "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
-                   "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=0 " +
-                   "AND Area.IDarea LIKE '%"+idArea+ "%' AND Curso.IDcurso LIKE '%" + idCourse + "%' ORDER BY Persona.Nombre";
-                }
-                else
-                {
-                    if (idArea == 0 && idCourse == 0 && approved == 1)
-                    {
+                    case 0:
                         sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                   "persona.Correo,persona.Teléfono," +
                   "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
@@ -759,11 +814,10 @@ namespace CLEC
                   "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
                   "FROM persona INNER JOIN Inscripcion as Ins " +
                   "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
-                  "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 " +
-                  "ORDER BY Persona.Nombre";
-                    }
-                    else
-                    {
+                  "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=0 " +
+                  "AND Area.IDarea LIKE '%" + idArea + "%' AND Curso.IDcurso LIKE '%" + idCourse + "%' ORDER BY Persona.Nombre";
+                        break;
+                    case 1:
                         sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                    "persona.Correo,persona.Teléfono," +
                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
@@ -773,7 +827,56 @@ namespace CLEC
                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 " +
                    "AND Area.IDarea LIKE '%" + idArea + "%' AND Curso.IDcurso LIKE '%" + idCourse + "%' ORDER BY Persona.Nombre";
-                    }
+                        break;
+                    case 2:
+                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                   "persona.Correo,persona.Teléfono," +
+                   "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                   "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                   "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                   "FROM persona INNER JOIN Inscripcion as Ins " +
+                   "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                   "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE " +
+                   "Area.IDarea LIKE '%" + idArea + "%' AND Curso.IDcurso LIKE '%" + idCourse + "%' ORDER BY Persona.Nombre";
+                        break;
+                }
+            }
+            else
+            {
+                switch (approved)
+                {
+                    case 0:
+                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                    "persona.Correo,persona.Teléfono," +
+                    "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                    "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                    "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                    "FROM persona INNER JOIN Inscripcion as Ins " +
+                    "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                    "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=0 ORDER BY Persona.Nombre";
+                        break;
+                    case 1:
+                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                  "persona.Correo,persona.Teléfono," +
+                  "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                  "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                  "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                  "FROM persona INNER JOIN Inscripcion as Ins " +
+                  "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                  "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso WHERE Ins.Aprobo=1 " +
+                  "ORDER BY Persona.Nombre";
+                        break;
+                    case 2:
+                        sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
+                  "persona.Correo,persona.Teléfono," +
+                  "CONCAT(Area.Nombre,', ',Area.Año,', ',Convocatoria) AS Nombre,Curso.Nombre," +
+                  "FechaInicio,IFNULL(FechaFin, '---') AS FechaFin," +
+                  "CASE WHEN Aprobo=1 THEN 'SI' Else 'NO' END AS Aprobado, Ins.Codigo " +
+                  "FROM persona INNER JOIN Inscripcion as Ins " +
+                  "ON Ins.IDpersona=persona.IDpersona INNER JOIN Area ON Area.IDarea=Ins.IDarea " +
+                  "INNER JOIN Curso ON Ins.IDcurso=Curso.IDcurso " +
+                  "ORDER BY Persona.Nombre";
+                        break;
                 }
             }
             try

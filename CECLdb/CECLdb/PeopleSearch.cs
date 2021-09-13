@@ -22,11 +22,12 @@ namespace CECLdb
         public int amount = 0;
         private bool update = false;
         private int selectionType;
-        private int emailOrStatus;
         public PeopleSearch()
         {
             InitializeComponent();
             rbttnCode.Checked=true;
+            rbttnEmailSent.Checked = true;
+            Allrbtn.Checked = true;
         }
         private void bttnEraserText_Click(object sender, EventArgs e)
         {
@@ -39,70 +40,78 @@ namespace CECLdb
             switch (selectionType)
             {
                 case 1:
-                    if (emailOrStatus == 1)
+                    if (rbttnEmailSent.Checked)
                     {
-                        if (txtCode.Text == "") 
+                        if (txtSearch.Text == "") 
                         {
                             SearchCodeEmail(null);
                         }
-                        if (txtCode.Text != "")
+                        else
                         {
-                            SearchCodeEmail(txtCode.Text);
+                            SearchCodeEmail(txtSearch.Text);
                         }
                     }
-                    if (emailOrStatus == 2)
+                    else if (rbttnInscribed.Checked)
                     {
-                        if (rbttnInscribed.Checked==true)
+                        if (Passedrbtn.Checked)
                         {
-                            if (ckbApproved.Checked==true)
+                            if (txtSearch.Text == "")
                             {
-                                if (txtCode.Text == "")
-                                {
-                                   SearchByCodeStatus(null,1);
-                                }
-                                if (txtCode.Text != "")
-                                {
-                                    SearchByCodeStatus(txtCode.Text,1);
-                                }
+                                SearchByCodeStatus(null, 1);
                             }
-                            if (ckbApproved.Checked==false)
+                            else
                             {
-                                if (txtCode.Text == "")
-                                {
-                                    SearchByCodeStatus(null, 0);
-                                }
-                                if (txtCode.Text != "")
-                                {
-                                    SearchByCodeStatus(txtCode.Text, 0);
-                                }
+                                SearchByCodeStatus(txtSearch.Text, 1);
                             }
                         }
-                        if (rbttnConsulted.Checked == true)
+                        else if (NotPassedrbtn.Checked)
                         {
-                            if (txtCode.Text == "")
+                            if (txtSearch.Text == "")
                             {
-                                SearchCodeRegister(null);
+                                SearchByCodeStatus(null, 0);
                             }
-                            if (txtCode.Text != "")
+                            else
                             {
-                                SearchCodeRegister(txtCode.Text);
+                                SearchByCodeStatus(txtSearch.Text, 0);
+                            }
+                        }
+                        else
+                        {
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByCodeStatus(null, 2);
+                            }
+                            else
+                            {
+                                SearchByCodeStatus(txtSearch.Text, 2);
                             }
                         }
                     }
-                    if (emailOrStatus == 0)
+                    if (rbttnConsulted.Checked)
                     {
-                        if (txtCode.Text == "")
+                        if (txtSearch.Text == "")
                         {
-                            SearchByCode(null);
+                            SearchCodeRegister(null);
                         }
-                        if (txtCode.Text != "")
+                        else
                         {
-                            SearchByCode(txtCode.Text);
+                            SearchCodeRegister(txtSearch.Text);
                         }
                     }
+                    //if (emailOrStatus == 0)
+                    //{
+                    //    if (txtSearch.Text == "")
+                    //    {
+                    //        SearchByCode(null);
+                    //    }
+                    //    if (txtSearch.Text != "")
+                    //    {
+                    //        SearchByCode(txtSearch.Text);
+                    //    }
+                    //}
                     break;
                 case 2:
-                    if (emailOrStatus==1)
+                    if (rbttnEmailSent.Checked)
                     {
                         if (txtSearch.Text == "")
                         {
@@ -113,59 +122,67 @@ namespace CECLdb
                             SearchEmailEmailSent(txtSearch.Text);
                         }
                     }
-                    if (emailOrStatus==2)
+                    if (rbttnInscribed.Checked == true)
                     {
-                        if (rbttnInscribed.Checked == true)
-                        {
-                            if (ckbApproved.Checked == true)
-                            {
-                                if (txtSearch.Text == "")
-                                {
-                                    SearchByEmailStatus(null, 1);
-                                }
-                                if (txtSearch.Text != "")
-                                {
-                                    SearchByEmailStatus(txtSearch.Text, 1);
-                                }
-                            }
-                            if (ckbApproved.Checked == false)
-                            {
-                                if (txtSearch.Text == "")
-                                {
-                                    SearchByEmailStatus(null, 0);
-                                }
-                                if (txtSearch.Text != "")
-                                {
-                                    SearchByEmailStatus(txtSearch.Text, 0);
-                                }
-                            }
-                        }
-                        if (rbttnConsulted.Checked == true)
+                        if (Passedrbtn.Checked)
                         {
                             if (txtSearch.Text == "")
                             {
-                                SearchByEmailRegister(null);
+                                SearchByEmailStatus(null, 1);
                             }
                             if (txtSearch.Text != "")
                             {
-                                SearchByEmailRegister(txtSearch.Text);
+                                SearchByEmailStatus(txtSearch.Text, 1);
+                            }
+                        }
+                        else if (NotPassedrbtn.Checked)
+                        {
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByEmailStatus(null, 0);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByEmailStatus(txtSearch.Text, 0);
+                            }
+                        }
+                        else
+                        {
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByEmailStatus(null, 2);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByEmailStatus(txtSearch.Text, 2);
                             }
                         }
                     }
-                    if (emailOrStatus==0)
+                    if (rbttnConsulted.Checked)
                     {
-                        if (txtSearch.Text == "") 
+                        if (txtSearch.Text == "")
                         {
-                            SearchByEmail(null);
+                            SearchByEmailRegister(null);
                         }
                         if (txtSearch.Text != "")
                         {
-                            SearchByEmail(txtSearch.Text);
+                            SearchByEmailRegister(txtSearch.Text);
                         }
                     }
+                    //if (emailOrStatus==0)
+                    //{
+                    //    if (txtSearch.Text == "") 
+                    //    {
+                    //        SearchByEmail(null);
+                    //    }
+                    //    if (txtSearch.Text != "")
+                    //    {
+                    //        SearchByEmail(txtSearch.Text);
+                    //    }
+                    //}
                     break;
                 case 3:
-                    if (emailOrStatus==1)
+                    if (rbttnEmailSent.Checked)
                     {
                         if (txtSearch.Text == "") 
                         {
@@ -176,59 +193,67 @@ namespace CECLdb
                             SearchByNameEmailSent(txtSearch.Text);
                         }
                     }
-                    if (emailOrStatus==2)
+                    if (rbttnInscribed.Checked == true)
                     {
-                        if (rbttnInscribed.Checked == true)
-                        {
-                            if (ckbApproved.Checked == true)
-                            {
-                                if (txtSearch.Text == "") 
-                                {
-                                    SearchByNameStatus(null, 1);
-                                }
-                                if (txtSearch.Text != "")
-                                {
-                                    SearchByNameStatus(txtSearch.Text, 1);
-                                }
-                            }
-                            if (ckbApproved.Checked == false)
-                            {
-                                if (txtSearch.Text == "")
-                                {
-                                    SearchByNameStatus(null, 0);
-                                }
-                                if (txtSearch.Text != "")
-                                {
-                                    SearchByNameStatus(txtSearch.Text, 0);
-                                }
-                            }
-                        }
-                        if (rbttnConsulted.Checked == true)
+                        if (Passedrbtn.Checked)
                         {
                             if (txtSearch.Text == "")
                             {
-                                SearchByNameRegister(null);
+                                SearchByNameStatus(null, 1);
                             }
                             if (txtSearch.Text != "")
                             {
-                                SearchByNameRegister(txtSearch.Text);
+                                SearchByNameStatus(txtSearch.Text, 1);
+                            }
+                        }
+                        else if (NotPassedrbtn.Checked)
+                        {
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByNameStatus(null, 0);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByNameStatus(txtSearch.Text, 0);
+                            }
+                        }
+                        else
+                        {
+                            if (txtSearch.Text == "")
+                            {
+                                SearchByNameStatus(null, 2);
+                            }
+                            if (txtSearch.Text != "")
+                            {
+                                SearchByNameStatus(txtSearch.Text, 2);
                             }
                         }
                     }
-                    if (emailOrStatus==0)
+                    if (rbttnConsulted.Checked == true)
                     {
-                        if (txtSearch.Text == "") 
+                        if (txtSearch.Text == "")
                         {
-                            SearchByName(null);
+                            SearchByNameRegister(null);
                         }
                         if (txtSearch.Text != "")
                         {
-                            SearchByName(txtSearch.Text);
+                            SearchByNameRegister(txtSearch.Text);
                         }
                     }
+                    //if (emailOrStatus==0)
+                    //{
+                    //    if (txtSearch.Text == "") 
+                    //    {
+                    //        SearchByName(null);
+                    //    }
+                    //    if (txtSearch.Text != "")
+                    //    {
+                    //        SearchByName(txtSearch.Text);
+                    //    }
+                    //}
                     break;
                 case 4:
-                    if (emailOrStatus == 1)
+                    if (rbttnEmailSent.Checked)
                     {
                         if (cmbSelectArea.Text == "")
                         {
@@ -241,64 +266,74 @@ namespace CECLdb
                             SearchByCourseEmailSent(idArea, idCourse);
                         }
                     }
-                    if (emailOrStatus == 2)
+                    if (rbttnInscribed.Checked)
                     {
-                        if (rbttnInscribed.Checked == true)
-                        {
-                            if (ckbApproved.Checked == true)
-                            {
-                                if (cmbSelectArea.Text=="")
-                                {
-                                    SearchByCourseStatus(0,0, 1);
-                                }
-                                if (cmbSelectArea.Text != "")
-                                {
-                                    int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
-                                    int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
-                                    SearchByCourseStatus(idArea,idCourse,1);
-                                }
-                            }
-                            if (ckbApproved.Checked == false)
-                            {
-                                if (cmbSelectArea.Text == "")
-                                {
-                                    SearchByCourseStatus(0,0,0);
-                                }
-                                if (cmbSelectArea.Text != "")
-                                {
-                                    int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
-                                    int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
-                                    SearchByCourseStatus(idArea,idCourse,0);
-                                }
-                            }
-                        }
-                        if (rbttnConsulted.Checked == true)
+                        if (Passedrbtn.Checked)
                         {
                             if (cmbSelectArea.Text == "")
                             {
-                                SearchByCourseRegister(0, 0);
+                                SearchByCourseStatus(0, 0, 1);
                             }
                             if (cmbSelectArea.Text != "")
                             {
                                 int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
                                 int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
-                                SearchByCourseRegister(idArea, idCourse);
+                                SearchByCourseStatus(idArea, idCourse, 1);
+                            }
+                        }
+                        else if (NotPassedrbtn.Checked)
+                        {
+                            if (cmbSelectArea.Text == "")
+                            {
+                                SearchByCourseStatus(0, 0, 0);
+                            }
+                            if (cmbSelectArea.Text != "")
+                            {
+                                int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                                int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                                SearchByCourseStatus(idArea, idCourse, 0);
+                            }
+                        }
+                        else
+                        {
+                            if (cmbSelectArea.Text == "")
+                            {
+                                SearchByCourseStatus(0, 0, 2);
+                            }
+                            if (cmbSelectArea.Text != "")
+                            {
+                                int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                                int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                                SearchByCourseStatus(idArea, idCourse, 2);
                             }
                         }
                     }
-                    if (emailOrStatus == 0)
+                    if (rbttnConsulted.Checked == true)
                     {
                         if (cmbSelectArea.Text == "")
                         {
-                            SearchByCourse(0, 0);
+                            SearchByCourseRegister(0, 0);
                         }
                         if (cmbSelectArea.Text != "")
                         {
                             int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
                             int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
-                            SearchByCourse(idArea, idCourse);
+                            SearchByCourseRegister(idArea, idCourse);
                         }
                     }
+                    //if (emailOrStatus == 0)
+                    //{
+                    //    if (cmbSelectArea.Text == "")
+                    //    {
+                    //        SearchByCourse(0, 0);
+                    //    }
+                    //    if (cmbSelectArea.Text != "")
+                    //    {
+                    //        int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
+                    //        int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
+                    //        SearchByCourse(idArea, idCourse);
+                    //    }
+                    //}
                     break;
                 default:
                     MessageBox.Show("Seleccione la manera en que desea buscar");
@@ -735,7 +770,7 @@ namespace CECLdb
             dgvPeopleSearch.DataSource = person.consultationCourseByStatus(idArea, idCourse,approved);
             lblTotalResult.Visible = true;
             lblTotalResult.Text = "Total Resultados: " + dgvPeopleSearch.Rows.Count;
-
+            // approved -> 0 = notpassed, 1 = passed, 2 = all
             if (dgvPeopleSearch.Rows.Count > 0)
             {
                 try
@@ -980,15 +1015,12 @@ namespace CECLdb
 
         private void Clean()
         {
-            txtCode.Text = "";
             txtSearch.Text = "";
             cmbSelectArea.SelectedIndex = -1;
             cmbSelectCourse.DataSource=null;
             cmbSelectCourse.Items.Clear();
             rbttnEmailSent.Checked = false;
-            rbttnStatus.Checked = false;
             rbttnInscribed.Checked = false;
-            ckbApproved.Checked = false;
             rbttnConsulted.Checked = false;
         }
         private void ControlKey(object sender, KeyEventArgs e)
@@ -1009,101 +1041,70 @@ namespace CECLdb
         {
             if (rbttnCode.Checked)
             {
-                txtCode.Visible = true;
-                txtSearch.Visible = false;
+                txtSearch.Enabled = true;
                 lblType.Text = "Código";
                 selectionType = 1;
-            }
-            else
-            {
-                txtCode.Visible = false;
+                rbttnCourse.Checked = false;
             }
         }
         private void rbttnEmail_CheckedChanged_1(object sender, EventArgs e)
         {
             if (rbttnEmail.Checked)
             {
-                txtSearch.Visible = true;
-                lblType.Visible = true;
+                txtSearch.Enabled = true;
+                lblType.Enabled = true;
                 lblType.Text = "Correo";
                 selectionType = 2;
-            }
-            else
-            {
-                txtSearch.Visible = false;
-                lblType.Visible = false;
+                rbttnCourse.Checked = false;
             }
         }
         private void rbttnName_CheckedChanged_1(object sender, EventArgs e)
         {
             if (rbttnName.Checked)
             {
-                txtSearch.Visible = true;
-                lblType.Visible = true;
+                txtSearch.Enabled = true;
+                lblType.Enabled = true;
                 lblType.Text = "Nombre";
                 selectionType = 3;
-            }
-            else
-            {
-                txtSearch.Visible = false;
-                lblType.Visible = false;
+                rbttnCourse.Checked = false;
             }
         }
         private void rbttnCourse_CheckedChanged(object sender, EventArgs e)
         {
             if (rbttnCourse.Checked)
             {
-                lblType.Visible = false;
-                lblArea.Visible = true;
-                lblCourse.Visible = true;
-                cmbSelectArea.Visible = true;
+                lblType.Enabled = false;
+                txtSearch.Enabled = false;
+                lblArea.Enabled = true;
+                lblCourse.Enabled = true;
+                cmbSelectArea.Enabled = true;
                 LoadArea();
                 cmbSelectArea.SelectedIndex = -1;
-                cmbSelectCourse.Visible = true;
+                cmbSelectCourse.Enabled = true;
                 selectionType = 4;
             }
             else
             {
-                lblArea.Visible = false;
-                lblCourse.Visible = false;
-                cmbSelectArea.Visible = false;
-                cmbSelectCourse.Visible = false;
+                lblArea.Enabled = false;
+                lblCourse.Enabled = false;
+                cmbSelectArea.Enabled = false;
+                cmbSelectCourse.Enabled = false;
             }
         }
 
         private void rbttnStatus_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (rbttnStatus.Checked)
+            
+        }
+        private void rbttnInscribed_CheckedChanged(object sender, EventArgs e)
+        { 
+            if (rbttnInscribed.Checked)
             {
                 gpbStatus.Visible = true;
-                emailOrStatus = 2;
             }
             else
             {
                 gpbStatus.Visible = false;
-                emailOrStatus = 0;
-            }
-        }
-        private void rbttnEmailSent_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbttnEmailSent.Checked)
-            {
-                emailOrStatus = 1;
-            }
-            else
-            {
-                emailOrStatus = 0;
-            }
-        }
-        private void rbttnInscribed_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbttnInscribed.Checked)
-            {
-                ckbApproved.Visible = true;
-            }
-            else
-            {
-                ckbApproved.Visible = false;
             }
         }
 
@@ -1111,6 +1112,17 @@ namespace CECLdb
         private void cmbSelectArea_SelectionChangeCommitted(object sender, EventArgs e)
         {
             LoadCourse();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (selectionType == 1)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
