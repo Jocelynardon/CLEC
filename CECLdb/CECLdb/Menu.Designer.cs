@@ -43,7 +43,6 @@ namespace CECLdb
             this.rbttnAddPerson = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bttnSearchMenu = new System.Windows.Forms.Button();
-            this.rbttnSearchPerson = new System.Windows.Forms.RadioButton();
             this.lblEscExit = new System.Windows.Forms.Label();
             this.lblEnterMenu = new System.Windows.Forms.Label();
             this.gpbAdd.SuspendLayout();
@@ -194,34 +193,23 @@ namespace CECLdb
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.bttnSearchMenu);
-            this.groupBox3.Controls.Add(this.rbttnSearchPerson);
-            this.groupBox3.Location = new System.Drawing.Point(487, 126);
+            this.groupBox3.Location = new System.Drawing.Point(482, 96);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 182);
+            this.groupBox3.Size = new System.Drawing.Size(232, 104);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             // 
             // bttnSearchMenu
             // 
             this.bttnSearchMenu.BackColor = System.Drawing.Color.SteelBlue;
-            this.bttnSearchMenu.Location = new System.Drawing.Point(37, 106);
+            this.bttnSearchMenu.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.bttnSearchMenu.Location = new System.Drawing.Point(36, 40);
             this.bttnSearchMenu.Name = "bttnSearchMenu";
             this.bttnSearchMenu.Size = new System.Drawing.Size(165, 34);
             this.bttnSearchMenu.TabIndex = 12;
-            this.bttnSearchMenu.Text = "Consultar";
+            this.bttnSearchMenu.Text = "Búsqueda Avanzada";
             this.bttnSearchMenu.UseVisualStyleBackColor = false;
             this.bttnSearchMenu.Click += new System.EventHandler(this.Buscar_Click);
-            // 
-            // rbttnSearchPerson
-            // 
-            this.rbttnSearchPerson.AutoSize = true;
-            this.rbttnSearchPerson.Location = new System.Drawing.Point(7, 63);
-            this.rbttnSearchPerson.Name = "rbttnSearchPerson";
-            this.rbttnSearchPerson.Size = new System.Drawing.Size(223, 24);
-            this.rbttnSearchPerson.TabIndex = 10;
-            this.rbttnSearchPerson.TabStop = true;
-            this.rbttnSearchPerson.Text = "Información cursos y persona";
-            this.rbttnSearchPerson.UseVisualStyleBackColor = true;
             // 
             // lblEscExit
             // 
@@ -264,7 +252,6 @@ namespace CECLdb
             this.gpbAdd.ResumeLayout(false);
             this.gpbAdd.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,7 +272,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnModifyMenu;
         private System.Windows.Forms.Button bttnDeleteMenu;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton rbttnSearchPerson;
         private System.Windows.Forms.Button bttnSearchMenu;
         private System.Windows.Forms.Label lblEscExit;
         private System.Windows.Forms.Label lblEnterMenu;

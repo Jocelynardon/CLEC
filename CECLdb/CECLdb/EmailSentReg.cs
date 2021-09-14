@@ -60,32 +60,28 @@ namespace CECLdb
             LoadTypeSearch();
             string IDSearch = txtNoAviso.Text.ToString();
             consultationAmount(IDSearch);
-            if (amount>0)
+            dgvEmailSent.Visible = true;
+            LoadTableID(IDSearch);
+            this.Height = 750;
+            bttnReturnEmailSent.Location = new Point(448, 484);
+            SelectAllcbx.Visible = true;
+            DeselectAllcbx.Visible = true;
+            bttnViewSelected.Visible = true;
+            bttnViewAll.Visible = true;
+            if (Menu.action == 2)
             {
-                dgvEmailSent.Visible = true;
-                LoadTableID(IDSearch);
-                this.Height = 750;
-                bttnReturnEmailSent.Location = new Point(448, 484);
-                SelectAllcbx.Visible = true;
-                DeselectAllcbx.Visible = true;
-                bttnViewSelected.Visible = true;
-                bttnViewAll.Visible = true;
-                if (Menu.action == 2)
-                {
-                    Modifybtn.Visible = true;
-                }
-                if (Menu.action == 3)
-                {
-                    DeletedPreviewbtn.Location = new Point(332, 484);
-                    DeletedPreviewbtn.Visible = true;
-                }
+                Modifybtn.Visible = true;
+            }
+            if (Menu.action == 3)
+            {
+                DeletedPreviewbtn.Location = new Point(332, 484);
+                DeletedPreviewbtn.Visible = true;
             }
             if (amount == 0)
             {
                 if (!updating) 
                 {
                     MessageBox.Show("No hay correos enviados con ese aviso");
-                    AdReg.empty = -1;
                     dgvEmailSent.DataSource = null;
                 }
                 else

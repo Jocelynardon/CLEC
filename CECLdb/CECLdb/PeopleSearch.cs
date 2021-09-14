@@ -1042,6 +1042,7 @@ namespace CECLdb
             if (rbttnCode.Checked)
             {
                 txtSearch.Enabled = true;
+                lblType.Enabled = true;
                 lblType.Text = "Código";
                 selectionType = 1;
                 rbttnCourse.Checked = false;
@@ -1073,6 +1074,9 @@ namespace CECLdb
         {
             if (rbttnCourse.Checked)
             {
+                rbttnEmail.Checked = false;
+                rbttnName.Checked = false;
+                rbttnCode.Checked = false;
                 lblType.Enabled = false;
                 txtSearch.Enabled = false;
                 lblArea.Enabled = true;
