@@ -81,67 +81,6 @@ namespace CECLdb
             PersonReg frmAdd = new PersonReg();
             frmAdd.Show(this);
         }
-        //private void bttnImportRegister_Click(object sender, EventArgs e)
-        //{
-        //    int linesCount = 0;
-        //    MessageBox.Show("El formato para el archivo .csv es:\n ID AREA, ID CURSO , ID PERSONA, FECHA DE LA CONSULTA (AÑO/MES/DÍA)");
-
-        //    OpenFileDialog window = new OpenFileDialog();
-        //    window.Title = "Importar archivo (.txt, .csv)";
-        //    window.Filter = "Text files (*.Csv)|*.csv|(*.txt)|*.txt";
-        //    if (window.ShowDialog() == DialogResult.OK)
-        //    {
-        //        MySqlConnection connectionBD = Connection.connection();
-        //        connectionBD.Open();
-        //        try
-        //        {
-        //            String[] lines = File.ReadAllLines(window.FileName);
-
-        //            for (int i = 0; i < lines.Length; i++)
-        //            {
-        //                if (lines[i] != "")
-        //                {
-        //                    String[] lineConverted = lines[i].Split(",");
-
-        //                    string sql = "INSERT INTO registro (IDarea,IDcurso,IDpersona,FechaConsulta) VALUES" +
-        //                "('" + lineConverted[0] + "','" + lineConverted[1] + "','" + lineConverted[2] + "'," +
-        //                "'" + lineConverted[3] + "')";
-
-        //                    if (lineConverted.Length == 4)
-        //                    {
-        //                        MySqlCommand command = new MySqlCommand(sql, connectionBD);
-        //                        command.ExecuteNonQuery();
-        //                        if (i == lines.Length - 1)
-        //                        {
-        //                            MessageBox.Show("Se ha insertado exitosamente");
-        //                            Clean();
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show("No tiene la cantidad de datos indicado");
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    linesCount++;
-        //                    if (linesCount == lines.Length)
-        //                    {
-        //                        MessageBox.Show("El archivo se encuentra vacío");
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show("Error al insertar: Revise los datos ingresados \n" + ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            connectionBD.Close();
-        //        }
-        //    }
-        //}
         private void bttnAddRegister_Click(object sender, EventArgs e)
         {
             if (cmbSelectAreaRegister.Text != "")
@@ -361,6 +300,8 @@ namespace CECLdb
             CtrlRegister register = new CtrlRegister();
             dgvRegister.DataSource = register.consultationArea(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvRegister.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvRegister.Rows.Count > 0)
             {
@@ -393,6 +334,8 @@ namespace CECLdb
             CtrlRegister register = new CtrlRegister();
             dgvRegister.DataSource = register.consultationCourse(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvRegister.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvRegister.Rows.Count > 0)
             {
@@ -425,6 +368,8 @@ namespace CECLdb
             CtrlRegister register = new CtrlRegister();
             dgvRegister.DataSource = register.consultationPerson(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvRegister.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvRegister.Rows.Count > 0)
             {
@@ -457,6 +402,8 @@ namespace CECLdb
             CtrlRegister register = new CtrlRegister();
             dgvRegister.DataSource = register.consultationMonthYear(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvRegister.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvRegister.Rows.Count > 0)
             {
@@ -496,6 +443,8 @@ namespace CECLdb
             }
             dgvRegister.DataSource = register.listSelected;
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvRegister.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvRegister.Rows.Count > 0)
             {

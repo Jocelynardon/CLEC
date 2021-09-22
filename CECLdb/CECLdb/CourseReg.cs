@@ -225,6 +225,8 @@ namespace CECLdb
             CtrlCourse course = new CtrlCourse();
             dgvCourse.DataSource = course.consultationArea(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvCourse.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvCourse.Rows.Count > 0)
             {
@@ -256,6 +258,8 @@ namespace CECLdb
             CtrlCourse course = new CtrlCourse();
             dgvCourse.DataSource = course.consultationName(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvCourse.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvCourse.Rows.Count > 0)
             {
@@ -294,6 +298,8 @@ namespace CECLdb
             }
             dgvCourse.DataSource = course.listSelected;
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvCourse.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvCourse.Rows.Count > 0)
             {

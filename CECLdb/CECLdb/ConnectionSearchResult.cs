@@ -7,7 +7,6 @@ namespace CLEC
     {
         public MySqlConnection connectionTable()
         {
-            //Falta el connector
             string server = "localhost";//10.200.111.20  172.19.50.81  192.168.100.135
             //string port = "3306";
             string bd = "cecldb";

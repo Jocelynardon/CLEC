@@ -29,7 +29,7 @@ namespace CECLdb
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblName = new System.Windows.Forms.Label();
             this.txtbNamePerson = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -58,6 +58,7 @@ namespace CECLdb
             this.bttnEraserText = new System.Windows.Forms.Button();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonReg)).BeginInit();
             this.DataGBox.SuspendLayout();
             this.SearchGBox.SuspendLayout();
@@ -181,14 +182,14 @@ namespace CECLdb
             this.dgvPersonReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonReg.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckSelection});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuBar;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.MenuBar;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPersonReg.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPersonReg.Location = new System.Drawing.Point(24, 124);
             this.dgvPersonReg.Name = "dgvPersonReg";
             this.dgvPersonReg.ReadOnly = true;
@@ -398,6 +399,7 @@ namespace CECLdb
             // SearchGBox
             // 
             this.SearchGBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SearchGBox.Controls.Add(this.lblResult);
             this.SearchGBox.Controls.Add(this.bttnEraserText);
             this.SearchGBox.Controls.Add(this.DeselectAllcbx);
             this.SearchGBox.Controls.Add(this.bttnViewSelectedPerson);
@@ -416,6 +418,16 @@ namespace CECLdb
             this.SearchGBox.TabIndex = 53;
             this.SearchGBox.TabStop = false;
             this.SearchGBox.Text = "BÚSQUEDA";
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(774, 95);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(125, 20);
+            this.lblResult.TabIndex = 52;
+            this.lblResult.Text = "Total Resultados: ";
+            this.lblResult.Visible = false;
             // 
             // PersonReg
             // 
@@ -470,5 +482,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnEraserText;
         private System.Windows.Forms.GroupBox DataGBox;
         private System.Windows.Forms.GroupBox SearchGBox;
+        private System.Windows.Forms.Label lblResult;
     }
 }

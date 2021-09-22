@@ -321,9 +321,9 @@ namespace CECLdb
             this.lblTotalResult.AutoSize = true;
             this.lblTotalResult.Location = new System.Drawing.Point(1021, 316);
             this.lblTotalResult.Name = "lblTotalResult";
-            this.lblTotalResult.Size = new System.Drawing.Size(41, 20);
+            this.lblTotalResult.Size = new System.Drawing.Size(63, 20);
             this.lblTotalResult.TabIndex = 66;
-            this.lblTotalResult.Text = "Hola";
+            this.lblTotalResult.Text = "---___---";
             this.lblTotalResult.Visible = false;
             // 
             // bttnEraserText

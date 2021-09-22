@@ -392,6 +392,8 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationEmail(date);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvPersonReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvPersonReg.Rows.Count > 0)
             {
@@ -426,6 +428,8 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationName(date);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvPersonReg.Rows.Count;
+            lblResult.Visible = true;
 
             DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
             if (dgvPersonReg.Rows.Count > 0)
@@ -461,6 +465,8 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationArea(date);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvPersonReg.Rows.Count;
+            lblResult.Visible = true;
 
             DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
             if (dgvPersonReg.Rows.Count > 0)
@@ -496,6 +502,8 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             dgvPersonReg.DataSource = person.consultationCourse(date);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvPersonReg.Rows.Count;
+            lblResult.Visible = true;
 
             DataGridViewCheckBoxColumn CheckboxColumn = new DataGridViewCheckBoxColumn();
             if (dgvPersonReg.Rows.Count > 0)
@@ -538,6 +546,8 @@ namespace CECLdb
             }
             dgvPersonReg.DataSource =person.listSelected;
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvPersonReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvPersonReg.Rows.Count > 0)
             {

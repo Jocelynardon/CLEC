@@ -375,6 +375,8 @@ namespace CECLdb
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationAreaAd(data);
             validateSelectionAd();
+            lblResult.Text = "Total Resultados: " + dgvAdReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvAdReg.Rows.Count > 0)
             {
@@ -407,6 +409,8 @@ namespace CECLdb
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationCourse(data);
             validateSelectionAd();
+            lblResult.Text = "Total Resultados: " + dgvAdReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvAdReg.Rows.Count > 0)
             {
@@ -440,6 +444,8 @@ namespace CECLdb
             CtrlAd ad = new CtrlAd();
             dgvAdReg.DataSource = ad.consultationDescription(data);
             validateSelectionAd();
+            lblResult.Text = "Total Resultados: " + dgvAdReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvAdReg.Rows.Count > 0)
             {
@@ -479,6 +485,9 @@ namespace CECLdb
             }
             dgvAdReg.DataSource = ad.listSelected;
             validateSelectionAd();
+
+            lblResult.Text = "Total Resultados: " + dgvAdReg.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvAdReg.Rows.Count > 0)
             {

@@ -46,12 +46,13 @@ namespace CECLdb
             this.bttnViewAll = new System.Windows.Forms.Button();
             this.txtNoAviso = new System.Windows.Forms.TextBox();
             this.Destinatarios = new System.Windows.Forms.GroupBox();
+            this.bttnExport = new System.Windows.Forms.Button();
             this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
             this.AddedPreviewbtn = new System.Windows.Forms.Button();
             this.txtTextSearch = new System.Windows.Forms.TextBox();
             this.bttnSearchPerson = new System.Windows.Forms.Button();
             this.Aviso = new System.Windows.Forms.GroupBox();
-            this.bttnExport = new System.Windows.Forms.Button();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).BeginInit();
             this.Destinatarios.SuspendLayout();
             this.Aviso.SuspendLayout();
@@ -228,6 +229,7 @@ namespace CECLdb
             // Destinatarios
             // 
             this.Destinatarios.BackColor = System.Drawing.SystemColors.Info;
+            this.Destinatarios.Controls.Add(this.lblResult);
             this.Destinatarios.Controls.Add(this.bttnExport);
             this.Destinatarios.Controls.Add(this.cmbTypeSearch);
             this.Destinatarios.Controls.Add(this.AddedPreviewbtn);
@@ -247,6 +249,19 @@ namespace CECLdb
             this.Destinatarios.TabIndex = 45;
             this.Destinatarios.TabStop = false;
             this.Destinatarios.Text = "Destinatarios";
+            // 
+            // bttnExport
+            // 
+            this.bttnExport.BackColor = System.Drawing.Color.Yellow;
+            this.bttnExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnExport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bttnExport.Location = new System.Drawing.Point(268, 484);
+            this.bttnExport.Name = "bttnExport";
+            this.bttnExport.Size = new System.Drawing.Size(96, 29);
+            this.bttnExport.TabIndex = 50;
+            this.bttnExport.Text = "Exportar";
+            this.bttnExport.UseVisualStyleBackColor = false;
+            this.bttnExport.Click += new System.EventHandler(this.bttnExport_Click);
             // 
             // cmbTypeSearch
             // 
@@ -301,18 +316,15 @@ namespace CECLdb
             this.Aviso.TabStop = false;
             this.Aviso.Text = "Aviso";
             // 
-            // bttnExport
+            // lblResult
             // 
-            this.bttnExport.BackColor = System.Drawing.Color.Yellow;
-            this.bttnExport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bttnExport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bttnExport.Location = new System.Drawing.Point(268, 484);
-            this.bttnExport.Name = "bttnExport";
-            this.bttnExport.Size = new System.Drawing.Size(96, 29);
-            this.bttnExport.TabIndex = 50;
-            this.bttnExport.Text = "Exportar";
-            this.bttnExport.UseVisualStyleBackColor = false;
-            this.bttnExport.Click += new System.EventHandler(this.bttnExport_Click);
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(804, 107);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(133, 20);
+            this.lblResult.TabIndex = 51;
+            this.lblResult.Text = "Total Resultados: ";
+            this.lblResult.Visible = false;
             // 
             // EmailSentReg
             // 
@@ -360,5 +372,6 @@ namespace CECLdb
         private System.Windows.Forms.TextBox txtTextSearch;
         private System.Windows.Forms.Button bttnSearchPerson;
         private System.Windows.Forms.Button bttnExport;
+        private System.Windows.Forms.Label lblResult;
     }
 }

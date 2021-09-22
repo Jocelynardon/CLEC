@@ -283,6 +283,8 @@ namespace CECLdb
             CtrlArea area = new CtrlArea();
             dgvArea.DataSource = area.consultationYear(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvArea.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvArea.Rows.Count > 0)
             {
@@ -313,6 +315,8 @@ namespace CECLdb
             CtrlArea area = new CtrlArea();
             dgvArea.DataSource = area.consultationConvocatory(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvArea.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvArea.Rows.Count > 0)
             {
@@ -343,6 +347,8 @@ namespace CECLdb
             CtrlArea area = new CtrlArea();
             dgvArea.DataSource = area.consultationName(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvArea.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvArea.Rows.Count > 0)
             {
@@ -380,6 +386,9 @@ namespace CECLdb
             }
             dgvArea.DataSource = area.listSelected;
             validateSelection();
+
+            lblResult.Text = "Total Resultados: " + dgvArea.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvArea.Rows.Count > 0)
             {

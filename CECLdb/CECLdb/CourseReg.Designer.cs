@@ -49,6 +49,7 @@ namespace CECLdb
             this.btnSaveData = new System.Windows.Forms.Button();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCourse)).BeginInit();
             this.DataGBox.SuspendLayout();
             this.SearchGBox.SuspendLayout();
@@ -285,6 +286,7 @@ namespace CECLdb
             // SearchGBox
             // 
             this.SearchGBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SearchGBox.Controls.Add(this.lblResult);
             this.SearchGBox.Controls.Add(this.bttnViewSelected);
             this.SearchGBox.Controls.Add(this.Deletebtn);
             this.SearchGBox.Controls.Add(this.Modifybtn);
@@ -301,6 +303,16 @@ namespace CECLdb
             this.SearchGBox.TabIndex = 66;
             this.SearchGBox.TabStop = false;
             this.SearchGBox.Text = "BÚSQUEDA";
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(669, 78);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(121, 20);
+            this.lblResult.TabIndex = 64;
+            this.lblResult.Text = "Total Resultados:";
+            this.lblResult.Visible = false;
             // 
             // CourseReg
             // 
@@ -347,5 +359,6 @@ namespace CECLdb
         private System.Windows.Forms.Button btnSaveData;
         private System.Windows.Forms.GroupBox DataGBox;
         private System.Windows.Forms.GroupBox SearchGBox;
+        private System.Windows.Forms.Label lblResult;
     }
 }

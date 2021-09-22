@@ -356,6 +356,8 @@ namespace CECLdb
             CtrlInscription  inscription= new CtrlInscription();
             dgvInscription.DataSource = inscription.consultationArea(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvInscription.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvInscription.Rows.Count > 0)
             {
@@ -388,6 +390,8 @@ namespace CECLdb
             CtrlInscription inscription = new CtrlInscription();
             dgvInscription.DataSource = inscription.consultationCourse(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvInscription.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvInscription.Rows.Count > 0)
             {
@@ -420,6 +424,8 @@ namespace CECLdb
             CtrlInscription inscription = new CtrlInscription();
             dgvInscription.DataSource = inscription.consultationPerson(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvInscription.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvInscription.Rows.Count > 0)
             {
@@ -452,6 +458,8 @@ namespace CECLdb
             CtrlInscription inscription = new CtrlInscription();
             dgvInscription.DataSource = inscription.consultationMonthYear(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvInscription.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvInscription.Rows.Count > 0)
             {
@@ -491,6 +499,8 @@ namespace CECLdb
             }
             dgvInscription.DataSource = inscription.listSelected;
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvInscription.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvInscription.Rows.Count > 0)
             {

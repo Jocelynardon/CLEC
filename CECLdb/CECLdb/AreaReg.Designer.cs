@@ -53,6 +53,7 @@ namespace CECLdb
             this.bttnImport = new System.Windows.Forms.Button();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).BeginInit();
             this.DataGBox.SuspendLayout();
             this.SearchGBox.SuspendLayout();
@@ -336,6 +337,7 @@ namespace CECLdb
             // SearchGBox
             // 
             this.SearchGBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SearchGBox.Controls.Add(this.lblResult);
             this.SearchGBox.Controls.Add(this.bttnViewSelected);
             this.SearchGBox.Controls.Add(this.Deletebtn);
             this.SearchGBox.Controls.Add(this.Modifybtn);
@@ -352,6 +354,16 @@ namespace CECLdb
             this.SearchGBox.TabIndex = 61;
             this.SearchGBox.TabStop = false;
             this.SearchGBox.Text = "BÚSQUEDA";
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(635, 88);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(125, 20);
+            this.lblResult.TabIndex = 58;
+            this.lblResult.Text = "Total Resultados: ";
+            this.lblResult.Visible = false;
             // 
             // AreaReg
             // 
@@ -402,5 +414,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnImport;
         private System.Windows.Forms.GroupBox DataGBox;
         private System.Windows.Forms.GroupBox SearchGBox;
+        private System.Windows.Forms.Label lblResult;
     }
 }

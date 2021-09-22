@@ -200,6 +200,8 @@ namespace CECLdb
             CtrlPerson person = new CtrlPerson();
             dgvEmailSent.DataSource = person.consultationIDEmailSent(data);
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvEmailSent.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvEmailSent.Rows.Count > 0)
             {
@@ -234,6 +236,8 @@ namespace CECLdb
             }
             dgvEmailSent.DataSource = person.listSelected;
             validateSelection();
+            lblResult.Text = "Total Resultados: " + dgvEmailSent.Rows.Count;
+            lblResult.Visible = true;
 
             if (dgvEmailSent.Rows.Count > 0)
             {

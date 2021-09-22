@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_8D2E07253299404795995AB63F8B67DC"
+        "MsmKey" = "8:_16F0826248A34EF1AE80A7945A47F390"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,7 +33,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\Installer.msi"
+        "OutputFilename" = "8:Debug\\InstallerCLEC.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -82,6 +82,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -202,7 +210,7 @@
         "Manufacturer" = "8:Default Company Name"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Installer"
+        "Title" = "8:Installer CLEC"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Default Company Name"
         "Keywords" = "8:"
@@ -311,30 +319,30 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4AA92E1272F34F59AA1AC88EC459D043"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A4EB6E6846D349329E31CF33D7DBB149"
             {
-            "Name" = "8:CLEC BD"
+            "Name" = "8:BD CLEC"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8D2E07253299404795995AB63F8B67DC"
-            "Folder" = "8:_3A75AEF4A1C6414BB9BED1364CEDBC18"
+            "Target" = "8:_16F0826248A34EF1AE80A7945A47F390"
+            "Folder" = "8:_B9D4A13EA76349A5B011C2C10A7BB12D"
             "WorkingFolder" = "8:_CD4A8E91ED454B6C998036D77CDD4101"
             "Icon" = "8:_9CC061154A134754B0513208EC79DEC8"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EC6CC8FCBD434830A3D420B0C0C2FAA0"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CB4A33484F5A4F4BBE049A4D97409EB9"
             {
-            "Name" = "8:CLEC BD"
+            "Name" = "8:BD CLEC"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_8D2E07253299404795995AB63F8B67DC"
-            "Folder" = "8:_B9D4A13EA76349A5B011C2C10A7BB12D"
+            "Target" = "8:_16F0826248A34EF1AE80A7945A47F390"
+            "Folder" = "8:_3A75AEF4A1C6414BB9BED1364CEDBC18"
             "WorkingFolder" = "8:_CD4A8E91ED454B6C998036D77CDD4101"
             "Icon" = "8:_9CC061154A134754B0513208EC79DEC8"
             "Feature" = "8:"
@@ -738,7 +746,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8D2E07253299404795995AB63F8B67DC"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_16F0826248A34EF1AE80A7945A47F390"
             {
             "SourcePath" = "8:..\\CECLdb\\obj\\Release\\netcoreapp3.1\\apphost.exe"
             "TargetName" = "8:"
