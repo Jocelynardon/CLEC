@@ -636,7 +636,7 @@ namespace CECLdb
                 else
                 {
                     MessageBox.Show("No se han encontrado datos");
-                    dgvEmailSent.DataSource = person.consultationEmail(null);
+                    dgvEmailSent.DataSource = null;
                 }
             }
             else
@@ -684,6 +684,11 @@ namespace CECLdb
         private void bttnExport_Click(object sender, EventArgs e)
         {
             ExportData(dgvEmailSent);
+        }
+
+        private void bttnEraserText_Click(object sender, EventArgs e)
+        {
+            txtTextSearch.Text = "";
         }
     }
 }

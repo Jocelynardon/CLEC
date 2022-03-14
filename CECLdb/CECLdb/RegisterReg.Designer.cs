@@ -52,9 +52,9 @@ namespace CECLdb
             this.Deletebtn = new System.Windows.Forms.Button();
             this.Modifybtn = new System.Windows.Forms.Button();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.SaveChanges = new System.Windows.Forms.Button();
-            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegister)).BeginInit();
             this.SearchGBox.SuspendLayout();
             this.DataGBox.SuspendLayout();
@@ -329,6 +329,16 @@ namespace CECLdb
             this.SearchGBox.TabStop = false;
             this.SearchGBox.Text = "BÚSQUEDA";
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(781, 78);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(121, 20);
+            this.lblResult.TabIndex = 52;
+            this.lblResult.Text = "Total Resultados:";
+            this.lblResult.Visible = false;
+            // 
             // DataGBox
             // 
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
@@ -362,20 +372,11 @@ namespace CECLdb
             this.SaveChanges.Visible = false;
             this.SaveChanges.Click += new System.EventHandler(this.SaveChanges_Click);
             // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(781, 78);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(121, 20);
-            this.lblResult.TabIndex = 52;
-            this.lblResult.Text = "Total Resultados:";
-            this.lblResult.Visible = false;
-            // 
             // RegisterReg
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1048, 827);
+            this.ControlBox = false;
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.lblEscRegister);

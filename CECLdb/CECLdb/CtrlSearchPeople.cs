@@ -14,7 +14,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                     "persona.Correo,persona.Teléfono," +
@@ -71,7 +71,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                     "persona.Correo,persona.Teléfono," +
@@ -128,7 +128,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Ins.IDpersona,Persona.Nombre,Persona.Apellido, " +
                     "persona.Correo,persona.Teléfono," +
@@ -244,7 +244,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data==null)
+            if (data==null || data == "")
             {
                 sql = "SELECT per.IDpersona,per.Nombre,per.Apellido,per.Correo,per.Teléfono," +
                     "CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS Nombre, Curso.Nombre," +
@@ -298,7 +298,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT per.IDpersona,per.Nombre,per.Apellido,per.Correo,per.Teléfono," +
                     "CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS Nombre, Curso.Nombre," +
@@ -352,7 +352,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT per.IDpersona,per.Nombre,per.Apellido,per.Correo,per.Teléfono," +
                     "CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS Nombre, Curso.Nombre," +
@@ -914,7 +914,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Persona.IDpersona, CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombrePersona," +
                     "persona.Correo,persona.Teléfono, CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS NombreArea, Curso.Nombre, reg.FechaConsulta, " +
@@ -963,7 +963,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Persona.IDpersona, CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombrePersona," +
                     "persona.Correo,persona.Teléfono, CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS NombreArea, Curso.Nombre, reg.FechaConsulta " +
@@ -1011,7 +1011,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Persona.IDpersona, CONCAT(Persona.Nombre,', ',Persona.Apellido) AS NombrePersona," +
                     "persona.Correo,persona.Teléfono, CONCAT(Area.Nombre, ', ', Area.Año, ', ', Convocatoria) AS NombreArea, Curso.Nombre, reg.FechaConsulta " +

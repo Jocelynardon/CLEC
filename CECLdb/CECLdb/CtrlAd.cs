@@ -14,7 +14,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
                     "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
@@ -58,7 +58,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
                     "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";
@@ -101,7 +101,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT IDaviso,Area.IDarea,CONCAT(Area.Nombre,', ',Area.Año,', ',Area.Convocatoria),Curso.IDcurso,Curso.Nombre ,Fecha,Descripcion " +
                     "FROM aviso AS Ad INNER JOIN Area ON Area.IDarea=Ad.IDarea INNER JOIN Curso ON Curso.IDcurso=Ad.IDcurso ORDER BY Fecha DESC";

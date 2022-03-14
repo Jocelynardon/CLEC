@@ -56,11 +56,11 @@ namespace CECLdb
             this.DeselectAllcbx = new System.Windows.Forms.CheckBox();
             this.bttnEraserText = new System.Windows.Forms.Button();
             this.SearchGBox = new System.Windows.Forms.GroupBox();
+            this.lblResult = new System.Windows.Forms.Label();
             this.DataGBox = new System.Windows.Forms.GroupBox();
             this.Codetxtbx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SaveChanges = new System.Windows.Forms.Button();
-            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscription)).BeginInit();
             this.SearchGBox.SuspendLayout();
             this.DataGBox.SuspendLayout();
@@ -387,6 +387,16 @@ namespace CECLdb
             this.SearchGBox.TabStop = false;
             this.SearchGBox.Text = "BÚSQUEDA";
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(820, 96);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(125, 20);
+            this.lblResult.TabIndex = 44;
+            this.lblResult.Text = "Total Resultados: ";
+            this.lblResult.Visible = false;
+            // 
             // DataGBox
             // 
             this.DataGBox.BackColor = System.Drawing.Color.Ivory;
@@ -443,21 +453,12 @@ namespace CECLdb
             this.SaveChanges.Visible = false;
             this.SaveChanges.Click += new System.EventHandler(this.SaveChanges_Click);
             // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(820, 96);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(125, 20);
-            this.lblResult.TabIndex = 44;
-            this.lblResult.Text = "Total Resultados: ";
-            this.lblResult.Visible = false;
-            // 
             // InscriptionReg
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1090, 829);
+            this.ControlBox = false;
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.lblEscInscription);

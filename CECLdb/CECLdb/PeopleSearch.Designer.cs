@@ -358,6 +358,7 @@ namespace CECLdb
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 692);
+            this.ControlBox = false;
             this.Controls.Add(this.rbttnInscribed);
             this.Controls.Add(this.rbttnConsulted);
             this.Controls.Add(this.CursoGBx);

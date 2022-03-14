@@ -46,13 +46,14 @@ namespace CECLdb
             this.bttnViewAll = new System.Windows.Forms.Button();
             this.txtNoAviso = new System.Windows.Forms.TextBox();
             this.Destinatarios = new System.Windows.Forms.GroupBox();
+            this.bttnEraserText = new System.Windows.Forms.Button();
+            this.lblResult = new System.Windows.Forms.Label();
             this.bttnExport = new System.Windows.Forms.Button();
             this.cmbTypeSearch = new System.Windows.Forms.ComboBox();
             this.AddedPreviewbtn = new System.Windows.Forms.Button();
             this.txtTextSearch = new System.Windows.Forms.TextBox();
             this.bttnSearchPerson = new System.Windows.Forms.Button();
             this.Aviso = new System.Windows.Forms.GroupBox();
-            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmailSent)).BeginInit();
             this.Destinatarios.SuspendLayout();
             this.Aviso.SuspendLayout();
@@ -229,6 +230,7 @@ namespace CECLdb
             // Destinatarios
             // 
             this.Destinatarios.BackColor = System.Drawing.SystemColors.Info;
+            this.Destinatarios.Controls.Add(this.bttnEraserText);
             this.Destinatarios.Controls.Add(this.lblResult);
             this.Destinatarios.Controls.Add(this.bttnExport);
             this.Destinatarios.Controls.Add(this.cmbTypeSearch);
@@ -249,6 +251,28 @@ namespace CECLdb
             this.Destinatarios.TabIndex = 45;
             this.Destinatarios.TabStop = false;
             this.Destinatarios.Text = "Destinatarios";
+            // 
+            // bttnEraserText
+            // 
+            this.bttnEraserText.BackColor = System.Drawing.Color.LightYellow;
+            this.bttnEraserText.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bttnEraserText.Location = new System.Drawing.Point(894, 43);
+            this.bttnEraserText.Name = "bttnEraserText";
+            this.bttnEraserText.Size = new System.Drawing.Size(63, 26);
+            this.bttnEraserText.TabIndex = 58;
+            this.bttnEraserText.Text = "Borrar";
+            this.bttnEraserText.UseVisualStyleBackColor = false;
+            this.bttnEraserText.Click += new System.EventHandler(this.bttnEraserText_Click);
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(804, 107);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(133, 20);
+            this.lblResult.TabIndex = 51;
+            this.lblResult.Text = "Total Resultados: ";
+            this.lblResult.Visible = false;
             // 
             // bttnExport
             // 
@@ -316,20 +340,11 @@ namespace CECLdb
             this.Aviso.TabStop = false;
             this.Aviso.Text = "Aviso";
             // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(804, 107);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(133, 20);
-            this.lblResult.TabIndex = 51;
-            this.lblResult.Text = "Total Resultados: ";
-            this.lblResult.Visible = false;
-            // 
             // EmailSentReg
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1080, 703);
+            this.ControlBox = false;
             this.Controls.Add(this.Aviso);
             this.Controls.Add(this.Destinatarios);
             this.Controls.Add(this.bttnSearch);
@@ -373,5 +388,6 @@ namespace CECLdb
         private System.Windows.Forms.Button bttnSearchPerson;
         private System.Windows.Forms.Button bttnExport;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.Button bttnEraserText;
     }
 }

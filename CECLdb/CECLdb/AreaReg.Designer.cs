@@ -369,6 +369,7 @@ namespace CECLdb
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(924, 792);
+            this.ControlBox = false;
             this.Controls.Add(this.SearchGBox);
             this.Controls.Add(this.DataGBox);
             this.Controls.Add(this.lblEscArea);

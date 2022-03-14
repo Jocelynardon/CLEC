@@ -12,19 +12,19 @@ namespace CLEC
         public List<Object> listSelected = new List<Object>();
         
 
-        public List<Object> consultationEmail(string date)
+        public List<Object> consultationEmail(string data)
         {
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
 
-            if (date == null)
+            if (data == null)
             {
                 sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona ORDER BY Nombre";
             }
             else
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Correo LIKE '%" + date + "%'ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Correo LIKE '%" + data + "%'ORDER BY Nombre";
             }
             try
             {
@@ -49,19 +49,19 @@ namespace CLEC
             }
             return list;
         }
-        public List<Object> consultationName(string date)
+        public List<Object> consultationName(string data)
         {
             MySqlDataReader reader;
             List<Object> list = new List<object>();
             string sql;
 
-            if (date == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona ORDER BY Nombre";
             }
             else
             {
-                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Nombre LIKE '%" + date + "%' OR Apellido LIKE '%" + date + "%' ORDER BY Nombre";
+                sql = "SELECT IDpersona, Nombre, Apellido, Correo,Teléfono FROM persona WHERE Nombre LIKE '%" + data + "%' OR Apellido LIKE '%" + data + "%' ORDER BY Nombre";
             }
             try
             {
@@ -92,7 +92,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Ins.IDpersona, persona.Nombre, persona.Apellido, " +
                     "persona.Correo,persona.Teléfono," +
@@ -141,7 +141,7 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            if (data == null)
+            if (data == null || data == "")
             {
                 sql = "SELECT Ins.IDpersona, persona.Nombre, persona.Apellido, " +
                     "persona.Correo,persona.Teléfono," +
@@ -252,8 +252,16 @@ namespace CLEC
             List<Object> list = new List<object>();
             string sql;
 
-            sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono FROM correoenviado " +
+            if (data == null || data == "")
+            {
+                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono FROM correoenviado " +
+            "JOIN persona ON persona.IDpersona=correoenviado.IDpersona ORDER BY persona.Nombre ASC";
+            }
+            else
+            {
+                sql = "SELECT persona.IDpersona, persona.Nombre, Apellido, Correo,Teléfono FROM correoenviado " +
             "JOIN persona ON persona.IDpersona=correoenviado.IDpersona WHERE IDaviso = " + data + " ORDER BY persona.Nombre ASC";
+            }
 
             try
             {
