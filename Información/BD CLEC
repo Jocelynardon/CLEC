@@ -1,0 +1,93 @@
+CREATE database CECLdb;
+USE  CECLdb;
+CREATE TABLE Area
+(
+	IDarea INT auto_increment PRIMARY KEY,
+	Año INT CHECK(Año>2016) NOT NULL,
+	Convocatoria TINYINT CHECK(Convocatoria>0 AND Convocatoria<4) NOT NULL,
+	Nombre mediumtext NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Persona
+(
+	IDpersona INT auto_increment PRIMARY KEY,
+	Nombre mediumtext NOT NULL,
+	Apellido mediumtext NOT NULL,
+	Correo mediumtext NOT NULL,
+	Teléfono VARCHAR(20)
+);
+/*ALTER TABLE Persona DROP COLUMN Codigo;
+ALTER TABLE Persona DROP COLUMN Teléfono;
+ALTER TABLE Persona ADD COLUMN Teléfono VARCHAR(20);*/
+
+CREATE TABLE IF NOT EXISTS Curso
+(
+	IDarea INT NOT NULL,
+	FOREIGN KEY(IDarea) references Area(IDarea)
+    ON DELETE cascade on update cascade,
+	IDcurso INT auto_increment,
+	Nombre mediumtext NOT NULL,
+	PRIMARY KEY CLUSTERED 
+    (
+        IDcurso, IDarea
+    )
+);
+
+CREATE TABLE IF NOT EXISTS Aviso
+(
+	IDaviso INT auto_increment primary key,
+	IDcurso INT NOT NULL,
+	IDarea INT NOT NULL,
+    FOREIGN KEY(IDcurso,IDarea) references Curso(IDcurso,IDarea)
+    ON DELETE cascade on update cascade,
+	Descripcion mediumtext NOT NULL,
+	Fecha DATETIME NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Inscripcion
+(
+	IDcurso INT NOT NULL,
+	IDarea INT NOT NULL,
+    FOREIGN KEY(IDarea,IDcurso) references Curso(IDarea,IDcurso)
+    ON DELETE cascade on update cascade,
+	IDpersona INT NOT NULL,
+    FOREIGN KEY(IDpersona) references Persona(IDpersona)
+    ON DELETE cascade on update cascade,
+	PRIMARY KEY CLUSTERED 
+    (
+        IDcurso, IDarea, IDpersona
+    ),
+	Aprobo INT NOT NULL,
+	FechaInicio DATETIME NOT NULL,
+	FechaFin DATETIME,
+    Codigo INT(7) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS CorreoEnviado
+(
+	IDaviso INT NOT NULL,
+    FOREIGN KEY(IDaviso) references Aviso(IDaviso)
+    ON DELETE cascade on update cascade,
+	IDpersona INT NOT NULL,
+    FOREIGN KEY(IDpersona) references Persona(IDpersona)
+    ON DELETE cascade on update cascade,
+	PRIMARY KEY 
+    (
+        IDaviso, IDpersona
+    )
+);
+CREATE TABLE IF NOT EXISTS Registro
+(
+	IDcurso INT NOT NULL,
+	IDarea INT NOT NULL,
+    FOREIGN KEY(IDarea,IDcurso) references Curso(IDarea,IDcurso)
+    ON DELETE cascade on update cascade,
+	IDpersona INT NOT NULL,
+    FOREIGN KEY(IDpersona) references Persona(IDpersona)
+    ON DELETE cascade on update cascade,
+	PRIMARY KEY CLUSTERED 
+    (
+        IDcurso, IDarea, IDpersona
+    ),
+	FechaConsulta DATETIME NOT NULL
+);
+
+
