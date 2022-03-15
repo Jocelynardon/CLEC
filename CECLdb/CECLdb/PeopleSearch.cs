@@ -94,17 +94,6 @@ namespace CECLdb
                             SearchCodeRegister(txtSearch.Text);
                         }
                     }
-                    //if (emailOrStatus == 0)
-                    //{
-                    //    if (txtSearch.Text == "")
-                    //    {
-                    //        SearchByCode(null);
-                    //    }
-                    //    if (txtSearch.Text != "")
-                    //    {
-                    //        SearchByCode(txtSearch.Text);
-                    //    }
-                    //}
                     break;
                 case 2:
                     if (rbttnEmailSent.Checked)
@@ -165,17 +154,6 @@ namespace CECLdb
                             SearchByEmailRegister(txtSearch.Text);
                         }
                     }
-                    //if (emailOrStatus==0)
-                    //{
-                    //    if (txtSearch.Text == "") 
-                    //    {
-                    //        SearchByEmail(null);
-                    //    }
-                    //    if (txtSearch.Text != "")
-                    //    {
-                    //        SearchByEmail(txtSearch.Text);
-                    //    }
-                    //}
                     break;
                 case 3:
                     if (rbttnEmailSent.Checked)
@@ -236,17 +214,6 @@ namespace CECLdb
                             SearchByNameRegister(txtSearch.Text);
                         }
                     }
-                    //if (emailOrStatus==0)
-                    //{
-                    //    if (txtSearch.Text == "") 
-                    //    {
-                    //        SearchByName(null);
-                    //    }
-                    //    if (txtSearch.Text != "")
-                    //    {
-                    //        SearchByName(txtSearch.Text);
-                    //    }
-                    //}
                     break;
                 case 4:
                     if (rbttnEmailSent.Checked)
@@ -317,19 +284,6 @@ namespace CECLdb
                             SearchByCourseRegister(idArea, idCourse);
                         }
                     }
-                    //if (emailOrStatus == 0)
-                    //{
-                    //    if (cmbSelectArea.Text == "")
-                    //    {
-                    //        SearchByCourse(0, 0);
-                    //    }
-                    //    if (cmbSelectArea.Text != "")
-                    //    {
-                    //        int idArea = int.Parse(cmbSelectArea.SelectedValue.ToString());
-                    //        int idCourse = int.Parse(cmbSelectCourse.SelectedValue.ToString());
-                    //        SearchByCourse(idArea, idCourse);
-                    //    }
-                    //}
                     break;
                 default:
                     MessageBox.Show("Seleccione la manera en que desea buscar");

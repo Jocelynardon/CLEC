@@ -296,7 +296,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableYear(null);
                     }
                 }
@@ -305,7 +305,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableYear(null);
                 }
             }
@@ -328,7 +328,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableConvocatory(null);
                     }
                 }
@@ -337,7 +337,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableConvocatory(null);
                 }
             }
@@ -360,7 +360,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableName(null);
                     }
                 }
@@ -369,7 +369,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableName(null);
                 }
             }
@@ -537,7 +537,7 @@ namespace CECLdb
 
             if (amountSelected > 1)
             {
-                MessageBox.Show("Selecciona únicamente a 1 Área");
+                MessageBox.Show("Selecciona únicamente 1 Área");
             }
         }
 

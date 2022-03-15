@@ -371,7 +371,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableArea(null);
                     }
                 }
@@ -380,7 +380,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableArea(null);
                 }
             }
@@ -405,7 +405,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableCourse(null);
                     }
                 }
@@ -414,7 +414,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableCourse(null);
                 }
             }
@@ -439,7 +439,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTablePerson(null);
                     }
                 }
@@ -448,7 +448,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTablePerson(null);
                 }
             }
@@ -473,7 +473,7 @@ namespace CECLdb
                 {
                     if (!update)
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableMonthYear(null);
                     }
                 }
@@ -482,7 +482,7 @@ namespace CECLdb
             {
                 if (!update)
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableMonthYear(null);
                 }
             }

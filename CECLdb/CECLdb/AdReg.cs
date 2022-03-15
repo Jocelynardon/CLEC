@@ -122,7 +122,7 @@ namespace CECLdb
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione el curso al que pertence");
+                    MessageBox.Show("Seleccione el curso al que pertenece");
                 }
             }
             else
@@ -182,7 +182,7 @@ namespace CECLdb
             }
             if (amountAd == 0)
             {
-                MessageBox.Show("No se encuentran avisos/anuncios registrados");
+                MessageBox.Show("No se encuentran avisos/anuncios registrados, se desplegará toda la información");
             }
         }
         private void bttnSaveAd_Click(object sender, EventArgs e)
@@ -390,7 +390,7 @@ namespace CECLdb
                 {
                     if (!update)/******************************************/
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableArea(null);
                     }
                 }
@@ -399,7 +399,7 @@ namespace CECLdb
             {
                 if (!update)/**********************************************/
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableArea(null);
                 }
             }
@@ -424,7 +424,7 @@ namespace CECLdb
                 {
                     if (!update)/*************************************************/
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableCourse(null);
                     }
                     else update = false;
@@ -434,7 +434,7 @@ namespace CECLdb
             {
                 if (!update)/**************************************/
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableCourse(null);
                 }
             }
@@ -459,7 +459,7 @@ namespace CECLdb
                 {
                     if (!update)/************************************************/
                     {
-                        MessageBox.Show("No se ha encontrado coincidencias");
+                        MessageBox.Show("No se ha encontrado coincidencias, se desplegarán todos los datos disponibles");
                         LoadTableDescription(null);
                     }
                 }
@@ -468,7 +468,7 @@ namespace CECLdb
             {
                 if (!update)/***********************************/
                 {
-                    MessageBox.Show("No se han encontrado datos");
+                    MessageBox.Show("No se han encontrado datos, se desplegarán todos los datos disponibles");
                     LoadTableDescription(null);
                 }
             }
