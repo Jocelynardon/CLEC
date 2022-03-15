@@ -828,12 +828,18 @@ namespace CECLdb
                         }
                         switch (LastSearchTypeSelected)
                         {
-                            //1 Correo, 2 Nombre
-                            case 1:
+                            //0 Correo, 1 Nombre, 2 Area, 3 Curso
+                            case 0:
                                 LoadTableEmail(textSearch);
                                 break;
-                            case 2:
+                            case 1:
                                 LoadTableName(textSearch);
+                                break;
+                            case 2:
+                                LoadTableArea(textSearch);
+                                break;
+                            case 3:
+                                LoadTableCourse(textSearch);
                                 break;
                             default:
                                 MessageBox.Show("ERROOOOOOOOOOOOOOOOOOOOR");
